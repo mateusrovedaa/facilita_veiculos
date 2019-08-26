@@ -1,22 +1,7 @@
 package tela;
 
-import dao.ClienteDao;
-import dao.CompraDao;
 import dao.MarcaDao;
 import dao.ModeloDao;
-import dao.ProprietarioDao;
-import dao.VeiculoDao;
-import dao.VendaDao;
-import dao.VersaoDao;
-import functions.ConexaoBD;
-import java.util.HashMap;
-import java.util.Map;
-import javax.swing.JOptionPane;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.view.JasperViewer;
 
 public class TelaInicio extends javax.swing.JFrame {
 
@@ -24,27 +9,15 @@ public class TelaInicio extends javax.swing.JFrame {
 
     public TelaInicio() {
         initComponents();
-        VeiculoDao veiculoDao = new VeiculoDao();
-        VersaoDao versaoDao = new VersaoDao();
         ModeloDao modeloDao = new ModeloDao();
         MarcaDao marcaDao = new MarcaDao();
-        ProprietarioDao proprietarioDao = new ProprietarioDao();
-        CompraDao compraDao = new CompraDao();
-        ClienteDao clienteDao = new ClienteDao();
-        VendaDao vendaDao = new VendaDao();
     }
 
     public TelaInicio(int usuario) {
         initComponents();
         id = usuario;
-        VeiculoDao veiculoDao = new VeiculoDao();
-        VersaoDao versaoDao = new VersaoDao();
         ModeloDao modeloDao = new ModeloDao();
         MarcaDao marcaDao = new MarcaDao();
-        ProprietarioDao proprietarioDao = new ProprietarioDao();
-        CompraDao compraDao = new CompraDao();
-        ClienteDao clienteDao = new ClienteDao();
-        VendaDao vendaDao = new VendaDao();
     }
 
     public int idUser() {
@@ -56,11 +29,6 @@ public class TelaInicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        btnCliente = new javax.swing.JButton();
-        btnCliente1 = new javax.swing.JButton();
-        btnVeiculo = new javax.swing.JButton();
-        btnCompra = new javax.swing.JButton();
-        btnVenda = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
@@ -86,71 +54,6 @@ public class TelaInicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Facilita Veículos");
 
-        btnCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-pessoas.png"))); // NOI18N
-        btnCliente.setText("Clientes");
-        btnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCliente.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnCliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClienteActionPerformed(evt);
-            }
-        });
-
-        btnCliente1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnCliente1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/users.png"))); // NOI18N
-        btnCliente1.setText("Proprietários");
-        btnCliente1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnCliente1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCliente1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnCliente1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCliente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCliente1ActionPerformed(evt);
-            }
-        });
-
-        btnVeiculo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnVeiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-carro.png"))); // NOI18N
-        btnVeiculo.setText("Veículos");
-        btnVeiculo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnVeiculo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVeiculo.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnVeiculo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVeiculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVeiculoActionPerformed(evt);
-            }
-        });
-
-        btnCompra.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-compra.png"))); // NOI18N
-        btnCompra.setText("Compras");
-        btnCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnCompra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCompra.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnCompra.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCompraActionPerformed(evt);
-            }
-        });
-
-        btnVenda.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/hammer.png"))); // NOI18N
-        btnVenda.setText("Vendas");
-        btnVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnVenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnVenda.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnVenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVendaActionPerformed(evt);
-            }
-        });
-
         btnSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sair.png"))); // NOI18N
         btnSair.setText("Sair");
@@ -170,29 +73,13 @@ public class TelaInicio extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCliente1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(731, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCliente1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVeiculo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCompra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnVenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(366, 366, 366)
                 .addComponent(btnSair)
                 .addContainerGap())
         );
@@ -364,25 +251,11 @@ public class TelaInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        TelaCadastroCliente cliente = new TelaCadastroCliente();
-        jPanel3.add(cliente);
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = cliente.getWidth();
-        int aIFrame = cliente.getHeight();
-        cliente.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        cliente.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        TelaCadastroGeral geral = new TelaCadastroGeral();
-        jPanel3.add(geral);
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = geral.getWidth();
-        int aIFrame = geral.getHeight();
-        geral.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        geral.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -397,14 +270,7 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        TelaCadastroProprietario proprietario = new TelaCadastroProprietario();
-        jPanel3.add(proprietario);
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = proprietario.getWidth();
-        int aIFrame = proprietario.getHeight();
-        proprietario.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        proprietario.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -441,161 +307,43 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        TelaCadastroVersao versao = new TelaCadastroVersao();
-        jPanel3.add(versao);
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = versao.getWidth();
-        int aIFrame = versao.getHeight();
-        versao.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        versao.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        TelaCadastroCompra compra = new TelaCadastroCompra();
-        jPanel3.add(compra);
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = compra.getWidth();
-        int aIFrame = compra.getHeight();
-        compra.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        compra.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        TelaCadastroVenda venda = new TelaCadastroVenda(idUser());
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = venda.getWidth();
-        int aIFrame = venda.getHeight();
-        venda.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        jPanel3.add(venda);
-        venda.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-        TelaCadastroVeiculo veiculo = new TelaCadastroVeiculo();
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = veiculo.getWidth();
-        int aIFrame = veiculo.getHeight();
-        veiculo.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        jPanel3.add(veiculo);
-        veiculo.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        TelaCadastroCliente cliente = new TelaCadastroCliente();
-        jPanel3.add(cliente);
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = cliente.getWidth();
-        int aIFrame = cliente.getHeight();
-        cliente.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        cliente.setVisible(true);
-    }//GEN-LAST:event_btnClienteActionPerformed
-
-    private void btnVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendaActionPerformed
-        TelaCadastroVenda venda = new TelaCadastroVenda(idUser());
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = venda.getWidth();
-        int aIFrame = venda.getHeight();
-        venda.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        jPanel3.add(venda);
-        venda.setVisible(true);
-    }//GEN-LAST:event_btnVendaActionPerformed
-
-    private void btnVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVeiculoActionPerformed
-        TelaCadastroVeiculo veiculo = new TelaCadastroVeiculo();
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = veiculo.getWidth();
-        int aIFrame = veiculo.getHeight();
-        veiculo.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        jPanel3.add(veiculo);
-        veiculo.setVisible(true);
-    }//GEN-LAST:event_btnVeiculoActionPerformed
-
-    private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
-        TelaCadastroCompra compra = new TelaCadastroCompra();
-        jPanel3.add(compra);
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = compra.getWidth();
-        int aIFrame = compra.getHeight();
-        compra.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        compra.setVisible(true);
-    }//GEN-LAST:event_btnCompraActionPerformed
-
-    private void btnCliente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliente1ActionPerformed
-        TelaCadastroProprietario proprietario = new TelaCadastroProprietario();
-        jPanel3.add(proprietario);
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = proprietario.getWidth();
-        int aIFrame = proprietario.getHeight();
-        proprietario.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        proprietario.setVisible(true);
-    }//GEN-LAST:event_btnCliente1ActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-        TelaTotal total = new TelaTotal();
-        jPanel3.add(total);
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = total.getWidth();
-        int aIFrame = total.getHeight();
-        total.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        total.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        RelatorioVenda relatorioVenda = new RelatorioVenda();
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = relatorioVenda.getWidth();
-        int aIFrame = relatorioVenda.getHeight();
-        relatorioVenda.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        jPanel3.add(relatorioVenda);
-        relatorioVenda.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        RelatorioCompra relatorioCompra = new RelatorioCompra();
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = relatorioCompra.getWidth();
-        int aIFrame = relatorioCompra.getHeight();
-        relatorioCompra.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        jPanel3.add(relatorioCompra);
-        relatorioCompra.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-        RelatorioVendaUsuario relatorioVendaUsuario = new RelatorioVendaUsuario();
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = relatorioVendaUsuario.getWidth();
-        int aIFrame = relatorioVendaUsuario.getHeight();
-        relatorioVendaUsuario.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        jPanel3.add(relatorioVendaUsuario);
-        relatorioVendaUsuario.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        RelatorioVeiculoSituacao relatorioVeiculoSituacao = new RelatorioVeiculoSituacao();
-        int lDesk = jPanel3.getWidth();
-        int aDesk = jPanel3.getHeight();
-        int lIFrame = relatorioVeiculoSituacao.getWidth();
-        int aIFrame = relatorioVeiculoSituacao.getHeight();
-        relatorioVeiculoSituacao.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        jPanel3.add(relatorioVeiculoSituacao);
-        relatorioVeiculoSituacao.setVisible(true);
+
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
@@ -635,12 +383,7 @@ public class TelaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCliente;
-    private javax.swing.JButton btnCliente1;
-    private javax.swing.JButton btnCompra;
     private javax.swing.JButton btnSair;
-    private javax.swing.JButton btnVeiculo;
-    private javax.swing.JButton btnVenda;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

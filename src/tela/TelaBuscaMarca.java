@@ -1,7 +1,7 @@
 package tela;
 
 import dao.MarcaDao;
-import javax.swing.JOptionPane;
+import functions.Mensagem;
 
 public class TelaBuscaMarca extends javax.swing.JDialog {
 
@@ -164,7 +164,7 @@ public class TelaBuscaMarca extends javax.swing.JDialog {
             telaModelo.definirMarca(Integer.parseInt(codigoMarca), nomeMarca);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma marca!");
+            Mensagem.aviso("Selecione uma marca!", this);
         }
     }//GEN-LAST:event_btnDefinirMarcaActionPerformed
 

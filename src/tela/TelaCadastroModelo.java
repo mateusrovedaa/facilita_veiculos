@@ -8,7 +8,7 @@ import entidade.Carroceria;
 import entidade.Marca;
 import entidade.Modelo;
 import functions.ComboItem;
-import javax.swing.JOptionPane;
+import functions.Mensagem;
 
 public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
@@ -443,9 +443,9 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             } else {
                 retornoSalvarModelo = modeloDao.atualizar(modelo);
             }
-            JOptionPane.showMessageDialog(null, "Modelo salvo com sucesso!");
+            Mensagem.informacao("Modelo salvo com sucesso!", this);
         } else {
-            JOptionPane.showMessageDialog(null, "Campos obrigatórios (*) devem ser preenchidos corretamente!");
+            Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
 
         if (retornoSalvarModelo == null) {
@@ -466,7 +466,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
             new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText());
         } else {
-            JOptionPane.showMessageDialog(null, "Deu erro: \n\nMensagem técnica:" + retornoSalvarModelo);
+            Mensagem.erro("Deu erro: \n\nMensagem técnica:" + retornoSalvarModelo, this);
         }
     }//GEN-LAST:event_btnSalvarModeloActionPerformed
 
@@ -505,7 +505,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             codigo = modelo.getId();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar modelo!");
+            Mensagem.erro("Erro ao consultar modelo!", this);
         }
     }//GEN-LAST:event_btnEditarModeloActionPerformed
 
@@ -515,10 +515,10 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         String retornoExcluirModelo = new ModeloDao().excluir(Integer.parseInt(codigoExcluirModelo));
 
         if (retornoExcluirModelo == null) {
-            JOptionPane.showMessageDialog(null, "Modelo excluído com sucesso!");
+            Mensagem.informacao("Modelo excluído com sucesso!", this);
             new MarcaDao().popularTabela(tblModelo, campoFiltroModelo.getText());
         } else {
-            JOptionPane.showMessageDialog(null, tblModelo.getValueAt(tblModelo.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!");
+            Mensagem.erro(tblModelo.getValueAt(tblModelo.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
         }
     }//GEN-LAST:event_btnExcluirModeloActionPerformed
 

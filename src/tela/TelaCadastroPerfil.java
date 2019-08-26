@@ -2,7 +2,7 @@ package tela;
 
 import dao.PerfilDao;
 import entidade.Perfil;
-import javax.swing.JOptionPane;
+import functions.Mensagem;
 
 public class TelaCadastroPerfil extends javax.swing.JInternalFrame {
 
@@ -244,9 +244,9 @@ public class TelaCadastroPerfil extends javax.swing.JInternalFrame {
             } else {
                 retornoSalvarPerfil = perfilDao.atualizar(perfil);
             }
-            JOptionPane.showMessageDialog(null, "Perfil salvo com sucesso!");
+            Mensagem.informacao("Perfil salvo com sucesso!", this);
         } else {
-            JOptionPane.showMessageDialog(null, "Digite um perfil válido!");
+            Mensagem.erro("Digite um perfil válido!", this);
         }
 
         if (retornoSalvarPerfil == null) {
@@ -263,7 +263,7 @@ public class TelaCadastroPerfil extends javax.swing.JInternalFrame {
 
             new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
         } else {
-            JOptionPane.showMessageDialog(null, "Deu erro: \n\nMensagem técnica:" + retornoSalvarPerfil);
+            Mensagem.erro("Deu erro: \n\nMensagem técnica:" + retornoSalvarPerfil, this);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -282,10 +282,10 @@ public class TelaCadastroPerfil extends javax.swing.JInternalFrame {
         String retornoExcluirPerfil = new PerfilDao().excluir(Integer.parseInt(codigoExcluirPerfil));
 
         if (retornoExcluirPerfil == null) {
-            JOptionPane.showMessageDialog(null, "Perfil excluída com sucesso!");
+            Mensagem.informacao("Perfil excluída com sucesso!", this);
             new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
         } else {
-            JOptionPane.showMessageDialog(null, tblPerfil.getValueAt(tblPerfil.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!");
+            Mensagem.erro(tblPerfil.getValueAt(tblPerfil.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
         }
     }//GEN-LAST:event_btnExcluirPerfilActionPerformed
 
@@ -304,7 +304,7 @@ public class TelaCadastroPerfil extends javax.swing.JInternalFrame {
             codigo = perfil.getId();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar perfil!");
+            Mensagem.erro("Erro ao consultar perfil!", this);
         }
     }//GEN-LAST:event_btnEditarPerfilActionPerformed
 

@@ -1,12 +1,11 @@
 package tela;
 
 import dao.UsuarioDao;
-import entidade.Usuario;
+import functions.Mensagem;
 import functions.Validacao;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -120,7 +119,7 @@ public class TelaLogin extends javax.swing.JFrame {
             TelaInicio telaInicio = new TelaInicio(usuarioDao.validarLogin(email, senha));
             telaInicio.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Usúario ou senha incorretos");
+            Mensagem.erro("Usúario ou senha incorretos", this);
             campoEmail.setText("");
             campoSenha.setText("");
             campoEmail.requestFocus();

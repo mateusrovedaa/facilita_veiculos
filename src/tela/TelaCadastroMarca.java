@@ -2,8 +2,8 @@ package tela;
 
 import dao.MarcaDao;
 import entidade.Marca;
+import functions.Mensagem;
 import java.awt.Color;
-import javax.swing.JOptionPane;
 
 public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
@@ -39,7 +39,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
         setTitle("Cadastro de marcas");
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar/ editar nome da marca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Adicionar/ editar nome da marca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
 
         jLabel2.setText("Nome:");
 
@@ -91,11 +91,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
         abaAdicionar.addTab("Adicionar/editar marcas", jPanel1);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar por:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filtrar por:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Nome:");
-        jLabel1.setPreferredSize(new java.awt.Dimension(31, 14));
 
         btnFiltrarMarca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscar.png"))); // NOI18N
         btnFiltrarMarca.setText("Filtrar");
@@ -131,7 +130,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
                 .addComponent(campoFiltroMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnFiltrarMarca)
                 .addComponent(btnLimparMarca))
@@ -143,7 +142,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 676, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 691, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -251,11 +250,11 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
             }
         } else {
             erroMarca = null;
-            JOptionPane.showMessageDialog(null, "Digite uma marca válida!");
+            Mensagem.erro("Digite uma marca válida!", this);
         }
 
         if (retornoSalvarMarca == null && erroMarca != null) {
-            JOptionPane.showMessageDialog(null, "Marca salva com sucesso!");
+            Mensagem.informacao("Marca salva com sucesso!", this);
 
             campoNome.setText("");
 
@@ -268,7 +267,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
             new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
         } else {
             if (erroMarca != null) {
-                JOptionPane.showMessageDialog(null, "Marca " + campoNome.getText() + " já existe cadastrada!");
+                Mensagem.aviso("Marca " + campoNome.getText() + " já existe cadastrada!", this);
 
                 campoNome.setText("");
 
@@ -285,10 +284,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         String retornoExcluirMarca = new MarcaDao().excluir(Integer.parseInt(codigoExcluirMarca));
 
         if (retornoExcluirMarca == null) {
-            JOptionPane.showMessageDialog(null, "Marca excluída com sucesso!");
+            Mensagem.informacao("Marca excluída com sucesso!", this);
             new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
         } else {
-            JOptionPane.showMessageDialog(null, tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!");
+            Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
         }
     }//GEN-LAST:event_btnExcluirMarcaActionPerformed
 
@@ -307,7 +306,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
             codigo = marca.getId();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar marca!");
+            Mensagem.erro("Erro ao consultar marca!", this);
         }
     }//GEN-LAST:event_btnEditaMarcaActionPerformed
 
@@ -320,7 +319,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
     }//GEN-LAST:event_btnLimparMarcaActionPerformed
 
-    public boolean validaCampos() {
+    private boolean validaCampos() {
         return !campoNome.getText().isEmpty() && campoNome.getText().length() > 2;
     }
 

@@ -2,14 +2,9 @@ package facilitaveiculos;
 
 import functions.ConexaoBD;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import tela.TelaInicio;
-import tela.TelaCadastroCliente;
-import tela.TelaCadastroGeral;
-import tela.TelaCadastroProprietario;
 import tela.TelaLogin;
 
 public class FacilitaVeiculos {

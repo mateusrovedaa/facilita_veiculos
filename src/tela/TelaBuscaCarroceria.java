@@ -1,7 +1,7 @@
 package tela;
 
 import dao.CarroceriaDao;
-import javax.swing.JOptionPane;
+import functions.Mensagem;
 
 public class TelaBuscaCarroceria extends javax.swing.JDialog {
 
@@ -164,7 +164,7 @@ public class TelaBuscaCarroceria extends javax.swing.JDialog {
             telaModelo.definirCarroceria(Integer.parseInt(codigoCarroceria), nomeCarroceria);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma carroceria!");
+            Mensagem.aviso("Selecione uma carroceria!", this);
         }
     }//GEN-LAST:event_btnDefinirCarroceriaActionPerformed
 
