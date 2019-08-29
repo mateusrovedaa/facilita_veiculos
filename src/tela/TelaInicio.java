@@ -1,7 +1,7 @@
 package tela;
 
-import dao.MarcaDao;
-import dao.ModeloDao;
+//import dao.MarcaDao;
+//import dao.ModeloDao;
 
 public class TelaInicio extends javax.swing.JFrame {
 
@@ -9,15 +9,15 @@ public class TelaInicio extends javax.swing.JFrame {
 
     public TelaInicio() {
         initComponents();
-        ModeloDao modeloDao = new ModeloDao();
-        MarcaDao marcaDao = new MarcaDao();
+//        ModeloDao modeloDao = new ModeloDao();
+//        MarcaDao marcaDao = new MarcaDao();
     }
 
     public TelaInicio(int usuario) {
         initComponents();
         id = usuario;
-        ModeloDao modeloDao = new ModeloDao();
-        MarcaDao marcaDao = new MarcaDao();
+//        ModeloDao modeloDao = new ModeloDao();
+//        MarcaDao marcaDao = new MarcaDao();
     }
 
     public int idUser() {
@@ -26,7 +26,8 @@ public class TelaInicio extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel3 = new javax.swing.JPanel();
         btnSair = new javax.swing.JButton();
@@ -41,6 +42,7 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -61,8 +63,10 @@ public class TelaInicio extends javax.swing.JFrame {
         btnSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSair.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btnSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSair.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnSairActionPerformed(evt);
             }
         });
@@ -88,76 +92,104 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenu3.setText("Cadastros");
 
         jMenuItem4.setText("Clientes");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem4ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem4);
 
         jMenuItem5.setText("Proprietários");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem5ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem5);
 
         jMenuItem3.setText("Marcas");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem3ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem3);
 
         jMenuItem7.setText("Modelos");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem7ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem7);
 
         jMenuItem8.setText("Versões");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem8ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem8);
 
         jMenuItem1.setText("Gerais");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem1ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem1);
 
         jMenuItem9.setText("Veículos");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem9ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem9);
 
         jMenuItem2.setText("Perfis");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem2ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem2);
 
         jMenuItem6.setText("Usuários");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem6ActionPerformed(evt);
             }
         });
         jMenu3.add(jMenuItem6);
+
+        jMenuItem14.setText("Procedências");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem14);
 
         jMenuBar1.add(jMenu3);
 
@@ -165,16 +197,20 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenu1.setText("Financeiro");
 
         jMenuItem10.setText("Compras");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem10ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem10);
 
         jMenuItem11.setText("Vendas");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem11ActionPerformed(evt);
             }
         });
@@ -186,40 +222,50 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenu2.setText("Relatórios");
 
         jMenuItem15.setText("Compras");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem15.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem15ActionPerformed(evt);
             }
         });
         jMenu2.add(jMenuItem15);
 
         jMenuItem13.setText("Vendas");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem13ActionPerformed(evt);
             }
         });
         jMenu2.add(jMenuItem13);
 
         jMenuItem17.setText("Vendas por usuário");
-        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem17ActionPerformed(evt);
             }
         });
         jMenu2.add(jMenuItem17);
 
         jMenuItem12.setText("Veículos situação");
-        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem12ActionPerformed(evt);
             }
         });
         jMenu2.add(jMenuItem12);
 
         jMenuItem16.setText("Totais");
-        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jMenuItem16ActionPerformed(evt);
             }
         });
@@ -346,6 +392,18 @@ public class TelaInicio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jMenuItem14ActionPerformed
+    {//GEN-HEADEREND:event_jMenuItem14ActionPerformed
+        TelaCadastroProcedencia procedencia = new TelaCadastroProcedencia();
+        jPanel3.add(procedencia);
+        int lDesk = jPanel3.getWidth();
+        int aDesk = jPanel3.getHeight();
+        int lIFrame = procedencia.getWidth();
+        int aIFrame = procedencia.getHeight();
+        procedencia.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
+        procedencia.setVisible(true);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -393,6 +451,7 @@ public class TelaInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;

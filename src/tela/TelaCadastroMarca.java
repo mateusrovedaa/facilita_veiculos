@@ -1,18 +1,22 @@
 package tela;
 
-import dao.MarcaDao;
-import entidade.Marca;
+import dao.DaoGenerico;
+import entidade.Marcas;
 import functions.Mensagem;
 import java.awt.Color;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
 
-public class TelaCadastroMarca extends javax.swing.JInternalFrame {
+public class TelaCadastroMarca extends javax.swing.JInternalFrame
+{
 
     int codigo = 0;
     Color red = Color.decode("#e66874");
 
-    public TelaCadastroMarca() {
+    public TelaCadastroMarca()
+    {
         initComponents();
-        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+//        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
     }
 
     @SuppressWarnings("unchecked")
@@ -229,85 +233,100 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFiltrarMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarMarcaActionPerformed
-        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+//        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
     }//GEN-LAST:event_btnFiltrarMarcaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Marca marca = new Marca();
 
-        marca.setId(codigo);
-        marca.setNome(campoNome.getText());
+        try
+        {
+            Marcas marca = new Marcas();
+            marca.setNome(campoNome.getText());
+            marca.setCriadoEm(Calendar.getInstance());
+            marca.setAlteradoEm(Calendar.getInstance());
+            marca.setSlug("teste");
 
-        String retornoSalvarMarca = null;
-        MarcaDao marcaDao = new MarcaDao();
-        String erroMarca = "";
-
-        if (validaCampos() == true) {
-            if (codigo == 0) {
-                retornoSalvarMarca = marcaDao.salvar(marca);
-            } else {
-                retornoSalvarMarca = marcaDao.atualizar(marca);
-            }
-        } else {
-            erroMarca = null;
-            Mensagem.erro("Digite uma marca válida!", this);
+            DaoGenerico.getInstance().inserir(marca);
+        } catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Erro ao salvar " + e.getMessage());
         }
 
-        if (retornoSalvarMarca == null && erroMarca != null) {
-            Mensagem.informacao("Marca salva com sucesso!", this);
-
-            campoNome.setText("");
-
-            campoNome.requestFocus();
-
-            campoFiltroMarca.setText("");
-
-            codigo = 0;
-
-            new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
-        } else {
-            if (erroMarca != null) {
-                Mensagem.aviso("Marca " + campoNome.getText() + " já existe cadastrada!", this);
-
-                campoNome.setText("");
-
-                campoNome.requestFocus();
-
-                campoFiltroMarca.setText("");
-            }
-        }
+//        Marca marca = new Marca();
+//
+//        marca.setId(codigo);
+//        marca.setNome(campoNome.getText());
+//
+//        String retornoSalvarMarca = null;
+//        MarcaDao marcaDao = new MarcaDao();
+//        String erroMarca = "";
+//
+//        if (validaCampos() == true) {
+//            if (codigo == 0) {
+//                retornoSalvarMarca = marcaDao.salvar(marca);
+//            } else {
+//                retornoSalvarMarca = marcaDao.atualizar(marca);
+//            }
+//        } else {
+//            erroMarca = null;
+//            Mensagem.erro("Digite uma marca válida!", this);
+//        }
+//
+//        if (retornoSalvarMarca == null && erroMarca != null) {
+//            Mensagem.informacao("Marca salva com sucesso!", this);
+//
+//            campoNome.setText("");
+//
+//            campoNome.requestFocus();
+//
+//            campoFiltroMarca.setText("");
+//
+//            codigo = 0;
+//
+//            new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+//        } else {
+//            if (erroMarca != null) {
+//                Mensagem.aviso("Marca " + campoNome.getText() + " já existe cadastrada!", this);
+//
+//                campoNome.setText("");
+//
+//                campoNome.requestFocus();
+//
+//                campoFiltroMarca.setText("");
+//            }
+//        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirMarcaActionPerformed
-        String codigoExcluirMarca = String.valueOf(tblMarca.getValueAt(tblMarca.getSelectedRow(), 0));
-
-        String retornoExcluirMarca = new MarcaDao().excluir(Integer.parseInt(codigoExcluirMarca));
-
-        if (retornoExcluirMarca == null) {
-            Mensagem.informacao("Marca excluída com sucesso!", this);
-            new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
-        } else {
-            Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-        }
+//        String codigoExcluirMarca = String.valueOf(tblMarca.getValueAt(tblMarca.getSelectedRow(), 0));
+//
+//        String retornoExcluirMarca = new MarcaDao().excluir(Integer.parseInt(codigoExcluirMarca));
+//
+//        if (retornoExcluirMarca == null) {
+//            Mensagem.informacao("Marca excluída com sucesso!", this);
+//            new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+//        } else {
+//            Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+//        }
     }//GEN-LAST:event_btnExcluirMarcaActionPerformed
 
     private void btnEditaMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditaMarcaActionPerformed
-        String codigoEditarMarca = String.valueOf(tblMarca.getValueAt(tblMarca.getSelectedRow(), 0));
-
-        Marca marca = new MarcaDao().consultarId(Integer.parseInt(codigoEditarMarca));
-
-        if (marca != null) {
-            abaAdicionar.setSelectedIndex(0);
-
-            campoNome.setText(marca.getNome());
-
-            campoNome.requestFocus();
-
-            codigo = marca.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar marca!", this);
-        }
+//        String codigoEditarMarca = String.valueOf(tblMarca.getValueAt(tblMarca.getSelectedRow(), 0));
+//
+//        Marca marca = new MarcaDao().consultarId(Integer.parseInt(codigoEditarMarca));
+//
+//        if (marca != null) {
+//            abaAdicionar.setSelectedIndex(0);
+//
+//            campoNome.setText(marca.getNome());
+//
+//            campoNome.requestFocus();
+//
+//            codigo = marca.getId();
+//
+//        } else {
+//            Mensagem.erro("Erro ao consultar marca!", this);
+//        }
     }//GEN-LAST:event_btnEditaMarcaActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
@@ -316,10 +335,11 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private void btnLimparMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparMarcaActionPerformed
         campoFiltroMarca.setText("");
-        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+//        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
     }//GEN-LAST:event_btnLimparMarcaActionPerformed
 
-    private boolean validaCampos() {
+    private boolean validaCampos()
+    {
         return !campoNome.getText().isEmpty() && campoNome.getText().length() > 2;
     }
 
