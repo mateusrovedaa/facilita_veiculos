@@ -49,7 +49,6 @@ Contributor(s):
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <mapping class="entidade.Marcas"/>
-    <mapping class="entidade.Procedencias"/>
+    <mapping class="entidade.Marca"/>
   </session-factory>
 </hibernate-configuration>

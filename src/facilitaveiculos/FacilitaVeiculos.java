@@ -16,13 +16,6 @@ public class FacilitaVeiculos {
         if (ConexaoBD.getInstance().getConnection() != null) {
             TelaLogin tela = new TelaLogin();
 
-            try {
-                UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-                //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                SwingUtilities.updateComponentTreeUI(tela);
-            } catch (Exception e) {
-            }
-
             tela.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Erro ao abrir conexão!");
