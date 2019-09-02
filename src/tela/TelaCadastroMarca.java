@@ -6,7 +6,6 @@ import entidade.Marca;
 import functions.Funcoes;
 import functions.Mensagem;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
 public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
@@ -289,7 +288,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
             codigo = marca.getId();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar marca!");
+            Mensagem.erro("Erro ao consultar marca!", this);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -299,10 +298,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         boolean retornoExcluirMarca = DaoGenerico.getInstance().excluir(Marca.class, codigoExcluirMarca);
 
         if (retornoExcluirMarca == true) {
-            JOptionPane.showMessageDialog(null, "Marca excluída com sucesso!");
+            Mensagem.confirmacao("Marca excluída com sucesso!", this);
             new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
         } else {
-            JOptionPane.showMessageDialog(null, tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!");
+            Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
         };
     }//GEN-LAST:event_btnExcluirActionPerformed
 
