@@ -42,6 +42,10 @@ public class Marca implements Serializable {
     public Marca() {
     }
 
+    public Marca(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

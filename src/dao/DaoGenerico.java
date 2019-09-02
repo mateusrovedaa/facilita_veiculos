@@ -71,15 +71,20 @@ public class DaoGenerico
         return retorno;
     }
 
-    public boolean excluir(Object o)
+    public boolean excluir(Class classe, int id)
     {
         boolean retorno = false;
         Session sessao = factory.openSession();
         try
         {
-            transaction = sessao.beginTransaction();
-            sessao.delete(o);
+            transaction = sessao.beginTransaction();            
+            
+            Object entidade = sessao.load(classe, id);
+            
+            sessao.delete(entidade);
+            
             transaction.commit();
+            
             retorno = true;
         } catch (Exception e)
         {

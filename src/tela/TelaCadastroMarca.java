@@ -296,22 +296,14 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int codigoExcluirMarca = (int) tblMarca.getValueAt(tblMarca.getSelectedRow(), 0);
 
-        Marca marca = new Marca();
-
-        marca.setId(codigoExcluirMarca);
-        marca.setNome(campoNome.getText());
-        marca.setSlug(Funcoes.textoIdentificador(campoNome.getText()));
-        marca.setCriadoEm(Calendar.getInstance());
-        marca.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoExcluirMarca = DaoGenerico.getInstance().excluir(marca);
+        boolean retornoExcluirMarca = DaoGenerico.getInstance().excluir(Marca.class, codigoExcluirMarca);
 
         if (retornoExcluirMarca == true) {
             JOptionPane.showMessageDialog(null, "Marca excluída com sucesso!");
             new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
         } else {
             JOptionPane.showMessageDialog(null, tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!");
-        }
+        };
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
