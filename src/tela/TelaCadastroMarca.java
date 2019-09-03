@@ -294,15 +294,17 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int codigoExcluirMarca = (int) tblMarca.getValueAt(tblMarca.getSelectedRow(), 0);
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirMarca = DaoGenerico.getInstance().excluir(Marca.class, codigoExcluirMarca);
 
-        boolean retornoExcluirMarca = DaoGenerico.getInstance().excluir(Marca.class, codigoExcluirMarca);
-
-        if (retornoExcluirMarca == true) {
-            Mensagem.confirmacao("Marca excluída com sucesso!", this);
-            new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
-        } else {
-            Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-        };
+            if (retornoExcluirMarca == true) {
+                Mensagem.informacao("Marca excluída com sucesso!", this);
+                new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+            } else {
+                Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            };
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
