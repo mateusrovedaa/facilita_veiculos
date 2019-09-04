@@ -4,16 +4,24 @@ import dao.DaoGenerico;
 import dao.MarcaDao;
 import entidade.Marca;
 import functions.Funcoes;
+import functions.GerenciarJanelas;
 import functions.Mensagem;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
 public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     int codigo = 0;
-
+    private static TelaCadastroGeral tela;
+    
     public TelaCadastroGeral() {
         initComponents();
+    }
+
+    public static TelaCadastroGeral getInstancia() {
+        if (tela == null) {
+            tela = new TelaCadastroGeral();
+        }
+        return tela;
     }
 
     @SuppressWarnings("unchecked")
@@ -808,27 +816,27 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnSalvarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAcabamentoInternoActionPerformed
 
-        
+
     }//GEN-LAST:event_btnSalvarAcabamentoInternoActionPerformed
 
     private void btnLimparBuscaAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaAcabamentoInternoActionPerformed
-        
+
     }//GEN-LAST:event_btnLimparBuscaAcabamentoInternoActionPerformed
 
     private void btnBuscarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAcabamentoInternoActionPerformed
-       
+
     }//GEN-LAST:event_btnBuscarAcabamentoInternoActionPerformed
 
     private void btnEditarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAcabamentoInternoActionPerformed
-        
+
     }//GEN-LAST:event_btnEditarAcabamentoInternoActionPerformed
 
     private void btnExcluirAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirAcabamentoInternoActionPerformed
-        
+
     }//GEN-LAST:event_btnExcluirAcabamentoInternoActionPerformed
 
     private void btnFecharAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharAcabamentoInternoActionPerformed
-        this.dispose();
+        GerenciarJanelas.fecharJanela(tela);
     }//GEN-LAST:event_btnFecharAcabamentoInternoActionPerformed
 
     private void btnSalvarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCambioActionPerformed

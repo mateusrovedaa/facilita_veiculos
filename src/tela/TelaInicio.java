@@ -1,21 +1,32 @@
 package tela;
 
 import dao.MarcaDao;
+import functions.Funcoes;
+import functions.GerenciarJanelas;
+import javax.swing.JDesktopPane;
 
 public class TelaInicio extends javax.swing.JFrame {
 
     int id = 0;
+    GerenciarJanelas gerenciarJanelas;
 
+    
     public TelaInicio() {
         initComponents();
+        this.gerenciarJanelas = new GerenciarJanelas(dktGeral);
     }
 
     public TelaInicio(int usuario) {
         initComponents();
         id = usuario;
         MarcaDao marcaDao = new MarcaDao();
+        this.gerenciarJanelas = new GerenciarJanelas(dktGeral);
     }
 
+    public JDesktopPane JDesktopPane(){
+        return this.dktGeral;
+    }
+    
     public int idUser() {
         return this.id;
     }
@@ -24,88 +35,94 @@ public class TelaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        dktGeral = new javax.swing.JDesktopPane();
+        btnMarcas = new javax.swing.JButton();
+        btnCGerais = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Cadastro de marcas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnMarcas.setText("Cadastro de marcas");
+        btnMarcas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnMarcasActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cadastro gerais");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCGerais.setText("Cadastro gerais");
+        btnCGerais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCGeraisActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        dktGeral.setLayer(btnMarcas, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dktGeral.setLayer(btnCGerais, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout dktGeralLayout = new javax.swing.GroupLayout(dktGeral);
+        dktGeral.setLayout(dktGeralLayout);
+        dktGeralLayout.setHorizontalGroup(
+            dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dktGeralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnMarcas)
+                    .addComponent(btnCGerais, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+
+        dktGeralLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCGerais, btnMarcas});
+
+        dktGeralLayout.setVerticalGroup(
+            dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dktGeralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(btnMarcas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(btnCGerais)
                 .addContainerGap(215, Short.MAX_VALUE))
         );
+
+        dktGeralLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCGerais, btnMarcas});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(dktGeral, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dktGeral)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TelaCadastroMarca marca = new TelaCadastroMarca();
-        jPanel1.add(marca);
-        int lDesk = jPanel1.getWidth();
-        int aDesk = jPanel1.getHeight();
-        int lIFrame = marca.getWidth();
-        int aIFrame = marca.getHeight();
-        marca.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        marca.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarcasActionPerformed
+        gerenciarJanelas.abreJanela(TelaCadastroMarca.getInstancia());
+//Funcoes.controlaIframes(TelaCadastroMarca.getInstancia(), dktGeral);
+//        jPanel1.add(marca);
+//        int lDesk = jPanel1.getWidth();
+//        int aDesk = jPanel1.getHeight();
+//        int lIFrame = marca.getWidth();
+//        int aIFrame = marca.getHeight();
+//        marca.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
+//        marca.setVisible(true);
+    }//GEN-LAST:event_btnMarcasActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        TelaCadastroGeral geral = new TelaCadastroGeral();
-        jPanel1.add(geral);
-        int lDesk = jPanel1.getWidth();
-        int aDesk = jPanel1.getHeight();
-        int lIFrame = geral.getWidth();
-        int aIFrame = geral.getHeight();
-        geral.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        geral.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnCGeraisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCGeraisActionPerformed
+        gerenciarJanelas.abreJanela(TelaCadastroGeral.getInstancia());
+//        jPanel1.add(geral);
+//        int lDesk = jPanel1.getWidth();
+//        int aDesk = jPanel1.getHeight();
+//        int lIFrame = geral.getWidth();
+//        int aIFrame = geral.getHeight();
+//        geral.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
+//        geral.setVisible(true);
+    }//GEN-LAST:event_btnCGeraisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,8 +160,8 @@ public class TelaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton btnCGerais;
+    private javax.swing.JButton btnMarcas;
+    private javax.swing.JDesktopPane dktGeral;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,11 +4,13 @@ import dao.DaoGenerico;
 import dao.MarcaDao;
 import entidade.Marca;
 import functions.Funcoes;
+import functions.GerenciarJanelas;
 import functions.Mensagem;
 import java.util.Calendar;
 
 public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
+    private static TelaCadastroMarca tela;
     int codigo = 0;
 
     public TelaCadastroMarca() {
@@ -16,6 +18,17 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
     }
 
+    public static TelaCadastroMarca getInstancia() {
+        if (tela == null) {
+            tela = new TelaCadastroMarca();
+        }
+        return tela;
+    }
+
+    private void limparCampos(){
+        
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -37,6 +50,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         btnExcluir = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Cadastro de marcas");
 
         abaAdicionar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -270,7 +284,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        this.dispose();
+        GerenciarJanelas.fecharJanela(tela);
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
