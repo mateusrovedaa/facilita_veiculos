@@ -41,6 +41,8 @@ public class TelaInicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        dktGeral.setForeground(new java.awt.Color(60, 63, 65));
+
         btnMarcas.setText("Cadastro de marcas");
         btnMarcas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +81,7 @@ public class TelaInicio extends javax.swing.JFrame {
                 .addComponent(btnMarcas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCGerais)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
 
         dktGeralLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCGerais, btnMarcas});
@@ -92,10 +94,7 @@ public class TelaInicio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(dktGeral)
-                .addContainerGap())
+            .addComponent(dktGeral)
         );
 
         pack();

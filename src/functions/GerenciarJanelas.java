@@ -58,61 +58,9 @@ public class GerenciarJanelas {
      * @param JInternalFrame
      */
     public static void fecharJanela(JInternalFrame iFrame) {
-        LimpaTela(iFrame);
+//        LimpaTela(iFrame);
         iFrame.dispose();
         areaTrabalho.remove(iFrame);
-    }
-
-    public static void LimpaTela(JInternalFrame Frame) {
-        //limpa os campos     
-        for (int i = 0; i < Frame.getContentPane().getComponentCount(); i++) {
-            //varre todos os componentes     
-            Component c = Frame.getContentPane().getComponent(i);
-            //verifica se o componente é um JTabbedPane
-            if (c instanceof JTabbedPane) {
-                JTabbedPane tabbed = (JTabbedPane) c;
-                Component ct[] = tabbed.getComponents();
-                tabbed.setSelectedIndex(0);
-                //varre os componentes do JTabbedPane
-                for (int t = 0; t < ct.length; t++) {
-                    if (ct[t] instanceof JPanel) {
-                        JPanel painel = (JPanel) ct[t];
-                        limparCampos(painel);
-                    }else if (ct[t] instanceof JTabbedPane) {//verifica se existe outro JTabbedPane dentro do JTabbedPane principal
-                        JTabbedPane tabbedinterno = (JTabbedPane) ct[t];
-                        Component cti[] = tabbedinterno.getComponents();
-                        tabbedinterno.setSelectedIndex(0);
-                        for (int a = 0; a < cti.length; a++) {
-                            //verifica se existe um JPanel
-                            if (cti[a] instanceof JPanel) {
-                                //verifica se nesse JPanel existe outro JTabbedPane
-                                JPanel painelinterno = (JPanel) cti[a];
-                                Component cti2[] = painelinterno.getComponents();
-                                for (int b = 0; b < cti2.length; b++) {
-                                    //verifica se nesse JPanel existe outro JTabbedPane
-                                    if (cti2[b] instanceof JTabbedPane) {
-                                        JTabbedPane tabbedinternosegundo = (JTabbedPane) cti2[b];
-                                        Component cti3[] = tabbedinternosegundo.getComponents();
-                                        tabbedinternosegundo.setSelectedIndex(0);
-                                        for (int d = 0; d < cti3.length; d++) {
-                                            if (cti3[d] instanceof JPanel) {
-                                                JPanel painel = (JPanel) cti3[d];
-                                                limparCampos(painel);
-                                            }
-                                        }
-                                    } else if (cti2[b] instanceof JScrollPane) {//implementar
-                                        System.out.println("Sem função ainda");
-                                    } else {
-                                        JPanel painel = (JPanel) cti2[b];
-                                        limparCampos(painel);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     public static void limparCampos(Container container) {

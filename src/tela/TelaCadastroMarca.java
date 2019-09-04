@@ -24,10 +24,6 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         }
         return tela;
     }
-
-    private void limparCampos(){
-        
-    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -285,6 +281,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         GerenciarJanelas.fecharJanela(tela);
+        tela = null;
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

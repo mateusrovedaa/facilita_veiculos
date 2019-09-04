@@ -837,6 +837,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnFecharAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharAcabamentoInternoActionPerformed
         GerenciarJanelas.fecharJanela(tela);
+        tela = null;
     }//GEN-LAST:event_btnFecharAcabamentoInternoActionPerformed
 
     private void btnSalvarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCambioActionPerformed
