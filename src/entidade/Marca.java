@@ -42,6 +42,14 @@ public class Marca implements Serializable {
     public Marca() {
     }
 
+    public Marca(Marca marca) {
+        this.id = marca.id;
+        this.nome = marca.nome;
+        this.slug = marca.slug;
+        this.criadoEm = marca.criadoEm;
+        this.alteradoEm = marca.alteradoEm;
+    }
+    
     public Marca(int id) {
         this.id = id;
     }
