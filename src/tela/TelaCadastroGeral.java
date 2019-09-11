@@ -12,7 +12,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     int codigo = 0;
     private static TelaCadastroGeral tela;
-    
+
     public TelaCadastroGeral() {
         initComponents();
     }
@@ -22,6 +22,11 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             tela = new TelaCadastroGeral();
         }
         return tela;
+    }
+
+    private void funcaoFechar() {
+        GerenciarJanelas.fecharJanela(tela);
+        tela = null;
     }
 
     @SuppressWarnings("unchecked")
@@ -2919,8 +2924,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirAcabamentoInternoActionPerformed
 
     private void btnFecharAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharAcabamentoInternoActionPerformed
-        GerenciarJanelas.fecharJanela(tela);
-        tela = null;
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharAcabamentoInternoActionPerformed
 
     private void btnSalvarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCambioActionPerformed

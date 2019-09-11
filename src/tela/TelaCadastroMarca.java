@@ -239,7 +239,6 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         marca.setCriadoEm(Calendar.getInstance());
         marca.setAlteradoEm(Calendar.getInstance());
 
-        MarcaDao marcaDao = new MarcaDao();
         boolean retornoSalvarMarca = false;
         String erroMarca = "";
 
