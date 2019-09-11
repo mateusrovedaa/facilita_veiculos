@@ -286,8 +286,9 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String codigoEditarMarca = String.valueOf(tblMarca.getValueAt(tblMarca.getSelectedRow(), 0));
-
-        Marca marca = new MarcaDao().consultarId(Integer.parseInt(codigoEditarMarca));
+        
+        Object x = DaoGenerico.getInstance().obterPorId(Marca.class, Integer.parseInt(codigoEditarMarca));
+        Marca marca = new Marca((Marca) x);
 
         if (marca != null) {
             abaAdicionar.setSelectedIndex(0);
@@ -305,6 +306,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int codigoExcluirMarca = (int) tblMarca.getValueAt(tblMarca.getSelectedRow(), 0);
+        
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
         if (mensagem == 0) {
             boolean retornoExcluirMarca = DaoGenerico.getInstance().excluir(Marca.class, codigoExcluirMarca);
