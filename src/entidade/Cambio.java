@@ -14,13 +14,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "acabamentos_internos")
+@Table(name = "cambios")
 
-public class AcabamentoInterno implements Serializable {
+public class Cambio implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "ACABAMENTOINTERNO_SEQ", sequenceName = "seq_acabamentos_internos", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "ACABAMENTOINTERNO_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "CAMBIO_SEQ", sequenceName = "seq_cambios", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "CAMBIO_SEQ", strategy = GenerationType.SEQUENCE)
 
     @Column(name = "id")
     private int id;
@@ -39,18 +39,18 @@ public class AcabamentoInterno implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar alteradoEm;
 
-    public AcabamentoInterno() {
+    public Cambio() {
     }
 
-    public AcabamentoInterno(AcabamentoInterno acabamentoInterno) {
-        this.id = acabamentoInterno.id;
-        this.nome = acabamentoInterno.nome;
-        this.slug = acabamentoInterno.slug;
-        this.criadoEm = acabamentoInterno.criadoEm;
-        this.alteradoEm = acabamentoInterno.alteradoEm;
+    public Cambio(Cambio cambio) {
+        this.id = cambio.id;
+        this.nome = cambio.nome;
+        this.slug = cambio.slug;
+        this.criadoEm = cambio.criadoEm;
+        this.alteradoEm = cambio.alteradoEm;
     }
 
-    public AcabamentoInterno(int id) {
+    public Cambio(int id) {
         this.id = id;
     }
 
@@ -112,7 +112,7 @@ public class AcabamentoInterno implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final AcabamentoInterno other = (AcabamentoInterno) obj;
+        final Cambio other = (Cambio) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

@@ -286,8 +286,8 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String codigoEditarMarca = String.valueOf(tblMarca.getValueAt(tblMarca.getSelectedRow(), 0));
         
-        Object x = DaoGenerico.getInstance().obterPorId(Marca.class, Integer.parseInt(codigoEditarMarca));
-        Marca marca = new Marca((Marca) x);
+        Object object = DaoGenerico.getInstance().obterPorId(Marca.class, Integer.parseInt(codigoEditarMarca));
+        Marca marca = new Marca((Marca) object);
 
         if (marca != null) {
             abaAdicionar.setSelectedIndex(0);
@@ -315,7 +315,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
                 new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
             } else {
                 Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            };
+            }
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
