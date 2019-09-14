@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Daniela%20da%20Silva/Desktop/Projeto%20Integrador%20I/projeto1/src/tela/TelaCadastroMarca.java</file>
-            <file>file:/C:/Users/Daniela%20da%20Silva/Desktop/Projeto%20Integrador%20I/projeto1/src/tela/TelaCadastroGeral.java</file>
-            <file>file:/C:/Users/Daniela%20da%20Silva/Desktop/Projeto%20Integrador%20I/projeto1/src/hibernate.cfg.xml</file>
-            <file>file:/C:/Users/Daniela%20da%20Silva/Desktop/Projeto%20Integrador%20I/projeto1/src/functions/HibernateUtil.java</file>
+            <file>file:/home/hukers/Documentos/projeto1/src/hibernate.cfg.xml</file>
+            <file>file:/home/hukers/Documentos/projeto1/src/tela/TelaCadastroGeral.java</file>
+            <file>file:/home/hukers/Documentos/projeto1/src/entidade/Cambio.java</file>
         </group>
     </open-files>
 </project-private>
