@@ -20,8 +20,12 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     public TelaCadastroGeral() {
         initComponents();
         new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+<<<<<<< HEAD
         new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
         new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+=======
+//        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+>>>>>>> 5993268281cfa1a8f5e0797a48b8c84c76ca84b1
     }
 
     public static TelaCadastroGeral getInstancia() {
@@ -3100,8 +3104,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirCambioActionPerformed
 
     private void btnFecharCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCambioActionPerformed
-        GerenciarJanelas.fecharJanela(tela);
-        tela = null;
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharCambioActionPerformed
 
     private void btnSalvarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCarroceriaActionPerformed
@@ -3186,7 +3189,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirCarroceriaActionPerformed
 
     private void btnFecharCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCarroceriaActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharCarroceriaActionPerformed
 
     private void btnSalvarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCombustivelActionPerformed
@@ -3210,7 +3213,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirCombustivelActionPerformed
 
     private void btnFecharCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCombustivelActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharCombustivelActionPerformed
 
     private void btnSalvarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarConfortoActionPerformed
@@ -3234,7 +3237,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirConfortoActionPerformed
 
     private void btnFecharConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharConfortoActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharConfortoActionPerformed
 
     private void btnSalvarCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCorExternaActionPerformed
@@ -3258,7 +3261,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirCorExternaActionPerformed
 
     private void btnFecharCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCorExternaActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharCorExternaActionPerformed
 
     private void btnSalvarCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCorInternaActionPerformed
@@ -3282,7 +3285,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirCorInternaActionPerformed
 
     private void btnFecharCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCorInternaActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharCorInternaActionPerformed
 
     private void btnSalvarEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEstiloActionPerformed
@@ -3306,7 +3309,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirEstiloActionPerformed
 
     private void btnFecharEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharEstiloActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharEstiloActionPerformed
 
     private void btnSalvarExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarExtraActionPerformed
@@ -3330,7 +3333,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirExtraActionPerformed
 
     private void btnFecharExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharExtraActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharExtraActionPerformed
 
     private void btnSalvarSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarSegurancaActionPerformed
@@ -3354,7 +3357,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirSegurancaActionPerformed
 
     private void btnFecharSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSegurancaActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharSegurancaActionPerformed
 
     private void btnSalvarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarTecnologiaActionPerformed
@@ -3378,7 +3381,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirTecnologiaActionPerformed
 
     private void btnFecharTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTecnologiaActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharTecnologiaActionPerformed
 
     private void btnSalvarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPerfilActionPerformed
@@ -3402,7 +3405,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirPerfilActionPerformed
 
     private void btnFecharPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharPerfilActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharPerfilActionPerformed
 
     private void btnSalvarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEstadoActionPerformed
@@ -3426,7 +3429,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirEstadoActionPerformed
 
     private void btnFecharEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharEstadoActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharEstadoActionPerformed
 
     private void btnSalvarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCidadeActionPerformed
@@ -3450,7 +3453,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirCidadeActionPerformed
 
     private void btnFecharCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCidadeActionPerformed
-        // TODO add your handling code here:
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharCidadeActionPerformed
 
 
