@@ -2,9 +2,11 @@ package tela;
 
 import dao.AcabamentoInternoDao;
 import dao.CambioDao;
+import dao.CarroceriaDao;
 import dao.DaoGenerico;
 import entidade.AcabamentoInterno;
 import entidade.Cambio;
+import entidade.Carroceria;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
@@ -18,7 +20,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     public TelaCadastroGeral() {
         initComponents();
         new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
-        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+        new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
     }
 
     public static TelaCadastroGeral getInstancia() {
@@ -3102,19 +3105,80 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFecharCambioActionPerformed
 
     private void btnSalvarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCarroceriaActionPerformed
-        // TODO add your handling code here:
+        Carroceria carroceria = new Carroceria();
+
+        carroceria.setId(codigo);
+        carroceria.setNome(campoNomeCarroceria.getText());
+        carroceria.setSlug(Funcoes.textoIdentificador(campoNomeCarroceria.getText()));
+        carroceria.setCriadoEm(Calendar.getInstance());
+        carroceria.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarCarroceria = false;
+        String erroCarroceria = "";
+
+        if (campoNomeCarroceria.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarCarroceria = DaoGenerico.getInstance().inserir(carroceria);
+            } else {
+                retornoSalvarCarroceria = DaoGenerico.getInstance().atualizar(carroceria);
+            }
+        } else {
+            erroCarroceria = null;
+            Mensagem.erro("Digite uma carroceria válida!", this);
+        }
+
+        if (retornoSalvarCarroceria == true && erroCarroceria != null) {
+            Mensagem.informacao("Carroceria salva com sucesso!", this);
+
+            campoNomeCarroceria.setText("");
+
+            campoNomeCarroceria.requestFocus();
+
+            campoFiltroCarroceria.setText("");
+
+            codigo = 0;
+
+            new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+        } else {
+            if (erroCarroceria != null) {
+                Mensagem.aviso("Carroceria " + campoNomeCarroceria.getText() + " já existe cadastrada!", this);
+
+                campoNomeCarroceria.setText("");
+
+                campoNomeCarroceria.requestFocus();
+
+                campoFiltroCarroceria.setText("");
+            }
+        }
     }//GEN-LAST:event_btnSalvarCarroceriaActionPerformed
 
     private void btnLimparBuscaCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCarroceriaActionPerformed
-        // TODO add your handling code here:
+        campoFiltroCarroceria.setText("");
+        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
     }//GEN-LAST:event_btnLimparBuscaCarroceriaActionPerformed
 
     private void btnBuscarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCarroceriaActionPerformed
-        // TODO add your handling code here:
+        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
     }//GEN-LAST:event_btnBuscarCarroceriaActionPerformed
 
     private void btnEditarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCarroceriaActionPerformed
-        // TODO add your handling code here:
+        String codigoEditarCarroceria = String.valueOf(tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Carroceria.class, Integer.parseInt(codigoEditarCarroceria));
+        Carroceria carroceria = new Carroceria((Carroceria) object);
+
+        if (carroceria != null) {
+            abaAdicionarCarroceria.setSelectedIndex(0);
+
+            campoNomeCarroceria.setText(carroceria.getNome());
+
+            campoNomeCarroceria.requestFocus();
+
+            codigo = carroceria.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar carroceria!", this);
+        }
     }//GEN-LAST:event_btnEditarCarroceriaActionPerformed
 
     private void btnExcluirCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCarroceriaActionPerformed
