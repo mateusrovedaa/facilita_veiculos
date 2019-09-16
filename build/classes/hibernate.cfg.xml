@@ -52,6 +52,9 @@ Contributor(s):
     <mapping class="entidade.Marca"/>
     <mapping class="entidade.AcabamentoInterno"/>
     <mapping class="entidade.Cambio"/>
+    <mapping class="entidade.Modelo"/>
+    <mapping class="entidade.Procedencia"/>
+    <mapping class="entidade.Carroceria"/>
     <mapping class="entidade.Carroceria"/>
     <mapping class="entidade.Combustivel"/>
     <mapping class="entidade.CorExterna"/>
