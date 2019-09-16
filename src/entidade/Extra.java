@@ -14,13 +14,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "cores_internas")
+@Table(name = "extras")
 
-public class CoresInternas implements Serializable {
+public class Extra implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "CORESINTERNAS_SEQ", sequenceName = "seq_cores_internas", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "CORESINTERNAS_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "EXTRA_SEQ", sequenceName = "seq_extras", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "EXTRA_SEQ", strategy = GenerationType.SEQUENCE)
 
     @Column(name = "id")
     private int id;
@@ -39,18 +39,18 @@ public class CoresInternas implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar alteradoEm;
 
-    public CoresInternas() {
+    public Extra() {
     }
 
-    public CoresInternas(CoresInternas cambio) {
-        this.id = cambio.id;
-        this.nome = cambio.nome;
-        this.slug = cambio.slug;
-        this.criadoEm = cambio.criadoEm;
-        this.alteradoEm = cambio.alteradoEm;
+    public Extra(Extra extra) {
+        this.id = extra.id;
+        this.nome = extra.nome;
+        this.slug = extra.slug;
+        this.criadoEm = extra.criadoEm;
+        this.alteradoEm = extra.alteradoEm;
     }
 
-    public CoresInternas(int id) {
+    public Extra(int id) {
         this.id = id;
     }
 
@@ -112,7 +112,7 @@ public class CoresInternas implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CoresInternas other = (CoresInternas) obj;
+        final Extra other = (Extra) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

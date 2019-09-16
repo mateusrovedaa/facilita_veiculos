@@ -19,8 +19,8 @@ import javax.persistence.TemporalType;
 public class Estilos implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "ESTILOS_SEQ", sequenceName = "seq_estilos", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "ESTILOS_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "ESTILO_SEQ", sequenceName = "seq_estilos", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "ESTILO_SEQ", strategy = GenerationType.SEQUENCE)
 
     @Column(name = "id")
     private int id;
@@ -42,12 +42,12 @@ public class Estilos implements Serializable {
     public Estilos() {
     }
 
-    public Estilos(Estilos cambio) {
-        this.id = cambio.id;
-        this.nome = cambio.nome;
-        this.slug = cambio.slug;
-        this.criadoEm = cambio.criadoEm;
-        this.alteradoEm = cambio.alteradoEm;
+    public Estilos(Estilos estilo) {
+        this.id = estilo.id;
+        this.nome = estilo.nome;
+        this.slug = estilo.slug;
+        this.criadoEm = estilo.criadoEm;
+        this.alteradoEm = estilo.alteradoEm;
     }
 
     public Estilos(int id) {

@@ -14,13 +14,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "tecnologias")
+@Table(name = "cores_externas")
 
-public class Tecnologias implements Serializable {
+public class CorExterna implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "TECNOLOGIAS_SEQ", sequenceName = "seq_tecnologias", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "TECNOLOGIAS_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "COREXTERNA_SEQ", sequenceName = "seq_cores_externas", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "COREXTERNA_SEQ", strategy = GenerationType.SEQUENCE)
 
     @Column(name = "id")
     private int id;
@@ -39,18 +39,18 @@ public class Tecnologias implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar alteradoEm;
 
-    public Tecnologias() {
+    public CorExterna() {
     }
 
-    public Tecnologias(Tecnologias cambio) {
-        this.id = cambio.id;
-        this.nome = cambio.nome;
-        this.slug = cambio.slug;
-        this.criadoEm = cambio.criadoEm;
-        this.alteradoEm = cambio.alteradoEm;
+    public CorExterna(CorExterna corExterna) {
+        this.id = corExterna.id;
+        this.nome = corExterna.nome;
+        this.slug = corExterna.slug;
+        this.criadoEm = corExterna.criadoEm;
+        this.alteradoEm = corExterna.alteradoEm;
     }
 
-    public Tecnologias(int id) {
+    public CorExterna(int id) {
         this.id = id;
     }
 
@@ -112,7 +112,7 @@ public class Tecnologias implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Tecnologias other = (Tecnologias) obj;
+        final CorExterna other = (CorExterna) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
