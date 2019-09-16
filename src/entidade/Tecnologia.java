@@ -14,13 +14,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "segurancas")
+@Table(name = "tecnologias")
 
-public class Segurancas implements Serializable {
+public class Tecnologia implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "SEGURANCAS_SEQ", sequenceName = "seq_segurancas", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "SEGURANCAS_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "TECNOLOGIAS_SEQ", sequenceName = "seq_tecnologias", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "TECNOLOGIAS_SEQ", strategy = GenerationType.SEQUENCE)
 
     @Column(name = "id")
     private int id;
@@ -39,10 +39,10 @@ public class Segurancas implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar alteradoEm;
 
-    public Segurancas() {
+    public Tecnologia() {
     }
 
-    public Segurancas(Segurancas cambio) {
+    public Tecnologia(Tecnologia cambio) {
         this.id = cambio.id;
         this.nome = cambio.nome;
         this.slug = cambio.slug;
@@ -50,7 +50,7 @@ public class Segurancas implements Serializable {
         this.alteradoEm = cambio.alteradoEm;
     }
 
-    public Segurancas(int id) {
+    public Tecnologia(int id) {
         this.id = id;
     }
 
@@ -112,7 +112,7 @@ public class Segurancas implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Segurancas other = (Segurancas) obj;
+        final Tecnologia other = (Tecnologia) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
