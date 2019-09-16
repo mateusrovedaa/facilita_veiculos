@@ -10,7 +10,6 @@ public class TelaInicio extends javax.swing.JFrame {
     int id = 0;
     GerenciarJanelas gerenciarJanelas;
 
-    
     public TelaInicio() {
         initComponents();
         this.gerenciarJanelas = new GerenciarJanelas(dktGeral);
@@ -23,10 +22,10 @@ public class TelaInicio extends javax.swing.JFrame {
         this.gerenciarJanelas = new GerenciarJanelas(dktGeral);
     }
 
-    public JDesktopPane JDesktopPane(){
+    public JDesktopPane JDesktopPane() {
         return this.dktGeral;
     }
-    
+
     public int idUser() {
         return this.id;
     }
@@ -38,6 +37,7 @@ public class TelaInicio extends javax.swing.JFrame {
         dktGeral = new javax.swing.JDesktopPane();
         btnMarcas = new javax.swing.JButton();
         btnCGerais = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,8 +57,16 @@ public class TelaInicio extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Cadastro de modelos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         dktGeral.setLayer(btnMarcas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktGeral.setLayer(btnCGerais, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dktGeral.setLayer(jButton1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dktGeralLayout = new javax.swing.GroupLayout(dktGeral);
         dktGeral.setLayout(dktGeralLayout);
@@ -66,9 +74,10 @@ public class TelaInicio extends javax.swing.JFrame {
             dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dktGeralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnMarcas)
-                    .addComponent(btnCGerais, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMarcas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCGerais, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
                 .addContainerGap(253, Short.MAX_VALUE))
         );
 
@@ -81,7 +90,9 @@ public class TelaInicio extends javax.swing.JFrame {
                 .addComponent(btnMarcas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCGerais)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         dktGeralLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCGerais, btnMarcas});
@@ -123,6 +134,10 @@ public class TelaInicio extends javax.swing.JFrame {
 //        geral.setVisible(true);
     }//GEN-LAST:event_btnCGeraisActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        gerenciarJanelas.abreJanela(TelaCadastroModelo.getInstancia());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -162,5 +177,6 @@ public class TelaInicio extends javax.swing.JFrame {
     private javax.swing.JButton btnCGerais;
     private javax.swing.JButton btnMarcas;
     private javax.swing.JDesktopPane dktGeral;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

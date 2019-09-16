@@ -52,5 +52,8 @@ Contributor(s):
     <mapping class="entidade.Marca"/>
     <mapping class="entidade.AcabamentoInterno"/>
     <mapping class="entidade.Cambio"/>
+    <mapping class="entidade.Modelo"/>
+    <mapping class="entidade.Procedencia"/>
+    <mapping class="entidade.Carroceria"/>
   </session-factory>
 </hibernate-configuration>

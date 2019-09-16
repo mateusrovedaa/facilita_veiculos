@@ -99,3 +99,5 @@ public class DaoGenerico {
     }
 
 }
+//        List dogs = (List)session.createQuery("from Dog").list();
+//        System.out.println("Dogs: " + Arrays.toString(dogs.toArray()));

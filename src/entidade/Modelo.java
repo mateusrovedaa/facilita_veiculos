@@ -1,18 +1,68 @@
 package entidade;
 
+import java.util.Calendar;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "modelos")
+
 public class Modelo {
 
+    @Id
+    @SequenceGenerator(name = "MODELO_SEQ", sequenceName = "seq_modelos", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "MODELO_SEQ", strategy = GenerationType.SEQUENCE)
+
+    @Column(name = "id")
     private int id;
-    private int marcaId;
-    private int procedenciaId;
-    private int carroceriaId;
+
+    @JoinColumn(name = "marca_id", unique = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Marca marca;
+
+    @JoinColumn(name = "procedencia_id", unique = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Procedencia procedencia;
+
+    @JoinColumn(name = "carroceria_id", unique = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Carroceria carroceria;
+
+    @Column(name = "nome", length = 100, nullable = false)
     private String nome;
+
+    @Column(name = "slug", length = 200, nullable = false)
     private String slug;
+
+    @Column(name = "comprimento")
     private double comprimento;
+
+    @Column(name = "altura")
     private double altura;
+
+    @Column(name = "largura")
     private double largura;
-    private String criadoEm;
-    private String alteradoEm;
+
+    @Column(name = "criado_em", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar criadoEm;
+
+    @Column(name = "alterado_em", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar alteradoEm;
+
+    public Modelo() {
+    }
 
     public int getId() {
         return id;
@@ -22,28 +72,36 @@ public class Modelo {
         this.id = id;
     }
 
-    public int getMarcaId() {
-        return marcaId;
+    public Marca getMarcaId() {
+        return marca;
     }
 
-    public void setMarcaId(int marcaId) {
-        this.marcaId = marcaId;
+    public void setMarcaId(Marca marca) {
+        this.marca = marca;
     }
 
-    public int getProcedenciaId() {
-        return procedenciaId;
+    public Marca getMarca() {
+        return marca;
     }
 
-    public void setProcedenciaId(int procedenciaId) {
-        this.procedenciaId = procedenciaId;
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 
-    public int getCarroceriaId() {
-        return carroceriaId;
+    public Procedencia getProcedencia() {
+        return procedencia;
     }
 
-    public void setCarroceriaId(int carroceriaId) {
-        this.carroceriaId = carroceriaId;
+    public void setProcedencia(Procedencia procedencia) {
+        this.procedencia = procedencia;
+    }
+
+    public Carroceria getCarroceria() {
+        return carroceria;
+    }
+
+    public void setCarroceria(Carroceria carroceria) {
+        this.carroceria = carroceria;
     }
 
     public String getNome() {
@@ -52,6 +110,14 @@ public class Modelo {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
     public double getComprimento() {
@@ -78,28 +144,45 @@ public class Modelo {
         this.largura = largura;
     }
 
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
-
-    public String getCriadoEm() {
+    public Calendar getCriadoEm() {
         return criadoEm;
     }
 
-    public void setCriadoEm(String criadoEm) {
+    public void setCriadoEm(Calendar criadoEm) {
         this.criadoEm = criadoEm;
     }
 
-    public String getAlteradoEm() {
+    public Calendar getAlteradoEm() {
         return alteradoEm;
     }
 
-    public void setAlteradoEm(String alteradoEm) {
+    public void setAlteradoEm(Calendar alteradoEm) {
         this.alteradoEm = alteradoEm;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Modelo other = (Modelo) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
 
 }
