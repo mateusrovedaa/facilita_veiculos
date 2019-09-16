@@ -19,8 +19,8 @@ import javax.persistence.TemporalType;
 public class Seguranca implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "SEGURANCAS_SEQ", sequenceName = "seq_segurancas", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "SEGURANCAS_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "SEGURANCA_SEQ", sequenceName = "seq_segurancas", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "SEGURANCA_SEQ", strategy = GenerationType.SEQUENCE)
 
     @Column(name = "id")
     private int id;
@@ -42,12 +42,12 @@ public class Seguranca implements Serializable {
     public Seguranca() {
     }
 
-    public Seguranca(Seguranca cambio) {
-        this.id = cambio.id;
-        this.nome = cambio.nome;
-        this.slug = cambio.slug;
-        this.criadoEm = cambio.criadoEm;
-        this.alteradoEm = cambio.alteradoEm;
+    public Seguranca(Seguranca seguranca) {
+        this.id = seguranca.id;
+        this.nome = seguranca.nome;
+        this.slug = seguranca.slug;
+        this.criadoEm = seguranca.criadoEm;
+        this.alteradoEm = seguranca.alteradoEm;
     }
 
     public Seguranca(int id) {

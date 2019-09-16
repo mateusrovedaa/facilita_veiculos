@@ -19,8 +19,8 @@ import javax.persistence.TemporalType;
 public class Tecnologia implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "TECNOLOGIAS_SEQ", sequenceName = "seq_tecnologias", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "TECNOLOGIAS_SEQ", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "TECNOLOGIA_SEQ", sequenceName = "seq_tecnologias", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "TECNOLOGIA_SEQ", strategy = GenerationType.SEQUENCE)
 
     @Column(name = "id")
     private int id;
@@ -42,12 +42,12 @@ public class Tecnologia implements Serializable {
     public Tecnologia() {
     }
 
-    public Tecnologia(Tecnologia cambio) {
-        this.id = cambio.id;
-        this.nome = cambio.nome;
-        this.slug = cambio.slug;
-        this.criadoEm = cambio.criadoEm;
-        this.alteradoEm = cambio.alteradoEm;
+    public Tecnologia(Tecnologia tecnologia) {
+        this.id = tecnologia.id;
+        this.nome = tecnologia.nome;
+        this.slug = tecnologia.slug;
+        this.criadoEm = tecnologia.criadoEm;
+        this.alteradoEm = tecnologia.alteradoEm;
     }
 
     public Tecnologia(int id) {
