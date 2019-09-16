@@ -53,5 +53,11 @@ Contributor(s):
     <mapping class="entidade.AcabamentoInterno"/>
     <mapping class="entidade.Cambio"/>
     <mapping class="entidade.Carroceria"/>
+    <mapping class="entidade.CoresExternas"/>
+    <mapping class="entidade.CoresInternas"/>
+    <mapping class="entidade.Estilos"/>
+    <mapping class="entidade.Extras"/>
+    <mapping class="entidade.Segurancas"/>
+    <mapping class="entidade.Tecnologias"/>
   </session-factory>
 </hibernate-configuration>
