@@ -2,9 +2,13 @@ package tela;
 
 import dao.AcabamentoInternoDao;
 import dao.CambioDao;
+import dao.CarroceriaDao;
+import dao.CombustivelDao;
 import dao.DaoGenerico;
 import entidade.AcabamentoInterno;
 import entidade.Cambio;
+import entidade.Carroceria;
+import entidade.Combustivel;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
@@ -18,7 +22,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     public TelaCadastroGeral() {
         initComponents();
         new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
-//        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+        new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
     }
 
     public static TelaCadastroGeral getInstancia() {
@@ -3101,23 +3107,96 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFecharCambioActionPerformed
 
     private void btnSalvarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCarroceriaActionPerformed
-        // TODO add your handling code here:
+        Carroceria carroceria = new Carroceria();
+
+        carroceria.setId(codigo);
+        carroceria.setNome(campoNomeCarroceria.getText());
+        carroceria.setSlug(Funcoes.textoIdentificador(campoNomeCarroceria.getText()));
+        carroceria.setCriadoEm(Calendar.getInstance());
+        carroceria.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarCarroceria = false;
+        String erroCarroceria = "";
+
+        if (campoNomeCarroceria.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarCarroceria = DaoGenerico.getInstance().inserir(carroceria);
+            } else {
+                retornoSalvarCarroceria = DaoGenerico.getInstance().atualizar(carroceria);
+            }
+        } else {
+            erroCarroceria = null;
+            Mensagem.erro("Digite uma carroceria válida!", this);
+        }
+
+        if (retornoSalvarCarroceria == true && erroCarroceria != null) {
+            Mensagem.informacao("Carroceria salva com sucesso!", this);
+
+            campoNomeCarroceria.setText("");
+
+            campoNomeCarroceria.requestFocus();
+
+            campoFiltroCarroceria.setText("");
+
+            codigo = 0;
+
+            new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+        } else {
+            if (erroCarroceria != null) {
+                Mensagem.aviso("Carroceria " + campoNomeCarroceria.getText() + " já existe cadastrada!", this);
+
+                campoNomeCarroceria.setText("");
+
+                campoNomeCarroceria.requestFocus();
+
+                campoFiltroCarroceria.setText("");
+            }
+        }
     }//GEN-LAST:event_btnSalvarCarroceriaActionPerformed
 
     private void btnLimparBuscaCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCarroceriaActionPerformed
-        // TODO add your handling code here:
+        campoFiltroCarroceria.setText("");
+        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
     }//GEN-LAST:event_btnLimparBuscaCarroceriaActionPerformed
 
     private void btnBuscarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCarroceriaActionPerformed
-        // TODO add your handling code here:
+        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
     }//GEN-LAST:event_btnBuscarCarroceriaActionPerformed
 
     private void btnEditarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCarroceriaActionPerformed
-        // TODO add your handling code here:
+        String codigoEditarCarroceria = String.valueOf(tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Carroceria.class, Integer.parseInt(codigoEditarCarroceria));
+        Carroceria carroceria = new Carroceria((Carroceria) object);
+
+        if (carroceria != null) {
+            abaAdicionarCarroceria.setSelectedIndex(0);
+
+            campoNomeCarroceria.setText(carroceria.getNome());
+
+            campoNomeCarroceria.requestFocus();
+
+            codigo = carroceria.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar carroceria!", this);
+        }
     }//GEN-LAST:event_btnEditarCarroceriaActionPerformed
 
     private void btnExcluirCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCarroceriaActionPerformed
-        // TODO add your handling code here:
+        int codigoExcluirCarroceria = (int) tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirCarroceria = DaoGenerico.getInstance().excluir(Carroceria.class, codigoExcluirCarroceria);
+
+            if (retornoExcluirCarroceria == true) {
+                Mensagem.informacao("Carroceria excluída com sucesso!", this);
+                new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+            } else {
+                Mensagem.erro(tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
     }//GEN-LAST:event_btnExcluirCarroceriaActionPerformed
 
     private void btnFecharCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCarroceriaActionPerformed
@@ -3125,23 +3204,96 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFecharCarroceriaActionPerformed
 
     private void btnSalvarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCombustivelActionPerformed
-        // TODO add your handling code here:
+        Combustivel combustivel = new Combustivel();
+
+        combustivel.setId(codigo);
+        combustivel.setNome(campoNomeCombustivel.getText());
+        combustivel.setSlug(Funcoes.textoIdentificador(campoNomeCombustivel.getText()));
+        combustivel.setCriadoEm(Calendar.getInstance());
+        combustivel.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarCombustivel = false;
+        String erroCombustivel = "";
+
+        if (campoNomeCombustivel.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarCombustivel = DaoGenerico.getInstance().inserir(combustivel);
+            } else {
+                retornoSalvarCombustivel = DaoGenerico.getInstance().atualizar(combustivel);
+            }
+        } else {
+            erroCombustivel = null;
+            Mensagem.erro("Digite um combustível válido!", this);
+        }
+
+        if (retornoSalvarCombustivel == true && erroCombustivel != null) {
+            Mensagem.informacao("Combustível salvo com sucesso!", this);
+
+            campoNomeCombustivel.setText("");
+
+            campoNomeCombustivel.requestFocus();
+
+            campoFiltroCombustivel.setText("");
+
+            codigo = 0;
+
+            new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+        } else {
+            if (erroCombustivel != null) {
+                Mensagem.aviso("Combustível " + campoNomeCombustivel.getText() + " já existe cadastrado!", this);
+
+                campoNomeCombustivel.setText("");
+
+                campoNomeCombustivel.requestFocus();
+
+                campoFiltroCombustivel.setText("");
+            }
+        }
     }//GEN-LAST:event_btnSalvarCombustivelActionPerformed
 
     private void btnLimparBuscaCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCombustivelActionPerformed
-        // TODO add your handling code here:
+        campoFiltroCombustivel.setText("");
+        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
     }//GEN-LAST:event_btnLimparBuscaCombustivelActionPerformed
 
     private void btnBuscarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCombustivelActionPerformed
-        // TODO add your handling code here:
+        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
     }//GEN-LAST:event_btnBuscarCombustivelActionPerformed
 
     private void btnEditarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCombustivelActionPerformed
-        // TODO add your handling code here:
+        String codigoEditarCombustivel = String.valueOf(tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Combustivel.class, Integer.parseInt(codigoEditarCombustivel));
+        Combustivel combustivel = new Combustivel((Combustivel) object);
+
+        if (combustivel != null) {
+            abaAdicionarCombustivel.setSelectedIndex(0);
+
+            campoNomeCombustivel.setText(combustivel.getNome());
+
+            campoNomeCombustivel.requestFocus();
+
+            codigo = combustivel.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar combustível!", this);
+        }
     }//GEN-LAST:event_btnEditarCombustivelActionPerformed
 
     private void btnExcluirCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCombustivelActionPerformed
-        // TODO add your handling code here:
+        int codigoExcluirCombustivel = (int) tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirCombustivel = DaoGenerico.getInstance().excluir(Combustivel.class, codigoExcluirCombustivel);
+
+            if (retornoExcluirCombustivel == true) {
+                Mensagem.informacao("Combustível excluído com sucesso!", this);
+                new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+            } else {
+                Mensagem.erro(tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
     }//GEN-LAST:event_btnExcluirCombustivelActionPerformed
 
     private void btnFecharCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCombustivelActionPerformed

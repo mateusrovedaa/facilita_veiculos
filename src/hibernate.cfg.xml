@@ -55,5 +55,13 @@ Contributor(s):
     <mapping class="entidade.Modelo"/>
     <mapping class="entidade.Procedencia"/>
     <mapping class="entidade.Carroceria"/>
+    <mapping class="entidade.Carroceria"/>
+    <mapping class="entidade.Combustivel"/>
+    <mapping class="entidade.CorExterna"/>
+    <mapping class="entidade.CorInterna"/>
+    <mapping class="entidade.Estilo"/>
+    <mapping class="entidade.Extra"/>
+    <mapping class="entidade.Seguranca"/>
+    <mapping class="entidade.Tecnologia"/>
   </session-factory>
 </hibernate-configuration>
