@@ -23,18 +23,18 @@ public class Modelo {
     @SequenceGenerator(name = "MODELO_SEQ", sequenceName = "seq_modelos", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "MODELO_SEQ", strategy = GenerationType.SEQUENCE)
 
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
 
-    @JoinColumn(name = "marca_id", unique = true)
+    @JoinColumn(name = "marca_id")
     @OneToOne(cascade = CascadeType.ALL)
     private Marca marca;
 
-    @JoinColumn(name = "procedencia_id", unique = true)
+    @JoinColumn(name = "procedencia_id")
     @OneToOne(cascade = CascadeType.ALL)
     private Procedencia procedencia;
 
-    @JoinColumn(name = "carroceria_id", unique = true)
+    @JoinColumn(name = "carroceria_id")
     @OneToOne(cascade = CascadeType.ALL)
     private Carroceria carroceria;
 
@@ -62,6 +62,20 @@ public class Modelo {
     private Calendar alteradoEm;
 
     public Modelo() {
+    }
+
+    public Modelo(Modelo modelo) {
+        this.id = modelo.id;
+        this.marca = modelo.marca;
+        this.procedencia = modelo.procedencia;
+        this.carroceria = modelo.carroceria;
+        this.nome = modelo.nome;
+        this.slug = modelo.slug;
+        this.comprimento = modelo.comprimento;
+        this.altura = modelo.altura;
+        this.largura = modelo.largura;
+        this.criadoEm = modelo.criadoEm;
+        this.alteradoEm = modelo.alteradoEm;
     }
 
     public int getId() {

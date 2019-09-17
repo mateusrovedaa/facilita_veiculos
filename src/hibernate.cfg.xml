@@ -51,7 +51,6 @@ Contributor(s):
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="entidade.Marca"/>
     <mapping class="entidade.AcabamentoInterno"/>
-    <mapping class="entidade.Cambio"/>
     <mapping class="entidade.Modelo"/>
     <mapping class="entidade.Procedencia"/>
     <mapping class="entidade.Carroceria"/>
@@ -63,5 +62,7 @@ Contributor(s):
     <mapping class="entidade.Extra"/>
     <mapping class="entidade.Seguranca"/>
     <mapping class="entidade.Tecnologia"/>
+    <mapping class="entidade.Conforto"/>
+    <mapping class="entidade.Cambio"/>
   </session-factory>
 </hibernate-configuration>

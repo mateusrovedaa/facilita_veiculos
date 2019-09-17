@@ -22,10 +22,10 @@ public class AcabamentoInterno implements Serializable {
     @SequenceGenerator(name = "ACABAMENTOINTERNO_SEQ", sequenceName = "seq_acabamentos_internos", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "ACABAMENTOINTERNO_SEQ", strategy = GenerationType.SEQUENCE)
 
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "nome", length = 200, nullable = false)
+    @Column(name = "nome", length = 200, nullable = false, unique = true)
     private String nome;
 
     @Column(name = "slug", length = 200, nullable = false)

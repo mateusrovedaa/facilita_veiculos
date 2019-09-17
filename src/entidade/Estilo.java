@@ -16,16 +16,16 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "estilos")
 
-public class Estilos implements Serializable {
+public class Estilo implements Serializable {
 
     @Id
     @SequenceGenerator(name = "ESTILO_SEQ", sequenceName = "seq_estilos", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "ESTILO_SEQ", strategy = GenerationType.SEQUENCE)
 
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "nome", length = 200, nullable = false)
+    @Column(name = "nome", length = 200, nullable = false, unique = true)
     private String nome;
 
     @Column(name = "slug", length = 200, nullable = false)
@@ -39,10 +39,10 @@ public class Estilos implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar alteradoEm;
 
-    public Estilos() {
+    public Estilo() {
     }
 
-    public Estilos(Estilos estilo) {
+    public Estilo(Estilo estilo) {
         this.id = estilo.id;
         this.nome = estilo.nome;
         this.slug = estilo.slug;
@@ -50,7 +50,7 @@ public class Estilos implements Serializable {
         this.alteradoEm = estilo.alteradoEm;
     }
 
-    public Estilos(int id) {
+    public Estilo(int id) {
         this.id = id;
     }
 
@@ -112,7 +112,7 @@ public class Estilos implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Estilos other = (Estilos) obj;
+        final Estilo other = (Estilo) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

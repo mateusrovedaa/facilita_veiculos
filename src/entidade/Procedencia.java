@@ -22,10 +22,10 @@ public class Procedencia implements Serializable {
     @SequenceGenerator(name = "PROCEDENCIA_SEQ", sequenceName = "seq_procedencias", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "PROCEDENCIA_SEQ", strategy = GenerationType.SEQUENCE)
 
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "nome", length = 200, nullable = false)
+    @Column(name = "nome", length = 200, nullable = false, unique = true)
     private String nome;
 
     @Column(name = "slug", length = 200, nullable = false)

@@ -22,10 +22,10 @@ public class Marca implements Serializable {
     @SequenceGenerator(name = "MARCA_SEQ", sequenceName = "seq_marcas", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "MARCA_SEQ", strategy = GenerationType.SEQUENCE)
 
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "nome", length = 200, nullable = false)
+    @Column(name = "nome", length = 200, nullable = false, unique = true)
     private String nome;
 
     @Column(name = "slug", length = 200, nullable = false)

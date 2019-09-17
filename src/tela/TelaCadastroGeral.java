@@ -4,11 +4,13 @@ import dao.AcabamentoInternoDao;
 import dao.CambioDao;
 import dao.CarroceriaDao;
 import dao.CombustivelDao;
+import dao.ConfortoDao;
 import dao.DaoGenerico;
 import entidade.AcabamentoInterno;
 import entidade.Cambio;
 import entidade.Carroceria;
 import entidade.Combustivel;
+import entidade.Conforto;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
@@ -25,6 +27,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
         new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
         new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
     }
 
     public static TelaCadastroGeral getInstancia() {
@@ -3046,7 +3049,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
         } else {
             if (erroCambio != null) {
-                Mensagem.aviso("Câmbio " + campoNomeCambio.getText() + " já existe cadastrado!", this);
+                Mensagem.aviso("Cambio " + campoNomeCambio.getText() + " já existe cadastrado!", this);
 
                 campoNomeCambio.setText("");
 
@@ -3301,23 +3304,96 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFecharCombustivelActionPerformed
 
     private void btnSalvarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarConfortoActionPerformed
-        // TODO add your handling code here:
+        Conforto conforto = new Conforto();
+
+        conforto.setId(codigo);
+        conforto.setNome(campoNomeConforto.getText());
+        conforto.setSlug(Funcoes.textoIdentificador(campoNomeConforto.getText()));
+        conforto.setCriadoEm(Calendar.getInstance());
+        conforto.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarConforto = false;
+        String erroConforto = "";
+
+        if (campoNomeConforto.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarConforto = DaoGenerico.getInstance().inserir(conforto);
+            } else {
+                retornoSalvarConforto = DaoGenerico.getInstance().atualizar(conforto);
+            }
+        } else {
+            erroConforto = null;
+            Mensagem.erro("Digite um conforto válido!", this);
+        }
+
+        if (retornoSalvarConforto == true && erroConforto != null) {
+            Mensagem.informacao("Conforto salvo com sucesso!", this);
+
+            campoNomeConforto.setText("");
+
+            campoNomeConforto.requestFocus();
+
+            campoFiltroConforto.setText("");
+
+            codigo = 0;
+
+            new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+        } else {
+            if (erroConforto != null) {
+                Mensagem.aviso("Conforto " + campoNomeConforto.getText() + " já existe cadastrado!", this);
+
+                campoNomeConforto.setText("");
+
+                campoNomeConforto.requestFocus();
+
+                campoFiltroConforto.setText("");
+            }
+        }
     }//GEN-LAST:event_btnSalvarConfortoActionPerformed
 
     private void btnLimparBuscaConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaConfortoActionPerformed
-        // TODO add your handling code here:
+        campoFiltroConforto.setText("");
+        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
     }//GEN-LAST:event_btnLimparBuscaConfortoActionPerformed
 
     private void btnBuscarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConfortoActionPerformed
-        // TODO add your handling code here:
+        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
     }//GEN-LAST:event_btnBuscarConfortoActionPerformed
 
     private void btnEditarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConfortoActionPerformed
-        // TODO add your handling code here:
+        String codigoEditarConforto = String.valueOf(tblConforto.getValueAt(tblConforto.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Conforto.class, Integer.parseInt(codigoEditarConforto));
+        Conforto conforto = new Conforto((Conforto) object);
+
+        if (conforto != null) {
+            abaAdicionarConforto.setSelectedIndex(0);
+
+            campoNomeConforto.setText(conforto.getNome());
+
+            campoNomeConforto.requestFocus();
+
+            codigo = conforto.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar conforto!", this);
+        }
     }//GEN-LAST:event_btnEditarConfortoActionPerformed
 
     private void btnExcluirConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConfortoActionPerformed
-        // TODO add your handling code here:
+        int codigoExcluirConforto = (int) tblConforto.getValueAt(tblConforto.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirConforto = DaoGenerico.getInstance().excluir(Conforto.class, codigoExcluirConforto);
+
+            if (retornoExcluirConforto == true) {
+                Mensagem.informacao("Conforto excluído com sucesso!", this);
+                new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+            } else {
+                Mensagem.erro(tblConforto.getValueAt(tblConforto.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
     }//GEN-LAST:event_btnExcluirConfortoActionPerformed
 
     private void btnFecharConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharConfortoActionPerformed

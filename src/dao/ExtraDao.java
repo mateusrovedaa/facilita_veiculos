@@ -1,6 +1,6 @@
 package dao;
 
-import entidade.Perfil;
+import entidade.Extra;
 import static facilitaveiculos.FacilitaVeiculos.conexao;
 import functions.ConexaoBD;
 import functions.Formatacao;
@@ -14,139 +14,46 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class PerfilDao implements IDAO_T<Perfil> {
+public class ExtraDao implements IDAO_T<Extra> {
 
     ResultSet resultadoQ = null;
     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
-    public String salvarPerfil(Perfil perfil) {
-        try {
-            Statement st = conexao.createStatement();
-
-            String sql = "INSERT INTO perfil VALUES "
-                    + "(DEFAULT, "
-                    + "'" + perfil.getNome() + "'"
-                    + "'" + Formatacao.textoIdentificador(perfil.getNome()) + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar xxx = " + e);
-            return e.toString();
-        }
+    @Override
+    public String salvar(Extra o) {
+        return null;
     }
 
     @Override
-    public String salvar(Perfil o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = "INSERT INTO perfis VALUES "
-                    + "(DEFAULT, "
-                    + "'" + o.getNome() + "', "
-                    + "'" + Formatacao.textoIdentificador(o.getNome()) + "', "
-                    + "'" + now+ "', "
-                    + "'" + now+ "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar perfil = " + e);
-            return e.toString();
-        }
-    }
-
-    @Override
-    public String atualizar(Perfil o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "UPDATE perfis "
-                    + "SET nome = '" + o.getNome() + "', "
-                    + "slug = '" + Formatacao.textoIdentificador(o.getNome()) + "', "
-                    + "alterado_em = '" + now + "'"
-                    + "WHERE id = " + o.getId();
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro atualizar perfil = " + e);
-            return e.toString();
-        }
+    public String atualizar(Extra o) {
+        return null;
     }
 
     @Override
     public String excluir(int id) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "DELETE FROM perfis" + " "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro excluir perfil = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
-    public ArrayList<Perfil> consultarTodos() {
+    public ArrayList<Extra> consultarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Perfil> consultar(String criterio) {
+    public ArrayList<Extra> consultar(String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Perfil consultarId(int id) {
-        Perfil perfil = null;
+    public Extra consultarId(int id) {
+        Extra extra = null;
 
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
             String sql = ""
                     + "SELECT * "
-                    + "FROM perfis "
+                    + "FROM extras "
                     + "WHERE id = " + id;
 
             System.out.println("Sql: " + sql);
@@ -154,17 +61,17 @@ public class PerfilDao implements IDAO_T<Perfil> {
             resultadoQ = st.executeQuery(sql);
 
             while (resultadoQ.next()) {
-                perfil = new Perfil();
+                extra = new Extra();
 
-                perfil.setId(id);
-                perfil.setNome(resultadoQ.getString("nome"));
+                extra.setId(id);
+                extra.setNome(resultadoQ.getString("nome"));
             }
 
         } catch (Exception e) {
-            System.out.println("Erro consultar perfil = " + e);
+            System.out.println("Erro consultar extra = " + e);
         }
 
-        return perfil;
+        return extra;
     }
 
     public void popularTabela(JTable tabela, String criterio) {
@@ -179,14 +86,15 @@ public class PerfilDao implements IDAO_T<Perfil> {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM perfis WHERE NOME ILIKE '%" + criterio + "%'");
+                    + "SELECT count(*) FROM extras AS e WHERE e.NOME ILIKE '%" + criterio + "%' AND "
+                    + "c.id IN (SELECT id FROM extras WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 
             dadosTabela = new Object[resultadoQ.getInt(1)][2];
 
         } catch (Exception e) {
-            System.out.println("Erro ao consultar perfil: " + e);
+            System.out.println("Erro ao consultar extra: " + e);
         }
 
         int lin = 0;
@@ -194,10 +102,11 @@ public class PerfilDao implements IDAO_T<Perfil> {
         // efetua consulta na tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT * FROM perfis "
+                    + "SELECT * FROM extras "
                     + "WHERE "
                     + "NOME ILIKE '%" + criterio + "%' "
-                    + "ORDER BY CRIADO_EM DESC");
+                    + "ORDER BY CRIADO_EM DESC "
+                    + "LIMIT 50");
 
             while (resultadoQ.next()) {
 
@@ -279,5 +188,4 @@ public class PerfilDao implements IDAO_T<Perfil> {
 //            }
 //        });
     }
-
 }

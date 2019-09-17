@@ -22,10 +22,10 @@ public class Cambio implements Serializable {
     @SequenceGenerator(name = "CAMBIO_SEQ", sequenceName = "seq_cambios", allocationSize = 1, initialValue = 1)
     @GeneratedValue(generator = "CAMBIO_SEQ", strategy = GenerationType.SEQUENCE)
 
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "nome", length = 200, nullable = false)
+    @Column(name = "nome", length = 200, nullable = false, unique = true)
     private String nome;
 
     @Column(name = "slug", length = 200, nullable = false)
@@ -42,12 +42,12 @@ public class Cambio implements Serializable {
     public Cambio() {
     }
 
-    public Cambio(Cambio cambio) {
-        this.id = cambio.id;
-        this.nome = cambio.nome;
-        this.slug = cambio.slug;
-        this.criadoEm = cambio.criadoEm;
-        this.alteradoEm = cambio.alteradoEm;
+    public Cambio(Cambio cambios) {
+        this.id = cambios.id;
+        this.nome = cambios.nome;
+        this.slug = cambios.slug;
+        this.criadoEm = cambios.criadoEm;
+        this.alteradoEm = cambios.alteradoEm;
     }
 
     public Cambio(int id) {
