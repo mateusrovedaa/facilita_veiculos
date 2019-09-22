@@ -42,12 +42,12 @@ public class Cambio implements Serializable {
     public Cambio() {
     }
 
-    public Cambio(Cambio cambios) {
-        this.id = cambios.id;
-        this.nome = cambios.nome;
-        this.slug = cambios.slug;
-        this.criadoEm = cambios.criadoEm;
-        this.alteradoEm = cambios.alteradoEm;
+    public Cambio(Cambio cambio) {
+        this.id = cambio.id;
+        this.nome = cambio.nome;
+        this.slug = cambio.slug;
+        this.criadoEm = cambio.criadoEm;
+        this.alteradoEm = cambio.alteradoEm;
     }
 
     public Cambio(int id) {

@@ -94,7 +94,7 @@ public class CambioDao implements IDAO_T<Cambio> {
             dadosTabela = new Object[resultadoQ.getInt(1)][2];
 
         } catch (Exception e) {
-            System.out.println("Erro ao consultar cambios: " + e);
+            System.out.println("Erro ao consultar câmbios: " + e);
         }
 
         int lin = 0;

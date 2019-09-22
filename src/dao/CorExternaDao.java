@@ -86,8 +86,8 @@ public class CorExternaDao implements IDAO_T<CorExterna> {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM cores_externas AS c WHERE c.NOME ILIKE '%" + criterio + "%' AND "
-                    + "c.id IN (SELECT id FROM cores_externas WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "SELECT count(*) FROM cores_externas AS ce WHERE ce.NOME ILIKE '%" + criterio + "%' AND "
+                    + "ce.id IN (SELECT id FROM cores_externas WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 

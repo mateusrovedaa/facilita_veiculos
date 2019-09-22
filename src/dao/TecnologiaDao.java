@@ -86,8 +86,8 @@ public class TecnologiaDao implements IDAO_T<Tecnologia> {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM tecnologias AS e WHERE e.NOME ILIKE '%" + criterio + "%' AND "
-                    + "c.id IN (SELECT id FROM tecnologias WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "SELECT count(*) FROM tecnologias AS t WHERE t.NOME ILIKE '%" + criterio + "%' AND "
+                    + "t.id IN (SELECT id FROM tecnologias WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 
@@ -102,7 +102,7 @@ public class TecnologiaDao implements IDAO_T<Tecnologia> {
         // efetua consulta na tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT * FROM tecnologia "
+                    + "SELECT * FROM tecnologias "
                     + "WHERE "
                     + "NOME ILIKE '%" + criterio + "%' "
                     + "ORDER BY CRIADO_EM DESC "

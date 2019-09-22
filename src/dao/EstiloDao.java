@@ -87,7 +87,7 @@ public class EstiloDao implements IDAO_T<Estilo> {
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT count(*) FROM estilos AS e WHERE e.NOME ILIKE '%" + criterio + "%' AND "
-                    + "c.id IN (SELECT id FROM estilos WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "e.id IN (SELECT id FROM estilos WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 

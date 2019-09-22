@@ -86,8 +86,8 @@ public class ProcedenciaDao implements IDAO_T<Procedencia> {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM procedencias AS e WHERE e.NOME ILIKE '%" + criterio + "%' AND "
-                    + "c.id IN (SELECT id FROM procedencias WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "SELECT count(*) FROM procedencias AS p WHERE p.NOME ILIKE '%" + criterio + "%' AND "
+                    + "p.id IN (SELECT id FROM procedencias WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 

@@ -42,12 +42,12 @@ public class Carroceria implements Serializable {
     public Carroceria() {
     }
 
-    public Carroceria(Carroceria marca) {
-        this.id = marca.id;
-        this.nome = marca.nome;
-        this.slug = marca.slug;
-        this.criadoEm = marca.criadoEm;
-        this.alteradoEm = marca.alteradoEm;
+    public Carroceria(Carroceria carroceria) {
+        this.id = carroceria.id;
+        this.nome = carroceria.nome;
+        this.slug = carroceria.slug;
+        this.criadoEm = carroceria.criadoEm;
+        this.alteradoEm = carroceria.alteradoEm;
     }
     
     public Carroceria(int id) {

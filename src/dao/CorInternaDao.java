@@ -86,8 +86,8 @@ public class CorInternaDao implements IDAO_T<CorInterna> {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM cores_internas AS c WHERE c.NOME ILIKE '%" + criterio + "%' AND "
-                    + "c.id IN (SELECT id FROM cores_internas WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "SELECT count(*) FROM cores_internas AS ci WHERE ci.NOME ILIKE '%" + criterio + "%' AND "
+                    + "ci.id IN (SELECT id FROM cores_internas WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 

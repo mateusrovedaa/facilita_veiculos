@@ -87,7 +87,7 @@ public class ExtraDao implements IDAO_T<Extra> {
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT count(*) FROM extras AS e WHERE e.NOME ILIKE '%" + criterio + "%' AND "
-                    + "c.id IN (SELECT id FROM extras WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "e.id IN (SELECT id FROM extras WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 

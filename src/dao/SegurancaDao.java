@@ -86,8 +86,8 @@ public class SegurancaDao implements IDAO_T<Seguranca> {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM segurancas AS e WHERE e.NOME ILIKE '%" + criterio + "%' AND "
-                    + "c.id IN (SELECT id FROM segurancas WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "SELECT count(*) FROM segurancas AS s WHERE s.NOME ILIKE '%" + criterio + "%' AND "
+                    + "s.id IN (SELECT id FROM segurancas WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 

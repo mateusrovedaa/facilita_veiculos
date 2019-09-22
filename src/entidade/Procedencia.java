@@ -42,12 +42,12 @@ public class Procedencia implements Serializable {
     public Procedencia() {
     }
 
-    public Procedencia(Procedencia marca) {
-        this.id = marca.id;
-        this.nome = marca.nome;
-        this.slug = marca.slug;
-        this.criadoEm = marca.criadoEm;
-        this.alteradoEm = marca.alteradoEm;
+    public Procedencia(Procedencia procedencia) {
+        this.id = procedencia.id;
+        this.nome = procedencia.nome;
+        this.slug = procedencia.slug;
+        this.criadoEm = procedencia.criadoEm;
+        this.alteradoEm = procedencia.alteradoEm;
     }
     
     public Procedencia(int id) {
