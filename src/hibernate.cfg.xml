@@ -62,8 +62,6 @@ Contributor(s):
     <mapping class="entidade.Procedencia"/>
     <mapping class="entidade.Seguranca"/>
     <mapping class="entidade.Tecnologia"/>
-    <mapping class="entidade.Cidade"/>
-    <mapping class="entidade.Estado"/>
     <mapping class="entidade.Perfil"/>
   </session-factory>
 </hibernate-configuration>

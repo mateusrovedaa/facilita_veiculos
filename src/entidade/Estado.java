@@ -31,6 +31,9 @@ public class Estado implements Serializable {
     @Column(name = "slug", length = 200, nullable = false)
     private String slug;
 
+    @Column(name = "uf", length = 2, nullable = false)
+    private String uf;
+
     @Column(name = "criado_em", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar criadoEm;
@@ -76,6 +79,14 @@ public class Estado implements Serializable {
 
     public void setSlug(String slug) {
         this.slug = slug;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     public Calendar getCriadoEm() {

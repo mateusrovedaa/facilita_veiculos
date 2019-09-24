@@ -53,8 +53,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
         new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
         new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
-        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
-        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+        //new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+        //new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
     }
 
     public static TelaCadastroGeral getInstancia() {
@@ -270,6 +270,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         jLabel27 = new javax.swing.JLabel();
         campoNomeCidade = new javax.swing.JTextField();
         btnSalvarCidade = new javax.swing.JButton();
+        comboEstadoId = new javax.swing.JComboBox<>();
+        jLabel30 = new javax.swing.JLabel();
         jPanel42 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         campoFiltroCidade = new javax.swing.JTextField();
@@ -287,6 +289,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         jLabel25 = new javax.swing.JLabel();
         campoNomeEstado = new javax.swing.JTextField();
         btnSalvarEstado = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        campoUf = new javax.swing.JTextField();
         jPanel39 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         campoFiltroEstado = new javax.swing.JTextField();
@@ -2368,6 +2372,10 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             }
         });
 
+        comboEstadoId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione", "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel30.setText("Estado:");
+
         javax.swing.GroupLayout jPanel41Layout = new javax.swing.GroupLayout(jPanel41);
         jPanel41.setLayout(jPanel41Layout);
         jPanel41Layout.setHorizontalGroup(
@@ -2376,7 +2384,11 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
+                .addComponent(campoNomeCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboEstadoId, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarCidade)
                 .addContainerGap())
@@ -2388,7 +2400,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(campoNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvarCidade))
+                    .addComponent(btnSalvarCidade)
+                    .addComponent(comboEstadoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2552,6 +2566,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel29.setText("UF:");
+
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
         jPanel38Layout.setHorizontalGroup(
@@ -2560,7 +2576,11 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+                .addComponent(campoNomeEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoUf, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarEstado)
                 .addContainerGap())
@@ -2572,7 +2592,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(campoNomeEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSalvarEstado))
+                    .addComponent(btnSalvarEstado)
+                    .addComponent(jLabel29)
+                    .addComponent(campoUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2711,7 +2733,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -4445,6 +4467,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     private javax.swing.JTextField campoNomePerfil;
     private javax.swing.JTextField campoNomeSeguranca;
     private javax.swing.JTextField campoNomeTecnologia;
+    private javax.swing.JTextField campoUf;
+    private javax.swing.JComboBox<String> comboEstadoId;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -4466,7 +4490,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

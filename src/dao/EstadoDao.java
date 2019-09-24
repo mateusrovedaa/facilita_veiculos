@@ -79,9 +79,10 @@ public class EstadoDao implements IDAO_T<Estado> {
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[2];
+        Object[] cabecalho = new Object[3];
         cabecalho[0] = "Código";
         cabecalho[1] = "Nome";
+        cabecalho[2] = "UF";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
@@ -91,7 +92,7 @@ public class EstadoDao implements IDAO_T<Estado> {
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][2];
+            dadosTabela = new Object[resultadoQ.getInt(1)][3];
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar estado: " + e);
@@ -112,6 +113,7 @@ public class EstadoDao implements IDAO_T<Estado> {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
                 dadosTabela[lin][1] = resultadoQ.getString("nome");
+                dadosTabela[lin][2] = resultadoQ.getString("uf");
 
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {
