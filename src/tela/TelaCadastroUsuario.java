@@ -5,12 +5,12 @@ import dao.UsuarioDao;
 import entidade.Usuario;
 import functions.ComboItem;
 import functions.Formatacao;
+import functions.Mensagem;
 import functions.Validacao;
 import java.awt.Color;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
@@ -323,10 +323,10 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
         String retornoExcluirCliente = new UsuarioDao().excluir(Integer.parseInt(codigoExcluirCliente));
 
         if (retornoExcluirCliente == null) {
-            JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso!");
+            Mensagem.informacao("Usuário excluído com sucesso!", this);
             new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText());
         } else {
-            JOptionPane.showMessageDialog(null, tblUsuario.getValueAt(tblUsuario.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!");;
+            Mensagem.erro(tblUsuario.getValueAt(tblUsuario.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
         }
     }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
 
@@ -349,7 +349,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
             codigo = usuario.getId();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Erro ao consultar cliente!");
+            Mensagem.erro("Erro ao consultar cliente!", this);
         }
     }//GEN-LAST:event_btnEditarUsuarioActionPerformed
 
@@ -397,9 +397,9 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
             } else {
                 retornoSalvarUsuario = usuarioDao.atualizar(usuario);
             }
-            JOptionPane.showMessageDialog(null, "Usuário salvo com sucesso!");
+            Mensagem.aviso("Usuário salvo com sucesso!", this);
         } else {
-            JOptionPane.showMessageDialog(null, "Campos obrigatórios (*) devem ser preenchidos corretamente!");
+            Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
 
         if (retornoSalvarUsuario == null) {
@@ -415,7 +415,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
             new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText());
         } else {
-            JOptionPane.showMessageDialog(null, "Deu erro: \n\nMensagem técnica:" + retornoSalvarUsuario);
+            Mensagem.erro("Deu erro: \n\nMensagem técnica:" + retornoSalvarUsuario, this);
         }
     }//GEN-LAST:event_btnSalvarUsuarioActionPerformed
 

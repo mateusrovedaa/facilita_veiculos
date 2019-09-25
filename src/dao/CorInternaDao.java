@@ -1,12 +1,12 @@
 package dao;
 
 import entidade.CorInterna;
-import java.sql.Statement;
 import static facilitaveiculos.FacilitaVeiculos.conexao;
 import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.IDAO_T;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,111 +19,19 @@ public class CorInternaDao implements IDAO_T<CorInterna> {
     ResultSet resultadoQ = null;
     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
-    public String salvarCorInterna(CorInterna corInterna) {
-        try {
-            Statement st = conexao.createStatement();
-
-            String sql = "INSERT INTO cores_internas VALUES "
-                    + "(DEFAULT, "
-                    + "'" + corInterna.getNome() + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar xxx = " + e);
-            return e.toString();
-        }
-    }
-
     @Override
     public String salvar(CorInterna o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = "INSERT INTO cores_internas VALUES "
-                    + "(DEFAULT, "
-                    + "'" + o.getNome() + "',"
-                    + "'" + Formatacao.textoIdentificador(o.getNome()) + "',"
-                    + "'" + now + "',"
-                    + "'" + now + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar cor interna = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String atualizar(CorInterna o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "UPDATE cores_internas "
-                    + "SET nome = '" + o.getNome() + "', "
-                    + "slug = '" + Formatacao.textoIdentificador(o.getNome()) + "', "
-                    + "alterado_em = '" + now + "'"
-                    + "WHERE id = " + o.getId();
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro atualizar cor interna = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String excluir(int id) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "DELETE FROM cores_internas" + " "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro excluir cor interna = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
@@ -178,14 +86,15 @@ public class CorInternaDao implements IDAO_T<CorInterna> {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM cores_internas WHERE NOME ILIKE '%" + criterio + "%'");
+                    + "SELECT count(*) FROM cores_internas AS ci WHERE ci.NOME ILIKE '%" + criterio + "%' AND "
+                    + "ci.id IN (SELECT id FROM cores_internas WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 
             dadosTabela = new Object[resultadoQ.getInt(1)][2];
 
         } catch (Exception e) {
-            System.out.println("Erro ao consultar cor interna: " + e);
+            System.out.println("Erro ao consultar cores internas: " + e);
         }
 
         int lin = 0;
@@ -196,7 +105,8 @@ public class CorInternaDao implements IDAO_T<CorInterna> {
                     + "SELECT * FROM cores_internas "
                     + "WHERE "
                     + "NOME ILIKE '%" + criterio + "%' "
-                    + "ORDER BY CRIADO_EM DESC");
+                    + "ORDER BY CRIADO_EM DESC "
+                    + "LIMIT 50");
 
             while (resultadoQ.next()) {
 

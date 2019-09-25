@@ -1,11 +1,12 @@
 package dao;
 
 import entidade.AcabamentoInterno;
-import java.sql.Statement;
+import static facilitaveiculos.FacilitaVeiculos.conexao;
 import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.IDAO_T;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -18,111 +19,19 @@ public class AcabamentoInternoDao implements IDAO_T<AcabamentoInterno> {
     ResultSet resultadoQ = null;
     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
-    public String salvarAcabamentoInterno(AcabamentoInterno acabamentoInterno) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = "INSERT INTO acabamentos_internos VALUES "
-                    + "(DEFAULT, "
-                    + "'" + acabamentoInterno.getNome() + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar acabamento interno = " + e);
-            return e.toString();
-        }
-    }
-
     @Override
     public String salvar(AcabamentoInterno o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = "INSERT INTO acabamentos_internos VALUES "
-                    + "(DEFAULT, "
-                    + "'" + o.getNome() + "', "
-                    + "'" + Formatacao.textoIdentificador(o.getNome()) + "', "
-                    + "'" + now + "', "
-                    + "'" + now + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar acabamento interno = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String atualizar(AcabamentoInterno o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "UPDATE acabamentos_internos "
-                    + "SET nome = '" + o.getNome() + "', "
-                    + "slug = '" + Formatacao.textoIdentificador(o.getNome()) + "', "
-                    + "alterado_em = '" + now + "'"
-                    + "WHERE id = " + o.getId();
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro atualizar acabamento interno = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String excluir(int id) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "DELETE FROM acabamentos_internos" + " "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro excluir acabamento interno = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
@@ -177,14 +86,15 @@ public class AcabamentoInternoDao implements IDAO_T<AcabamentoInterno> {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM acabamentos_internos WHERE NOME ILIKE '%" + criterio + "%'");
+                    + "SELECT count(*) FROM acabamentos_internos AS a WHERE a.NOME ILIKE '%" + criterio + "%' AND "
+                    + "a.id IN (SELECT id FROM acabamentos_internos WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 
             dadosTabela = new Object[resultadoQ.getInt(1)][2];
 
         } catch (Exception e) {
-            System.out.println("Erro ao consultar acabamento interno: " + e);
+            System.out.println("Erro ao consultar acabamento internos: " + e);
         }
 
         int lin = 0;
@@ -195,7 +105,8 @@ public class AcabamentoInternoDao implements IDAO_T<AcabamentoInterno> {
                     + "SELECT * FROM acabamentos_internos "
                     + "WHERE "
                     + "NOME ILIKE '%" + criterio + "%' "
-                    + "ORDER BY CRIADO_EM DESC");
+                    + "ORDER BY CRIADO_EM DESC "
+                    + "LIMIT 50");
 
             while (resultadoQ.next()) {
 

@@ -16,100 +16,20 @@ import javax.swing.table.TableColumn;
 public class ModeloDao implements IDAO_T<Modelo> {
 
     ResultSet resultadoQ = null;
-    String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
     @Override
     public String salvar(Modelo modelo) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = "INSERT INTO modelos VALUES "
-                    + "(DEFAULT, "
-                    + "'" + modelo.getMarcaId() + "', "
-                    + "'" + modelo.getProcedenciaId() + "', "
-                    + "'" + modelo.getCarroceriaId() + "', "
-                    + "'" + modelo.getNome() + "',"
-                    + "'" + Formatacao.textoIdentificador(modelo.getNome()) + "',"
-                    + "'" + modelo.getComprimento() + "', "
-                    + "'" + modelo.getAltura() + "', "
-                    + "'" + modelo.getLargura() + "', "
-                    + "'" + now + "', "
-                    + "'" + now + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar modelo = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String atualizar(Modelo modelo) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "UPDATE modelos "
-                    + "SET nome = '" + modelo.getNome() + "', "
-                    + "slug = '" + Formatacao.textoIdentificador(modelo.getNome()) + "', "
-                    + "marca_id = '" + modelo.getMarcaId() + "', "
-                    + "procedencia_id = '" + modelo.getProcedenciaId() + "', "
-                    + "carroceria_id = '" + modelo.getCarroceriaId() + "', "
-                    + "comprimento = '" + modelo.getComprimento() + "', "
-                    + "altura = '" + modelo.getAltura() + "', "
-                    + "largura = '" + modelo.getLargura() + "', "
-                    + "alterado_em = '" + now + "' "
-                    + "WHERE id = " + modelo.getId();
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro atualizar modelo = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String excluir(int id) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "DELETE FROM modelos" + " "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro excluir modelo = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
@@ -124,36 +44,37 @@ public class ModeloDao implements IDAO_T<Modelo> {
 
     @Override
     public Modelo consultarId(int id) {
-        Modelo modelo = null;
-
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "SELECT * "
-                    + "FROM modelos "
-                    + "WHERE id = " + id;
-
-            resultadoQ = st.executeQuery(sql);
-
-            while (resultadoQ.next()) {
-                modelo = new Modelo();
-
-                modelo.setId(id);
-                modelo.setNome(resultadoQ.getString("nome"));
-                modelo.setMarcaId(resultadoQ.getInt("marca_id"));
-                modelo.setProcedenciaId(resultadoQ.getInt("procedencia_id"));
-                modelo.setCarroceriaId(resultadoQ.getInt("carroceria_id"));
-                modelo.setComprimento(resultadoQ.getDouble("comprimento"));
-                modelo.setAltura(resultadoQ.getDouble("altura"));
-                modelo.setLargura(resultadoQ.getDouble("largura"));
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro consultar modelo = " + e);
-        }
-
-        return modelo;
+        return null;
+//        Modelo modelo = null;
+//
+//        try {
+//            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
+//
+//            String sql = ""
+//                    + "SELECT * "
+//                    + "FROM modelos "
+//                    + "WHERE id = " + id;
+//
+//            resultadoQ = st.executeQuery(sql);
+//
+//            while (resultadoQ.next()) {
+//                modelo = new Modelo();
+//
+//                modelo.setId(id);
+//                modelo.setNome(resultadoQ.getString("nome"));
+//                modelo.setMarcaId(resultadoQ.getInt("marca_id"));
+//                modelo.setProcedenciaId(resultadoQ.getInt("procedencia_id"));
+//                modelo.setCarroceriaId(resultadoQ.getInt("carroceria_id"));
+//                modelo.setComprimento(resultadoQ.getDouble("comprimento"));
+//                modelo.setAltura(resultadoQ.getDouble("altura"));
+//                modelo.setLargura(resultadoQ.getDouble("largura"));
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("Erro consultar modelo = " + e);
+//        }
+//
+//        return modelo;
     }
 
     public void popularTabela(JTable tabela, String criterio) {
@@ -283,23 +204,23 @@ public class ModeloDao implements IDAO_T<Modelo> {
 //        });
     }
 
-    public int obterTotalModelos() {
-        int total = 0;
-
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "SELECT COUNT(*) "
-                    + "FROM modelos";
-
-            ResultSet rs = st.executeQuery(sql);
-            rs.next();
-            total = rs.getInt(1);
-
-        } catch (Exception e) {
-            System.out.println("Erro consultar total = " + e);
-        }
-        return total;
-    }
+//    public int obterTotalModelos() {
+//        int total = 0;
+//
+//        try {
+//            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
+//
+//            String sql = ""
+//                    + "SELECT COUNT(*) "
+//                    + "FROM modelos";
+//
+//            ResultSet rs = st.executeQuery(sql);
+//            rs.next();
+//            total = rs.getInt(1);
+//
+//        } catch (Exception e) {
+//            System.out.println("Erro consultar total = " + e);
+//        }
+//        return total;
+//    }
 }

@@ -19,111 +19,19 @@ public class MarcaDao implements IDAO_T<Marca> {
     ResultSet resultadoQ = null;
     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
-    public String salvarMarca(Marca marca) {
-        try {
-            Statement st = conexao.createStatement();
-
-            String sql = "INSERT INTO marcas VALUES "
-                    + "(DEFAULT, "
-                    + "'" + marca.getNome() + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar xxx = " + e);
-            return e.toString();
-        }
-    }
-
     @Override
     public String salvar(Marca o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = "INSERT INTO marcas VALUES "
-                    + "(DEFAULT, "
-                    + "'" + o.getNome() + "', "
-                    + "'" + Formatacao.textoIdentificador(o.getNome()) + "', "
-                    + "'" + now + "', "
-                    + "'" + now + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar marca = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String atualizar(Marca o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "UPDATE marcas "
-                    + "SET nome = '" + o.getNome() + "', "
-                    + "slug = '" + Formatacao.textoIdentificador(o.getNome()) + "', "
-                    + "alterado_em = '" + now + "'"
-                    + "WHERE id = " + o.getId();
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro atualizar marca = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String excluir(int id) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "DELETE FROM marcas" + " "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro excluir marca = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
@@ -279,25 +187,5 @@ public class MarcaDao implements IDAO_T<Marca> {
 //                return this;
 //            }
 //        });
-    }
-
-    public int obterTotalMarcas() {
-        int total = 0;
-
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "SELECT COUNT(*) "
-                    + "FROM marcas";
-
-            ResultSet rs = st.executeQuery(sql);
-            rs.next();
-            total = rs.getInt(1);
-
-        } catch (Exception e) {
-            System.out.println("Erro consultar total = " + e);
-        }
-        return total;
     }
 }

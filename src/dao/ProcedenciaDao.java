@@ -1,12 +1,12 @@
 package dao;
 
 import entidade.Procedencia;
-import java.sql.Statement;
 import static facilitaveiculos.FacilitaVeiculos.conexao;
 import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.IDAO_T;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,111 +19,19 @@ public class ProcedenciaDao implements IDAO_T<Procedencia> {
     ResultSet resultadoQ = null;
     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
-    public String salvarProcedencia(Procedencia procedencia) {
-        try {
-            Statement st = conexao.createStatement();
-
-            String sql = "INSERT INTO procedencias VALUES "
-                    + "(DEFAULT, "
-                    + "'" + procedencia.getNome() + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar xxx = " + e);
-            return e.toString();
-        }
-    }
-
     @Override
     public String salvar(Procedencia o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = "INSERT INTO procedencias VALUES "
-                    + "(DEFAULT, "
-                    + "'" + o.getNome() + "', "
-                    + "'" + Formatacao.textoIdentificador(o.getNome()) + "', "
-                    + "'" + now + "', "
-                    + "'" + now + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar procedência = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String atualizar(Procedencia o) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "UPDATE procedencias "
-                    + "SET nome = '" + o.getNome() + "', "
-                    + "slug = '" + Formatacao.textoIdentificador(o.getNome()) + "', "
-                    + "alterado_em = '" + now + "'"
-                    + "WHERE id = " + o.getId();
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro atualizar procedência = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
     public String excluir(int id) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "DELETE FROM procedencias" + " "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro excluir procedência = " + e);
-            return e.toString();
-        }
+        return null;
     }
 
     @Override
@@ -178,7 +86,8 @@ public class ProcedenciaDao implements IDAO_T<Procedencia> {
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM procedencias WHERE NOME ILIKE '%" + criterio + "%'");
+                    + "SELECT count(*) FROM procedencias AS p WHERE p.NOME ILIKE '%" + criterio + "%' AND "
+                    + "p.id IN (SELECT id FROM procedencias WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 
@@ -196,7 +105,8 @@ public class ProcedenciaDao implements IDAO_T<Procedencia> {
                     + "SELECT * FROM procedencias "
                     + "WHERE "
                     + "NOME ILIKE '%" + criterio + "%' "
-                    + "ORDER BY CRIADO_EM DESC");
+                    + "ORDER BY CRIADO_EM DESC "
+                    + "LIMIT 50");
 
             while (resultadoQ.next()) {
 
