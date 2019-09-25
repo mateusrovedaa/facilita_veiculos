@@ -99,7 +99,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarAcabamentoInterno" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -143,7 +143,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeAcabamentoInterno" pref="435" max="32767" attributes="0"/>
+                                  <Component id="campoNomeAcabamentoInterno" pref="479" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarAcabamentoInterno" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -152,14 +152,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeAcabamentoInterno" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarAcabamentoInterno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarAcabamentoInterno" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="campoNomeAcabamentoInterno" alignment="1" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -167,7 +167,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel1">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do acabamento interno:"/>
+                            <Property name="text" type="java.lang.String" value="Acabamento interno:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeAcabamentoInterno">
@@ -221,11 +221,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroAcabamentoInterno" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaAcabamentoInterno" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarAcabamentoInterno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="btnLimparBuscaAcabamentoInterno" max="32767" attributes="0"/>
+                                      <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnBuscarAcabamentoInterno" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroAcabamentoInterno" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                               </Group>
@@ -235,7 +235,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel2">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do acabamento interno:"/>
+                            <Property name="text" type="java.lang.String" value="Acabamento interno:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroAcabamentoInterno">
@@ -402,7 +402,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarCambio" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -446,7 +446,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeCambio" pref="561" max="32767" attributes="0"/>
+                                  <Component id="campoNomeCambio" pref="604" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarCambio" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -455,14 +455,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeCambio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarCambio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeCambio" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel3" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarCambio" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -470,7 +470,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel3">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do c&#xe2;mbio:"/>
+                            <Property name="text" type="java.lang.String" value="C&#xe2;mbio:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeCambio">
@@ -522,15 +522,18 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroCambio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaCambio" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarCambio" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel4" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroCambio" alignment="1" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="btnBuscarCambio" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="btnLimparBuscaCambio" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -538,7 +541,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel4">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do c&#xe2;mbio:"/>
+                            <Property name="text" type="java.lang.String" value="C&#xe2;mbio:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroCambio">
@@ -705,7 +708,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarCarroceria" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -749,7 +752,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeCarroceria" pref="531" max="32767" attributes="0"/>
+                                  <Component id="campoNomeCarroceria" pref="574" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarCarroceria" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -758,14 +761,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeCarroceria" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarCarroceria" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeCarroceria" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel5" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarCarroceria" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -773,7 +776,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel5">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da carroceria:"/>
+                            <Property name="text" type="java.lang.String" value="Carroceria:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeCarroceria">
@@ -825,15 +828,15 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroCarroceria" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaCarroceria" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarCarroceria" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="campoFiltroCarroceria" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnBuscarCarroceria" max="32767" attributes="0"/>
+                                      <Component id="btnLimparBuscaCarroceria" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -841,7 +844,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel6">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da carroceria:"/>
+                            <Property name="text" type="java.lang.String" value="Carroceria:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroCarroceria">
@@ -1008,7 +1011,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarCombustivel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1052,7 +1055,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeCombustivel" pref="515" max="32767" attributes="0"/>
+                                  <Component id="campoNomeCombustivel" pref="558" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarCombustivel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1061,14 +1064,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeCombustivel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarCombustivel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeCombustivel" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel7" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarCombustivel" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1076,7 +1079,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel7">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do combust&#xed;vel:"/>
+                            <Property name="text" type="java.lang.String" value="Combust&#xed;vel:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeCombustivel">
@@ -1128,15 +1131,15 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroCombustivel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaCombustivel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarCombustivel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel8" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroCombustivel" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnBuscarCombustivel" max="32767" attributes="0"/>
+                                      <Component id="btnLimparBuscaCombustivel" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1144,7 +1147,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel8">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do combust&#xed;vel:"/>
+                            <Property name="text" type="java.lang.String" value="Combust&#xed;vel:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroCombustivel">
@@ -1311,7 +1314,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarConforto" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane5" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel16" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1355,7 +1358,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeConforto" pref="545" max="32767" attributes="0"/>
+                                  <Component id="campoNomeConforto" pref="588" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarConforto" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1364,14 +1367,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeConforto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarConforto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeConforto" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel9" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarConforto" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1379,7 +1382,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel9">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do conforto:"/>
+                            <Property name="text" type="java.lang.String" value="Conforto:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeConforto">
@@ -1433,13 +1436,13 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroConforto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaConforto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarConforto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoFiltroConforto" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel10" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnBuscarConforto" max="32767" attributes="0"/>
+                                      <Component id="btnLimparBuscaConforto" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1447,7 +1450,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel10">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do conforto:"/>
+                            <Property name="text" type="java.lang.String" value="Conforto:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroConforto">
@@ -1614,7 +1617,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarCorExterna" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane6" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel19" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1658,7 +1661,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeCorExterna" pref="515" max="32767" attributes="0"/>
+                                  <Component id="campoNomeCorExterna" pref="558" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarCorExterna" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1667,14 +1670,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeCorExterna" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarCorExterna" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeCorExterna" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarCorExterna" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1682,7 +1685,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel11">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da cor externa:"/>
+                            <Property name="text" type="java.lang.String" value="Cor externa:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeCorExterna">
@@ -1734,15 +1737,15 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroCorExterna" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaCorExterna" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarCorExterna" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnBuscarCorExterna" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroCorExterna" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnLimparBuscaCorExterna" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1750,7 +1753,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel12">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da cor externa:"/>
+                            <Property name="text" type="java.lang.String" value="Cor externa:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroCorExterna">
@@ -1917,7 +1920,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarCorInterna" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane7" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane7" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel22" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1961,7 +1964,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeCorInterna" pref="523" max="32767" attributes="0"/>
+                                  <Component id="campoNomeCorInterna" pref="566" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarCorInterna" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -1970,14 +1973,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeCorInterna" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarCorInterna" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeCorInterna" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarCorInterna" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel13" alignment="1" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1985,7 +1988,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel13">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da cor interna:"/>
+                            <Property name="text" type="java.lang.String" value="Cor interna:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeCorInterna">
@@ -2037,15 +2040,15 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroCorInterna" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaCorInterna" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarCorInterna" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnBuscarCorInterna" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroCorInterna" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnLimparBuscaCorInterna" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel14" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2053,7 +2056,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel14">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da cor interna:"/>
+                            <Property name="text" type="java.lang.String" value="Cor interna:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroCorInterna">
@@ -2220,7 +2223,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarEstilo" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane8" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane8" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel25" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -2264,7 +2267,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeEstilo" pref="577" max="32767" attributes="0"/>
+                                  <Component id="campoNomeEstilo" pref="622" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarEstilo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2273,14 +2276,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeEstilo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarEstilo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeEstilo" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarEstilo" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel15" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2288,7 +2291,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel15">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do estilo:"/>
+                            <Property name="text" type="java.lang.String" value="Estilo:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeEstilo">
@@ -2340,15 +2343,15 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroEstilo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaEstilo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarEstilo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnBuscarEstilo" max="32767" attributes="0"/>
+                                      <Component id="btnLimparBuscaEstilo" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroEstilo" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2356,7 +2359,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel16">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do estilo:"/>
+                            <Property name="text" type="java.lang.String" value="Estilo:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroEstilo">
@@ -2523,7 +2526,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarExtra" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane9" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane9" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel28" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -2567,7 +2570,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeExtra" pref="575" max="32767" attributes="0"/>
+                                  <Component id="campoNomeExtra" pref="620" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarExtra" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2576,14 +2579,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeExtra" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarExtra" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeExtra" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarExtra" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2591,7 +2594,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel17">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do extra:"/>
+                            <Property name="text" type="java.lang.String" value="Extra:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeExtra">
@@ -2643,15 +2646,15 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroExtra" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaExtra" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarExtra" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnBuscarExtra" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroExtra" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnLimparBuscaExtra" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel18" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2659,7 +2662,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel18">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome do extra:"/>
+                            <Property name="text" type="java.lang.String" value="Extra:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroExtra">
@@ -2826,7 +2829,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarSeguranca" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane10" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane10" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel31" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -2870,7 +2873,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeSeguranca" pref="527" max="32767" attributes="0"/>
+                                  <Component id="campoNomeSeguranca" pref="571" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarSeguranca" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2879,14 +2882,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeSeguranca" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarSeguranca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeSeguranca" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarSeguranca" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel19" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2894,7 +2897,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel19">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da seguran&#xe7;a:"/>
+                            <Property name="text" type="java.lang.String" value="Seguran&#xe7;a:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeSeguranca">
@@ -2948,13 +2951,13 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroSeguranca" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaSeguranca" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarSeguranca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel20" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroSeguranca" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnBuscarSeguranca" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnLimparBuscaSeguranca" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -2962,7 +2965,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel20">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da seguran&#xe7;a:"/>
+                            <Property name="text" type="java.lang.String" value="Seguran&#xe7;a:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroSeguranca">
@@ -3129,7 +3132,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="abaAdicionarTecnologia" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane11" pref="394" max="32767" attributes="0"/>
+                          <Component id="jScrollPane11" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel34" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -3173,7 +3176,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="campoNomeTecnologia" pref="529" max="32767" attributes="0"/>
+                                  <Component id="campoNomeTecnologia" pref="572" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnSalvarTecnologia" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -3182,14 +3185,14 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoNomeTecnologia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnSalvarTecnologia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="campoNomeTecnologia" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnSalvarTecnologia" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="jLabel21" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -3197,7 +3200,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel21">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da tecnologia:"/>
+                            <Property name="text" type="java.lang.String" value="Tecnologia:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoNomeTecnologia">
@@ -3251,13 +3254,13 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="campoFiltroTecnologia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnLimparBuscaTecnologia" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnBuscarTecnologia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel22" max="32767" attributes="0"/>
+                                      <Component id="btnBuscarTecnologia" max="32767" attributes="0"/>
+                                      <Component id="btnLimparBuscaTecnologia" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroTecnologia" alignment="1" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -3265,7 +3268,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="jLabel22">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Nome da tecnologia:"/>
+                            <Property name="text" type="java.lang.String" value="Tecnologia:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="campoFiltroTecnologia">
@@ -3478,7 +3481,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="abaAdicionarCidade" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane14" pref="372" max="32767" attributes="0"/>
+                              <Component id="jScrollPane14" pref="392" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel43" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -3522,11 +3525,11 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="campoNomeCidade" pref="354" max="32767" attributes="0"/>
+                                      <Component id="campoNomeCidade" min="-2" pref="360" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="comboEstadoId" min="-2" pref="215" max="-2" attributes="0"/>
+                                      <Component id="comboEstadoId" pref="252" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnSalvarCidade" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -3537,12 +3540,12 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="campoNomeCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnSalvarCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="comboEstadoId" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jLabel30" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="campoNomeCidade" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="comboEstadoId" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel27" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnSalvarCidade" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -3552,7 +3555,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabel27">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Nome da cidade:"/>
+                                <Property name="text" type="java.lang.String" value="Cidade:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="campoNomeCidade">
@@ -3612,9 +3615,9 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="campoFiltroCidade" max="32767" attributes="0"/>
+                                      <Component id="campoFiltroCidade" min="-2" pref="534" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnBuscarCidade" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -3627,23 +3630,20 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="campoFiltroCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnLimparBuscaCidade" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnBuscarCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnBuscarCidade" max="32767" attributes="0"/>
+                                          <Component id="campoFiltroCidade" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="btnLimparBuscaCidade" alignment="3" max="32767" attributes="0"/>
+                                              <Component id="jLabel32" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel28">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Nome da cidade:"/>
-                              </Properties>
-                            </Component>
                             <Component class="javax.swing.JTextField" name="campoFiltroCidade">
                             </Component>
                             <Component class="javax.swing.JButton" name="btnLimparBuscaCidade">
@@ -3667,6 +3667,11 @@
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarCidadeActionPerformed"/>
                               </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel32">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Cidade:"/>
+                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -3808,7 +3813,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="abaAdicionarEstado" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane13" pref="376" max="32767" attributes="0"/>
+                              <Component id="jScrollPane13" pref="393" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel40" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -3852,7 +3857,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="campoNomeEstado" pref="485" max="32767" attributes="0"/>
+                                      <Component id="campoNomeEstado" pref="530" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -3867,12 +3872,12 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="campoNomeEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnSalvarEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="campoUf" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jLabel25" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="campoNomeEstado" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel29" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="campoUf" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnSalvarEstado" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -3882,7 +3887,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabel25">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Nome do estado:"/>
+                                <Property name="text" type="java.lang.String" value="Estado:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="campoNomeEstado">
@@ -3943,13 +3948,13 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="campoFiltroEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnLimparBuscaEstado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnBuscarEstado" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel26" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="campoFiltroEstado" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="btnBuscarEstado" max="32767" attributes="0"/>
+                                          <Component id="btnLimparBuscaEstado" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -3957,7 +3962,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabel26">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Nome do estado:"/>
+                                <Property name="text" type="java.lang.String" value="Estado:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="campoFiltroEstado">
@@ -4124,7 +4129,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="abaAdicionarPerfil" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane12" pref="372" max="32767" attributes="0"/>
+                              <Component id="jScrollPane12" pref="393" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jPanel37" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -4166,9 +4171,9 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="campoNomePerfil" pref="628" max="32767" attributes="0"/>
+                                      <Component id="campoNomePerfil" pref="673" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnSalvarPerfil" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
@@ -4177,24 +4182,19 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="campoNomePerfil" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnSalvarPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel31" max="32767" attributes="0"/>
+                                          <Component id="campoNomePerfil" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnSalvarPerfil" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel23">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Nome do perfil:"/>
-                              </Properties>
-                            </Component>
                             <Component class="javax.swing.JTextField" name="campoNomePerfil">
                             </Component>
                             <Component class="javax.swing.JButton" name="btnSalvarPerfil">
@@ -4207,6 +4207,11 @@
                               <Events>
                                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarPerfilActionPerformed"/>
                               </Events>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel31">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Perfil:"/>
+                              </Properties>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -4246,11 +4251,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="campoFiltroPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnLimparBuscaPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnBuscarPerfil" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jLabel24" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="campoFiltroPerfil" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnBuscarPerfil" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="btnLimparBuscaPerfil" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
@@ -4260,7 +4265,7 @@
                           <SubComponents>
                             <Component class="javax.swing.JLabel" name="jLabel24">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="Nome do perfil:"/>
+                                <Property name="text" type="java.lang.String" value="Perfil:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="campoFiltroPerfil">
