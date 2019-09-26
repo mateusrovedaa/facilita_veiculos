@@ -63,5 +63,6 @@ Contributor(s):
     <mapping class="entidade.Seguranca"/>
     <mapping class="entidade.Tecnologia"/>
     <mapping class="entidade.Perfil"/>
+    <mapping class="entidade.Modelo"/>
   </session-factory>
 </hibernate-configuration>
