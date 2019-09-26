@@ -1,12 +1,7 @@
 package tela;
 
-import dao.DaoGenerico;
 import dao.MarcaDao;
-import entidade.Marca;
-import entidade.Modelo;
-import functions.Funcoes;
 import functions.GerenciarJanelas;
-import java.util.Calendar;
 import javax.swing.JDesktopPane;
 
 public class TelaInicio extends javax.swing.JFrame {
@@ -41,7 +36,6 @@ public class TelaInicio extends javax.swing.JFrame {
         dktGeral = new javax.swing.JDesktopPane();
         btnMarcas = new javax.swing.JButton();
         btnCGerais = new javax.swing.JButton();
-        btnCGerais1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,16 +55,8 @@ public class TelaInicio extends javax.swing.JFrame {
             }
         });
 
-        btnCGerais1.setText("Cadastro Modelo");
-        btnCGerais1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCGerais1ActionPerformed(evt);
-            }
-        });
-
         dktGeral.setLayer(btnMarcas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktGeral.setLayer(btnCGerais, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dktGeral.setLayer(btnCGerais1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dktGeralLayout = new javax.swing.GroupLayout(dktGeral);
         dktGeral.setLayout(dktGeralLayout);
@@ -78,8 +64,7 @@ public class TelaInicio extends javax.swing.JFrame {
             dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dktGeralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnCGerais1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnMarcas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCGerais, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
                 .addContainerGap(253, Short.MAX_VALUE))
@@ -94,9 +79,7 @@ public class TelaInicio extends javax.swing.JFrame {
                 .addComponent(btnMarcas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCGerais)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCGerais1)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         dktGeralLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCGerais, btnMarcas});
@@ -138,30 +121,6 @@ public class TelaInicio extends javax.swing.JFrame {
 //        geral.setVisible(true);
     }//GEN-LAST:event_btnCGeraisActionPerformed
 
-    private void btnCGerais1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCGerais1ActionPerformed
-        Modelo modelo = new Modelo();
-        Marca marca = new Marca();
-        
-        marca.setId(5);
-        marca.setNome("teste");
-        marca.setSlug(Funcoes.textoIdentificador("teste"));
-        marca.setCriadoEm(Calendar.getInstance());
-        marca.setAlteradoEm(Calendar.getInstance());
-        
-        boolean retornoSalvarM = false;
-        retornoSalvarM = DaoGenerico.getInstance().inserir(marca);
-        
-        modelo.setId(1);
-        modelo.setNome("teste");
-        modelo.setSlug("teste");
-        modelo.setCriadoEm(Calendar.getInstance());
-        modelo.setAlteradoEm(Calendar.getInstance());
-        modelo.setMarca(marca);
-        
-        boolean retornoSalvarMarca = false;
-        retornoSalvarMarca = DaoGenerico.getInstance().inserir(modelo);
-    }//GEN-LAST:event_btnCGerais1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -199,7 +158,6 @@ public class TelaInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCGerais;
-    private javax.swing.JButton btnCGerais1;
     private javax.swing.JButton btnMarcas;
     private javax.swing.JDesktopPane dktGeral;
     // End of variables declaration//GEN-END:variables
