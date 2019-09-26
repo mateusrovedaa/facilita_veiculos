@@ -1,7 +1,6 @@
 package tela;
 
 import dao.MarcaDao;
-import functions.Funcoes;
 import functions.GerenciarJanelas;
 import javax.swing.JDesktopPane;
 
@@ -80,7 +79,7 @@ public class TelaInicio extends javax.swing.JFrame {
                 .addComponent(btnMarcas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCGerais)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         dktGeralLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCGerais, btnMarcas});

@@ -1,17 +1,22 @@
 package entidade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "marcas")
@@ -39,6 +44,10 @@ public class Marca implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar alteradoEm;
 
+    @OneToMany()
+    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+    private List<Modelo> modelo = new ArrayList<Modelo>();
+
     public Marca() {
     }
 
@@ -49,7 +58,7 @@ public class Marca implements Serializable {
         this.criadoEm = marca.criadoEm;
         this.alteradoEm = marca.alteradoEm;
     }
-    
+
     public Marca(int id) {
         this.id = id;
     }
