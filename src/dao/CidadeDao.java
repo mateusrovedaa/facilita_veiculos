@@ -79,9 +79,10 @@ public class CidadeDao implements IDAO_T<Cidade> {
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[2];
+        Object[] cabecalho = new Object[3];
         cabecalho[0] = "Código";
         cabecalho[1] = "Nome";
+        cabecalho[2] = "Estado";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
@@ -91,7 +92,7 @@ public class CidadeDao implements IDAO_T<Cidade> {
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][2];
+            dadosTabela = new Object[resultadoQ.getInt(1)][3];
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar cidades: " + e);

@@ -64,5 +64,7 @@ Contributor(s):
     <mapping class="entidade.Tecnologia"/>
     <mapping class="entidade.Perfil"/>
     <mapping class="entidade.Modelo"/>
+    <mapping class="entidade.Estado"/>
+    <mapping class="entidade.Cidade"/>
   </session-factory>
 </hibernate-configuration>

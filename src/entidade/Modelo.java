@@ -31,15 +31,15 @@ public class Modelo {
 
     @JoinColumn(name = "marca_id")
     @ManyToOne(cascade = CascadeType.ALL)
-    private Marca marca;
+    private Marca marca_id;
 
     @JoinColumn(name = "procedencia_id")
     @ManyToOne(cascade = CascadeType.ALL)
-    private Procedencia procedencia;
+    private Procedencia procedencia_id;
 
     @JoinColumn(name = "carroceria_id")
     @ManyToOne(cascade = CascadeType.ALL)
-    private Carroceria carroceria;
+    private Carroceria carroceria_id;
 
     @Column(name = "nome", length = 100, nullable = false)
     private String nome;
@@ -69,9 +69,9 @@ public class Modelo {
 
     public Modelo(Modelo modelo) {
         this.id = modelo.id;
-        this.marca = modelo.marca;
-        this.procedencia = modelo.procedencia;
-        this.carroceria = modelo.carroceria;
+        this.marca_id = modelo.marca_id;
+        this.procedencia_id = modelo.procedencia_id;
+        this.carroceria_id = modelo.carroceria_id;
         this.nome = modelo.nome;
         this.slug = modelo.slug;
         this.comprimento = modelo.comprimento;
@@ -89,36 +89,28 @@ public class Modelo {
         this.id = id;
     }
 
-    public Marca getMarcaId() {
-        return marca;
+    public Marca getMarca_id() {
+        return marca_id;
     }
 
-    public void setMarcaId(Marca marca) {
-        this.marca = marca;
+    public void setMarca_id(Marca marca_id) {
+        this.marca_id = marca_id;
     }
 
-    public Marca getMarca() {
-        return marca;
+    public Procedencia getProcedencia_id() {
+        return procedencia_id;
     }
 
-    public void setMarca(Marca marca) {
-        this.marca = marca;
+    public void setProcedencia_id(Procedencia procedencia_id) {
+        this.procedencia_id = procedencia_id;
     }
 
-    public Procedencia getProcedencia() {
-        return procedencia;
+    public Carroceria getCarroceria_id() {
+        return carroceria_id;
     }
 
-    public void setProcedencia(Procedencia procedencia) {
-        this.procedencia = procedencia;
-    }
-
-    public Carroceria getCarroceria() {
-        return carroceria;
-    }
-
-    public void setCarroceria(Carroceria carroceria) {
-        this.carroceria = carroceria;
+    public void setCarroceria_id(Carroceria carroceria_id) {
+        this.carroceria_id = carroceria_id;
     }
 
     public String getNome() {

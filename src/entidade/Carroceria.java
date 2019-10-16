@@ -43,9 +43,9 @@ public class Carroceria implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar alteradoEm;
 
-    @OneToMany()
-    @Cascade({org.hibernate.annotations.CascadeType.ALL})
-    private List<Modelo> modelo = new ArrayList<Modelo>();
+//    @OneToMany()
+//    @Cascade({org.hibernate.annotations.CascadeType.ALL})
+//    private List<Modelo> modelo = new ArrayList<Modelo>();
 
     public Carroceria() {
     }
