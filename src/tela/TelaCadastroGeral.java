@@ -56,8 +56,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
         new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
         new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
-        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
         new ComboDao().popularCombo("estados", 1, 4, comboEstadoId, "");
+        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
     }
 
     public static TelaCadastroGeral getInstancia() {
