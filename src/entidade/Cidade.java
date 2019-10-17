@@ -3,11 +3,14 @@ package entidade;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,6 +27,10 @@ public class Cidade implements Serializable {
 
     @Column(name = "id", nullable = false)
     private int id;
+    
+    @JoinColumn(name = "estado_id")
+    @ManyToOne
+    private Estado estado_id;
 
     @Column(name = "nome", length = 200, nullable = false, unique = true)
     private String nome;
@@ -44,6 +51,7 @@ public class Cidade implements Serializable {
 
     public Cidade(Cidade cidade) {
         this.id = cidade.id;
+        this.estado_id = cidade.estado_id;
         this.nome = cidade.nome;
         this.slug = cidade.slug;
         this.criadoEm = cidade.criadoEm;
@@ -60,6 +68,14 @@ public class Cidade implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Estado getEstado_id() {
+        return estado_id;
+    }
+
+    public void setEstado_id(Estado estado_id) {
+        this.estado_id = estado_id;
     }
 
     public String getNome() {

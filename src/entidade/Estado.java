@@ -48,6 +48,7 @@ public class Estado implements Serializable {
     public Estado(Estado estado) {
         this.id = estado.id;
         this.nome = estado.nome;
+        this.uf = estado.uf;
         this.slug = estado.slug;
         this.criadoEm = estado.criadoEm;
         this.alteradoEm = estado.alteradoEm;

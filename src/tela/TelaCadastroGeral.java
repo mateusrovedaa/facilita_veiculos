@@ -4,6 +4,7 @@ import dao.AcabamentoInternoDao;
 import dao.CambioDao;
 import dao.CarroceriaDao;
 import dao.CidadeDao;
+import dao.ComboDao;
 import dao.CombustivelDao;
 import dao.ConfortoDao;
 import dao.CorExternaDao;
@@ -29,6 +30,7 @@ import entidade.Extra;
 import entidade.Perfil;
 import entidade.Seguranca;
 import entidade.Tecnologia;
+import functions.ComboItem;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
@@ -53,8 +55,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
         new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
         new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
-        //new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
-        //new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+        new ComboDao().popularCombo("estados", 1, 4, comboEstadoId, "");
+        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
     }
 
     public static TelaCadastroGeral getInstancia() {
@@ -2711,11 +2714,14 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditarEstado)
-                    .addComponent(btnExcluirEstado)
-                    .addComponent(btnFecharEstado))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEditarEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel40Layout.createSequentialGroup()
+                        .addGroup(jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnExcluirEstado)
+                            .addComponent(btnFecharEstado))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout PainelEstadoLayout = new javax.swing.GroupLayout(PainelEstado);
@@ -4137,6 +4143,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         estado.setId(codigo);
         estado.setNome(campoNomeEstado.getText());
         estado.setSlug(Funcoes.textoIdentificador(campoNomeEstado.getText()));
+        estado.setUf(campoUf.getText());
         estado.setCriadoEm(Calendar.getInstance());
         estado.setAlteradoEm(Calendar.getInstance());
 
@@ -4158,6 +4165,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             Mensagem.informacao("Estado salvo com sucesso!", this);
 
             campoNomeEstado.setText("");
+            campoUf.setText("");
 
             campoNomeEstado.requestFocus();
 
@@ -4166,6 +4174,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             codigo = 0;
 
             new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+            new ComboDao().popularCombo("estados", 1, 4, comboEstadoId, "");
         } else {
             if (erroEstado != null) {
                 Mensagem.aviso("Estado " + campoNomeEstado.getText() + " já existe cadastrado!", this);
@@ -4198,6 +4207,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarEstado.setSelectedIndex(0);
 
             campoNomeEstado.setText(estado.getNome());
+            campoUf.setText(estado.getUf());
 
             campoNomeEstado.requestFocus();
 
@@ -4218,6 +4228,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             if (retornoExcluirEstado == true) {
                 Mensagem.informacao("Estado excluído com sucesso!", this);
                 new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+                new ComboDao().popularCombo("estados", 1, 4, comboEstadoId, "");
             } else {
                 Mensagem.erro(tblEstado.getValueAt(tblEstado.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -4231,7 +4242,13 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     private void btnSalvarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCidadeActionPerformed
         Cidade cidade = new Cidade();
 
+        ComboItem estadoId = (ComboItem) comboEstadoId.getSelectedItem();
+
+        Object object = DaoGenerico.getInstance().obterPorId(Estado.class, estadoId.getCodigo());
+        Estado estado = new Estado((Estado) object);
+
         cidade.setId(codigo);
+        cidade.setEstado_id(estado);
         cidade.setNome(campoNomeCidade.getText());
         cidade.setSlug(Funcoes.textoIdentificador(campoNomeCidade.getText()));
         cidade.setCriadoEm(Calendar.getInstance());
@@ -4255,6 +4272,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             Mensagem.informacao("Cidade salva com sucesso!", this);
 
             campoNomeCidade.setText("");
+            comboEstadoId.setSelectedIndex(0);
 
             campoNomeCidade.requestFocus();
 
@@ -4290,11 +4308,14 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
         Object object = DaoGenerico.getInstance().obterPorId(Cidade.class, Integer.parseInt(codigoEditarCidade));
         Cidade cidade = new Cidade((Cidade) object);
-
+        
+        ComboItem estadoId = new ComboItem();
+        estadoId.setCodigo(cidade.getEstado_id().getId());
         if (cidade != null) {
             abaAdicionarCidade.setSelectedIndex(0);
 
             campoNomeCidade.setText(cidade.getNome());
+            new ComboDao().definirItemCombo(comboEstadoId, estadoId);
 
             campoNomeCidade.requestFocus();
 
@@ -4307,7 +4328,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnExcluirCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCidadeActionPerformed
         int codigoExcluirCidade = (int) tblCidade.getValueAt(tblCidade.getSelectedRow(), 0);
-
+        System.out.println(codigoExcluirCidade);
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
         if (mensagem == 0) {
             boolean retornoExcluirCidade = DaoGenerico.getInstance().excluir(Cidade.class, codigoExcluirCidade);

@@ -1,9 +1,7 @@
 package dao;
 
 import entidade.Cidade;
-import static facilitaveiculos.FacilitaVeiculos.conexao;
 import functions.ConexaoBD;
-import functions.Formatacao;
 import functions.IDAO_T;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -21,17 +19,17 @@ public class CidadeDao implements IDAO_T<Cidade> {
 
     @Override
     public String salvar(Cidade o) {
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String atualizar(Cidade o) {
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String excluir(int id) {
-        return null;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -79,22 +77,23 @@ public class CidadeDao implements IDAO_T<Cidade> {
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[2];
+        Object[] cabecalho = new Object[3];
         cabecalho[0] = "Código";
         cabecalho[1] = "Nome";
+        cabecalho[2] = "Estado";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT count(*) FROM cidades AS c WHERE c.NOME ILIKE '%" + criterio + "%' AND "
-                    + "c.id IN (SELECT id FROM cidades WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "id IN (SELECT id FROM cidades WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][2];
+            dadosTabela = new Object[resultadoQ.getInt(1)][3];
 
         } catch (Exception e) {
-            System.out.println("Erro ao consultar cidades: " + e);
+            System.out.println("Erro ao consultar cidade: " + e);
         }
 
         int lin = 0;
@@ -102,17 +101,19 @@ public class CidadeDao implements IDAO_T<Cidade> {
         // efetua consulta na tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT * FROM cidades "
+                    + "SELECT c.id, c.nome, e.nome AS estado FROM cidades AS c "
+                    + "INNER JOIN estados AS e "
+                    + "ON c.estado_id = e.id "
                     + "WHERE "
-                    + "NOME ILIKE '%" + criterio + "%' "
-                    + "ORDER BY CRIADO_EM DESC "
+                    + "c.NOME ILIKE '%" + criterio + "%' "
+                    + "ORDER BY c.CRIADO_EM DESC "
                     + "LIMIT 50");
 
             while (resultadoQ.next()) {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
                 dadosTabela[lin][1] = resultadoQ.getString("nome");
-
+                dadosTabela[lin][2] = resultadoQ.getString("estado");
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {
 //                    dadosTabela[lin][2] = new ImageIcon(getClass().getClassLoader().getResource("Interface/imagens/status_ativo.png"));
