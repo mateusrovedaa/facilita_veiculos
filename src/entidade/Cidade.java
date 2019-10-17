@@ -29,7 +29,7 @@ public class Cidade implements Serializable {
     private int id;
     
     @JoinColumn(name = "estado_id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Estado estado_id;
 
     @Column(name = "nome", length = 200, nullable = false, unique = true)

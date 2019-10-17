@@ -30,7 +30,7 @@ public class Modelo {
     private int id;
 
     @JoinColumn(name = "marca_id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Marca marca_id;
 
     @JoinColumn(name = "procedencia_id")

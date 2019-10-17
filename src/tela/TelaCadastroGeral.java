@@ -4308,11 +4308,14 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
         Object object = DaoGenerico.getInstance().obterPorId(Cidade.class, Integer.parseInt(codigoEditarCidade));
         Cidade cidade = new Cidade((Cidade) object);
-
+        
+        ComboItem estadoId = new ComboItem();
+        estadoId.setCodigo(cidade.getEstado_id().getId());
         if (cidade != null) {
             abaAdicionarCidade.setSelectedIndex(0);
 
             campoNomeCidade.setText(cidade.getNome());
+            new ComboDao().definirItemCombo(comboEstadoId, estadoId);
 
             campoNomeCidade.requestFocus();
 
@@ -4325,7 +4328,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnExcluirCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCidadeActionPerformed
         int codigoExcluirCidade = (int) tblCidade.getValueAt(tblCidade.getSelectedRow(), 0);
-
+        System.out.println(codigoExcluirCidade);
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
         if (mensagem == 0) {
             boolean retornoExcluirCidade = DaoGenerico.getInstance().excluir(Cidade.class, codigoExcluirCidade);

@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 public class CidadeDao implements IDAO_T<Cidade> {
-    
+
     ResultSet resultadoQ = null;
     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
@@ -86,7 +86,7 @@ public class CidadeDao implements IDAO_T<Cidade> {
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT count(*) FROM cidades AS c WHERE c.NOME ILIKE '%" + criterio + "%' AND "
-                    + "c.id IN (SELECT id FROM estados WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "id IN (SELECT id FROM cidades WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
 
             resultadoQ.next();
 
@@ -101,12 +101,12 @@ public class CidadeDao implements IDAO_T<Cidade> {
         // efetua consulta na tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT c.id, c.nome, e.nome AS estado FROM cidades AS c"
+                    + "SELECT c.id, c.nome, e.nome AS estado FROM cidades AS c "
                     + "INNER JOIN estados AS e "
                     + "ON c.estado_id = e.id "
                     + "WHERE "
-                    + "NOME ILIKE '%" + criterio + "%' "
-                    + "ORDER BY CRIADO_EM DESC "
+                    + "c.NOME ILIKE '%" + criterio + "%' "
+                    + "ORDER BY c.CRIADO_EM DESC "
                     + "LIMIT 50");
 
             while (resultadoQ.next()) {
@@ -114,7 +114,6 @@ public class CidadeDao implements IDAO_T<Cidade> {
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
                 dadosTabela[lin][1] = resultadoQ.getString("nome");
                 dadosTabela[lin][2] = resultadoQ.getString("estado");
-
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {
 //                    dadosTabela[lin][2] = new ImageIcon(getClass().getClassLoader().getResource("Interface/imagens/status_ativo.png"));
