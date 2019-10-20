@@ -34,7 +34,10 @@ import functions.ComboItem;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import java.awt.Dimension;
 import java.util.Calendar;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
@@ -43,6 +46,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     public TelaCadastroGeral() {
         initComponents();
+        setaTbnInfos();
         new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
         new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
         new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
@@ -65,6 +69,59 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             tela = new TelaCadastroGeral();
         }
         return tela;
+    }
+
+    private void setaTbnInfos() {
+        //seta os textos de cada aba
+        JLabel lab1 = new JLabel("Acabamentos internos", SwingConstants.CENTER);
+        JLabel lab2 = new JLabel("Câmbios", SwingConstants.CENTER);
+        JLabel lab3 = new JLabel("Carrocerias", SwingConstants.CENTER);
+        JLabel lab4 = new JLabel("Combustíveis", SwingConstants.CENTER);
+        JLabel lab5 = new JLabel("Confortos", SwingConstants.CENTER);
+        JLabel lab6 = new JLabel("Cores externas", SwingConstants.CENTER);
+        JLabel lab7 = new JLabel("Cores internas", SwingConstants.CENTER);
+        JLabel lab8 = new JLabel("Estilos", SwingConstants.CENTER);
+        JLabel lab9 = new JLabel("Extras", SwingConstants.CENTER);
+        JLabel lab10 = new JLabel("Seguranças", SwingConstants.CENTER);
+        JLabel lab11 = new JLabel("Tecnologias", SwingConstants.CENTER);
+        JLabel lab12 = new JLabel("Cidades", SwingConstants.CENTER);
+        JLabel lab13 = new JLabel("Estados", SwingConstants.CENTER);
+        JLabel lab14 = new JLabel("Perfis", SwingConstants.CENTER);
+
+        //seta o tamanho das abas
+        int largura = 155;
+        int altura = 45;
+        lab1.setPreferredSize(new Dimension(largura, altura));
+        lab2.setPreferredSize(new Dimension(largura, altura));
+        lab3.setPreferredSize(new Dimension(largura, altura));
+        lab4.setPreferredSize(new Dimension(largura, altura));
+        lab5.setPreferredSize(new Dimension(largura, altura));
+        lab6.setPreferredSize(new Dimension(largura, altura));
+        lab7.setPreferredSize(new Dimension(largura, altura));
+        lab8.setPreferredSize(new Dimension(largura, altura));
+        lab9.setPreferredSize(new Dimension(largura, altura));
+        lab10.setPreferredSize(new Dimension(largura, altura));
+        lab11.setPreferredSize(new Dimension(largura, altura));
+        lab12.setPreferredSize(new Dimension(largura, altura));
+        lab13.setPreferredSize(new Dimension(largura, altura));
+        lab14.setPreferredSize(new Dimension(largura, altura));
+
+        //coloca as abas no jTabbedPane
+        abaAcabamentoInterno.setTabComponentAt(0, lab1);  // tab 1, Acabamentos internos
+        abaAcabamentoInterno.setTabComponentAt(1, lab2);  // tab 2, Câmbios
+        abaAcabamentoInterno.setTabComponentAt(2, lab3);  // tab 3, Carrocerias
+        abaAcabamentoInterno.setTabComponentAt(3, lab4);  // tab 4, Combustíveis
+        abaAcabamentoInterno.setTabComponentAt(4, lab5);  // tab 5, Confortos
+        abaAcabamentoInterno.setTabComponentAt(5, lab6);  // tab 6, Cores externas
+        abaAcabamentoInterno.setTabComponentAt(6, lab7);  // tab 7, Cores internas
+        abaAcabamentoInterno.setTabComponentAt(7, lab8);  // tab 8, Estilos
+        abaAcabamentoInterno.setTabComponentAt(8, lab9);  // tab 9, Extras
+        abaAcabamentoInterno.setTabComponentAt(9, lab10);  // tab 10, Seguranças
+        abaAcabamentoInterno.setTabComponentAt(10, lab11);  // tab 11, Tecnologias
+        abaPerfil.setTabComponentAt(0, lab12);  // tab 11, Cidades
+        abaPerfil.setTabComponentAt(1, lab13);  // tab 11, Estados
+        abaPerfil.setTabComponentAt(2, lab14);  // tab 11, Perfis
+
     }
 
     private void funcaoFechar() {
@@ -4308,7 +4365,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
         Object object = DaoGenerico.getInstance().obterPorId(Cidade.class, Integer.parseInt(codigoEditarCidade));
         Cidade cidade = new Cidade((Cidade) object);
-        
+
         ComboItem estadoId = new ComboItem();
         estadoId.setCodigo(cidade.getEstado_id().getId());
         if (cidade != null) {
