@@ -599,7 +599,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             } else {
                 retornoSalvarModelo = DaoGenerico.getInstance().atualizar(modelo);
             }
-            Mensagem.confirmacao("Modelo salvo com sucesso!", this);
+            Mensagem.informacao("Modelo salvo com sucesso!", this);
         } else {
             Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
