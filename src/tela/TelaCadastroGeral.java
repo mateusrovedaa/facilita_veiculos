@@ -34,7 +34,10 @@ import functions.ComboItem;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import java.awt.Dimension;
 import java.util.Calendar;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
@@ -43,6 +46,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     public TelaCadastroGeral() {
         initComponents();
+        setaTbnInfos();
         new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
         new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
         new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
@@ -65,6 +69,59 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             tela = new TelaCadastroGeral();
         }
         return tela;
+    }
+
+    private void setaTbnInfos() {
+        //seta os textos de cada aba
+        JLabel lab1 = new JLabel("Acabamentos internos", SwingConstants.CENTER);
+        JLabel lab2 = new JLabel("Câmbios", SwingConstants.CENTER);
+        JLabel lab3 = new JLabel("Carrocerias", SwingConstants.CENTER);
+        JLabel lab4 = new JLabel("Combustíveis", SwingConstants.CENTER);
+        JLabel lab5 = new JLabel("Confortos", SwingConstants.CENTER);
+        JLabel lab6 = new JLabel("Cores externas", SwingConstants.CENTER);
+        JLabel lab7 = new JLabel("Cores internas", SwingConstants.CENTER);
+        JLabel lab8 = new JLabel("Estilos", SwingConstants.CENTER);
+        JLabel lab9 = new JLabel("Extras", SwingConstants.CENTER);
+        JLabel lab10 = new JLabel("Seguranças", SwingConstants.CENTER);
+        JLabel lab11 = new JLabel("Tecnologias", SwingConstants.CENTER);
+        JLabel lab12 = new JLabel("Cidades", SwingConstants.CENTER);
+        JLabel lab13 = new JLabel("Estados", SwingConstants.CENTER);
+        JLabel lab14 = new JLabel("Perfis", SwingConstants.CENTER);
+
+        //seta o tamanho das abas
+        int largura = 160;
+        int altura = 45;
+        lab1.setPreferredSize(new Dimension(largura, altura));
+        lab2.setPreferredSize(new Dimension(largura, altura));
+        lab3.setPreferredSize(new Dimension(largura, altura));
+        lab4.setPreferredSize(new Dimension(largura, altura));
+        lab5.setPreferredSize(new Dimension(largura, altura));
+        lab6.setPreferredSize(new Dimension(largura, altura));
+        lab7.setPreferredSize(new Dimension(largura, altura));
+        lab8.setPreferredSize(new Dimension(largura, altura));
+        lab9.setPreferredSize(new Dimension(largura, altura));
+        lab10.setPreferredSize(new Dimension(largura, altura));
+        lab11.setPreferredSize(new Dimension(largura, altura));
+        lab12.setPreferredSize(new Dimension(largura, altura));
+        lab13.setPreferredSize(new Dimension(largura, altura));
+        lab14.setPreferredSize(new Dimension(largura, altura));
+
+        //coloca as abas no jTabbedPane
+        abaAcabamentoInterno.setTabComponentAt(0, lab1);  // tab 1, Acabamentos internos
+        abaAcabamentoInterno.setTabComponentAt(1, lab2);  // tab 2, Câmbios
+        abaAcabamentoInterno.setTabComponentAt(2, lab3);  // tab 3, Carrocerias
+        abaAcabamentoInterno.setTabComponentAt(3, lab4);  // tab 4, Combustíveis
+        abaAcabamentoInterno.setTabComponentAt(4, lab5);  // tab 5, Confortos
+        abaAcabamentoInterno.setTabComponentAt(5, lab6);  // tab 6, Cores externas
+        abaAcabamentoInterno.setTabComponentAt(6, lab7);  // tab 7, Cores internas
+        abaAcabamentoInterno.setTabComponentAt(7, lab8);  // tab 8, Estilos
+        abaAcabamentoInterno.setTabComponentAt(8, lab9);  // tab 9, Extras
+        abaAcabamentoInterno.setTabComponentAt(9, lab10);  // tab 10, Seguranças
+        abaAcabamentoInterno.setTabComponentAt(10, lab11);  // tab 11, Tecnologias
+        abaPerfil.setTabComponentAt(0, lab12);  // tab 11, Cidades
+        abaPerfil.setTabComponentAt(1, lab13);  // tab 11, Estados
+        abaPerfil.setTabComponentAt(2, lab14);  // tab 11, Perfis
+
     }
 
     private void funcaoFechar() {
@@ -265,7 +322,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         btnEditarTecnologia = new javax.swing.JButton();
         btnExcluirTecnologia = new javax.swing.JButton();
         btnFecharTecnologia = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         abaPerfil = new javax.swing.JTabbedPane();
         PainelCidade = new javax.swing.JPanel();
         abaAdicionarCidade = new javax.swing.JTabbedPane();
@@ -306,7 +362,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         btnExcluirEstado = new javax.swing.JButton();
         btnFecharEstado = new javax.swing.JButton();
         PainelPerfil = new javax.swing.JPanel();
-        abaAdicionarPerfil2 = new javax.swing.JTabbedPane();
+        abaAdicionarPerfil = new javax.swing.JTabbedPane();
         jPanel35 = new javax.swing.JPanel();
         campoNomePerfil = new javax.swing.JTextField();
         btnSalvarPerfil = new javax.swing.JButton();
@@ -353,7 +409,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeAcabamentoInterno, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+                .addComponent(campoNomeAcabamentoInterno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarAcabamentoInterno)
                 .addContainerGap())
@@ -399,11 +455,11 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoFiltroAcabamentoInterno, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                .addComponent(campoFiltroAcabamentoInterno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarAcabamentoInterno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLimparBuscaAcabamentoInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLimparBuscaAcabamentoInterno)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -493,18 +549,18 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             .addGroup(PainelAcabamentoInternoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelAcabamentoInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(abaAdicionarAcabamentoInterno)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 935, Short.MAX_VALUE)
+                    .addComponent(abaAdicionarAcabamentoInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PainelAcabamentoInternoLayout.setVerticalGroup(
             PainelAcabamentoInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelAcabamentoInternoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abaAdicionarAcabamentoInterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(abaAdicionarAcabamentoInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -537,7 +593,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+                .addComponent(campoNomeCambio, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarCambio)
                 .addContainerGap())
@@ -690,7 +746,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -723,7 +779,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeCarroceria, javax.swing.GroupLayout.DEFAULT_SIZE, 582, Short.MAX_VALUE)
+                .addComponent(campoNomeCarroceria, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarCarroceria)
                 .addContainerGap())
@@ -874,7 +930,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarCarroceria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -907,7 +963,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeCombustivel, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                .addComponent(campoNomeCombustivel, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarCombustivel)
                 .addContainerGap())
@@ -1058,7 +1114,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarCombustivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1091,7 +1147,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeConforto, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+                .addComponent(campoNomeConforto, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarConforto)
                 .addContainerGap())
@@ -1242,7 +1298,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarConforto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1275,7 +1331,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeCorExterna, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                .addComponent(campoNomeCorExterna, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarCorExterna)
                 .addContainerGap())
@@ -1426,7 +1482,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarCorExterna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1459,7 +1515,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeCorInterna, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
+                .addComponent(campoNomeCorInterna, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarCorInterna)
                 .addContainerGap())
@@ -1610,7 +1666,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarCorInterna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1643,7 +1699,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeEstilo, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE)
+                .addComponent(campoNomeEstilo, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarEstilo)
                 .addContainerGap())
@@ -1794,7 +1850,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1827,7 +1883,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeExtra, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addComponent(campoNomeExtra, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarExtra)
                 .addContainerGap())
@@ -1978,7 +2034,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2011,7 +2067,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeSeguranca, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                .addComponent(campoNomeSeguranca, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarSeguranca)
                 .addContainerGap())
@@ -2162,7 +2218,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarSeguranca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2195,7 +2251,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeTecnologia, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                .addComponent(campoNomeTecnologia, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarTecnologia)
                 .addContainerGap())
@@ -2346,7 +2402,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarTecnologia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2356,8 +2412,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
         abaVeiculo.addTab("Veículos", abaAcabamentoInterno);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
+        abaPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         abaPerfil.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         PainelCidade.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -2389,12 +2444,12 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboEstadoId, 0, 280, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboEstadoId, 0, 321, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalvarCidade)
                 .addContainerGap())
         );
@@ -2402,13 +2457,19 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel41Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(comboEstadoId, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSalvarCidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoNomeCidade, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSalvarCidade)
+                    .addComponent(comboEstadoId)
+                    .addComponent(campoNomeCidade))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel41Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+            .addGroup(jPanel41Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
 
         abaAdicionarCidade.addTab("Cadastrar ou editar cidade", jPanel41);
@@ -2536,18 +2597,18 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             .addGroup(PainelCidadeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelCidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane14)
-                    .addComponent(jPanel43, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(abaAdicionarCidade))
+                    .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE)
+                    .addComponent(jPanel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(abaAdicionarCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PainelCidadeLayout.setVerticalGroup(
             PainelCidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelCidadeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abaAdicionarCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(abaAdicionarCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+                .addComponent(jScrollPane14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2582,7 +2643,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE)
+                .addComponent(campoNomeEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2595,13 +2656,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoNomeEstado, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoUf, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvarEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(campoNomeEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                    .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnSalvarEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(campoUf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         abaAdicionarEstado.addTab("Cadastrar ou editar estado", jPanel38);
@@ -2647,9 +2710,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoFiltroEstado, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnBuscarEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLimparBuscaEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLimparBuscaEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoFiltroEstado))
                 .addContainerGap())
         );
 
@@ -2731,18 +2794,18 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             .addGroup(PainelEstadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(abaAdicionarEstado)
-                    .addComponent(jScrollPane13, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane13)
+                    .addComponent(abaAdicionarEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PainelEstadoLayout.setVerticalGroup(
             PainelEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelEstadoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abaAdicionarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(abaAdicionarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2752,8 +2815,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
         PainelPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        abaAdicionarPerfil2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        abaAdicionarPerfil2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        abaAdicionarPerfil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        abaAdicionarPerfil.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         jPanel35.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -2775,7 +2838,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomePerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+                .addComponent(campoNomePerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarPerfil)
                 .addContainerGap())
@@ -2791,7 +2854,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        abaAdicionarPerfil2.addTab("Cadastrar ou editar perfil", jPanel35);
+        abaAdicionarPerfil.addTab("Cadastrar ou editar perfil", jPanel35);
 
         jPanel36.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -2840,7 +2903,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        abaAdicionarPerfil2.addTab("Pesquisar perfil", jPanel36);
+        abaAdicionarPerfil.addTab("Pesquisar perfil", jPanel36);
 
         tblPerfil.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2915,18 +2978,18 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelPerfilLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(abaAdicionarPerfil2)
                     .addComponent(jPanel37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane12))
+                    .addComponent(jScrollPane12)
+                    .addComponent(abaAdicionarPerfil, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
         PainelPerfilLayout.setVerticalGroup(
             PainelPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelPerfilLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abaAdicionarPerfil2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(abaAdicionarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2934,18 +2997,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
         abaPerfil.addTab("Perfis", PainelPerfil);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(abaPerfil)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(abaPerfil)
-        );
-
-        abaVeiculo.addTab("Pessoal", jPanel1);
+        abaVeiculo.addTab("Pessoal", abaPerfil);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2953,68 +3005,1086 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abaVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 1084, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(abaVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 1145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abaVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(abaVeiculo)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFecharPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharPerfilActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharPerfilActionPerformed
+    private void btnSalvarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAcabamentoInternoActionPerformed
+        AcabamentoInterno acabamentoInterno = new AcabamentoInterno();
 
-    private void btnExcluirPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPerfilActionPerformed
-        int codigoExcluirPerfil = (int) tblPerfil.getValueAt(tblPerfil.getSelectedRow(), 0);
+        acabamentoInterno.setId(codigo);
+        acabamentoInterno.setNome(campoNomeAcabamentoInterno.getText());
+        acabamentoInterno.setSlug(Funcoes.textoIdentificador(campoNomeAcabamentoInterno.getText()));
+        acabamentoInterno.setCriadoEm(Calendar.getInstance());
+        acabamentoInterno.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarAcabamentoInterno = false;
+        String erroAcabamentoInterno = "";
+
+        if (campoNomeAcabamentoInterno.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarAcabamentoInterno = DaoGenerico.getInstance().inserir(acabamentoInterno);
+            } else {
+                retornoSalvarAcabamentoInterno = DaoGenerico.getInstance().atualizar(acabamentoInterno);
+            }
+        } else {
+            erroAcabamentoInterno = null;
+            Mensagem.erro("Digite um acabamento interno válido!", this);
+        }
+
+        if (retornoSalvarAcabamentoInterno == true && erroAcabamentoInterno != null) {
+            Mensagem.informacao("Acabamento interno salvo com sucesso!", this);
+
+            campoNomeAcabamentoInterno.setText("");
+
+            campoNomeAcabamentoInterno.requestFocus();
+
+            campoFiltroAcabamentoInterno.setText("");
+
+            codigo = 0;
+
+            new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+        } else {
+            if (erroAcabamentoInterno != null) {
+                Mensagem.aviso("Acabamento interno " + campoNomeAcabamentoInterno.getText() + " já existe cadastrado!", this);
+
+                campoNomeAcabamentoInterno.setText("");
+
+                campoNomeAcabamentoInterno.requestFocus();
+
+                campoFiltroAcabamentoInterno.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarAcabamentoInternoActionPerformed
+
+    private void btnLimparBuscaAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaAcabamentoInternoActionPerformed
+        campoFiltroAcabamentoInterno.setText("");
+        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+    }//GEN-LAST:event_btnLimparBuscaAcabamentoInternoActionPerformed
+
+    private void btnBuscarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAcabamentoInternoActionPerformed
+        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+    }//GEN-LAST:event_btnBuscarAcabamentoInternoActionPerformed
+
+    private void btnEditarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAcabamentoInternoActionPerformed
+        String codigoEditarAcabamentoInterno = String.valueOf(tblAcabamentoInterno.getValueAt(tblAcabamentoInterno.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(AcabamentoInterno.class, Integer.parseInt(codigoEditarAcabamentoInterno));
+        AcabamentoInterno acabamentoInterno = new AcabamentoInterno((AcabamentoInterno) object);
+
+        if (acabamentoInterno != null) {
+            abaAdicionarAcabamentoInterno.setSelectedIndex(0);
+
+            campoNomeAcabamentoInterno.setText(acabamentoInterno.getNome());
+
+            campoNomeAcabamentoInterno.requestFocus();
+
+            codigo = acabamentoInterno.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar acabamento interno!", this);
+        }
+    }//GEN-LAST:event_btnEditarAcabamentoInternoActionPerformed
+
+    private void btnExcluirAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirAcabamentoInternoActionPerformed
+        int codigoExcluirAcabamentoInterno = (int) tblAcabamentoInterno.getValueAt(tblAcabamentoInterno.getSelectedRow(), 0);
 
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
         if (mensagem == 0) {
-            boolean retornoExcluirPerfil = DaoGenerico.getInstance().excluir(Perfil.class, codigoExcluirPerfil);
+            boolean retornoExcluirAcabamentoInterno = DaoGenerico.getInstance().excluir(AcabamentoInterno.class, codigoExcluirAcabamentoInterno);
 
-            if (retornoExcluirPerfil == true) {
-                Mensagem.informacao("Perfil excluído com sucesso!", this);
-                new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+            if (retornoExcluirAcabamentoInterno == true) {
+                Mensagem.informacao("Acabamento interno excluído com sucesso!", this);
+                new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
             } else {
-                Mensagem.erro(tblPerfil.getValueAt(tblPerfil.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+                Mensagem.erro(tblAcabamentoInterno.getValueAt(tblAcabamentoInterno.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
         }
-    }//GEN-LAST:event_btnExcluirPerfilActionPerformed
+    }//GEN-LAST:event_btnExcluirAcabamentoInternoActionPerformed
 
-    private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
-        String codigoEditarPerfil = String.valueOf(tblPerfil.getValueAt(tblPerfil.getSelectedRow(), 0));
+    private void btnFecharAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharAcabamentoInternoActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharAcabamentoInternoActionPerformed
 
-        Object object = DaoGenerico.getInstance().obterPorId(Perfil.class, Integer.parseInt(codigoEditarPerfil));
-        Perfil perfil = new Perfil((Perfil) object);
+    private void btnSalvarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCambioActionPerformed
+        Cambio cambio = new Cambio();
 
-        if (perfil != null) {
-            abaAdicionarPerfil2.setSelectedIndex(0);
+        cambio.setId(codigo);
+        cambio.setNome(campoNomeCambio.getText());
+        cambio.setSlug(Funcoes.textoIdentificador(campoNomeCambio.getText()));
+        cambio.setCriadoEm(Calendar.getInstance());
+        cambio.setAlteradoEm(Calendar.getInstance());
 
-            campoNomePerfil.setText(perfil.getNome());
+        boolean retornoSalvarCambio = false;
+        String erroCambio = "";
 
-            campoNomePerfil.requestFocus();
+        if (campoNomeCambio.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarCambio = DaoGenerico.getInstance().inserir(cambio);
+            } else {
+                retornoSalvarCambio = DaoGenerico.getInstance().atualizar(cambio);
+            }
+        } else {
+            erroCambio = null;
+            Mensagem.erro("Digite um câmbio válido!", this);
+        }
 
-            codigo = perfil.getId();
+        if (retornoSalvarCambio == true && erroCambio != null) {
+            Mensagem.informacao("Câmbio salvo com sucesso!", this);
+
+            campoNomeCambio.setText("");
+
+            campoNomeCambio.requestFocus();
+
+            campoFiltroCambio.setText("");
+
+            codigo = 0;
+
+            new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+        } else {
+            if (erroCambio != null) {
+                Mensagem.aviso("Cambio " + campoNomeCambio.getText() + " já existe cadastrado!", this);
+
+                campoNomeCambio.setText("");
+
+                campoNomeCambio.requestFocus();
+
+                campoFiltroCambio.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarCambioActionPerformed
+
+    private void btnLimparBuscaCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCambioActionPerformed
+        campoFiltroCambio.setText("");
+        new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+    }//GEN-LAST:event_btnLimparBuscaCambioActionPerformed
+
+    private void btnBuscarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCambioActionPerformed
+        new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+    }//GEN-LAST:event_btnBuscarCambioActionPerformed
+
+    private void btnEditarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCambioActionPerformed
+        String codigoEditarCambio = String.valueOf(tblCambio.getValueAt(tblCambio.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Cambio.class, Integer.parseInt(codigoEditarCambio));
+        Cambio cambio = new Cambio((Cambio) object);
+
+        if (cambio != null) {
+            abaAdicionarCambio.setSelectedIndex(0);
+
+            campoNomeCambio.setText(cambio.getNome());
+
+            campoNomeCambio.requestFocus();
+
+            codigo = cambio.getId();
 
         } else {
-            Mensagem.erro("Erro ao consultar perfil!", this);
+            Mensagem.erro("Erro ao consultar câmbio!", this);
         }
-    }//GEN-LAST:event_btnEditarPerfilActionPerformed
+    }//GEN-LAST:event_btnEditarCambioActionPerformed
 
-    private void btnBuscarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPerfilActionPerformed
-        new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
-    }//GEN-LAST:event_btnBuscarPerfilActionPerformed
+    private void btnExcluirCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCambioActionPerformed
+        int codigoExcluirCambio = (int) tblCambio.getValueAt(tblCambio.getSelectedRow(), 0);
 
-    private void btnLimparBuscaPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaPerfilActionPerformed
-        campoFiltroPerfil.setText("");
-        new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
-    }//GEN-LAST:event_btnLimparBuscaPerfilActionPerformed
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirCambio = DaoGenerico.getInstance().excluir(Cambio.class, codigoExcluirCambio);
+
+            if (retornoExcluirCambio == true) {
+                Mensagem.informacao("Câmbio excluído com sucesso!", this);
+                new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+            } else {
+                Mensagem.erro(tblCambio.getValueAt(tblCambio.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirCambioActionPerformed
+
+    private void btnFecharCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCambioActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharCambioActionPerformed
+
+    private void btnSalvarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCarroceriaActionPerformed
+        Carroceria carroceria = new Carroceria();
+
+        carroceria.setId(codigo);
+        carroceria.setNome(campoNomeCarroceria.getText());
+        carroceria.setSlug(Funcoes.textoIdentificador(campoNomeCarroceria.getText()));
+        carroceria.setCriadoEm(Calendar.getInstance());
+        carroceria.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarCarroceria = false;
+        String erroCarroceria = "";
+
+        if (campoNomeCarroceria.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarCarroceria = DaoGenerico.getInstance().inserir(carroceria);
+            } else {
+                retornoSalvarCarroceria = DaoGenerico.getInstance().atualizar(carroceria);
+            }
+        } else {
+            erroCarroceria = null;
+            Mensagem.erro("Digite uma carroceria válida!", this);
+        }
+
+        if (retornoSalvarCarroceria == true && erroCarroceria != null) {
+            Mensagem.informacao("Carroceria salva com sucesso!", this);
+
+            campoNomeCarroceria.setText("");
+
+            campoNomeCarroceria.requestFocus();
+
+            campoFiltroCarroceria.setText("");
+
+            codigo = 0;
+
+            new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+        } else {
+            if (erroCarroceria != null) {
+                Mensagem.aviso("Carroceria " + campoNomeCarroceria.getText() + " já existe cadastrada!", this);
+
+                campoNomeCarroceria.setText("");
+
+                campoNomeCarroceria.requestFocus();
+
+                campoFiltroCarroceria.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarCarroceriaActionPerformed
+
+    private void btnLimparBuscaCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCarroceriaActionPerformed
+        campoFiltroCarroceria.setText("");
+        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+    }//GEN-LAST:event_btnLimparBuscaCarroceriaActionPerformed
+
+    private void btnBuscarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCarroceriaActionPerformed
+        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+    }//GEN-LAST:event_btnBuscarCarroceriaActionPerformed
+
+    private void btnEditarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCarroceriaActionPerformed
+        String codigoEditarCarroceria = String.valueOf(tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Carroceria.class, Integer.parseInt(codigoEditarCarroceria));
+        Carroceria carroceria = new Carroceria((Carroceria) object);
+
+        if (carroceria != null) {
+            abaAdicionarCarroceria.setSelectedIndex(0);
+
+            campoNomeCarroceria.setText(carroceria.getNome());
+
+            campoNomeCarroceria.requestFocus();
+
+            codigo = carroceria.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar carroceria!", this);
+        }
+    }//GEN-LAST:event_btnEditarCarroceriaActionPerformed
+
+    private void btnExcluirCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCarroceriaActionPerformed
+        int codigoExcluirCarroceria = (int) tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirCarroceria = DaoGenerico.getInstance().excluir(Carroceria.class, codigoExcluirCarroceria);
+
+            if (retornoExcluirCarroceria == true) {
+                Mensagem.informacao("Carroceria excluída com sucesso!", this);
+                new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+            } else {
+                Mensagem.erro(tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirCarroceriaActionPerformed
+
+    private void btnFecharCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCarroceriaActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharCarroceriaActionPerformed
+
+    private void btnSalvarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCombustivelActionPerformed
+        Combustivel combustivel = new Combustivel();
+
+        combustivel.setId(codigo);
+        combustivel.setNome(campoNomeCombustivel.getText());
+        combustivel.setSlug(Funcoes.textoIdentificador(campoNomeCombustivel.getText()));
+        combustivel.setCriadoEm(Calendar.getInstance());
+        combustivel.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarCombustivel = false;
+        String erroCombustivel = "";
+
+        if (campoNomeCombustivel.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarCombustivel = DaoGenerico.getInstance().inserir(combustivel);
+            } else {
+                retornoSalvarCombustivel = DaoGenerico.getInstance().atualizar(combustivel);
+            }
+        } else {
+            erroCombustivel = null;
+            Mensagem.erro("Digite um combustível válido!", this);
+        }
+
+        if (retornoSalvarCombustivel == true && erroCombustivel != null) {
+            Mensagem.informacao("Combustível salvo com sucesso!", this);
+
+            campoNomeCombustivel.setText("");
+
+            campoNomeCombustivel.requestFocus();
+
+            campoFiltroCombustivel.setText("");
+
+            codigo = 0;
+
+            new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+        } else {
+            if (erroCombustivel != null) {
+                Mensagem.aviso("Combustível " + campoNomeCombustivel.getText() + " já existe cadastrado!", this);
+
+                campoNomeCombustivel.setText("");
+
+                campoNomeCombustivel.requestFocus();
+
+                campoFiltroCombustivel.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarCombustivelActionPerformed
+
+    private void btnLimparBuscaCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCombustivelActionPerformed
+        campoFiltroCombustivel.setText("");
+        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+    }//GEN-LAST:event_btnLimparBuscaCombustivelActionPerformed
+
+    private void btnBuscarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCombustivelActionPerformed
+        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+    }//GEN-LAST:event_btnBuscarCombustivelActionPerformed
+
+    private void btnEditarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCombustivelActionPerformed
+        String codigoEditarCombustivel = String.valueOf(tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Combustivel.class, Integer.parseInt(codigoEditarCombustivel));
+        Combustivel combustivel = new Combustivel((Combustivel) object);
+
+        if (combustivel != null) {
+            abaAdicionarCombustivel.setSelectedIndex(0);
+
+            campoNomeCombustivel.setText(combustivel.getNome());
+
+            campoNomeCombustivel.requestFocus();
+
+            codigo = combustivel.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar combustível!", this);
+        }
+    }//GEN-LAST:event_btnEditarCombustivelActionPerformed
+
+    private void btnExcluirCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCombustivelActionPerformed
+        int codigoExcluirCombustivel = (int) tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirCombustivel = DaoGenerico.getInstance().excluir(Combustivel.class, codigoExcluirCombustivel);
+
+            if (retornoExcluirCombustivel == true) {
+                Mensagem.informacao("Combustível excluído com sucesso!", this);
+                new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+            } else {
+                Mensagem.erro(tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirCombustivelActionPerformed
+
+    private void btnFecharCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCombustivelActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharCombustivelActionPerformed
+
+    private void btnSalvarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarConfortoActionPerformed
+        Conforto conforto = new Conforto();
+
+        conforto.setId(codigo);
+        conforto.setNome(campoNomeConforto.getText());
+        conforto.setSlug(Funcoes.textoIdentificador(campoNomeConforto.getText()));
+        conforto.setCriadoEm(Calendar.getInstance());
+        conforto.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarConforto = false;
+        String erroConforto = "";
+
+        if (campoNomeConforto.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarConforto = DaoGenerico.getInstance().inserir(conforto);
+            } else {
+                retornoSalvarConforto = DaoGenerico.getInstance().atualizar(conforto);
+            }
+        } else {
+            erroConforto = null;
+            Mensagem.erro("Digite um conforto válido!", this);
+        }
+
+        if (retornoSalvarConforto == true && erroConforto != null) {
+            Mensagem.informacao("Conforto salvo com sucesso!", this);
+
+            campoNomeConforto.setText("");
+
+            campoNomeConforto.requestFocus();
+
+            campoFiltroConforto.setText("");
+
+            codigo = 0;
+
+            new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+        } else {
+            if (erroConforto != null) {
+                Mensagem.aviso("Conforto " + campoNomeConforto.getText() + " já existe cadastrado!", this);
+
+                campoNomeConforto.setText("");
+
+                campoNomeConforto.requestFocus();
+
+                campoFiltroConforto.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarConfortoActionPerformed
+
+    private void btnLimparBuscaConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaConfortoActionPerformed
+        campoFiltroConforto.setText("");
+        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+    }//GEN-LAST:event_btnLimparBuscaConfortoActionPerformed
+
+    private void btnBuscarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConfortoActionPerformed
+        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+    }//GEN-LAST:event_btnBuscarConfortoActionPerformed
+
+    private void btnEditarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConfortoActionPerformed
+        String codigoEditarConforto = String.valueOf(tblConforto.getValueAt(tblConforto.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Conforto.class, Integer.parseInt(codigoEditarConforto));
+        Conforto conforto = new Conforto((Conforto) object);
+
+        if (conforto != null) {
+            abaAdicionarConforto.setSelectedIndex(0);
+
+            campoNomeConforto.setText(conforto.getNome());
+
+            campoNomeConforto.requestFocus();
+
+            codigo = conforto.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar conforto!", this);
+        }
+    }//GEN-LAST:event_btnEditarConfortoActionPerformed
+
+    private void btnExcluirConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConfortoActionPerformed
+        int codigoExcluirConforto = (int) tblConforto.getValueAt(tblConforto.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirConforto = DaoGenerico.getInstance().excluir(Conforto.class, codigoExcluirConforto);
+
+            if (retornoExcluirConforto == true) {
+                Mensagem.informacao("Conforto excluído com sucesso!", this);
+                new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+            } else {
+                Mensagem.erro(tblConforto.getValueAt(tblConforto.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirConfortoActionPerformed
+
+    private void btnFecharConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharConfortoActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharConfortoActionPerformed
+
+    private void btnSalvarCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCorExternaActionPerformed
+        CorExterna corExterna = new CorExterna();
+
+        corExterna.setId(codigo);
+        corExterna.setNome(campoNomeCorExterna.getText());
+        corExterna.setSlug(Funcoes.textoIdentificador(campoNomeCorExterna.getText()));
+        corExterna.setCriadoEm(Calendar.getInstance());
+        corExterna.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarCorExterna = false;
+        String erroCorExterna = "";
+
+        if (campoNomeCorExterna.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarCorExterna = DaoGenerico.getInstance().inserir(corExterna);
+            } else {
+                retornoSalvarCorExterna = DaoGenerico.getInstance().atualizar(corExterna);
+            }
+        } else {
+            erroCorExterna = null;
+            Mensagem.erro("Digite uma cor externa válida!", this);
+        }
+
+        if (retornoSalvarCorExterna == true && erroCorExterna != null) {
+            Mensagem.informacao("Cor externa salva com sucesso!", this);
+
+            campoNomeCorExterna.setText("");
+
+            campoNomeCorExterna.requestFocus();
+
+            campoFiltroCorExterna.setText("");
+
+            codigo = 0;
+
+            new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+        } else {
+            if (erroCorExterna != null) {
+                Mensagem.aviso("Cor externa " + campoNomeCorExterna.getText() + " já existe cadastrada!", this);
+
+                campoNomeCorExterna.setText("");
+
+                campoNomeCorExterna.requestFocus();
+
+                campoFiltroCorExterna.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarCorExternaActionPerformed
+
+    private void btnLimparBuscaCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCorExternaActionPerformed
+        campoFiltroCorExterna.setText("");
+        new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+    }//GEN-LAST:event_btnLimparBuscaCorExternaActionPerformed
+
+    private void btnBuscarCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCorExternaActionPerformed
+        new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+    }//GEN-LAST:event_btnBuscarCorExternaActionPerformed
+
+    private void btnEditarCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCorExternaActionPerformed
+        String codigoEditarCorExterna = String.valueOf(tblCorExterna.getValueAt(tblCorExterna.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(CorExterna.class, Integer.parseInt(codigoEditarCorExterna));
+        CorExterna corExterna = new CorExterna((CorExterna) object);
+
+        if (corExterna != null) {
+            abaAdicionarCorExterna.setSelectedIndex(0);
+
+            campoNomeCorExterna.setText(corExterna.getNome());
+
+            campoNomeCorExterna.requestFocus();
+
+            codigo = corExterna.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar cor externa!", this);
+        }
+    }//GEN-LAST:event_btnEditarCorExternaActionPerformed
+
+    private void btnExcluirCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCorExternaActionPerformed
+        int codigoExcluirCorExterna = (int) tblCorExterna.getValueAt(tblCorExterna.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirCorExterna = DaoGenerico.getInstance().excluir(CorExterna.class, codigoExcluirCorExterna);
+
+            if (retornoExcluirCorExterna == true) {
+                Mensagem.informacao("Cor externa excluída com sucesso!", this);
+                new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+            } else {
+                Mensagem.erro(tblCorExterna.getValueAt(tblCorExterna.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirCorExternaActionPerformed
+
+    private void btnFecharCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCorExternaActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharCorExternaActionPerformed
+
+    private void btnSalvarCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCorInternaActionPerformed
+        CorInterna corInterna = new CorInterna();
+
+        corInterna.setId(codigo);
+        corInterna.setNome(campoNomeCorInterna.getText());
+        corInterna.setSlug(Funcoes.textoIdentificador(campoNomeCorInterna.getText()));
+        corInterna.setCriadoEm(Calendar.getInstance());
+        corInterna.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarCorInterna = false;
+        String erroCorInterna = "";
+
+        if (campoNomeCorInterna.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarCorInterna = DaoGenerico.getInstance().inserir(corInterna);
+            } else {
+                retornoSalvarCorInterna = DaoGenerico.getInstance().atualizar(corInterna);
+            }
+        } else {
+            erroCorInterna = null;
+            Mensagem.erro("Digite uma cor interna válida!", this);
+        }
+
+        if (retornoSalvarCorInterna == true && erroCorInterna != null) {
+            Mensagem.informacao("Cor interna salva com sucesso!", this);
+
+            campoNomeCorInterna.setText("");
+
+            campoNomeCorInterna.requestFocus();
+
+            campoFiltroCorInterna.setText("");
+
+            codigo = 0;
+
+            new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+        } else {
+            if (erroCorInterna != null) {
+                Mensagem.aviso("Cor interna " + campoNomeCorInterna.getText() + " já existe cadastrada!", this);
+
+                campoNomeCorInterna.setText("");
+
+                campoNomeCorInterna.requestFocus();
+
+                campoFiltroCorInterna.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarCorInternaActionPerformed
+
+    private void btnLimparBuscaCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCorInternaActionPerformed
+        campoFiltroCorInterna.setText("");
+        new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+    }//GEN-LAST:event_btnLimparBuscaCorInternaActionPerformed
+
+    private void btnBuscarCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCorInternaActionPerformed
+        new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+    }//GEN-LAST:event_btnBuscarCorInternaActionPerformed
+
+    private void btnEditarCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCorInternaActionPerformed
+        String codigoEditarCorInterna = String.valueOf(tblCorInterna.getValueAt(tblCorInterna.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(CorInterna.class, Integer.parseInt(codigoEditarCorInterna));
+        CorInterna corInterna = new CorInterna((CorInterna) object);
+
+        if (corInterna != null) {
+            abaAdicionarCorInterna.setSelectedIndex(0);
+
+            campoNomeCorInterna.setText(corInterna.getNome());
+
+            campoNomeCorInterna.requestFocus();
+
+            codigo = corInterna.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar cor interna!", this);
+        }
+    }//GEN-LAST:event_btnEditarCorInternaActionPerformed
+
+    private void btnExcluirCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCorInternaActionPerformed
+        int codigoExcluirCorInterna = (int) tblCorInterna.getValueAt(tblCorInterna.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirCorInterna = DaoGenerico.getInstance().excluir(CorInterna.class, codigoExcluirCorInterna);
+
+            if (retornoExcluirCorInterna == true) {
+                Mensagem.informacao("Cor interna excluída com sucesso!", this);
+                new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+            } else {
+                Mensagem.erro(tblCorInterna.getValueAt(tblCorInterna.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirCorInternaActionPerformed
+
+    private void btnFecharCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCorInternaActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharCorInternaActionPerformed
+
+    private void btnSalvarEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEstiloActionPerformed
+        Estilo estilo = new Estilo();
+
+        estilo.setId(codigo);
+        estilo.setNome(campoNomeEstilo.getText());
+        estilo.setSlug(Funcoes.textoIdentificador(campoNomeEstilo.getText()));
+        estilo.setCriadoEm(Calendar.getInstance());
+        estilo.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarEstilo = false;
+        String erroEstilo = "";
+
+        if (campoNomeEstilo.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarEstilo = DaoGenerico.getInstance().inserir(estilo);
+            } else {
+                retornoSalvarEstilo = DaoGenerico.getInstance().atualizar(estilo);
+            }
+        } else {
+            erroEstilo = null;
+            Mensagem.erro("Digite um estilo válido!", this);
+        }
+
+        if (retornoSalvarEstilo == true && erroEstilo != null) {
+            Mensagem.informacao("Estilo salvo com sucesso!", this);
+
+            campoNomeEstilo.setText("");
+
+            campoNomeEstilo.requestFocus();
+
+            campoFiltroEstilo.setText("");
+
+            codigo = 0;
+
+            new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+        } else {
+            if (erroEstilo != null) {
+                Mensagem.aviso("Estilo " + campoNomeEstilo.getText() + " já existe cadastrado!", this);
+
+                campoNomeEstilo.setText("");
+
+                campoNomeEstilo.requestFocus();
+
+                campoFiltroEstilo.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarEstiloActionPerformed
+
+    private void btnLimparBuscaEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaEstiloActionPerformed
+        campoFiltroEstilo.setText("");
+        new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+    }//GEN-LAST:event_btnLimparBuscaEstiloActionPerformed
+
+    private void btnBuscarEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstiloActionPerformed
+        new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+    }//GEN-LAST:event_btnBuscarEstiloActionPerformed
+
+    private void btnEditarEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstiloActionPerformed
+        String codigoEditarEstilo = String.valueOf(tblEstilo.getValueAt(tblEstilo.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Estilo.class, Integer.parseInt(codigoEditarEstilo));
+        Estilo estilo = new Estilo((Estilo) object);
+
+        if (estilo != null) {
+            abaAdicionarEstilo.setSelectedIndex(0);
+
+            campoNomeEstilo.setText(estilo.getNome());
+
+            campoNomeEstilo.requestFocus();
+
+            codigo = estilo.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar estilo!", this);
+        }
+    }//GEN-LAST:event_btnEditarEstiloActionPerformed
+
+    private void btnExcluirEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirEstiloActionPerformed
+        int codigoExcluirEstilo = (int) tblEstilo.getValueAt(tblEstilo.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirEstilo = DaoGenerico.getInstance().excluir(Estilo.class, codigoExcluirEstilo);
+
+            if (retornoExcluirEstilo == true) {
+                Mensagem.informacao("Estilo excluído com sucesso!", this);
+                new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+            } else {
+                Mensagem.erro(tblEstilo.getValueAt(tblEstilo.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirEstiloActionPerformed
+
+    private void btnFecharEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharEstiloActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharEstiloActionPerformed
+
+    private void btnSalvarExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarExtraActionPerformed
+        Extra extra = new Extra();
+
+        extra.setId(codigo);
+        extra.setNome(campoNomeExtra.getText());
+        extra.setSlug(Funcoes.textoIdentificador(campoNomeExtra.getText()));
+        extra.setCriadoEm(Calendar.getInstance());
+        extra.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarExtra = false;
+        String erroExtra = "";
+
+        if (campoNomeExtra.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarExtra = DaoGenerico.getInstance().inserir(extra);
+            } else {
+                retornoSalvarExtra = DaoGenerico.getInstance().atualizar(extra);
+            }
+        } else {
+            erroExtra = null;
+            Mensagem.erro("Digite um extra válido!", this);
+        }
+
+        if (retornoSalvarExtra == true && erroExtra != null) {
+            Mensagem.informacao("Extra salvo com sucesso!", this);
+
+            campoNomeExtra.setText("");
+
+            campoNomeExtra.requestFocus();
+
+            campoFiltroExtra.setText("");
+
+            codigo = 0;
+
+            new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+        } else {
+            if (erroExtra != null) {
+                Mensagem.aviso("Extra " + campoNomeExtra.getText() + " já existe cadastrado!", this);
+
+                campoNomeExtra.setText("");
+
+                campoNomeExtra.requestFocus();
+
+                campoFiltroExtra.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarExtraActionPerformed
+
+    private void btnLimparBuscaExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaExtraActionPerformed
+        campoFiltroExtra.setText("");
+        new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+    }//GEN-LAST:event_btnLimparBuscaExtraActionPerformed
+
+    private void btnBuscarExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarExtraActionPerformed
+        new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+    }//GEN-LAST:event_btnBuscarExtraActionPerformed
+
+    private void btnEditarExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarExtraActionPerformed
+        String codigoEditarExtra = String.valueOf(tblExtra.getValueAt(tblExtra.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Extra.class, Integer.parseInt(codigoEditarExtra));
+        Extra extra = new Extra((Extra) object);
+
+        if (extra != null) {
+            abaAdicionarExtra.setSelectedIndex(0);
+
+            campoNomeExtra.setText(extra.getNome());
+
+            campoNomeExtra.requestFocus();
+
+            codigo = extra.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar extra!", this);
+        }
+    }//GEN-LAST:event_btnEditarExtraActionPerformed
+
+    private void btnExcluirExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirExtraActionPerformed
+        int codigoExcluirExtra = (int) tblExtra.getValueAt(tblExtra.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirExtra = DaoGenerico.getInstance().excluir(Extra.class, codigoExcluirExtra);
+
+            if (retornoExcluirExtra == true) {
+                Mensagem.informacao("Extra excluído com sucesso!", this);
+                new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+            } else {
+                Mensagem.erro(tblExtra.getValueAt(tblExtra.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirExtraActionPerformed
+
+    private void btnFecharExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharExtraActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharExtraActionPerformed
+
+    private void btnSalvarSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarSegurancaActionPerformed
+        Seguranca seguranca = new Seguranca();
+
+        seguranca.setId(codigo);
+        seguranca.setNome(campoNomeSeguranca.getText());
+        seguranca.setSlug(Funcoes.textoIdentificador(campoNomeSeguranca.getText()));
+        seguranca.setCriadoEm(Calendar.getInstance());
+        seguranca.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarSeguranca = false;
+        String erroSeguranca = "";
+
+        if (campoNomeSeguranca.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarSeguranca = DaoGenerico.getInstance().inserir(seguranca);
+            } else {
+                retornoSalvarSeguranca = DaoGenerico.getInstance().atualizar(seguranca);
+            }
+        } else {
+            erroSeguranca = null;
+            Mensagem.erro("Digite uma segurança válida!", this);
+        }
+
+        if (retornoSalvarSeguranca == true && erroSeguranca != null) {
+            Mensagem.informacao("Segurança salva com sucesso!", this);
+
+            campoNomeSeguranca.setText("");
+
+            campoNomeSeguranca.requestFocus();
+
+            campoFiltroSeguranca.setText("");
+
+            codigo = 0;
+
+            new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+        } else {
+            if (erroSeguranca != null) {
+                Mensagem.aviso("Segurança " + campoNomeSeguranca.getText() + " já existe cadastrada!", this);
+
+                campoNomeSeguranca.setText("");
+
+                campoNomeSeguranca.requestFocus();
+
+                campoFiltroSeguranca.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarSegurancaActionPerformed
+
+    private void btnLimparBuscaSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaSegurancaActionPerformed
+        campoFiltroSeguranca.setText("");
+        new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+    }//GEN-LAST:event_btnLimparBuscaSegurancaActionPerformed
+
+    private void btnBuscarSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSegurancaActionPerformed
+        new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+    }//GEN-LAST:event_btnBuscarSegurancaActionPerformed
+
+    private void btnEditarSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarSegurancaActionPerformed
+        String codigoEditarSeguranca = String.valueOf(tblSeguranca.getValueAt(tblSeguranca.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Seguranca.class, Integer.parseInt(codigoEditarSeguranca));
+        Seguranca seguranca = new Seguranca((Seguranca) object);
+
+        if (seguranca != null) {
+            abaAdicionarSeguranca.setSelectedIndex(0);
+
+            campoNomeSeguranca.setText(seguranca.getNome());
+
+            campoNomeSeguranca.requestFocus();
+
+            codigo = seguranca.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar segurança!", this);
+        }
+    }//GEN-LAST:event_btnEditarSegurancaActionPerformed
+
+    private void btnExcluirSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirSegurancaActionPerformed
+        int codigoExcluirSeguranca = (int) tblSeguranca.getValueAt(tblSeguranca.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirSeguranca = DaoGenerico.getInstance().excluir(Seguranca.class, codigoExcluirSeguranca);
+
+            if (retornoExcluirSeguranca == true) {
+                Mensagem.informacao("Segurança excluída com sucesso!", this);
+                new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+            } else {
+                Mensagem.erro(tblSeguranca.getValueAt(tblSeguranca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirSegurancaActionPerformed
+
+    private void btnFecharSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSegurancaActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharSegurancaActionPerformed
+
+    private void btnSalvarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarTecnologiaActionPerformed
+        Tecnologia tecnologia = new Tecnologia();
+
+        tecnologia.setId(codigo);
+        tecnologia.setNome(campoNomeTecnologia.getText());
+        tecnologia.setSlug(Funcoes.textoIdentificador(campoNomeTecnologia.getText()));
+        tecnologia.setCriadoEm(Calendar.getInstance());
+        tecnologia.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarTecnologia = false;
+        String erroTecnologia = "";
+
+        if (campoNomeTecnologia.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarTecnologia = DaoGenerico.getInstance().inserir(tecnologia);
+            } else {
+                retornoSalvarTecnologia = DaoGenerico.getInstance().atualizar(tecnologia);
+            }
+        } else {
+            erroTecnologia = null;
+            Mensagem.erro("Digite uma tecnologia válida!", this);
+        }
+
+        if (retornoSalvarTecnologia == true && erroTecnologia != null) {
+            Mensagem.informacao("Tecnologia salva com sucesso!", this);
+
+            campoNomeTecnologia.setText("");
+
+            campoNomeTecnologia.requestFocus();
+
+            campoFiltroTecnologia.setText("");
+
+            codigo = 0;
+
+            new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+        } else {
+            if (erroTecnologia != null) {
+                Mensagem.aviso("Tecnologia " + campoNomeTecnologia.getText() + " já existe cadastrada!", this);
+
+                campoNomeTecnologia.setText("");
+
+                campoNomeTecnologia.requestFocus();
+
+                campoFiltroTecnologia.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarTecnologiaActionPerformed
+
+    private void btnLimparBuscaTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaTecnologiaActionPerformed
+        campoFiltroTecnologia.setText("");
+        new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+    }//GEN-LAST:event_btnLimparBuscaTecnologiaActionPerformed
+
+    private void btnBuscarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTecnologiaActionPerformed
+        new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+    }//GEN-LAST:event_btnBuscarTecnologiaActionPerformed
+
+    private void btnEditarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarTecnologiaActionPerformed
+        String codigoEditarTecnologia = String.valueOf(tblTecnologia.getValueAt(tblTecnologia.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Tecnologia.class, Integer.parseInt(codigoEditarTecnologia));
+        Tecnologia tecnologia = new Tecnologia((Tecnologia) object);
+
+        if (tecnologia != null) {
+            abaAdicionarTecnologia.setSelectedIndex(0);
+
+            campoNomeTecnologia.setText(tecnologia.getNome());
+
+            campoNomeTecnologia.requestFocus();
+
+            codigo = tecnologia.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar tecnologia!", this);
+        }
+    }//GEN-LAST:event_btnEditarTecnologiaActionPerformed
+
+    private void btnExcluirTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirTecnologiaActionPerformed
+        int codigoExcluirTecnologia = (int) tblTecnologia.getValueAt(tblTecnologia.getSelectedRow(), 0);
+
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirTecnologia = DaoGenerico.getInstance().excluir(Tecnologia.class, codigoExcluirTecnologia);
+
+            if (retornoExcluirTecnologia == true) {
+                Mensagem.informacao("Tecnologia excluída com sucesso!", this);
+                new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+            } else {
+                Mensagem.erro(tblTecnologia.getValueAt(tblTecnologia.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirTecnologiaActionPerformed
+
+    private void btnFecharTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTecnologiaActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharTecnologiaActionPerformed
 
     private void btnSalvarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarPerfilActionPerformed
         Perfil perfil = new Perfil();
@@ -3064,56 +4134,54 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSalvarPerfilActionPerformed
 
-    private void btnFecharEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharEstadoActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharEstadoActionPerformed
+    private void btnLimparBuscaPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaPerfilActionPerformed
+        campoFiltroPerfil.setText("");
+        new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+    }//GEN-LAST:event_btnLimparBuscaPerfilActionPerformed
 
-    private void btnExcluirEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirEstadoActionPerformed
-        int codigoExcluirEstado = (int) tblEstado.getValueAt(tblEstado.getSelectedRow(), 0);
+    private void btnBuscarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPerfilActionPerformed
+        new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+    }//GEN-LAST:event_btnBuscarPerfilActionPerformed
+
+    private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
+        String codigoEditarPerfil = String.valueOf(tblPerfil.getValueAt(tblPerfil.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Perfil.class, Integer.parseInt(codigoEditarPerfil));
+        Perfil perfil = new Perfil((Perfil) object);
+
+        if (perfil != null) {
+            abaAdicionarPerfil.setSelectedIndex(0);
+
+            campoNomePerfil.setText(perfil.getNome());
+
+            campoNomePerfil.requestFocus();
+
+            codigo = perfil.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar perfil!", this);
+        }
+    }//GEN-LAST:event_btnEditarPerfilActionPerformed
+
+    private void btnExcluirPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPerfilActionPerformed
+        int codigoExcluirPerfil = (int) tblPerfil.getValueAt(tblPerfil.getSelectedRow(), 0);
 
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
         if (mensagem == 0) {
-            boolean retornoExcluirEstado = DaoGenerico.getInstance().excluir(Estado.class, codigoExcluirEstado);
+            boolean retornoExcluirPerfil = DaoGenerico.getInstance().excluir(Perfil.class, codigoExcluirPerfil);
 
-            if (retornoExcluirEstado == true) {
-                Mensagem.informacao("Estado excluído com sucesso!", this);
-                new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
-                new ComboDao().popularCombo("estados", 1, 4, comboEstadoId, "");
+            if (retornoExcluirPerfil == true) {
+                Mensagem.informacao("Perfil excluído com sucesso!", this);
+                new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
             } else {
-                Mensagem.erro(tblEstado.getValueAt(tblEstado.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+                Mensagem.erro(tblPerfil.getValueAt(tblPerfil.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
         }
-    }//GEN-LAST:event_btnExcluirEstadoActionPerformed
+    }//GEN-LAST:event_btnExcluirPerfilActionPerformed
 
-    private void btnEditarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstadoActionPerformed
-        String codigoEditarEstado = String.valueOf(tblEstado.getValueAt(tblEstado.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(Estado.class, Integer.parseInt(codigoEditarEstado));
-        Estado estado = new Estado((Estado) object);
-
-        if (estado != null) {
-            abaAdicionarEstado.setSelectedIndex(0);
-
-            campoNomeEstado.setText(estado.getNome());
-            campoUf.setText(estado.getUf());
-
-            campoNomeEstado.requestFocus();
-
-            codigo = estado.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar estado!", this);
-        }
-    }//GEN-LAST:event_btnEditarEstadoActionPerformed
-
-    private void btnBuscarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstadoActionPerformed
-        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
-    }//GEN-LAST:event_btnBuscarEstadoActionPerformed
-
-    private void btnLimparBuscaEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaEstadoActionPerformed
-        campoFiltroEstado.setText("");
-        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
-    }//GEN-LAST:event_btnLimparBuscaEstadoActionPerformed
+    private void btnFecharPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharPerfilActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharPerfilActionPerformed
 
     private void btnSalvarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEstadoActionPerformed
         Estado estado = new Estado();
@@ -3166,57 +4234,56 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSalvarEstadoActionPerformed
 
-    private void btnFecharCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCidadeActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharCidadeActionPerformed
+    private void btnLimparBuscaEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaEstadoActionPerformed
+        campoFiltroEstado.setText("");
+        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+    }//GEN-LAST:event_btnLimparBuscaEstadoActionPerformed
 
-    private void btnExcluirCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCidadeActionPerformed
-        int codigoExcluirCidade = (int) tblCidade.getValueAt(tblCidade.getSelectedRow(), 0);
-        
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirCidade = DaoGenerico.getInstance().excluir(Cidade.class, codigoExcluirCidade);
+    private void btnBuscarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstadoActionPerformed
+        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+    }//GEN-LAST:event_btnBuscarEstadoActionPerformed
 
-            if (retornoExcluirCidade == true) {
-                Mensagem.informacao("Cidade excluída com sucesso!", this);
-                new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
-            } else {
-                Mensagem.erro(tblCidade.getValueAt(tblCidade.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirCidadeActionPerformed
+    private void btnEditarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstadoActionPerformed
+        String codigoEditarEstado = String.valueOf(tblEstado.getValueAt(tblEstado.getSelectedRow(), 0));
 
-    private void btnEditarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCidadeActionPerformed
-        String codigoEditarCidade = String.valueOf(tblCidade.getValueAt(tblCidade.getSelectedRow(), 0));
+        Object object = DaoGenerico.getInstance().obterPorId(Estado.class, Integer.parseInt(codigoEditarEstado));
+        Estado estado = new Estado((Estado) object);
 
-        Object object = DaoGenerico.getInstance().obterPorId(Cidade.class, Integer.parseInt(codigoEditarCidade));
-        Cidade cidade = new Cidade((Cidade) object);
+        if (estado != null) {
+            abaAdicionarEstado.setSelectedIndex(0);
 
-        ComboItem estadoId = new ComboItem();
-        estadoId.setCodigo(cidade.getEstado_id().getId());
-        if (cidade != null) {
-            abaAdicionarCidade.setSelectedIndex(0);
+            campoNomeEstado.setText(estado.getNome());
+            campoUf.setText(estado.getUf());
 
-            campoNomeCidade.setText(cidade.getNome());
-            new ComboDao().definirItemCombo(comboEstadoId, estadoId);
+            campoNomeEstado.requestFocus();
 
-            campoNomeCidade.requestFocus();
-
-            codigo = cidade.getId();
+            codigo = estado.getId();
 
         } else {
-            Mensagem.erro("Erro ao consultar cidade!", this);
+            Mensagem.erro("Erro ao consultar estado!", this);
         }
-    }//GEN-LAST:event_btnEditarCidadeActionPerformed
+    }//GEN-LAST:event_btnEditarEstadoActionPerformed
 
-    private void btnBuscarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCidadeActionPerformed
-        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
-    }//GEN-LAST:event_btnBuscarCidadeActionPerformed
+    private void btnExcluirEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirEstadoActionPerformed
+        int codigoExcluirEstado = (int) tblEstado.getValueAt(tblEstado.getSelectedRow(), 0);
 
-    private void btnLimparBuscaCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCidadeActionPerformed
-        campoFiltroCidade.setText("");
-        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
-    }//GEN-LAST:event_btnLimparBuscaCidadeActionPerformed
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirEstado = DaoGenerico.getInstance().excluir(Estado.class, codigoExcluirEstado);
+
+            if (retornoExcluirEstado == true) {
+                Mensagem.informacao("Estado excluído com sucesso!", this);
+                new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+                new ComboDao().popularCombo("estados", 1, 4, comboEstadoId, "");
+            } else {
+                Mensagem.erro(tblEstado.getValueAt(tblEstado.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
+    }//GEN-LAST:event_btnExcluirEstadoActionPerformed
+
+    private void btnFecharEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharEstadoActionPerformed
+        funcaoFechar();
+    }//GEN-LAST:event_btnFecharEstadoActionPerformed
 
     private void btnSalvarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCidadeActionPerformed
         Cidade cidade = new Cidade();
@@ -3273,1072 +4340,57 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSalvarCidadeActionPerformed
 
-    private void btnFecharTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharTecnologiaActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharTecnologiaActionPerformed
+    private void btnLimparBuscaCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCidadeActionPerformed
+        campoFiltroCidade.setText("");
+        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+    }//GEN-LAST:event_btnLimparBuscaCidadeActionPerformed
 
-    private void btnExcluirTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirTecnologiaActionPerformed
-        int codigoExcluirTecnologia = (int) tblTecnologia.getValueAt(tblTecnologia.getSelectedRow(), 0);
+    private void btnBuscarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCidadeActionPerformed
+        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+    }//GEN-LAST:event_btnBuscarCidadeActionPerformed
 
+    private void btnEditarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCidadeActionPerformed
+        String codigoEditarCidade = String.valueOf(tblCidade.getValueAt(tblCidade.getSelectedRow(), 0));
+
+        Object object = DaoGenerico.getInstance().obterPorId(Cidade.class, Integer.parseInt(codigoEditarCidade));
+        Cidade cidade = new Cidade((Cidade) object);
+
+        ComboItem estadoId = new ComboItem();
+        estadoId.setCodigo(cidade.getEstado_id().getId());
+        if (cidade != null) {
+            abaAdicionarCidade.setSelectedIndex(0);
+
+            campoNomeCidade.setText(cidade.getNome());
+            new ComboDao().definirItemCombo(comboEstadoId, estadoId);
+
+            campoNomeCidade.requestFocus();
+
+            codigo = cidade.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar cidade!", this);
+        }
+    }//GEN-LAST:event_btnEditarCidadeActionPerformed
+
+    private void btnExcluirCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCidadeActionPerformed
+        int codigoExcluirCidade = (int) tblCidade.getValueAt(tblCidade.getSelectedRow(), 0);
+        System.out.println(codigoExcluirCidade);
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
         if (mensagem == 0) {
-            boolean retornoExcluirTecnologia = DaoGenerico.getInstance().excluir(Tecnologia.class, codigoExcluirTecnologia);
+            boolean retornoExcluirCidade = DaoGenerico.getInstance().excluir(Cidade.class, codigoExcluirCidade);
 
-            if (retornoExcluirTecnologia == true) {
-                Mensagem.informacao("Tecnologia excluída com sucesso!", this);
-                new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+            if (retornoExcluirCidade == true) {
+                Mensagem.informacao("Cidade excluída com sucesso!", this);
+                new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
             } else {
-                Mensagem.erro(tblTecnologia.getValueAt(tblTecnologia.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+                Mensagem.erro(tblCidade.getValueAt(tblCidade.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
         }
-    }//GEN-LAST:event_btnExcluirTecnologiaActionPerformed
+    }//GEN-LAST:event_btnExcluirCidadeActionPerformed
 
-    private void btnEditarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarTecnologiaActionPerformed
-        String codigoEditarTecnologia = String.valueOf(tblTecnologia.getValueAt(tblTecnologia.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(Tecnologia.class, Integer.parseInt(codigoEditarTecnologia));
-        Tecnologia tecnologia = new Tecnologia((Tecnologia) object);
-
-        if (tecnologia != null) {
-            abaAdicionarTecnologia.setSelectedIndex(0);
-
-            campoNomeTecnologia.setText(tecnologia.getNome());
-
-            campoNomeTecnologia.requestFocus();
-
-            codigo = tecnologia.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar tecnologia!", this);
-        }
-    }//GEN-LAST:event_btnEditarTecnologiaActionPerformed
-
-    private void btnBuscarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTecnologiaActionPerformed
-        new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
-    }//GEN-LAST:event_btnBuscarTecnologiaActionPerformed
-
-    private void btnLimparBuscaTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaTecnologiaActionPerformed
-        campoFiltroTecnologia.setText("");
-        new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
-    }//GEN-LAST:event_btnLimparBuscaTecnologiaActionPerformed
-
-    private void btnSalvarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarTecnologiaActionPerformed
-        Tecnologia tecnologia = new Tecnologia();
-
-        tecnologia.setId(codigo);
-        tecnologia.setNome(campoNomeTecnologia.getText());
-        tecnologia.setSlug(Funcoes.textoIdentificador(campoNomeTecnologia.getText()));
-        tecnologia.setCriadoEm(Calendar.getInstance());
-        tecnologia.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarTecnologia = false;
-        String erroTecnologia = "";
-
-        if (campoNomeTecnologia.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarTecnologia = DaoGenerico.getInstance().inserir(tecnologia);
-            } else {
-                retornoSalvarTecnologia = DaoGenerico.getInstance().atualizar(tecnologia);
-            }
-        } else {
-            erroTecnologia = null;
-            Mensagem.erro("Digite uma tecnologia válida!", this);
-        }
-
-        if (retornoSalvarTecnologia == true && erroTecnologia != null) {
-            Mensagem.informacao("Tecnologia salva com sucesso!", this);
-
-            campoNomeTecnologia.setText("");
-
-            campoNomeTecnologia.requestFocus();
-
-            campoFiltroTecnologia.setText("");
-
-            codigo = 0;
-
-            new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
-        } else {
-            if (erroTecnologia != null) {
-                Mensagem.aviso("Tecnologia " + campoNomeTecnologia.getText() + " já existe cadastrada!", this);
-
-                campoNomeTecnologia.setText("");
-
-                campoNomeTecnologia.requestFocus();
-
-                campoFiltroTecnologia.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarTecnologiaActionPerformed
-
-    private void btnFecharSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharSegurancaActionPerformed
+    private void btnFecharCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCidadeActionPerformed
         funcaoFechar();
-    }//GEN-LAST:event_btnFecharSegurancaActionPerformed
-
-    private void btnExcluirSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirSegurancaActionPerformed
-        int codigoExcluirSeguranca = (int) tblSeguranca.getValueAt(tblSeguranca.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirSeguranca = DaoGenerico.getInstance().excluir(Seguranca.class, codigoExcluirSeguranca);
-
-            if (retornoExcluirSeguranca == true) {
-                Mensagem.informacao("Segurança excluída com sucesso!", this);
-                new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
-            } else {
-                Mensagem.erro(tblSeguranca.getValueAt(tblSeguranca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirSegurancaActionPerformed
-
-    private void btnEditarSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarSegurancaActionPerformed
-        String codigoEditarSeguranca = String.valueOf(tblSeguranca.getValueAt(tblSeguranca.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(Seguranca.class, Integer.parseInt(codigoEditarSeguranca));
-        Seguranca seguranca = new Seguranca((Seguranca) object);
-
-        if (seguranca != null) {
-            abaAdicionarSeguranca.setSelectedIndex(0);
-
-            campoNomeSeguranca.setText(seguranca.getNome());
-
-            campoNomeSeguranca.requestFocus();
-
-            codigo = seguranca.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar segurança!", this);
-        }
-    }//GEN-LAST:event_btnEditarSegurancaActionPerformed
-
-    private void btnBuscarSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSegurancaActionPerformed
-        new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
-    }//GEN-LAST:event_btnBuscarSegurancaActionPerformed
-
-    private void btnLimparBuscaSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaSegurancaActionPerformed
-        campoFiltroSeguranca.setText("");
-        new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
-    }//GEN-LAST:event_btnLimparBuscaSegurancaActionPerformed
-
-    private void btnSalvarSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarSegurancaActionPerformed
-        Seguranca seguranca = new Seguranca();
-
-        seguranca.setId(codigo);
-        seguranca.setNome(campoNomeSeguranca.getText());
-        seguranca.setSlug(Funcoes.textoIdentificador(campoNomeSeguranca.getText()));
-        seguranca.setCriadoEm(Calendar.getInstance());
-        seguranca.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarSeguranca = false;
-        String erroSeguranca = "";
-
-        if (campoNomeSeguranca.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarSeguranca = DaoGenerico.getInstance().inserir(seguranca);
-            } else {
-                retornoSalvarSeguranca = DaoGenerico.getInstance().atualizar(seguranca);
-            }
-        } else {
-            erroSeguranca = null;
-            Mensagem.erro("Digite uma segurança válida!", this);
-        }
-
-        if (retornoSalvarSeguranca == true && erroSeguranca != null) {
-            Mensagem.informacao("Segurança salva com sucesso!", this);
-
-            campoNomeSeguranca.setText("");
-
-            campoNomeSeguranca.requestFocus();
-
-            campoFiltroSeguranca.setText("");
-
-            codigo = 0;
-
-            new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
-        } else {
-            if (erroSeguranca != null) {
-                Mensagem.aviso("Segurança " + campoNomeSeguranca.getText() + " já existe cadastrada!", this);
-
-                campoNomeSeguranca.setText("");
-
-                campoNomeSeguranca.requestFocus();
-
-                campoFiltroSeguranca.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarSegurancaActionPerformed
-
-    private void btnFecharExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharExtraActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharExtraActionPerformed
-
-    private void btnExcluirExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirExtraActionPerformed
-        int codigoExcluirExtra = (int) tblExtra.getValueAt(tblExtra.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirExtra = DaoGenerico.getInstance().excluir(Extra.class, codigoExcluirExtra);
-
-            if (retornoExcluirExtra == true) {
-                Mensagem.informacao("Extra excluído com sucesso!", this);
-                new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
-            } else {
-                Mensagem.erro(tblExtra.getValueAt(tblExtra.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirExtraActionPerformed
-
-    private void btnEditarExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarExtraActionPerformed
-        String codigoEditarExtra = String.valueOf(tblExtra.getValueAt(tblExtra.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(Extra.class, Integer.parseInt(codigoEditarExtra));
-        Extra extra = new Extra((Extra) object);
-
-        if (extra != null) {
-            abaAdicionarExtra.setSelectedIndex(0);
-
-            campoNomeExtra.setText(extra.getNome());
-
-            campoNomeExtra.requestFocus();
-
-            codigo = extra.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar extra!", this);
-        }
-    }//GEN-LAST:event_btnEditarExtraActionPerformed
-
-    private void btnBuscarExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarExtraActionPerformed
-        new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
-    }//GEN-LAST:event_btnBuscarExtraActionPerformed
-
-    private void btnLimparBuscaExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaExtraActionPerformed
-        campoFiltroExtra.setText("");
-        new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
-    }//GEN-LAST:event_btnLimparBuscaExtraActionPerformed
-
-    private void btnSalvarExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarExtraActionPerformed
-        Extra extra = new Extra();
-
-        extra.setId(codigo);
-        extra.setNome(campoNomeExtra.getText());
-        extra.setSlug(Funcoes.textoIdentificador(campoNomeExtra.getText()));
-        extra.setCriadoEm(Calendar.getInstance());
-        extra.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarExtra = false;
-        String erroExtra = "";
-
-        if (campoNomeExtra.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarExtra = DaoGenerico.getInstance().inserir(extra);
-            } else {
-                retornoSalvarExtra = DaoGenerico.getInstance().atualizar(extra);
-            }
-        } else {
-            erroExtra = null;
-            Mensagem.erro("Digite um extra válido!", this);
-        }
-
-        if (retornoSalvarExtra == true && erroExtra != null) {
-            Mensagem.informacao("Extra salvo com sucesso!", this);
-
-            campoNomeExtra.setText("");
-
-            campoNomeExtra.requestFocus();
-
-            campoFiltroExtra.setText("");
-
-            codigo = 0;
-
-            new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
-        } else {
-            if (erroExtra != null) {
-                Mensagem.aviso("Extra " + campoNomeExtra.getText() + " já existe cadastrado!", this);
-
-                campoNomeExtra.setText("");
-
-                campoNomeExtra.requestFocus();
-
-                campoFiltroExtra.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarExtraActionPerformed
-
-    private void btnFecharEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharEstiloActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharEstiloActionPerformed
-
-    private void btnExcluirEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirEstiloActionPerformed
-        int codigoExcluirEstilo = (int) tblEstilo.getValueAt(tblEstilo.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirEstilo = DaoGenerico.getInstance().excluir(Estilo.class, codigoExcluirEstilo);
-
-            if (retornoExcluirEstilo == true) {
-                Mensagem.informacao("Estilo excluído com sucesso!", this);
-                new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
-            } else {
-                Mensagem.erro(tblEstilo.getValueAt(tblEstilo.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirEstiloActionPerformed
-
-    private void btnEditarEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstiloActionPerformed
-        String codigoEditarEstilo = String.valueOf(tblEstilo.getValueAt(tblEstilo.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(Estilo.class, Integer.parseInt(codigoEditarEstilo));
-        Estilo estilo = new Estilo((Estilo) object);
-
-        if (estilo != null) {
-            abaAdicionarEstilo.setSelectedIndex(0);
-
-            campoNomeEstilo.setText(estilo.getNome());
-
-            campoNomeEstilo.requestFocus();
-
-            codigo = estilo.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar estilo!", this);
-        }
-    }//GEN-LAST:event_btnEditarEstiloActionPerformed
-
-    private void btnBuscarEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstiloActionPerformed
-        new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
-    }//GEN-LAST:event_btnBuscarEstiloActionPerformed
-
-    private void btnLimparBuscaEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaEstiloActionPerformed
-        campoFiltroEstilo.setText("");
-        new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
-    }//GEN-LAST:event_btnLimparBuscaEstiloActionPerformed
-
-    private void btnSalvarEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEstiloActionPerformed
-        Estilo estilo = new Estilo();
-
-        estilo.setId(codigo);
-        estilo.setNome(campoNomeEstilo.getText());
-        estilo.setSlug(Funcoes.textoIdentificador(campoNomeEstilo.getText()));
-        estilo.setCriadoEm(Calendar.getInstance());
-        estilo.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarEstilo = false;
-        String erroEstilo = "";
-
-        if (campoNomeEstilo.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarEstilo = DaoGenerico.getInstance().inserir(estilo);
-            } else {
-                retornoSalvarEstilo = DaoGenerico.getInstance().atualizar(estilo);
-            }
-        } else {
-            erroEstilo = null;
-            Mensagem.erro("Digite um estilo válido!", this);
-        }
-
-        if (retornoSalvarEstilo == true && erroEstilo != null) {
-            Mensagem.informacao("Estilo salvo com sucesso!", this);
-
-            campoNomeEstilo.setText("");
-
-            campoNomeEstilo.requestFocus();
-
-            campoFiltroEstilo.setText("");
-
-            codigo = 0;
-
-            new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
-        } else {
-            if (erroEstilo != null) {
-                Mensagem.aviso("Estilo " + campoNomeEstilo.getText() + " já existe cadastrado!", this);
-
-                campoNomeEstilo.setText("");
-
-                campoNomeEstilo.requestFocus();
-
-                campoFiltroEstilo.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarEstiloActionPerformed
-
-    private void btnFecharCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCorInternaActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharCorInternaActionPerformed
-
-    private void btnExcluirCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCorInternaActionPerformed
-        int codigoExcluirCorInterna = (int) tblCorInterna.getValueAt(tblCorInterna.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirCorInterna = DaoGenerico.getInstance().excluir(CorInterna.class, codigoExcluirCorInterna);
-
-            if (retornoExcluirCorInterna == true) {
-                Mensagem.informacao("Cor interna excluída com sucesso!", this);
-                new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
-            } else {
-                Mensagem.erro(tblCorInterna.getValueAt(tblCorInterna.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirCorInternaActionPerformed
-
-    private void btnEditarCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCorInternaActionPerformed
-        String codigoEditarCorInterna = String.valueOf(tblCorInterna.getValueAt(tblCorInterna.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(CorInterna.class, Integer.parseInt(codigoEditarCorInterna));
-        CorInterna corInterna = new CorInterna((CorInterna) object);
-
-        if (corInterna != null) {
-            abaAdicionarCorInterna.setSelectedIndex(0);
-
-            campoNomeCorInterna.setText(corInterna.getNome());
-
-            campoNomeCorInterna.requestFocus();
-
-            codigo = corInterna.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar cor interna!", this);
-        }
-    }//GEN-LAST:event_btnEditarCorInternaActionPerformed
-
-    private void btnBuscarCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCorInternaActionPerformed
-        new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
-    }//GEN-LAST:event_btnBuscarCorInternaActionPerformed
-
-    private void btnLimparBuscaCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCorInternaActionPerformed
-        campoFiltroCorInterna.setText("");
-        new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
-    }//GEN-LAST:event_btnLimparBuscaCorInternaActionPerformed
-
-    private void btnSalvarCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCorInternaActionPerformed
-        CorInterna corInterna = new CorInterna();
-
-        corInterna.setId(codigo);
-        corInterna.setNome(campoNomeCorInterna.getText());
-        corInterna.setSlug(Funcoes.textoIdentificador(campoNomeCorInterna.getText()));
-        corInterna.setCriadoEm(Calendar.getInstance());
-        corInterna.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarCorInterna = false;
-        String erroCorInterna = "";
-
-        if (campoNomeCorInterna.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarCorInterna = DaoGenerico.getInstance().inserir(corInterna);
-            } else {
-                retornoSalvarCorInterna = DaoGenerico.getInstance().atualizar(corInterna);
-            }
-        } else {
-            erroCorInterna = null;
-            Mensagem.erro("Digite uma cor interna válida!", this);
-        }
-
-        if (retornoSalvarCorInterna == true && erroCorInterna != null) {
-            Mensagem.informacao("Cor interna salva com sucesso!", this);
-
-            campoNomeCorInterna.setText("");
-
-            campoNomeCorInterna.requestFocus();
-
-            campoFiltroCorInterna.setText("");
-
-            codigo = 0;
-
-            new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
-        } else {
-            if (erroCorInterna != null) {
-                Mensagem.aviso("Cor interna " + campoNomeCorInterna.getText() + " já existe cadastrada!", this);
-
-                campoNomeCorInterna.setText("");
-
-                campoNomeCorInterna.requestFocus();
-
-                campoFiltroCorInterna.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarCorInternaActionPerformed
-
-    private void btnFecharCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCorExternaActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharCorExternaActionPerformed
-
-    private void btnExcluirCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCorExternaActionPerformed
-        int codigoExcluirCorExterna = (int) tblCorExterna.getValueAt(tblCorExterna.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirCorExterna = DaoGenerico.getInstance().excluir(CorExterna.class, codigoExcluirCorExterna);
-
-            if (retornoExcluirCorExterna == true) {
-                Mensagem.informacao("Cor externa excluída com sucesso!", this);
-                new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
-            } else {
-                Mensagem.erro(tblCorExterna.getValueAt(tblCorExterna.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirCorExternaActionPerformed
-
-    private void btnEditarCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCorExternaActionPerformed
-        String codigoEditarCorExterna = String.valueOf(tblCorExterna.getValueAt(tblCorExterna.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(CorExterna.class, Integer.parseInt(codigoEditarCorExterna));
-        CorExterna corExterna = new CorExterna((CorExterna) object);
-
-        if (corExterna != null) {
-            abaAdicionarCorExterna.setSelectedIndex(0);
-
-            campoNomeCorExterna.setText(corExterna.getNome());
-
-            campoNomeCorExterna.requestFocus();
-
-            codigo = corExterna.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar cor externa!", this);
-        }
-    }//GEN-LAST:event_btnEditarCorExternaActionPerformed
-
-    private void btnBuscarCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCorExternaActionPerformed
-        new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
-    }//GEN-LAST:event_btnBuscarCorExternaActionPerformed
-
-    private void btnLimparBuscaCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCorExternaActionPerformed
-        campoFiltroCorExterna.setText("");
-        new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
-    }//GEN-LAST:event_btnLimparBuscaCorExternaActionPerformed
-
-    private void btnSalvarCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCorExternaActionPerformed
-        CorExterna corExterna = new CorExterna();
-
-        corExterna.setId(codigo);
-        corExterna.setNome(campoNomeCorExterna.getText());
-        corExterna.setSlug(Funcoes.textoIdentificador(campoNomeCorExterna.getText()));
-        corExterna.setCriadoEm(Calendar.getInstance());
-        corExterna.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarCorExterna = false;
-        String erroCorExterna = "";
-
-        if (campoNomeCorExterna.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarCorExterna = DaoGenerico.getInstance().inserir(corExterna);
-            } else {
-                retornoSalvarCorExterna = DaoGenerico.getInstance().atualizar(corExterna);
-            }
-        } else {
-            erroCorExterna = null;
-            Mensagem.erro("Digite uma cor externa válida!", this);
-        }
-
-        if (retornoSalvarCorExterna == true && erroCorExterna != null) {
-            Mensagem.informacao("Cor externa salva com sucesso!", this);
-
-            campoNomeCorExterna.setText("");
-
-            campoNomeCorExterna.requestFocus();
-
-            campoFiltroCorExterna.setText("");
-
-            codigo = 0;
-
-            new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
-        } else {
-            if (erroCorExterna != null) {
-                Mensagem.aviso("Cor externa " + campoNomeCorExterna.getText() + " já existe cadastrada!", this);
-
-                campoNomeCorExterna.setText("");
-
-                campoNomeCorExterna.requestFocus();
-
-                campoFiltroCorExterna.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarCorExternaActionPerformed
-
-    private void btnFecharConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharConfortoActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharConfortoActionPerformed
-
-    private void btnExcluirConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirConfortoActionPerformed
-        int codigoExcluirConforto = (int) tblConforto.getValueAt(tblConforto.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirConforto = DaoGenerico.getInstance().excluir(Conforto.class, codigoExcluirConforto);
-
-            if (retornoExcluirConforto == true) {
-                Mensagem.informacao("Conforto excluído com sucesso!", this);
-                new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
-            } else {
-                Mensagem.erro(tblConforto.getValueAt(tblConforto.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirConfortoActionPerformed
-
-    private void btnEditarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConfortoActionPerformed
-        String codigoEditarConforto = String.valueOf(tblConforto.getValueAt(tblConforto.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(Conforto.class, Integer.parseInt(codigoEditarConforto));
-        Conforto conforto = new Conforto((Conforto) object);
-
-        if (conforto != null) {
-            abaAdicionarConforto.setSelectedIndex(0);
-
-            campoNomeConforto.setText(conforto.getNome());
-
-            campoNomeConforto.requestFocus();
-
-            codigo = conforto.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar conforto!", this);
-        }
-    }//GEN-LAST:event_btnEditarConfortoActionPerformed
-
-    private void btnBuscarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConfortoActionPerformed
-        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
-    }//GEN-LAST:event_btnBuscarConfortoActionPerformed
-
-    private void btnLimparBuscaConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaConfortoActionPerformed
-        campoFiltroConforto.setText("");
-        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
-    }//GEN-LAST:event_btnLimparBuscaConfortoActionPerformed
-
-    private void btnSalvarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarConfortoActionPerformed
-        Conforto conforto = new Conforto();
-
-        conforto.setId(codigo);
-        conforto.setNome(campoNomeConforto.getText());
-        conforto.setSlug(Funcoes.textoIdentificador(campoNomeConforto.getText()));
-        conforto.setCriadoEm(Calendar.getInstance());
-        conforto.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarConforto = false;
-        String erroConforto = "";
-
-        if (campoNomeConforto.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarConforto = DaoGenerico.getInstance().inserir(conforto);
-            } else {
-                retornoSalvarConforto = DaoGenerico.getInstance().atualizar(conforto);
-            }
-        } else {
-            erroConforto = null;
-            Mensagem.erro("Digite um conforto válido!", this);
-        }
-
-        if (retornoSalvarConforto == true && erroConforto != null) {
-            Mensagem.informacao("Conforto salvo com sucesso!", this);
-
-            campoNomeConforto.setText("");
-
-            campoNomeConforto.requestFocus();
-
-            campoFiltroConforto.setText("");
-
-            codigo = 0;
-
-            new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
-        } else {
-            if (erroConforto != null) {
-                Mensagem.aviso("Conforto " + campoNomeConforto.getText() + " já existe cadastrado!", this);
-
-                campoNomeConforto.setText("");
-
-                campoNomeConforto.requestFocus();
-
-                campoFiltroConforto.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarConfortoActionPerformed
-
-    private void btnFecharCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCombustivelActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharCombustivelActionPerformed
-
-    private void btnExcluirCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCombustivelActionPerformed
-        int codigoExcluirCombustivel = (int) tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirCombustivel = DaoGenerico.getInstance().excluir(Combustivel.class, codigoExcluirCombustivel);
-
-            if (retornoExcluirCombustivel == true) {
-                Mensagem.informacao("Combustível excluído com sucesso!", this);
-                new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
-            } else {
-                Mensagem.erro(tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirCombustivelActionPerformed
-
-    private void btnEditarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCombustivelActionPerformed
-        String codigoEditarCombustivel = String.valueOf(tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(Combustivel.class, Integer.parseInt(codigoEditarCombustivel));
-        Combustivel combustivel = new Combustivel((Combustivel) object);
-
-        if (combustivel != null) {
-            abaAdicionarCombustivel.setSelectedIndex(0);
-
-            campoNomeCombustivel.setText(combustivel.getNome());
-
-            campoNomeCombustivel.requestFocus();
-
-            codigo = combustivel.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar combustível!", this);
-        }
-    }//GEN-LAST:event_btnEditarCombustivelActionPerformed
-
-    private void btnBuscarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCombustivelActionPerformed
-        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
-    }//GEN-LAST:event_btnBuscarCombustivelActionPerformed
-
-    private void btnLimparBuscaCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCombustivelActionPerformed
-        campoFiltroCombustivel.setText("");
-        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
-    }//GEN-LAST:event_btnLimparBuscaCombustivelActionPerformed
-
-    private void btnSalvarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCombustivelActionPerformed
-        Combustivel combustivel = new Combustivel();
-
-        combustivel.setId(codigo);
-        combustivel.setNome(campoNomeCombustivel.getText());
-        combustivel.setSlug(Funcoes.textoIdentificador(campoNomeCombustivel.getText()));
-        combustivel.setCriadoEm(Calendar.getInstance());
-        combustivel.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarCombustivel = false;
-        String erroCombustivel = "";
-
-        if (campoNomeCombustivel.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarCombustivel = DaoGenerico.getInstance().inserir(combustivel);
-            } else {
-                retornoSalvarCombustivel = DaoGenerico.getInstance().atualizar(combustivel);
-            }
-        } else {
-            erroCombustivel = null;
-            Mensagem.erro("Digite um combustível válido!", this);
-        }
-
-        if (retornoSalvarCombustivel == true && erroCombustivel != null) {
-            Mensagem.informacao("Combustível salvo com sucesso!", this);
-
-            campoNomeCombustivel.setText("");
-
-            campoNomeCombustivel.requestFocus();
-
-            campoFiltroCombustivel.setText("");
-
-            codigo = 0;
-
-            new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
-        } else {
-            if (erroCombustivel != null) {
-                Mensagem.aviso("Combustível " + campoNomeCombustivel.getText() + " já existe cadastrado!", this);
-
-                campoNomeCombustivel.setText("");
-
-                campoNomeCombustivel.requestFocus();
-
-                campoFiltroCombustivel.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarCombustivelActionPerformed
-
-    private void btnFecharCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCarroceriaActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharCarroceriaActionPerformed
-
-    private void btnExcluirCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCarroceriaActionPerformed
-        int codigoExcluirCarroceria = (int) tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirCarroceria = DaoGenerico.getInstance().excluir(Carroceria.class, codigoExcluirCarroceria);
-
-            if (retornoExcluirCarroceria == true) {
-                Mensagem.informacao("Carroceria excluída com sucesso!", this);
-                new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
-            } else {
-                Mensagem.erro(tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirCarroceriaActionPerformed
-
-    private void btnEditarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCarroceriaActionPerformed
-        String codigoEditarCarroceria = String.valueOf(tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(Carroceria.class, Integer.parseInt(codigoEditarCarroceria));
-        Carroceria carroceria = new Carroceria((Carroceria) object);
-
-        if (carroceria != null) {
-            abaAdicionarCarroceria.setSelectedIndex(0);
-
-            campoNomeCarroceria.setText(carroceria.getNome());
-
-            campoNomeCarroceria.requestFocus();
-
-            codigo = carroceria.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar carroceria!", this);
-        }
-    }//GEN-LAST:event_btnEditarCarroceriaActionPerformed
-
-    private void btnBuscarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCarroceriaActionPerformed
-        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
-    }//GEN-LAST:event_btnBuscarCarroceriaActionPerformed
-
-    private void btnLimparBuscaCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCarroceriaActionPerformed
-        campoFiltroCarroceria.setText("");
-        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
-    }//GEN-LAST:event_btnLimparBuscaCarroceriaActionPerformed
-
-    private void btnSalvarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCarroceriaActionPerformed
-        Carroceria carroceria = new Carroceria();
-
-        carroceria.setId(codigo);
-        carroceria.setNome(campoNomeCarroceria.getText());
-        carroceria.setSlug(Funcoes.textoIdentificador(campoNomeCarroceria.getText()));
-        carroceria.setCriadoEm(Calendar.getInstance());
-        carroceria.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarCarroceria = false;
-        String erroCarroceria = "";
-
-        if (campoNomeCarroceria.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarCarroceria = DaoGenerico.getInstance().inserir(carroceria);
-            } else {
-                retornoSalvarCarroceria = DaoGenerico.getInstance().atualizar(carroceria);
-            }
-        } else {
-            erroCarroceria = null;
-            Mensagem.erro("Digite uma carroceria válida!", this);
-        }
-
-        if (retornoSalvarCarroceria == true && erroCarroceria != null) {
-            Mensagem.informacao("Carroceria salva com sucesso!", this);
-
-            campoNomeCarroceria.setText("");
-
-            campoNomeCarroceria.requestFocus();
-
-            campoFiltroCarroceria.setText("");
-
-            codigo = 0;
-
-            new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
-        } else {
-            if (erroCarroceria != null) {
-                Mensagem.aviso("Carroceria " + campoNomeCarroceria.getText() + " já existe cadastrada!", this);
-
-                campoNomeCarroceria.setText("");
-
-                campoNomeCarroceria.requestFocus();
-
-                campoFiltroCarroceria.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarCarroceriaActionPerformed
-
-    private void btnFecharCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCambioActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharCambioActionPerformed
-
-    private void btnExcluirCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirCambioActionPerformed
-        int codigoExcluirCambio = (int) tblCambio.getValueAt(tblCambio.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirCambio = DaoGenerico.getInstance().excluir(Cambio.class, codigoExcluirCambio);
-
-            if (retornoExcluirCambio == true) {
-                Mensagem.informacao("Câmbio excluído com sucesso!", this);
-                new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
-            } else {
-                Mensagem.erro(tblCambio.getValueAt(tblCambio.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirCambioActionPerformed
-
-    private void btnEditarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCambioActionPerformed
-        String codigoEditarCambio = String.valueOf(tblCambio.getValueAt(tblCambio.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(Cambio.class, Integer.parseInt(codigoEditarCambio));
-        Cambio cambio = new Cambio((Cambio) object);
-
-        if (cambio != null) {
-            abaAdicionarCambio.setSelectedIndex(0);
-
-            campoNomeCambio.setText(cambio.getNome());
-
-            campoNomeCambio.requestFocus();
-
-            codigo = cambio.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar câmbio!", this);
-        }
-    }//GEN-LAST:event_btnEditarCambioActionPerformed
-
-    private void btnBuscarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCambioActionPerformed
-        new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
-    }//GEN-LAST:event_btnBuscarCambioActionPerformed
-
-    private void btnLimparBuscaCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCambioActionPerformed
-        campoFiltroCambio.setText("");
-        new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
-    }//GEN-LAST:event_btnLimparBuscaCambioActionPerformed
-
-    private void btnSalvarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarCambioActionPerformed
-        Cambio cambio = new Cambio();
-
-        cambio.setId(codigo);
-        cambio.setNome(campoNomeCambio.getText());
-        cambio.setSlug(Funcoes.textoIdentificador(campoNomeCambio.getText()));
-        cambio.setCriadoEm(Calendar.getInstance());
-        cambio.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarCambio = false;
-        String erroCambio = "";
-
-        if (campoNomeCambio.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarCambio = DaoGenerico.getInstance().inserir(cambio);
-            } else {
-                retornoSalvarCambio = DaoGenerico.getInstance().atualizar(cambio);
-            }
-        } else {
-            erroCambio = null;
-            Mensagem.erro("Digite um câmbio válido!", this);
-        }
-
-        if (retornoSalvarCambio == true && erroCambio != null) {
-            Mensagem.informacao("Câmbio salvo com sucesso!", this);
-
-            campoNomeCambio.setText("");
-
-            campoNomeCambio.requestFocus();
-
-            campoFiltroCambio.setText("");
-
-            codigo = 0;
-
-            new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
-        } else {
-            if (erroCambio != null) {
-                Mensagem.aviso("Cambio " + campoNomeCambio.getText() + " já existe cadastrado!", this);
-
-                campoNomeCambio.setText("");
-
-                campoNomeCambio.requestFocus();
-
-                campoFiltroCambio.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarCambioActionPerformed
-
-    private void btnFecharAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharAcabamentoInternoActionPerformed
-        funcaoFechar();
-    }//GEN-LAST:event_btnFecharAcabamentoInternoActionPerformed
-
-    private void btnExcluirAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirAcabamentoInternoActionPerformed
-        int codigoExcluirAcabamentoInterno = (int) tblAcabamentoInterno.getValueAt(tblAcabamentoInterno.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirAcabamentoInterno = DaoGenerico.getInstance().excluir(AcabamentoInterno.class, codigoExcluirAcabamentoInterno);
-
-            if (retornoExcluirAcabamentoInterno == true) {
-                Mensagem.informacao("Acabamento interno excluído com sucesso!", this);
-                new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
-            } else {
-                Mensagem.erro(tblAcabamentoInterno.getValueAt(tblAcabamentoInterno.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirAcabamentoInternoActionPerformed
-
-    private void btnEditarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAcabamentoInternoActionPerformed
-        String codigoEditarAcabamentoInterno = String.valueOf(tblAcabamentoInterno.getValueAt(tblAcabamentoInterno.getSelectedRow(), 0));
-
-        Object object = DaoGenerico.getInstance().obterPorId(AcabamentoInterno.class, Integer.parseInt(codigoEditarAcabamentoInterno));
-        AcabamentoInterno acabamentoInterno = new AcabamentoInterno((AcabamentoInterno) object);
-
-        if (acabamentoInterno != null) {
-            abaAdicionarAcabamentoInterno.setSelectedIndex(0);
-
-            campoNomeAcabamentoInterno.setText(acabamentoInterno.getNome());
-
-            campoNomeAcabamentoInterno.requestFocus();
-
-            codigo = acabamentoInterno.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar acabamento interno!", this);
-        }
-    }//GEN-LAST:event_btnEditarAcabamentoInternoActionPerformed
-
-    private void btnBuscarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAcabamentoInternoActionPerformed
-        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
-    }//GEN-LAST:event_btnBuscarAcabamentoInternoActionPerformed
-
-    private void btnLimparBuscaAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaAcabamentoInternoActionPerformed
-        campoFiltroAcabamentoInterno.setText("");
-        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
-    }//GEN-LAST:event_btnLimparBuscaAcabamentoInternoActionPerformed
-
-    private void btnSalvarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarAcabamentoInternoActionPerformed
-        AcabamentoInterno acabamentoInterno = new AcabamentoInterno();
-
-        acabamentoInterno.setId(codigo);
-        acabamentoInterno.setNome(campoNomeAcabamentoInterno.getText());
-        acabamentoInterno.setSlug(Funcoes.textoIdentificador(campoNomeAcabamentoInterno.getText()));
-        acabamentoInterno.setCriadoEm(Calendar.getInstance());
-        acabamentoInterno.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarAcabamentoInterno = false;
-        String erroAcabamentoInterno = "";
-
-        if (campoNomeAcabamentoInterno.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarAcabamentoInterno = DaoGenerico.getInstance().inserir(acabamentoInterno);
-            } else {
-                retornoSalvarAcabamentoInterno = DaoGenerico.getInstance().atualizar(acabamentoInterno);
-            }
-        } else {
-            erroAcabamentoInterno = null;
-            Mensagem.erro("Digite um acabamento interno válido!", this);
-        }
-
-        if (retornoSalvarAcabamentoInterno == true && erroAcabamentoInterno != null) {
-            Mensagem.informacao("Acabamento interno salvo com sucesso!", this);
-
-            campoNomeAcabamentoInterno.setText("");
-
-            campoNomeAcabamentoInterno.requestFocus();
-
-            campoFiltroAcabamentoInterno.setText("");
-
-            codigo = 0;
-
-            new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
-        } else {
-            if (erroAcabamentoInterno != null) {
-                Mensagem.aviso("Acabamento interno " + campoNomeAcabamentoInterno.getText() + " já existe cadastrado!", this);
-
-                campoNomeAcabamentoInterno.setText("");
-
-                campoNomeAcabamentoInterno.requestFocus();
-
-                campoFiltroAcabamentoInterno.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarAcabamentoInternoActionPerformed
+    }//GEN-LAST:event_btnFecharCidadeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -4368,7 +4420,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane abaAdicionarEstado;
     private javax.swing.JTabbedPane abaAdicionarEstilo;
     private javax.swing.JTabbedPane abaAdicionarExtra;
-    private javax.swing.JTabbedPane abaAdicionarPerfil2;
+    private javax.swing.JTabbedPane abaAdicionarPerfil;
     private javax.swing.JTabbedPane abaAdicionarSeguranca;
     private javax.swing.JTabbedPane abaAdicionarTecnologia;
     private javax.swing.JTabbedPane abaPerfil;
@@ -4517,7 +4569,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
