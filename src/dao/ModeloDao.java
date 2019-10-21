@@ -77,7 +77,7 @@ public class ModeloDao implements IDAO_T<Modelo> {
 //        return modelo;
     }
 
-    public void popularTabela(JTable tabela, String criterio) {
+    public void popularTabela(JTable tabela, String modelo, String marca_id) {
         // dados da tabela
         Object[][] dadosTabela = null;
 
@@ -88,11 +88,24 @@ public class ModeloDao implements IDAO_T<Modelo> {
         cabecalho[2] = "Marca";
         cabecalho[3] = "Procedência";
 
+        String marca = marca_id != "" ? "ma.ID = " + marca_id + " " : " 1 = 1 ";
+
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM modelos AS m WHERE m.NOME ILIKE '%" + criterio + "%' AND "
-                    + "m.id IN (SELECT id FROM modelos WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "SELECT count(*) FROM modelos AS m INNER JOIN marcas AS ma "
+                    + "ON m.marca_id = ma.id "
+                    + "INNER JOIN procedencias AS p "
+                    + "ON m.procedencia_id = p.id "
+                    + "WHERE m.NOME ILIKE '%" + modelo + "%' AND "
+                    + marca + " AND "
+                    + "m.id IN (SELECT m.id FROM modelos AS m INNER JOIN marcas AS ma "
+                    + "ON m.marca_id = ma.id "
+                    + "INNER JOIN procedencias AS p "
+                    + "ON m.procedencia_id = p.id "
+                    + "WHERE m.NOME ILIKE '%" + modelo + "%' AND "
+                    + marca
+                    + "LIMIT 50)");
 
             resultadoQ.next();
 
@@ -109,15 +122,16 @@ public class ModeloDao implements IDAO_T<Modelo> {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT mo.id AS id" + ","
                     + "mo.nome AS nome" + ","
-                    + "ma.nome AS marca_id" + ","
-                    + "p.nome AS procedencia_id "
+                    + "ma.nome AS marca" + ","
+                    + "p.nome AS procedencia "
                     + "FROM modelos AS mo "
-                    + " LEFT JOIN marcas AS ma "
-                    + " ON mo.marca_id = ma.id "
-                    + " LEFT JOIN procedencias AS p "
-                    + " ON mo.procedencia_id = p.id "
+                    + "INNER JOIN marcas AS ma "
+                    + "ON mo.marca_id = ma.id "
+                    + "INNER JOIN procedencias AS p "
+                    + "ON mo.procedencia_id = p.id "
                     + "WHERE "
-                    + "mo.NOME ILIKE '%" + criterio + "%' "
+                    + "mo.NOME ILIKE '%" + modelo + "%' AND "
+                    + marca
                     + "ORDER BY mo.CRIADO_EM DESC "
                     + "LIMIT 50");
 
@@ -125,8 +139,8 @@ public class ModeloDao implements IDAO_T<Modelo> {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
                 dadosTabela[lin][1] = resultadoQ.getString("nome");
-                dadosTabela[lin][2] = resultadoQ.getString("marca_id");
-                dadosTabela[lin][3] = resultadoQ.getString("procedencia_id");
+                dadosTabela[lin][2] = resultadoQ.getString("marca");
+                dadosTabela[lin][3] = resultadoQ.getString("procedencia");
 
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {
