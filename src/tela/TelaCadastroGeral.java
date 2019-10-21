@@ -2650,7 +2650,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addComponent(campoUf, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarEstado)
-                .addContainerGap())
+                .addContainerGap(174, Short.MAX_VALUE))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4348,6 +4348,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     private void btnBuscarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCidadeActionPerformed
         new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
     }//GEN-LAST:event_btnBuscarCidadeActionPerformed
+
 
     private void btnEditarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCidadeActionPerformed
         String codigoEditarCidade = String.valueOf(tblCidade.getValueAt(tblCidade.getSelectedRow(), 0));
