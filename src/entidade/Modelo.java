@@ -34,11 +34,11 @@ public class Modelo {
     private Marca marca_id;
 
     @JoinColumn(name = "procedencia_id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Procedencia procedencia_id;
 
     @JoinColumn(name = "carroceria_id")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Carroceria carroceria_id;
 
     @Column(name = "nome", length = 100, nullable = false)
@@ -193,5 +193,4 @@ public class Modelo {
         }
         return true;
     }
-
 }
