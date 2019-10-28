@@ -1,5 +1,6 @@
 package entidade;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "modelos")
 
-public class Modelo {
+public class Modelo implements Serializable {
 
     @Id
     @SequenceGenerator(name = "MODELO_SEQ", sequenceName = "seq_modelos", allocationSize = 1, initialValue = 1)

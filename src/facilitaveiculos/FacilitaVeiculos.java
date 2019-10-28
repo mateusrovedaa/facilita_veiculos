@@ -1,6 +1,6 @@
 package facilitaveiculos;
 
-import functions.ConexaoBD;
+import functions.HibernateUtil;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import tela.TelaLogin;
@@ -8,11 +8,11 @@ import tela.TelaLogin;
 public class FacilitaVeiculos {
 
     public static Connection conexao;
-
+    
     public static void main(String[] args) {
 
         try{
-            ConexaoBD.getInstance().getConnection();
+            HibernateUtil.getSessionFactory().openSession();
             TelaLogin tela = new TelaLogin();
             tela.setVisible(true);
         } catch (Exception e) {
