@@ -1,5 +1,6 @@
 package entidade;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "versoes")
 
-public class Versao {
+public class Versao implements Serializable {
 
     @Id
     @SequenceGenerator(name = "VERSAO_SEQ", sequenceName = "seq_versoes", allocationSize = 1, initialValue = 1)
@@ -73,7 +74,7 @@ public class Versao {
     @Column(name = "torque_rpm", length = 100)
     private String torque_rpm;
 
-    @Column(name = "observacoes", length = 100, columnDefinition = "longtext")
+    @Column(name = "observacoes", length = 100)
     private String observacoes;
 
     @Column(name = "criado_em", nullable = false)
