@@ -4,51 +4,63 @@ import entidade.Marca;
 import static facilitaveiculos.FacilitaVeiculos.conexao;
 import functions.ConexaoBD;
 import functions.Formatacao;
+import functions.HibernateUtil;
 import functions.IDAO_T;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
-public class MarcaDao implements IDAO_T<Marca> {
+public class MarcaDao implements IDAO_T<Marca>
+{
 
     ResultSet resultadoQ = null;
     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
     @Override
-    public String salvar(Marca o) {
+    public String salvar(Marca o)
+    {
         return null;
     }
 
     @Override
-    public String atualizar(Marca o) {
+    public String atualizar(Marca o)
+    {
         return null;
     }
 
     @Override
-    public String excluir(int id) {
+    public String excluir(int id)
+    {
         return null;
     }
 
     @Override
-    public ArrayList<Marca> consultarTodos() {
+    public ArrayList<Marca> consultarTodos()
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Marca> consultar(String criterio) {
+    public ArrayList<Marca> consultar(String criterio)
+    {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Marca consultarId(int id) {
+    public Marca consultarId(int id)
+    {
         Marca marca = null;
 
-        try {
+        try
+        {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
             String sql = ""
@@ -60,21 +72,109 @@ public class MarcaDao implements IDAO_T<Marca> {
 
             resultadoQ = st.executeQuery(sql);
 
-            while (resultadoQ.next()) {
+            while (resultadoQ.next())
+            {
                 marca = new Marca();
 
                 marca.setId(id);
                 marca.setNome(resultadoQ.getString("nome"));
             }
 
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println("Erro consultar marca = " + e);
         }
 
         return marca;
     }
 
-    public void popularTabela(JTable tabela, String criterio) {
+    public void incrementaTabela(JTable tabela, int linhas)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
+
+        List<Marca> x = newSession.createQuery("FROM Marca").setFirstResult(linhas).setMaxResults(linhas).list();
+
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
+
+        int lin = 0;
+
+        for (Marca marca : x)
+        {
+            model.addRow(new Object[]
+            {
+                marca.getNome(), marca.getSlug()
+            });
+
+            lin++;
+        }
+    }
+
+    public void criaTabela(JTable tabela)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
+
+        List<Marca> x = newSession.createQuery("FROM Marca").setFirstResult(0).setMaxResults(15).list();
+
+        Object[][] dadosTabela = null;
+
+        Object[] cabecalho = new Object[2];
+        cabecalho[0] = "Nome";
+        cabecalho[1] = "Slug";
+
+        dadosTabela = new Object[15][2];
+        int lin = 0;
+
+        for (Marca marca : x)
+        {
+            dadosTabela[lin][0] = marca.getNome();
+            dadosTabela[lin][1] = marca.getSlug();
+
+            lin++;
+        }
+
+        tabela.setModel(new DefaultTableModel(dadosTabela, cabecalho)
+        {
+            @Override
+            public boolean isCellEditable(int row, int column)
+            {
+                return false;
+
+            }
+
+            @Override
+            public Class getColumnClass(int column)
+            {
+
+                if (column == 2)
+                {
+
+                }
+                return Object.class;
+            }
+        });
+
+        tabela.setSelectionMode(0);
+
+        TableColumn column = null;
+        for (int i = 0; i < tabela.getColumnCount(); i++)
+        {
+            column = tabela.getColumnModel().getColumn(i);
+            switch (i)
+            {
+                case 0:
+                    column.setPreferredWidth(17);
+                    break;
+                case 1:
+                    column.setPreferredWidth(140);
+                    break;
+            }
+        }
+    }
+
+    public void popularTabela(JTable tabela, String criterio)
+    {
         // dados da tabela
         Object[][] dadosTabela = null;
 
@@ -84,7 +184,8 @@ public class MarcaDao implements IDAO_T<Marca> {
         cabecalho[1] = "Nome";
 
         // cria matriz de acordo com nº de registros da tabela
-        try {
+        try
+        {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT count(*) FROM marcas AS m WHERE m.NOME ILIKE '%" + criterio + "%' AND "
                     + "m.id IN (SELECT id FROM marcas WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
@@ -93,14 +194,16 @@ public class MarcaDao implements IDAO_T<Marca> {
 
             dadosTabela = new Object[resultadoQ.getInt(1)][2];
 
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println("Erro ao consultar marca: " + e);
         }
 
         int lin = 0;
 
         // efetua consulta na tabela
-        try {
+        try
+        {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT * FROM marcas "
                     + "WHERE "
@@ -108,7 +211,8 @@ public class MarcaDao implements IDAO_T<Marca> {
                     + "ORDER BY CRIADO_EM DESC "
                     + "LIMIT 50");
 
-            while (resultadoQ.next()) {
+            while (resultadoQ.next())
+            {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
                 dadosTabela[lin][1] = resultadoQ.getString("nome");
@@ -121,16 +225,19 @@ public class MarcaDao implements IDAO_T<Marca> {
 //                }
                 lin++;
             }
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             System.out.println("problemas para popular tabela...");
             System.out.println(e);
         }
 
         // configuracoes adicionais no componente tabela
-        tabela.setModel(new DefaultTableModel(dadosTabela, cabecalho) {
+        tabela.setModel(new DefaultTableModel(dadosTabela, cabecalho)
+        {
             @Override
             // quando retorno for FALSE, a tabela nao é editavel
-            public boolean isCellEditable(int row, int column) {
+            public boolean isCellEditable(int row, int column)
+            {
                 return false;
                 /*  
                  if (column == 3) {  // apenas a coluna 3 sera editavel
@@ -143,9 +250,11 @@ public class MarcaDao implements IDAO_T<Marca> {
 
             // alteracao no metodo que determina a coluna em que o objeto ImageIcon devera aparecer
             @Override
-            public Class getColumnClass(int column) {
+            public Class getColumnClass(int column)
+            {
 
-                if (column == 2) {
+                if (column == 2)
+                {
 //                    return ImageIcon.class;
                 }
                 return Object.class;
@@ -157,9 +266,11 @@ public class MarcaDao implements IDAO_T<Marca> {
 
         // redimensiona as colunas de uma tabela
         TableColumn column = null;
-        for (int i = 0; i < tabela.getColumnCount(); i++) {
+        for (int i = 0; i < tabela.getColumnCount(); i++)
+        {
             column = tabela.getColumnModel().getColumn(i);
-            switch (i) {
+            switch (i)
+            {
                 case 0:
                     column.setPreferredWidth(17);
                     break;

@@ -6,25 +6,32 @@ import entidade.Marca;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.util.Calendar;
+import javax.swing.JScrollBar;
 
-public class TelaCadastroMarca extends javax.swing.JInternalFrame {
+public class TelaCadastroMarca extends javax.swing.JInternalFrame
+{
 
     private static TelaCadastroMarca tela;
     int codigo = 0;
 
-    public TelaCadastroMarca() {
+    public TelaCadastroMarca()
+    {
         initComponents();
-        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+        new MarcaDao().criaTabela(tblMarca);
     }
 
-    public static TelaCadastroMarca getInstancia() {
-        if (tela == null) {
+    public static TelaCadastroMarca getInstancia()
+    {
+        if (tela == null)
+        {
             tela = new TelaCadastroMarca();
         }
         return tela;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -244,18 +251,23 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         boolean retornoSalvarMarca = false;
         String erroMarca = "";
 
-        if (validaCampos() == true) {
-            if (codigo == 0) {
+        if (validaCampos() == true)
+        {
+            if (codigo == 0)
+            {
                 retornoSalvarMarca = DaoGenerico.getInstance().inserir(marca);
-            } else {
+            } else
+            {
                 retornoSalvarMarca = DaoGenerico.getInstance().atualizar(marca);
             }
-        } else {
+        } else
+        {
             erroMarca = null;
             Mensagem.erro("Digite uma marca válida!", this);
         }
 
-        if (retornoSalvarMarca == true && erroMarca != null) {
+        if (retornoSalvarMarca == true && erroMarca != null)
+        {
             Mensagem.informacao("Marca salva com sucesso!", this);
 
             campoNome.setText("");
@@ -267,8 +279,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
             codigo = 0;
 
             new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
-        } else {
-            if (erroMarca != null) {
+        } else
+        {
+            if (erroMarca != null)
+            {
                 Mensagem.aviso("Marca " + campoNome.getText() + " já existe cadastrada!", this);
 
                 campoNome.setText("");
@@ -287,11 +301,12 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String codigoEditarMarca = String.valueOf(tblMarca.getValueAt(tblMarca.getSelectedRow(), 0));
-        
+
         Object object = DaoGenerico.getInstance().obterPorId(Marca.class, Integer.parseInt(codigoEditarMarca));
         Marca marca = new Marca((Marca) object);
 
-        if (marca != null) {
+        if (marca != null)
+        {
             abaAdicionar.setSelectedIndex(0);
 
             campoNome.setText(marca.getNome());
@@ -300,22 +315,26 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
             codigo = marca.getId();
 
-        } else {
+        } else
+        {
             Mensagem.erro("Erro ao consultar marca!", this);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int codigoExcluirMarca = (int) tblMarca.getValueAt(tblMarca.getSelectedRow(), 0);
-        
+
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
+        if (mensagem == 0)
+        {
             boolean retornoExcluirMarca = DaoGenerico.getInstance().excluir(Marca.class, codigoExcluirMarca);
 
-            if (retornoExcluirMarca == true) {
+            if (retornoExcluirMarca == true)
+            {
                 Mensagem.informacao("Marca excluída com sucesso!", this);
                 new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
-            } else {
+            } else
+            {
                 Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
         }
@@ -330,7 +349,31 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
-    private boolean validaCampos() {
+    private void tblMarcaMouseWheelMoved(java.awt.event.MouseWheelEvent evt)
+    {
+        jScrollPane2.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener()
+        {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e)
+            {
+                // Check if user has done dragging the scroll bar
+                if (!e.getValueIsAdjusting())
+                {
+                    JScrollBar scrollBar = (JScrollBar) e.getAdjustable();
+                    int extent = scrollBar.getModel().getExtent();
+                    int maximum = scrollBar.getModel().getMaximum();
+                    if (extent + e.getValue() == maximum)
+                    {
+                        new MarcaDao().incrementaTabela(tblMarca, tblMarca.getRowCount());
+                        return;
+                    }
+                }
+            }
+        });
+    }
+
+    private boolean validaCampos()
+    {
         return !campoNome.getText().isEmpty() && campoNome.getText().length() > 2;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
