@@ -45,7 +45,7 @@ public class Versao implements Serializable {
     private String ano_fabricacao;
 
     @Column(name = "ano_modelo", length = 4, nullable = false)
-    private double ano_modelo;
+    private String ano_modelo;
 
     @Column(name = "numero_assentos")
     private int numero_assentos;
@@ -149,11 +149,11 @@ public class Versao implements Serializable {
         this.ano_fabricacao = ano_fabricacao;
     }
 
-    public double getAno_modelo() {
+    public String getAno_modelo() {
         return ano_modelo;
     }
 
-    public void setAno_modelo(double ano_modelo) {
+    public void setAno_modelo(String ano_modelo) {
         this.ano_modelo = ano_modelo;
     }
 
