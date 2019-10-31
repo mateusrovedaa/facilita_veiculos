@@ -93,7 +93,7 @@ public class MarcaDao implements IDAO_T<Marca>
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
 
-        List<Marca> x = newSession.createQuery("FROM Marca").setFirstResult(linhas).setMaxResults(linhas).list();
+        List<Marca> x = newSession.createQuery("FROM Marca").setFirstResult(linhas).setMaxResults(15).list();
 
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
@@ -108,6 +108,8 @@ public class MarcaDao implements IDAO_T<Marca>
 
             lin++;
         }
+        
+//        sessionFactory.close();
     }
 
     public void criaTabela(JTable tabela)
@@ -133,6 +135,8 @@ public class MarcaDao implements IDAO_T<Marca>
 
             lin++;
         }
+        
+//        sessionFactory.close();
 
         tabela.setModel(new DefaultTableModel(dadosTabela, cabecalho)
         {
