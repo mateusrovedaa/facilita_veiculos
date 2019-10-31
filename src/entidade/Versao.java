@@ -1,5 +1,6 @@
 package entidade;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,7 +21,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "versoes")
 
-public class Versao {
+public class Versao implements Serializable {
 
     @Id
     @SequenceGenerator(name = "VERSAO_SEQ", sequenceName = "seq_versoes", allocationSize = 1, initialValue = 1)
@@ -44,7 +45,7 @@ public class Versao {
     private String ano_fabricacao;
 
     @Column(name = "ano_modelo", length = 4, nullable = false)
-    private double ano_modelo;
+    private String ano_modelo;
 
     @Column(name = "numero_assentos")
     private int numero_assentos;
@@ -148,11 +149,11 @@ public class Versao {
         this.ano_fabricacao = ano_fabricacao;
     }
 
-    public double getAno_modelo() {
+    public String getAno_modelo() {
         return ano_modelo;
     }
 
-    public void setAno_modelo(double ano_modelo) {
+    public void setAno_modelo(String ano_modelo) {
         this.ano_modelo = ano_modelo;
     }
 
