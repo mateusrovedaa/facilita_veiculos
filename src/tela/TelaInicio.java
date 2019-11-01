@@ -38,6 +38,7 @@ public class TelaInicio extends javax.swing.JFrame {
         btnCGerais = new javax.swing.JButton();
         btnCModelo = new javax.swing.JButton();
         btnCVersao = new javax.swing.JButton();
+        btnCUsuario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,10 +72,18 @@ public class TelaInicio extends javax.swing.JFrame {
             }
         });
 
+        btnCUsuario.setText("Cadastro usuários");
+        btnCUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCUsuarioActionPerformed(evt);
+            }
+        });
+
         dktGeral.setLayer(btnMarcas, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktGeral.setLayer(btnCGerais, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktGeral.setLayer(btnCModelo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktGeral.setLayer(btnCVersao, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dktGeral.setLayer(btnCUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dktGeralLayout = new javax.swing.GroupLayout(dktGeral);
         dktGeral.setLayout(dktGeralLayout);
@@ -83,8 +92,9 @@ public class TelaInicio extends javax.swing.JFrame {
             .addGroup(dktGeralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnCVersao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnCVersao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnMarcas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCGerais, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
@@ -104,7 +114,9 @@ public class TelaInicio extends javax.swing.JFrame {
                 .addComponent(btnCModelo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCVersao)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCUsuario)
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         dktGeralLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCGerais, btnMarcas});
@@ -147,6 +159,10 @@ public class TelaInicio extends javax.swing.JFrame {
         gerenciarJanelas.abreJanela(TelaCadastroVersao.getInstancia());
     }//GEN-LAST:event_btnCVersaoActionPerformed
 
+    private void btnCUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCUsuarioActionPerformed
+        gerenciarJanelas.abreJanela(TelaCadastroUsuario.getInstancia());
+    }//GEN-LAST:event_btnCUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,6 +201,7 @@ public class TelaInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCGerais;
     private javax.swing.JButton btnCModelo;
+    private javax.swing.JButton btnCUsuario;
     private javax.swing.JButton btnCVersao;
     private javax.swing.JButton btnMarcas;
     private javax.swing.JDesktopPane dktGeral;

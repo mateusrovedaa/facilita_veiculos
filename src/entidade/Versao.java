@@ -54,13 +54,16 @@ public class Versao implements Serializable {
     private int numero_portas;
 
     @Column(name = "consumo_cidade", length = 10)
-    private String consumo_cidade;
+    private double consumo_cidade;
 
     @Column(name = "consumo_estrada", length = 10)
-    private String consumo_estrada;
+    private double consumo_estrada;
 
     @Column(name = "motor", length = 10, nullable = false)
     private String motor;
+
+    @Column(name = "peso", length = 10)
+    private double peso;
 
     @Column(name = "cavalos_potencia", length = 100, nullable = false)
     private String cavalos_potencia;
@@ -173,19 +176,19 @@ public class Versao implements Serializable {
         this.numero_portas = numero_portas;
     }
 
-    public String getConsumo_cidade() {
+    public double getConsumo_cidade() {
         return consumo_cidade;
     }
 
-    public void setConsumo_cidade(String consumo_cidade) {
+    public void setConsumo_cidade(double consumo_cidade) {
         this.consumo_cidade = consumo_cidade;
     }
 
-    public String getConsumo_estrada() {
+    public double getConsumo_estrada() {
         return consumo_estrada;
     }
 
-    public void setConsumo_estrada(String consumo_estrada) {
+    public void setConsumo_estrada(double consumo_estrada) {
         this.consumo_estrada = consumo_estrada;
     }
 
@@ -195,6 +198,14 @@ public class Versao implements Serializable {
 
     public void setMotor(String motor) {
         this.motor = motor;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 
     public String getCavalos_potencia() {

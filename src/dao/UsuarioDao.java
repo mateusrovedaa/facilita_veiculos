@@ -16,129 +16,20 @@ import javax.swing.table.TableColumn;
 public class UsuarioDao implements IDAO_T<Usuario> {
 
     ResultSet resultadoQ = null;
-    String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
     @Override
     public String salvar(Usuario usuario) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = "INSERT INTO usuarios VALUES "
-                    + "(DEFAULT, "
-                    + "'" + usuario.getPerfilId() + "',"
-                    + "'" + usuario.getNome() + "',"
-                    + "'" + usuario.getEmail() + "',"
-                    + "'" + usuario.getDataNascimento() + "',"
-                    + "'" + usuario.getSenha() + "',"
-                    + "'" + usuario.getConfirmaSenha() + "', "
-                    + "'" + now + "', "
-                    + "'" + now + "'"
-                    + ")";
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao inserir";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro salvar usuário = " + e);
-            return e.toString();
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String atualizar(Usuario usuario) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "UPDATE usuarios "
-                    + "SET perfil_id = '" + usuario.getPerfilId() + "',"
-                    + "nome = '" + usuario.getNome() + "',"
-                    + "email = '" + usuario.getEmail() + "',"
-                    + "data_nascimento = '" + usuario.getDataNascimento() + "',"
-                    + "senha = '" + usuario.getSenha() + "',"
-                    + "confirma_senha = '" + usuario.getConfirmaSenha() + "',"
-                    + "alterado_em = '" + now + "'"
-                    + "WHERE id = " + usuario.getId();
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro atualizar usuário = " + e);
-            return e.toString();
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public String excluir(int id) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "DELETE FROM usuarios" + " "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro excluir usuário = " + e);
-            return e.toString();
-        }
-    }
-
-    public int validarLogin(String login, String senha) {
-        int id = 0;
-
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = "SELECT id, email, senha "
-                    + "FROM usuarios "
-                    + "WHERE email = '" + login + "' "
-                    + "AND senha = '" + senha + "'";
-
-            ResultSet rs = st.executeQuery(sql);
-            rs.next();
-            id = rs.getInt(1);
-
-            Usuario x = new Usuario();
-            x.setId(id);
-
-            System.out.println("Sql: " + sql);
-
-            if (id != 0) {
-                System.out.println(id);
-                return id;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro: " + e);
-            return 0;
-        }
-
-        return 0;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -153,59 +44,37 @@ public class UsuarioDao implements IDAO_T<Usuario> {
 
     @Override
     public Usuario consultarId(int id) {
-        Usuario usuario = null;
-
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "SELECT * "
-                    + "FROM usuarios "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            resultadoQ = st.executeQuery(sql);
-
-            while (resultadoQ.next()) {
-                usuario = new Usuario();
-
-                usuario.setId(id);
-                usuario.setPerfilId(resultadoQ.getInt("perfil_id"));
-                usuario.setNome(resultadoQ.getString("nome"));
-                usuario.setEmail(resultadoQ.getString("email"));
-                usuario.setDataNascimento(resultadoQ.getString("data_nascimento"));
-                usuario.setSenha(resultadoQ.getString("senha"));
-                usuario.setConfirmaSenha(resultadoQ.getString("confirma_senha"));
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro consultar usuário = " + e);
-        }
-
-        return usuario;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void popularTabela(JTable tabela, String criterio) {
+    public void popularTabela(JTable tabela, String usuario, String perfil_id) {
         // dados da tabela
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[5];
+        Object[] cabecalho = new Object[3];
         cabecalho[0] = "Código";
-        cabecalho[1] = "Perfil";
-        cabecalho[2] = "Nome";
-        cabecalho[3] = "Data de nascimento";
-        cabecalho[4] = "Email";
+        cabecalho[1] = "Nome";
+        cabecalho[2] = "Perfil";
+
+        String perfil = perfil_id != "" ? "p.ID = " + perfil_id + " " : " 1 = 1 ";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM usuarios WHERE NOME ILIKE '%" + criterio + "%'");
+                    + "SELECT count(*) FROM usuarios AS u INNER JOIN perfis AS p "
+                    + "ON u.perfil_id = p.id "
+                    + "WHERE u.NOME ILIKE '%" + usuario + "%' AND "
+                    + perfil + " AND "
+                    + "u.id IN (SELECT u.id FROM usuarios AS u INNER JOIN perfis AS p "
+                    + "ON u.perfil_id = p.id "
+                    + "WHERE u.NOME ILIKE '%" + usuario + "%' AND "
+                    + perfil
+                    + "LIMIT 50)");
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][5];
+            dadosTabela = new Object[resultadoQ.getInt(1)][3];
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar usuário: " + e);
@@ -217,25 +86,22 @@ public class UsuarioDao implements IDAO_T<Usuario> {
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT u.id AS id" + ","
-                    + "p.nome AS perfil_id" + ","
                     + "u.nome AS nome" + ","
-                    + "u.data_nascimento AS data_nascimento" + ","
-                    + "u.email AS email "
+                    + "p.nome AS perfil "
                     + "FROM usuarios AS u "
-                    + " INNER JOIN perfis AS p "
-                    + " ON u.perfil_id = p.id "
+                    + "INNER JOIN perfis AS p "
+                    + "ON u.perfil_id = p.id "
                     + "WHERE "
-                    + "u.NOME ILIKE '%" + criterio + "%' "
-                    + "ORDER BY u.CRIADO_EM DESC");
+                    + "u.NOME ILIKE '%" + usuario + "%' AND "
+                    + perfil
+                    + "ORDER BY u.CRIADO_EM DESC "
+                    + "LIMIT 50");
 
             while (resultadoQ.next()) {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
-                dadosTabela[lin][1] = resultadoQ.getString("perfil_id");
-                dadosTabela[lin][2] = resultadoQ.getString("nome");
-                String data_nascimento = Formatacao.ajustaDataDMA(resultadoQ.getString("data_nascimento"));
-                dadosTabela[lin][3] = data_nascimento;
-                dadosTabela[lin][4] = resultadoQ.getString("email");
+                dadosTabela[lin][1] = resultadoQ.getString("nome");
+                dadosTabela[lin][2] = resultadoQ.getString("perfil");
 
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {
@@ -313,24 +179,55 @@ public class UsuarioDao implements IDAO_T<Usuario> {
 //        });
     }
 
-    public int obterTotalUsuarios() {
-        int total = 0;
+//    public int obterTotalModelos() {
+//        int total = 0;
+//
+//        try {
+//            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
+//
+//            String sql = ""
+//                    + "SELECT COUNT(*) "
+//                    + "FROM modelos";
+//
+//            ResultSet rs = st.executeQuery(sql);
+//            rs.next();
+//            total = rs.getInt(1);
+//
+//        } catch (Exception e) {
+//            System.out.println("Erro consultar total = " + e);
+//        }
+//        return total;
+//    }
+    public int validarLogin(String login, String senha) {
+        int id = 0;
 
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
-            String sql = ""
-                    + "SELECT COUNT(*) "
-                    + "FROM usuarios";
+            String sql = "SELECT id, email, senha "
+                    + "FROM usuarios "
+                    + "WHERE email = '" + login + "' "
+                    + "AND senha = '" + senha + "'";
 
             ResultSet rs = st.executeQuery(sql);
             rs.next();
-            total = rs.getInt(1);
+            id = rs.getInt(1);
+
+            Usuario x = new Usuario();
+            x.setId(id);
+
+            System.out.println("Sql: " + sql);
+
+            if (id != 0) {
+                System.out.println(id);
+                return id;
+            }
 
         } catch (Exception e) {
-            System.out.println("Erro consultar total = " + e);
+            System.out.println("Erro: " + e);
+            return 0;
         }
-        return total;
-    }
 
+        return 0;
+    }
 }
