@@ -46,12 +46,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="btnCUsuario" max="32767" attributes="0"/>
                       <Component id="btnCVersao" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="btnCModelo" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnMarcas" linkSize="1" max="32767" attributes="0"/>
-                          <Component id="btnCGerais" linkSize="1" pref="165" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnCModelo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnMarcas" linkSize="1" max="32767" attributes="0"/>
+                      <Component id="btnCGerais" linkSize="1" pref="165" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="253" max="32767" attributes="0"/>
               </Group>
@@ -68,7 +67,9 @@
                   <Component id="btnCModelo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnCVersao" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="163" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnCUsuario" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="134" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -104,6 +105,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCVersaoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCUsuario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cadastro usu&#xe1;rios"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCUsuarioActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

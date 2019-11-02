@@ -47,7 +47,7 @@ public class VersaoDao implements IDAO_T<Versao> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void popularTabela(JTable tabela, String versao, String modelo_id) {
+    public void popularTabela(JTable tabela, String versao, String modelo, String marca_id) {
         // dados da tabela
         Object[][] dadosTabela = null;
 
@@ -58,19 +58,25 @@ public class VersaoDao implements IDAO_T<Versao> {
         cabecalho[2] = "Modelo";
         cabecalho[3] = "Fabricação/Modelo";
 
-        String modelo = modelo_id != "" ? "ma.ID = " + modelo_id + " " : " 1 = 1 ";
+        String marca = marca_id != "" ? "ma.ID = " + marca_id + " " : " 1 = 1 ";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT count(*) FROM versoes AS v INNER JOIN modelos AS mo "
                     + "ON v.modelo_id = mo.id "
+                    + "INNER JOIN marcas AS ma "
+                    + "ON mo.marca_id = ma.id "
                     + "WHERE v.NOME ILIKE '%" + versao + "%' AND "
-                    + modelo + " AND "
+                    + "mo.NOME ILIKE '%" + modelo + "%' AND "
+                    + marca + " AND "
                     + "v.id IN (SELECT v.id FROM versoes AS v INNER JOIN modelos AS mo "
                     + "ON v.modelo_id = mo.id "
+                    + "INNER JOIN marcas AS ma "
+                    + "ON mo.marca_id = ma.id "
                     + "WHERE v.NOME ILIKE '%" + versao + "%' AND "
-                    + modelo
+                    + "mo.NOME ILIKE '%" + modelo + "%' AND "
+                    + marca
                     + "LIMIT 50)");
 
             resultadoQ.next();
@@ -93,9 +99,12 @@ public class VersaoDao implements IDAO_T<Versao> {
                     + "FROM versoes AS v "
                     + "INNER JOIN modelos AS mo "
                     + "ON v.modelo_id = mo.id "
+                    + "INNER JOIN marcas AS ma "
+                    + "ON mo.marca_id = ma.id "
                     + "WHERE "
                     + "v.NOME ILIKE '%" + versao + "%' AND "
-                    + modelo
+                    + "mo.NOME ILIKE '%" + modelo + "%' AND "
+                    + marca
                     + "ORDER BY v.CRIADO_EM DESC "
                     + "LIMIT 50");
 

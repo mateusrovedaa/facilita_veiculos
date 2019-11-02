@@ -2,19 +2,14 @@ package tela;
 
 import dao.ComboDao;
 import dao.DaoGenerico;
-import dao.ModeloDao;
-import entidade.Carroceria;
+import dao.VersaoDao;
 import entidade.Combustivel;
-import entidade.Marca;
 import entidade.Modelo;
-import entidade.Procedencia;
 import entidade.Versao;
 import functions.ComboItem;
-import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
 public class TelaCadastroVersao extends javax.swing.JInternalFrame {
 
@@ -25,6 +20,9 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
         initComponents();
         campoIdModeloBusca.setEditable(false);
         campoNomeModeloBusca.setEditable(false);
+        new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), "");
+        new ComboDao().popularCombo("combustiveis", 1, 4, comboCombustivelId, "");
+        new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
     }
 
     public static TelaCadastroVersao getInstancia() {
@@ -103,7 +101,7 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
         comboFiltroMarcaId = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblModelo = new javax.swing.JTable();
+        tblVersao = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -491,7 +489,7 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        tblModelo.setModel(new javax.swing.table.DefaultTableModel(
+        tblVersao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -502,7 +500,7 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tblModelo);
+        jScrollPane1.setViewportView(tblVersao);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -621,20 +619,79 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
-
+        campoFiltroVersao.setText("");
+        campoFiltroModelo.setText("");
+        comboFiltroMarcaId.setSelectedIndex(0);
+        new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), "");
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
+        ComboItem filtroMarcaId = (ComboItem) comboFiltroMarcaId.getSelectedItem();
+        String filtro;
+        if (filtroMarcaId.getCodigo() == 0) {
+            filtro = "";
+        } else {
+            filtro = String.valueOf(filtroMarcaId.getCodigo());
+        }
+        new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtro);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        String codigoEditarVersao = String.valueOf(tblVersao.getValueAt(tblVersao.getSelectedRow(), 0));
 
+        Object objectVersao = DaoGenerico.getInstance().obterPorId(Versao.class, Integer.parseInt(codigoEditarVersao));
+        Versao versao = new Versao((Versao) objectVersao);
 
+        Object objectModelo = DaoGenerico.getInstance().obterPorId(Modelo.class, versao.getModelo_id().getId());
+        Modelo modelo = new Modelo((Modelo) objectModelo);
+
+        ComboItem combustivelId = new ComboItem();
+        combustivelId.setCodigo(versao.getCombustivel_id().getId());
+
+        if (versao != null) {
+            abaVersao.setSelectedIndex(0);
+
+            campoNome.setText(versao.getNome());
+            new ComboDao().definirItemCombo(comboCombustivelId, combustivelId);
+            campoAnoFabricacao.setText(versao.getAno_fabricacao());
+            campoAnoModelo.setText(versao.getAno_modelo());
+            campoConsumoCidade.setText(Double.toString(versao.getConsumo_cidade()).replace(".", ","));
+            campoConsumoEstrada.setText(Double.toString(versao.getConsumo_estrada()).replace(".", ","));
+            campoCavaloPotencia.setText(versao.getCavalos_potencia());
+            campoCavaloPotenciaRpm.setText(versao.getCavalos_potencia_rpm());
+            campoTorque.setText(versao.getTorque());
+            campoTorqueRpm.setText(versao.getTorque_rpm());
+            campoMotor.setText(versao.getMotor());
+            campoPeso.setText(Double.toString(versao.getPeso()).replace(".", ","));
+            campoNumeroPorta.setText(Integer.toString(versao.getNumero_portas()));
+            campoNumeroAssento.setText(Integer.toString(versao.getNumero_assentos()));
+            campoIdModeloBusca.setText(Integer.toString(modelo.getId()));
+            campoNomeModeloBusca.setText(modelo.getNome());
+            campoObservacoes.setText(versao.getObservacoes());
+
+            campoNome.requestFocus();
+
+            codigo = versao.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar versão!", this);
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int codigoExcluirVersao = (int) tblVersao.getValueAt(tblVersao.getSelectedRow(), 0);
 
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirVersao = DaoGenerico.getInstance().excluir(Versao.class, codigoExcluirVersao);
+
+            if (retornoExcluirVersao == true) {
+                Mensagem.informacao("Versão excluída com sucesso!", this);
+                new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), "");
+            } else {
+                Mensagem.erro(tblVersao.getValueAt(tblVersao.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnFecharListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharListaActionPerformed
@@ -662,6 +719,78 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
         versao.setModelo_id(modelo);
         versao.setCombustivel_id(combustivel);
         versao.setAno_fabricacao(campoAnoFabricacao.getText());
+        versao.setAno_modelo(campoAnoModelo.getText());
+
+        if (!campoConsumoCidade.getText().equals("")) {
+            versao.setConsumo_cidade(Double.parseDouble(campoConsumoCidade.getText().replace(",", ".")));
+        }
+
+        if (!campoConsumoEstrada.getText().equals("")) {
+            versao.setConsumo_estrada(Double.parseDouble(campoConsumoEstrada.getText().replace(",", ".")));
+        }
+
+        versao.setCavalos_potencia(campoCavaloPotencia.getText());
+        versao.setCavalos_potencia_rpm(campoCavaloPotenciaRpm.getText());
+        versao.setTorque(campoTorque.getText());
+        versao.setTorque_rpm(campoTorqueRpm.getText());
+        versao.setMotor(campoMotor.getText());
+
+        if (!campoPeso.getText().equals("")) {
+            versao.setPeso(Double.parseDouble(campoPeso.getText().replace(",", ".")));
+        }
+
+        if (!campoNumeroPorta.getText().equals("")) {
+            versao.setNumero_portas(Integer.parseInt(campoNumeroPorta.getText()));
+        }
+
+        if (!campoNumeroAssento.getText().equals("")) {
+            versao.setNumero_assentos(Integer.parseInt(campoNumeroAssento.getText()));
+        }
+
+        versao.setObservacoes(campoObservacoes.getText());
+
+        versao.setCriadoEm(Calendar.getInstance());
+        versao.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarVersao = false;
+
+        if (validaCampos() == true) {
+            if (codigo == 0) {
+                retornoSalvarVersao = DaoGenerico.getInstance().inserir(versao);
+            } else {
+                retornoSalvarVersao = DaoGenerico.getInstance().atualizar(versao);
+            }
+            Mensagem.informacao("Versão salva com sucesso!", this);
+        } else {
+            Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
+        }
+
+        if (retornoSalvarVersao == true) {
+
+            campoNome.setText("");
+            comboCombustivelId.setSelectedIndex(0);
+            campoAnoFabricacao.setText("");
+            campoAnoModelo.setText("");
+            campoConsumoCidade.setText("");
+            campoConsumoEstrada.setText("");
+            campoCavaloPotencia.setText("");
+            campoCavaloPotenciaRpm.setText("");
+            campoTorque.setText("");
+            campoTorqueRpm.setText("");
+            campoMotor.setText("");
+            campoPeso.setText("");
+            campoNumeroPorta.setText("");
+            campoNumeroAssento.setText("");
+            campoIdModeloBusca.setText("");
+            campoNomeModeloBusca.setText("");
+            campoObservacoes.setText("");
+
+            campoNome.requestFocus();
+
+            codigo = 0;
+
+            new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), "");
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnFecharCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCadastroActionPerformed
@@ -677,6 +806,15 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
     public void definirModelo(int id, String nome) {
         campoIdModeloBusca.setText(Integer.toString(id));
         campoNomeModeloBusca.setText(nome);
+    }
+
+    public boolean validaCampos() {
+        ComboItem combustivelId = (ComboItem) comboCombustivelId.getSelectedItem();
+
+        return combustivelId.getCodigo() != 0 && !campoNome.getText().equals("")
+                && !campoAnoFabricacao.getText().equals("") && !campoAnoModelo.getText().equals("")
+                && !campoCavaloPotencia.getText().equals("") && !campoMotor.getText().equals("")
+                && !campoIdModeloBusca.getText().equals("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -744,6 +882,6 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable tblModelo;
+    private javax.swing.JTable tblVersao;
     // End of variables declaration//GEN-END:variables
 }
