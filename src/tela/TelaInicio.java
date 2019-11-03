@@ -1,6 +1,6 @@
 package tela;
 
-import dao.MarcaDao;
+import dao.PermissaoDao;
 import functions.GerenciarJanelas;
 import javax.swing.JDesktopPane;
 
@@ -8,6 +8,7 @@ public class TelaInicio extends javax.swing.JFrame {
 
     int id = 0;
     GerenciarJanelas gerenciarJanelas;
+    PermissaoDao peDAO = new PermissaoDao();
 
     public TelaInicio() {
         initComponents();
@@ -17,8 +18,9 @@ public class TelaInicio extends javax.swing.JFrame {
     public TelaInicio(int usuario) {
         initComponents();
         id = usuario;
-        MarcaDao marcaDao = new MarcaDao();
+        PermissaoDao.idUser = idUser();
         this.gerenciarJanelas = new GerenciarJanelas(dktGeral);
+        verificaPerms();
     }
 
     public JDesktopPane JDesktopPane() {
@@ -27,6 +29,12 @@ public class TelaInicio extends javax.swing.JFrame {
 
     public int idUser() {
         return this.id;
+    }
+
+    private void verificaPerms() {
+        if (!peDAO.consultarPermissao("Acessar", "marca")) {
+            btnMarcas.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -93,11 +101,10 @@ public class TelaInicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnCUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnCVersao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnMarcas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCGerais, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
+                    .addComponent(btnCVersao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMarcas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCGerais, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
                 .addContainerGap(253, Short.MAX_VALUE))
         );
 
@@ -137,14 +144,6 @@ public class TelaInicio extends javax.swing.JFrame {
 
     private void btnMarcasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarcasActionPerformed
         gerenciarJanelas.abreJanela(TelaCadastroMarca.getInstancia());
-//Funcoes.controlaIframes(TelaCadastroMarca.getInstancia(), dktGeral);
-//        jPanel1.add(marca);
-//        int lDesk = jPanel1.getWidth();
-//        int aDesk = jPanel1.getHeight();
-//        int lIFrame = marca.getWidth();
-//        int aIFrame = marca.getHeight();
-//        marca.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-//        marca.setVisible(true);
     }//GEN-LAST:event_btnMarcasActionPerformed
 
     private void btnCGeraisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCGeraisActionPerformed

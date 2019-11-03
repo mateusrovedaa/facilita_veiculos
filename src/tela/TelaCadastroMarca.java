@@ -2,6 +2,7 @@ package tela;
 
 import dao.DaoGenerico;
 import dao.MarcaDao;
+import dao.PermissaoDao;
 import entidade.Marca;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
@@ -12,9 +13,11 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private static TelaCadastroMarca tela;
     int codigo = 0;
+    PermissaoDao peDAO = new PermissaoDao();
 
     public TelaCadastroMarca() {
         initComponents();
+        verificaPermissoes();
         new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
     }
 
@@ -24,7 +27,25 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         }
         return tela;
     }
-    
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "marca")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "marca")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "marca")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "marca")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "marca")) {
+            btnEditar.setEnabled(false);
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -287,7 +308,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String codigoEditarMarca = String.valueOf(tblMarca.getValueAt(tblMarca.getSelectedRow(), 0));
-        
+
         Object object = DaoGenerico.getInstance().obterPorId(Marca.class, Integer.parseInt(codigoEditarMarca));
         Marca marca = new Marca((Marca) object);
 
@@ -307,7 +328,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int codigoExcluirMarca = (int) tblMarca.getValueAt(tblMarca.getSelectedRow(), 0);
-        
+
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
         if (mensagem == 0) {
             boolean retornoExcluirMarca = DaoGenerico.getInstance().excluir(Marca.class, codigoExcluirMarca);

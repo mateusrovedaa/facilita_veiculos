@@ -68,5 +68,6 @@ Contributor(s):
     <mapping class="entidade.Cidade"/>
     <mapping class="entidade.Versao"/>
     <mapping class="entidade.Usuario"/>
+    <mapping class="entidade.Permissao"/>
   </session-factory>
 </hibernate-configuration>
