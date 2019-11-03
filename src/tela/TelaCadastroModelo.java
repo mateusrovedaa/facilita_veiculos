@@ -2,7 +2,9 @@ package tela;
 
 import dao.ComboDao;
 import dao.DaoGenerico;
+import dao.MarcaDao;
 import dao.ModeloDao;
+import dao.PermissaoDao;
 import entidade.Carroceria;
 import entidade.Marca;
 import entidade.Modelo;
@@ -12,34 +14,71 @@ import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
 import java.util.Calendar;
-import javax.swing.JOptionPane;
 
 public class TelaCadastroModelo extends javax.swing.JInternalFrame {
-    
+
     private static TelaCadastroModelo tela;
     int codigo = 0;
-    
+    PermissaoDao peDAO = new PermissaoDao();
+
     public TelaCadastroModelo() {
         initComponents();
-        new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
-        new ComboDao().popularCombo("marcas", 1, 4, comboMarcaId, "");
-        new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
-        new ComboDao().popularCombo("procedencias", 1, 4, comboProcedenciaId, "");
-        new ComboDao().popularCombo("carrocerias", 1, 4, comboCarroceriaId, "");
+        verificaPermissoes();
     }
-    
+
     public static TelaCadastroModelo getInstancia() {
         if (tela == null) {
             tela = new TelaCadastroModelo();
         }
         return tela;
     }
-    
+
     private void funcaoFechar() {
         GerenciarJanelas.fecharJanela(tela);
         tela = null;
     }
-    
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "modelo")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "modelo")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "modelo")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "modelo")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "modelo")) {
+            btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "modelo")) {
+            new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+        }
+        if (!peDAO.consultarPermissao("ComboMarcaCadastro", "modelo")) {
+            comboMarcaId.setEnabled(false);
+        } else {
+            new ComboDao().popularCombo("marcas", 1, 4, comboMarcaId, "");
+        }
+        if (!peDAO.consultarPermissao("ComboMarcaListar", "modelo")) {
+            comboFiltroMarcaId.setEnabled(false);
+        } else {
+            new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
+        }
+        if (!peDAO.consultarPermissao("ComboCarroceria", "modelo")) {
+            comboCarroceriaId.setEnabled(false);
+        } else {
+            new ComboDao().popularCombo("carrocerias", 1, 4, comboCarroceriaId, "");
+        }
+        if (!peDAO.consultarPermissao("ComboProcedencia", "modelo")) {
+            comboProcedenciaId.setEnabled(false);
+        } else {
+            new ComboDao().popularCombo("procedencias", 1, 4, comboProcedenciaId, "");
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -487,27 +526,27 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         } else {
             filtro = String.valueOf(filtroMarcaId.getCodigo());
         }
-        new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), filtro);
+        verificaPermissoes();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String codigoEditarModelo = String.valueOf(tblModelo.getValueAt(tblModelo.getSelectedRow(), 0));
-        
+
         Object object = DaoGenerico.getInstance().obterPorId(Modelo.class, Integer.parseInt(codigoEditarModelo));
         Modelo modelo = new Modelo((Modelo) object);
-        
+
         ComboItem marcaId = new ComboItem();
         marcaId.setCodigo(modelo.getMarca_id().getId());
-        
+
         ComboItem procedenciaId = new ComboItem();
         procedenciaId.setCodigo(modelo.getProcedencia_id().getId());
-        
+
         ComboItem carroceriaId = new ComboItem();
         carroceriaId.setCodigo(modelo.getCarroceria_id().getId());
-        
+
         if (modelo != null) {
             abaModelo.setSelectedIndex(0);
-            
+
             campoNome.setText(modelo.getNome());
             new ComboDao().definirItemCombo(comboMarcaId, marcaId);
             new ComboDao().definirItemCombo(comboProcedenciaId, procedenciaId);
@@ -515,11 +554,11 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             campoComprimento.setText(Double.toString(modelo.getComprimento()).replace(".", ","));
             campoAltura.setText(Double.toString(modelo.getAltura()).replace(".", ","));
             campoLargura.setText(Double.toString(modelo.getLargura()).replace(".", ","));
-            
+
             campoNome.requestFocus();
-            
+
             codigo = modelo.getId();
-            
+
         } else {
             Mensagem.erro("Erro ao consultar modelo!", this);
         }
@@ -527,14 +566,14 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int codigoExcluirModelo = (int) tblModelo.getValueAt(tblModelo.getSelectedRow(), 0);
-        
+
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
         if (mensagem == 0) {
             boolean retornoExcluirModelo = DaoGenerico.getInstance().excluir(Modelo.class, codigoExcluirModelo);
-            
+
             if (retornoExcluirModelo == true) {
                 Mensagem.informacao("Modelo excluído com sucesso!", this);
-                new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+                verificaPermissoes();
             } else {
                 Mensagem.erro(tblModelo.getValueAt(tblModelo.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -547,52 +586,52 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Modelo modelo = new Modelo();
-        
+
         ComboItem marcaId = (ComboItem) comboMarcaId.getSelectedItem();
         Marca marca = null;
         if (marcaId.getCodigo() != 0) {
             Object objectMarca = DaoGenerico.getInstance().obterPorId(Marca.class, marcaId.getCodigo());
             marca = new Marca((Marca) objectMarca);
         }
-        
+
         ComboItem procedenciaId = (ComboItem) comboProcedenciaId.getSelectedItem();
         Procedencia procedencia = null;
         if (procedenciaId.getCodigo() != 0) {
             Object objectProcedencia = DaoGenerico.getInstance().obterPorId(Procedencia.class, procedenciaId.getCodigo());
             procedencia = new Procedencia((Procedencia) objectProcedencia);
         }
-        
+
         ComboItem carroceriaId = (ComboItem) comboCarroceriaId.getSelectedItem();
         Carroceria carroceria = null;
         if (carroceriaId.getCodigo() != 0) {
             Object objectCarroceria = DaoGenerico.getInstance().obterPorId(Carroceria.class, carroceriaId.getCodigo());
             carroceria = new Carroceria((Carroceria) objectCarroceria);
         }
-        
+
         modelo.setId(codigo);
         modelo.setMarca_id(marca);
         modelo.setProcedencia_id(procedencia);
         modelo.setCarroceria_id(carroceria);
         modelo.setNome(campoNome.getText());
         modelo.setSlug(Funcoes.textoIdentificador(campoNome.getText()));
-        
+
         if (!campoComprimento.getText().equals("")) {
             modelo.setComprimento(Double.parseDouble(campoComprimento.getText().replace(",", ".")));
         }
-        
+
         if (!campoAltura.getText().equals("")) {
             modelo.setAltura(Double.parseDouble(campoAltura.getText().replace(",", ".")));
         }
-        
+
         if (!campoLargura.getText().equals("")) {
             modelo.setLargura(Double.parseDouble(campoLargura.getText().replace(",", ".")));
         }
-        
+
         modelo.setCriadoEm(Calendar.getInstance());
         modelo.setAlteradoEm(Calendar.getInstance());
-        
+
         boolean retornoSalvarModelo = false;
-        
+
         if (validaCampos() == true) {
             if (codigo == 0) {
                 retornoSalvarModelo = DaoGenerico.getInstance().inserir(modelo);
@@ -603,9 +642,9 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         } else {
             Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
-        
+
         if (retornoSalvarModelo == true) {
-            
+
             campoNome.setText("");
             campoComprimento.setText("");
             campoAltura.setText("");
@@ -613,24 +652,24 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             comboMarcaId.setSelectedIndex(0);
             comboProcedenciaId.setSelectedIndex(0);
             comboCarroceriaId.setSelectedIndex(0);
-            
+
             campoNome.requestFocus();
-            
+
             codigo = 0;
-            
-            new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+
+            verificaPermissoes();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnFecharCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCadastroActionPerformed
         funcaoFechar();
     }//GEN-LAST:event_btnFecharCadastroActionPerformed
-    
+
     public boolean validaCampos() {
         ComboItem marcaId = (ComboItem) comboMarcaId.getSelectedItem();
         ComboItem procedenciaId = (ComboItem) comboProcedenciaId.getSelectedItem();
         ComboItem carroceriaId = (ComboItem) comboCarroceriaId.getSelectedItem();
-        
+
         return marcaId.getCodigo() != 0 && procedenciaId.getCodigo() != 0
                 && carroceriaId.getCodigo() != 0
                 && !campoNome.getText().equals("");

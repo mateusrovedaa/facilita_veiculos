@@ -18,7 +18,6 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
     public TelaCadastroMarca() {
         initComponents();
         verificaPermissoes();
-        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
     }
 
     public static TelaCadastroMarca getInstancia() {
@@ -43,6 +42,9 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
         }
         if (!peDAO.consultarPermissao("Editar", "marca")) {
             btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "marca")){
+            new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
         }
     }
 
@@ -287,7 +289,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+            verificaPermissoes();
         } else {
             if (erroMarca != null) {
                 Mensagem.aviso("Marca " + campoNome.getText() + " já existe cadastrada!", this);
@@ -335,7 +337,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
             if (retornoExcluirMarca == true) {
                 Mensagem.informacao("Marca excluída com sucesso!", this);
-                new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+                verificaPermissoes();
             } else {
                 Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -348,7 +350,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroMarca.setText("");
-        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+        verificaPermissoes();
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private boolean validaCampos() {

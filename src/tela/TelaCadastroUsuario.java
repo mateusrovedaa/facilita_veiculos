@@ -1,25 +1,17 @@
 package tela;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import dao.ComboDao;
 import dao.DaoGenerico;
-import dao.ModeloDao;
 import dao.UsuarioDao;
-import entidade.Carroceria;
-import entidade.Marca;
-import entidade.Modelo;
 import entidade.Perfil;
-import entidade.Procedencia;
 import entidade.Usuario;
 import functions.ComboItem;
 import functions.Formatacao;
-import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
 import functions.Validacao;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -27,7 +19,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
@@ -375,6 +366,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/key.png"))); // NOI18N
         jButton1.setText("Permissões");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,12 +393,15 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnFecharLista)
-                    .addComponent(jButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEditar)
+                            .addComponent(btnExcluir)
+                            .addComponent(btnFecharLista))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);

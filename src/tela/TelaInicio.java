@@ -35,6 +35,9 @@ public class TelaInicio extends javax.swing.JFrame {
         if (!peDAO.consultarPermissao("Acessar", "marca")) {
             btnMarcas.setEnabled(false);
         }
+        if (!peDAO.consultarPermissao("Acessar", "modelo")) {
+            btnCModelo.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
