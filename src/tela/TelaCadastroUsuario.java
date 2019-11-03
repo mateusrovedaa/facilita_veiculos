@@ -620,7 +620,6 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
         String codigoEditarUsuario = String.valueOf(tblUsuario.getValueAt(tblUsuario.getSelectedRow(), 0));
         Object object = DaoGenerico.getInstance().obterPorId(Usuario.class, Integer.parseInt(codigoEditarUsuario));
         Usuario usuario = new Usuario((Usuario) object);
-        System.out.println("oi");
         TelaPermissao permissao = new TelaPermissao(null, true, usuario);
         permissao.setLocationRelativeTo(this);
         permissao.setVisible(true);
