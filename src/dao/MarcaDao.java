@@ -15,6 +15,7 @@ import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -93,23 +94,64 @@ public class MarcaDao implements IDAO_T<Marca>
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
 
-        List<Marca> x = newSession.createQuery("FROM Marca").setFirstResult(linhas).setMaxResults(15).list();
+        List<Marca> x = newSession.createQuery("FROM Marca WHERE id > :limit ORDER BY id").setParameter("limit", linhas).setMaxResults(25).list();
 
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
+        if (x.size() == 25)
+        {
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
+        }
+
         int lin = 0;
+
+        model.addRow(new Object[]
+        {
+        });
 
         for (Marca marca : x)
         {
             model.addRow(new Object[]
             {
-                marca.getNome(), marca.getSlug()
+                marca.getId(), marca.getNome(), marca.getSlug()
             });
 
             lin++;
         }
-        
-//        sessionFactory.close();
+
+    }
+
+    public void recarregaTabela(JTable tabela, int linhas)
+    {
+        System.out.println(linhas);
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
+
+        List<Marca> x = newSession.createQuery("FROM Marca WHERE id < :limit ORDER BY id DESC").setParameter("limit", linhas).setMaxResults(25).list();
+
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
+
+        if (x.size() == 25)
+        {
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
+        }
+
+        int lin = 0;
+
+        for (Marca marca : x)
+        {
+            model.insertRow(0, new Object[]
+            {
+                marca.getId(), marca.getNome(), marca.getSlug()
+            });
+
+            lin++;
+        }
+
+//        tabela.scrollRectToVisible(tabela.getCellRect(5, 0, true));
+
     }
 
     public void criaTabela(JTable tabela)
@@ -117,27 +159,28 @@ public class MarcaDao implements IDAO_T<Marca>
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
 
-        List<Marca> x = newSession.createQuery("FROM Marca").setFirstResult(0).setMaxResults(15).list();
+        List<Marca> x = newSession.createQuery("FROM Marca ORDER BY id").setFirstResult(0).setMaxResults(25).list();
 
         Object[][] dadosTabela = null;
 
-        Object[] cabecalho = new Object[2];
-        cabecalho[0] = "Nome";
-        cabecalho[1] = "Slug";
+        Object[] cabecalho = new Object[3];
+        cabecalho[0] = "Id";
+        cabecalho[1] = "Nome";
+        cabecalho[2] = "Slug";
 
-        dadosTabela = new Object[15][2];
+        dadosTabela = new Object[25][3];
         int lin = 0;
 
         for (Marca marca : x)
         {
-            dadosTabela[lin][0] = marca.getNome();
-            dadosTabela[lin][1] = marca.getSlug();
+            dadosTabela[lin][0] = marca.getId();
+            dadosTabela[lin][1] = marca.getNome();
+            dadosTabela[lin][2] = marca.getSlug();
 
             lin++;
         }
-        
-//        sessionFactory.close();
 
+//        sessionFactory.close();
         tabela.setModel(new DefaultTableModel(dadosTabela, cabecalho)
         {
             @Override
@@ -148,10 +191,11 @@ public class MarcaDao implements IDAO_T<Marca>
             }
 
             @Override
-            public Class getColumnClass(int column)
+            public Class
+                    getColumnClass(int column)
             {
 
-                if (column == 2)
+                if (column == 3)
                 {
 
                 }
@@ -254,7 +298,8 @@ public class MarcaDao implements IDAO_T<Marca>
 
             // alteracao no metodo que determina a coluna em que o objeto ImageIcon devera aparecer
             @Override
-            public Class getColumnClass(int column)
+            public Class
+                    getColumnClass(int column)
             {
 
                 if (column == 2)
