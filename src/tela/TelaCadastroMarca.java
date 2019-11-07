@@ -11,6 +11,7 @@ import java.awt.event.AdjustmentListener;
 import java.util.Calendar;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 public class TelaCadastroMarca extends javax.swing.JInternalFrame
 {
@@ -21,8 +22,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
     public TelaCadastroMarca()
     {
         initComponents();
-        scrollTable();
-        new MarcaDao().criaTabela(tblMarca);
+        new MarcaDao().criaTabela(tblMarca, jScrollPane2);
     }
 
     public static TelaCadastroMarca getInstancia()
@@ -350,35 +350,6 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
         campoFiltroMarca.setText("");
         new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
-
-    private void scrollTable()
-    {
-        MarcaDao dao = new MarcaDao();
-
-        jScrollPane2.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener()
-        {
-            @Override
-            public void adjustmentValueChanged(AdjustmentEvent e)
-            {
-                if (!e.getValueIsAdjusting())
-                {
-                    JScrollBar scrollBar = (JScrollBar) e.getAdjustable();
-                    int extent = scrollBar.getModel().getExtent();
-                    int maximum = scrollBar.getModel().getMaximum();
-                    if (extent + e.getValue() == maximum)
-                    {
-                        int id = (int) tblMarca.getValueAt(tblMarca.getRowCount() - 1, 0);
-                        dao.incrementaTabela(tblMarca, id);
-                        tblMarca.scrollRectToVisible(tblMarca.getCellRect(1, 0, true));
-                    } else if (e.getValue() == 0)
-                    {
-                        int id = (int) tblMarca.getValueAt(1, 0);
-                        dao.recarregaTabela(tblMarca, id);
-                    }
-                }
-            }
-        });
-    }
 
     private boolean validaCampos()
     {

@@ -6,12 +6,18 @@ import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.HibernateUtil;
 import functions.IDAO_T;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
+import java.util.stream.Collectors;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -94,11 +100,11 @@ public class MarcaDao implements IDAO_T<Marca>
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
 
-        List<Marca> x = newSession.createQuery("FROM Marca WHERE id > :limit ORDER BY id").setParameter("limit", linhas).setMaxResults(25).list();
+        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE id > :limit ORDER BY id").setParameter("limit", linhas).setMaxResults(25).list();
 
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
-        if (x.size() == 25)
+        if (marcas.size() == 25)
         {
             model.getDataVector().removeAllElements();
             model.fireTableDataChanged();
@@ -110,29 +116,27 @@ public class MarcaDao implements IDAO_T<Marca>
         {
         });
 
-        for (Marca marca : x)
+        for (Marca marca : marcas)
         {
             model.addRow(new Object[]
             {
-                marca.getId(), marca.getNome(), marca.getSlug()
+                marca.getId(), marca.getNome()
             });
 
             lin++;
         }
-
     }
 
     public void recarregaTabela(JTable tabela, int linhas)
     {
-        System.out.println(linhas);
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
 
-        List<Marca> x = newSession.createQuery("FROM Marca WHERE id < :limit ORDER BY id DESC").setParameter("limit", linhas).setMaxResults(25).list();
+        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE id < :limit ORDER BY id DESC").setParameter("limit", linhas).setMaxResults(25).list();
 
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
-        if (x.size() == 25)
+        if (marcas.size() == 25)
         {
             model.getDataVector().removeAllElements();
             model.fireTableDataChanged();
@@ -140,68 +144,51 @@ public class MarcaDao implements IDAO_T<Marca>
 
         int lin = 0;
 
-        for (Marca marca : x)
+        for (Marca marca : marcas)
         {
             model.insertRow(0, new Object[]
             {
-                marca.getId(), marca.getNome(), marca.getSlug()
+                marca.getId(), marca.getNome()
             });
 
             lin++;
         }
 
-//        tabela.scrollRectToVisible(tabela.getCellRect(5, 0, true));
-
+        if (marcas.size() == 25)
+        {
+            model.addRow(new Object[]
+            {
+            });
+        }
     }
 
-    public void criaTabela(JTable tabela)
+    public void criaTabela(JTable tabela, JScrollPane barraScroll)
     {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
 
-        List<Marca> x = newSession.createQuery("FROM Marca ORDER BY id").setFirstResult(0).setMaxResults(25).list();
+        List<Marca> marcas = newSession.createQuery("FROM Marca ORDER BY id").setFirstResult(0).setMaxResults(25).list();
 
-        Object[][] dadosTabela = null;
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
-        Object[] cabecalho = new Object[3];
-        cabecalho[0] = "Id";
-        cabecalho[1] = "Nome";
-        cabecalho[2] = "Slug";
+        model.addColumn("Id");
+        model.addColumn("Nome");
 
-        dadosTabela = new Object[25][3];
         int lin = 0;
 
-        for (Marca marca : x)
+        model.addRow(new Object[]
         {
-            dadosTabela[lin][0] = marca.getId();
-            dadosTabela[lin][1] = marca.getNome();
-            dadosTabela[lin][2] = marca.getSlug();
+        });
+
+        for (Marca marca : marcas)
+        {
+            model.addRow(new Object[]
+            {
+                marca.getId(), marca.getNome()
+            });
 
             lin++;
         }
-
-//        sessionFactory.close();
-        tabela.setModel(new DefaultTableModel(dadosTabela, cabecalho)
-        {
-            @Override
-            public boolean isCellEditable(int row, int column)
-            {
-                return false;
-
-            }
-
-            @Override
-            public Class
-                    getColumnClass(int column)
-            {
-
-                if (column == 3)
-                {
-
-                }
-                return Object.class;
-            }
-        });
 
         tabela.setSelectionMode(0);
 
@@ -219,6 +206,39 @@ public class MarcaDao implements IDAO_T<Marca>
                     break;
             }
         }
+
+        tabela.scrollRectToVisible(tabela.getCellRect(1, 0, true));
+        scrollTable(tabela, barraScroll);
+    }
+
+    private void scrollTable(JTable tabela, JScrollPane barraScroll)
+    {
+        MarcaDao dao = new MarcaDao();
+
+        barraScroll.getVerticalScrollBar().addAdjustmentListener(new AdjustmentListener()
+        {
+            @Override
+            public void adjustmentValueChanged(AdjustmentEvent e)
+            {
+                if (!e.getValueIsAdjusting())
+                {
+                    JScrollBar scrollBar = (JScrollBar) e.getAdjustable();
+                    int extent = scrollBar.getModel().getExtent();
+                    int maximum = scrollBar.getModel().getMaximum();
+                    if (extent + e.getValue() == maximum)
+                    {
+                        int id = (int) tabela.getValueAt(tabela.getRowCount() - 2, 0);
+                        dao.incrementaTabela(tabela, id);
+                        tabela.scrollRectToVisible(tabela.getCellRect(1, 0, true));
+                    } else if (e.getValue() == 0)
+                    {
+                        int id = (int) tabela.getValueAt(1, 0);
+                        dao.recarregaTabela(tabela, id);
+                        tabela.scrollRectToVisible(tabela.getCellRect(24, 0, true));
+                    }
+                }
+            }
+        });
     }
 
     public void popularTabela(JTable tabela, String criterio)
