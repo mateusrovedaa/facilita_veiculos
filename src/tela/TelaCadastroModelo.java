@@ -23,6 +23,10 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
     public TelaCadastroModelo() {
         initComponents();
+        new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
+        new ComboDao().popularCombo("carrocerias", 1, 4, comboCarroceriaId, "");
+        new ComboDao().popularCombo("procedencias", 1, 4, comboProcedenciaId, "");
+        new ComboDao().popularCombo("marcas", 1, 4, comboMarcaId, "");
         verificaPermissoes();
     }
 
@@ -57,25 +61,17 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         if (peDAO.consultarPermissao("Listar", "modelo")) {
             new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
         }
-        if (!peDAO.consultarPermissao("ComboMarcaCadastro", "modelo")) {
+        if (!peDAO.consultarPermissao("ComboCadastro", "modelo")) {
             comboMarcaId.setEnabled(false);
-        } else {
-            new ComboDao().popularCombo("marcas", 1, 4, comboMarcaId, "");
         }
-        if (!peDAO.consultarPermissao("ComboMarcaListar", "modelo")) {
+        if (!peDAO.consultarPermissao("ComboListar", "modelo")) {
             comboFiltroMarcaId.setEnabled(false);
-        } else {
-            new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
         }
         if (!peDAO.consultarPermissao("ComboCarroceria", "modelo")) {
             comboCarroceriaId.setEnabled(false);
-        } else {
-            new ComboDao().popularCombo("carrocerias", 1, 4, comboCarroceriaId, "");
         }
         if (!peDAO.consultarPermissao("ComboProcedencia", "modelo")) {
             comboProcedenciaId.setEnabled(false);
-        } else {
-            new ComboDao().popularCombo("procedencias", 1, 4, comboProcedenciaId, "");
         }
     }
 
@@ -526,7 +522,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         } else {
             filtro = String.valueOf(filtroMarcaId.getCodigo());
         }
-        verificaPermissoes();
+        new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), filtro);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

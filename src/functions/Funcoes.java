@@ -9,6 +9,7 @@ import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.regex.Pattern;
+import javax.swing.JCheckBox;
 import javax.swing.JTable;
 
 public class Funcoes {
@@ -48,6 +49,24 @@ public class Funcoes {
         permissao.setCriadoEm(Calendar.getInstance());
         permissao.setAlteradoEm(Calendar.getInstance());
         ok = DaoGenerico.getInstance().inserir(permissao);
+        return ok;
+    }
+    
+     public static boolean verificaPermissoes(JCheckBox cbx, String regra, String tela, Usuario usuario, PermissaoDao peDAO) {
+        boolean ok = false;
+        if (cbx.isSelected()) {
+            if (!peDAO.consultarPermissao(regra, tela, usuario.getId())) {
+                ok = Funcoes.salvarPermissao(regra, usuario, tela);
+            } else {
+                ok = true;
+            }
+        } else {
+            if (peDAO.consultarPermissao(regra, tela, usuario.getId())) {
+                ok = peDAO.excluir(regra, tela, usuario.getId());
+            } else {
+                ok = true;
+            }
+        }
         return ok;
     }
 }

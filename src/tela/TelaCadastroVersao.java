@@ -2,6 +2,7 @@ package tela;
 
 import dao.ComboDao;
 import dao.DaoGenerico;
+import dao.PermissaoDao;
 import dao.VersaoDao;
 import entidade.Combustivel;
 import entidade.Modelo;
@@ -15,12 +16,13 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
 
     private static TelaCadastroVersao tela;
     int codigo = 0;
+    PermissaoDao peDAO = new PermissaoDao();
 
     public TelaCadastroVersao() {
         initComponents();
         campoIdModeloBusca.setEditable(false);
         campoNomeModeloBusca.setEditable(false);
-        new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), "");
+        verificaPermissoes();
         new ComboDao().popularCombo("combustiveis", 1, 4, comboCombustivelId, "");
         new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
     }
@@ -35,6 +37,36 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
     private void funcaoFechar() {
         GerenciarJanelas.fecharJanela(tela);
         tela = null;
+    }
+    
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "versao")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "versao")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "versao")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "versao")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "versao")) {
+            btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "versao")) {
+            new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), "");
+        }
+        if (!peDAO.consultarPermissao("ComboCadastro", "versao")) {
+            comboCombustivelId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboListar", "versao")) {
+            comboFiltroMarcaId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Procurar", "versao")) {
+            btnBuscaModelo.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -622,7 +654,7 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
         campoFiltroVersao.setText("");
         campoFiltroModelo.setText("");
         comboFiltroMarcaId.setSelectedIndex(0);
-        new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), "");
+        verificaPermissoes();
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -687,7 +719,7 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
 
             if (retornoExcluirVersao == true) {
                 Mensagem.informacao("Versão excluída com sucesso!", this);
-                new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), "");
+               verificaPermissoes();
             } else {
                 Mensagem.erro(tblVersao.getValueAt(tblVersao.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -789,7 +821,7 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), "");
+            verificaPermissoes();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

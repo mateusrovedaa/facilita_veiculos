@@ -2,6 +2,7 @@ package tela;
 
 import dao.ComboDao;
 import dao.DaoGenerico;
+import dao.PermissaoDao;
 import dao.UsuarioDao;
 import entidade.Perfil;
 import entidade.Usuario;
@@ -24,13 +25,14 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
     private static TelaCadastroUsuario tela;
     int codigo = 0;
+    PermissaoDao peDAO = new PermissaoDao();
 
     public TelaCadastroUsuario() {
         initComponents();
         Formatacao.formatarData(campoDataNascimento);
         new ComboDao().popularCombo("perfis", 1, 4, comboPerfilId, "");
         new ComboDao().popularCombo("perfis", 1, 4, comboFiltroPerfilId, "");
-        new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText(), "");
+        verificaPermissoes();
     }
 
     public static TelaCadastroUsuario getInstancia() {
@@ -43,6 +45,33 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
     private void funcaoFechar() {
         GerenciarJanelas.fecharJanela(tela);
         tela = null;
+    }
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "usuario")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "usuario")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "usuario")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "usuario")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "usuario")) {
+            btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "usuario")) {
+            new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText(), "");
+        }
+        if (!peDAO.consultarPermissao("ComboCadastro", "usuario")) {
+            comboPerfilId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboListar", "usuario")) {
+            comboFiltroPerfilId.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -481,7 +510,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroUsuario.setText("");
         comboFiltroPerfilId.setSelectedIndex(0);
-        new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText(), "");
+        verificaPermissoes();
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnFecharListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharListaActionPerformed
@@ -577,7 +606,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText(), "");
+            verificaPermissoes();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
