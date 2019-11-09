@@ -22,7 +22,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
     public TelaCadastroMarca()
     {
         initComponents();
-        new MarcaDao().criaTabela(tblMarca, jScrollPane2);
+        new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
     }
 
     public static TelaCadastroMarca getInstancia()
@@ -280,7 +280,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
 
             codigo = 0;
 
-            new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+            new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
         } else
         {
             if (erroMarca != null)
@@ -334,7 +334,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
             if (retornoExcluirMarca == true)
             {
                 Mensagem.informacao("Marca excluída com sucesso!", this);
-                new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+                new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
             } else
             {
                 Mensagem.erro(tblMarca.getValueAt(tblMarca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
@@ -343,12 +343,12 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+        new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroMarca.setText("");
-        new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+        new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private boolean validaCampos()
