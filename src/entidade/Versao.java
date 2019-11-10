@@ -30,7 +30,7 @@ public class Versao implements Serializable {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "nome", length = 100, nullable = false)
+    @Column(name = "nome", length = 200, nullable = false)
     private String nome;
 
     @JoinColumn(name = "modelo_id")
@@ -77,7 +77,7 @@ public class Versao implements Serializable {
     @Column(name = "torque_rpm", length = 100)
     private String torque_rpm;
 
-    @Column(name = "observacoes", length = 100)
+    @Column(name = "observacoes", length = 10000)
     private String observacoes;
 
     @Column(name = "criado_em", nullable = false)

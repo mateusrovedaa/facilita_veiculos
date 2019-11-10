@@ -1,25 +1,43 @@
 package tela;
 
-import dao.ModeloDao;
+import dao.CidadeDao;
 import functions.Mensagem;
 import java.awt.Toolkit;
 
-public class TelaBuscaModelo extends javax.swing.JDialog {
+public class TelaBuscaCidade extends javax.swing.JDialog {
 
-    TelaCadastroVersao telaVersao;
+    TelaCadastroCliente telaCliente;
+    TelaCadastroProprietario telaProprietario;
+    TelaCadastroEmpresaVistoria telaEmpresaVistoria;
 
-    public TelaBuscaModelo(java.awt.Frame parent, boolean modal) {
+    public TelaBuscaCidade(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setIcon();
     }
 
-    public TelaBuscaModelo(java.awt.Frame parent, boolean modal, TelaCadastroVersao telaVersao) {
+    public TelaBuscaCidade(java.awt.Frame parent, boolean modal, TelaCadastroCliente telaCliente) {
         super(parent, modal);
         initComponents();
         setIcon();
-        this.telaVersao = telaVersao;
-        new ModeloDao().popularTabela(tblModelo, "", "");
+        this.telaCliente = telaCliente;
+        new CidadeDao().popularTabela(tblCidade, "");
+    }
+
+    public TelaBuscaCidade(java.awt.Frame parent, boolean modal, TelaCadastroProprietario telaProprietario) {
+        super(parent, modal);
+        initComponents();
+        setIcon();
+        this.telaProprietario = telaProprietario;
+        new CidadeDao().popularTabela(tblCidade, "");
+    }
+
+    public TelaBuscaCidade(java.awt.Frame parent, boolean modal, TelaCadastroEmpresaVistoria telaEmpresaVistoria) {
+        super(parent, modal);
+        initComponents();
+        setIcon();
+        this.telaEmpresaVistoria = telaEmpresaVistoria;
+        new CidadeDao().popularTabela(tblCidade, "");
     }
 
     @SuppressWarnings("unchecked")
@@ -29,24 +47,24 @@ public class TelaBuscaModelo extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        campoFiltroModelo = new javax.swing.JTextField();
+        campoFiltroCidade = new javax.swing.JTextField();
         btnLimpar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblModelo = new javax.swing.JTable();
-        btnDefinirModelo = new javax.swing.JButton();
+        tblCidade = new javax.swing.JTable();
+        btnDefinirCidade = new javax.swing.JButton();
         btnFecharBusca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Selecione o modelo desejado");
+        jLabel3.setText("Selecione a cidade desejada");
         jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("Modelo:");
+        jLabel1.setText("Cidade:");
 
         btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-broom-16.png"))); // NOI18N
         btnLimpar.setText("Limpar busca");
@@ -72,7 +90,7 @@ public class TelaBuscaModelo extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoFiltroModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoFiltroCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -85,13 +103,13 @@ public class TelaBuscaModelo extends javax.swing.JDialog {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoFiltroModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoFiltroCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
                     .addComponent(btnLimpar))
                 .addGap(20, 20, 20))
         );
 
-        tblModelo.setModel(new javax.swing.table.DefaultTableModel(
+        tblCidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -102,13 +120,13 @@ public class TelaBuscaModelo extends javax.swing.JDialog {
 
             }
         ));
-        jScrollPane1.setViewportView(tblModelo);
+        jScrollPane1.setViewportView(tblCidade);
 
-        btnDefinirModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-ok-16.png"))); // NOI18N
-        btnDefinirModelo.setText("Definir modelo");
-        btnDefinirModelo.addActionListener(new java.awt.event.ActionListener() {
+        btnDefinirCidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-ok-16.png"))); // NOI18N
+        btnDefinirCidade.setText("Definir cidade");
+        btnDefinirCidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDefinirModeloActionPerformed(evt);
+                btnDefinirCidadeActionPerformed(evt);
             }
         });
 
@@ -132,7 +150,7 @@ public class TelaBuscaModelo extends javax.swing.JDialog {
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnDefinirModelo)
+                        .addComponent(btnDefinirCidade)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFecharBusca)))
                 .addContainerGap())
@@ -149,7 +167,7 @@ public class TelaBuscaModelo extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFecharBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDefinirModelo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDefinirCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -157,28 +175,34 @@ public class TelaBuscaModelo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        campoFiltroModelo.setText("");
-        new ModeloDao().popularTabela(tblModelo, "", "");
+        campoFiltroCidade.setText("");
+        new CidadeDao().popularTabela(tblCidade, "");
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        if (campoFiltroModelo.getText().equals("")) {
-            new ModeloDao().popularTabela(tblModelo, "", "");
+        if (campoFiltroCidade.getText().equals("")) {
+            new CidadeDao().popularTabela(tblCidade, "");
         } else {
-            new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+            new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnDefinirModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDefinirModeloActionPerformed
-        if (tblModelo.getSelectedRow() != -1) {
-            String nomeModelo = String.valueOf(tblModelo.getValueAt(tblModelo.getSelectedRow(), 1));
-            String codigoModelo = String.valueOf(tblModelo.getValueAt(tblModelo.getSelectedRow(), 0));
-            telaVersao.definirModelo(Integer.parseInt(codigoModelo), nomeModelo);
+    private void btnDefinirCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDefinirCidadeActionPerformed
+        if (tblCidade.getSelectedRow() != -1) {
+            String nomeCidade = String.valueOf(tblCidade.getValueAt(tblCidade.getSelectedRow(), 1));
+            String codigoCidade = String.valueOf(tblCidade.getValueAt(tblCidade.getSelectedRow(), 0));
+            if (telaCliente != null) {
+                telaCliente.definirCidade(Integer.parseInt(codigoCidade), nomeCidade);
+            } else if (telaProprietario != null) {
+                telaProprietario.definirCidade(Integer.parseInt(codigoCidade), nomeCidade);
+            } else if (telaEmpresaVistoria != null) {
+                telaEmpresaVistoria.definirCidade(Integer.parseInt(codigoCidade), nomeCidade);
+            }
             this.dispose();
         } else {
-            Mensagem.informacao("Selecione um modelo!", this);
+            Mensagem.informacao("Selecione uma cidade!", this);
         }
-    }//GEN-LAST:event_btnDefinirModeloActionPerformed
+    }//GEN-LAST:event_btnDefinirCidadeActionPerformed
 
     private void btnFecharBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharBuscaActionPerformed
         this.dispose();
@@ -205,21 +229,27 @@ public class TelaBuscaModelo extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaBuscaModelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaBuscaCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaBuscaModelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaBuscaCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaBuscaModelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaBuscaCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaBuscaModelo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaBuscaCidade.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                TelaBuscaModelo dialog = new TelaBuscaModelo(new javax.swing.JFrame(), true);
+                TelaBuscaCidade dialog = new TelaBuscaCidade(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -233,14 +263,14 @@ public class TelaBuscaModelo extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnDefinirModelo;
+    private javax.swing.JButton btnDefinirCidade;
     private javax.swing.JButton btnFecharBusca;
     private javax.swing.JButton btnLimpar;
-    private javax.swing.JTextField campoFiltroModelo;
+    private javax.swing.JTextField campoFiltroCidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblModelo;
+    private javax.swing.JTable tblCidade;
     // End of variables declaration//GEN-END:variables
 }

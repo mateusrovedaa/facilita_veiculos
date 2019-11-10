@@ -295,6 +295,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
             abaAdicionar.setSelectedIndex(0);
 
             campoNome.setText(marca.getNome());
+            marca.setAlteradoEm(Calendar.getInstance());
 
             campoNome.requestFocus();
 

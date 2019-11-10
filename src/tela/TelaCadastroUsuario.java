@@ -1,25 +1,17 @@
 package tela;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import dao.ComboDao;
 import dao.DaoGenerico;
-import dao.ModeloDao;
 import dao.UsuarioDao;
-import entidade.Carroceria;
-import entidade.Marca;
-import entidade.Modelo;
 import entidade.Perfil;
-import entidade.Procedencia;
 import entidade.Usuario;
 import functions.ComboItem;
 import functions.Formatacao;
-import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
 import functions.Validacao;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -27,7 +19,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 
 public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
@@ -36,6 +28,8 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
     public TelaCadastroUsuario() {
         initComponents();
+        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
+        this.setFrameIcon(icon);
         Formatacao.formatarData(campoDataNascimento);
         new ComboDao().popularCombo("perfis", 1, 4, comboPerfilId, "");
         new ComboDao().popularCombo("perfis", 1, 4, comboFiltroPerfilId, "");
@@ -595,6 +589,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
             campoDataNascimento.setText(dataFormatada);
 
             campoEmail.setText(String.valueOf(usuario.getEmail()));
+            usuario.setAlteradoEm(Calendar.getInstance());
 
             campoNome.requestFocus();
 

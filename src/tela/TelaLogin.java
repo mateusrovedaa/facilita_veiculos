@@ -3,6 +3,7 @@ package tela;
 import dao.UsuarioDao;
 import functions.Mensagem;
 import functions.Validacao;
+import java.awt.Toolkit;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +13,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();
         campoEmail.requestFocus();
+        setIcon();
     }
 
     @SuppressWarnings("unchecked")
@@ -142,6 +144,9 @@ public class TelaLogin extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_btnFecharActionPerformed
 
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/Car-32.png")));
+    }
     /**
      * @param args the command line arguments
      */

@@ -1,38 +1,41 @@
 package tela;
 
-import dao.ComboDao;
 import dao.DaoGenerico;
-import dao.ModeloDao;
-import entidade.Carroceria;
-import entidade.Marca;
-import entidade.Modelo;
-import entidade.Procedencia;
-import functions.ComboItem;
-import functions.Funcoes;
+import dao.EmpresaVistoriaDao;
+import entidade.Cidade;
+import entidade.EmpresaVistoria;
+import functions.Formatacao;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import static functions.Validacao.validarCNPJ;
+import static functions.Validacao.validarCPF;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.ImageIcon;
 
-public class TelaCadastroModelo extends javax.swing.JInternalFrame {
+public class TelaCadastroEmpresaVistoria extends javax.swing.JInternalFrame {
 
-    private static TelaCadastroModelo tela;
+    private static TelaCadastroEmpresaVistoria tela;
     int codigo = 0;
 
-    public TelaCadastroModelo() {
+    public TelaCadastroEmpresaVistoria() {
         initComponents();
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
         this.setFrameIcon(icon);
-        new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
-        new ComboDao().popularCombo("marcas", 1, 4, comboMarcaId, "");
-        new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
-        new ComboDao().popularCombo("procedencias", 1, 4, comboProcedenciaId, "");
-        new ComboDao().popularCombo("carrocerias", 1, 4, comboCarroceriaId, "");
+        Formatacao.formatarCnpj(campoCnpj);
+        Formatacao.formatarTelefone(campoTelefone);
+        campoIdCidadeBusca.setEditable(false);
+        campoNomeCidadeBusca.setEditable(false);
+        new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
     }
 
-    public static TelaCadastroModelo getInstancia() {
+    public static TelaCadastroEmpresaVistoria getInstancia() {
         if (tela == null) {
-            tela = new TelaCadastroModelo();
+            tela = new TelaCadastroEmpresaVistoria();
         }
         return tela;
     }
@@ -49,24 +52,31 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        abaModelo = new javax.swing.JTabbedPane();
+        abaEmpresa = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        campoNome = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        campoIdCidadeBusca = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        campoNomeCidadeBusca = new javax.swing.JTextField();
+        btnBuscaCidade = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        campoEndereco = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        campoEmail = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        campoCnpj = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
-        campoComprimento = new javax.swing.JTextField();
-        campoAltura = new javax.swing.JTextField();
-        campoLargura = new javax.swing.JTextField();
-        comboMarcaId = new javax.swing.JComboBox<>();
-        comboProcedenciaId = new javax.swing.JComboBox<>();
-        comboCarroceriaId = new javax.swing.JComboBox<>();
+        campoRazaoSocial = new javax.swing.JTextField();
+        campoTelefone = new javax.swing.JFormattedTextField();
+        jLabel10 = new javax.swing.JLabel();
+        campoNomeFantasia = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        campoObservacoes = new javax.swing.JTextArea();
         jPanel9 = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
         btnFecharCadastro = new javax.swing.JButton();
@@ -74,13 +84,11 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        campoFiltroModelo = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        campoFiltroRazaoSocial = new javax.swing.JTextField();
         btnLimparBusca = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        comboFiltroMarcaId = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblModelo = new javax.swing.JTable();
+        tblEmpresaVistoria = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -93,10 +101,11 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Cadastro de modelos");
+        setResizable(true);
+        setTitle("Cadastro de empresas de vistorias");
         setToolTipText("");
 
-        abaModelo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        abaEmpresa.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
@@ -104,34 +113,76 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Carroceria:*");
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Procedência:*");
-
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Marca:*");
+        jLabel4.setText("Endereço:*");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Modelo:*");
+        jLabel3.setText("Razão social:*");
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Compimento:");
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Cidade*"));
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel6.setText("Nome:");
+
+        btnBuscaCidade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-search-16.png"))); // NOI18N
+        btnBuscaCidade.setText("Procurar");
+        btnBuscaCidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaCidadeActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel16.setText("Código:");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoIdCidadeBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoNomeCidadeBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscaCidade)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoNomeCidadeBusca, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(campoIdCidadeBusca, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBuscaCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
+        );
+
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("E-mail:*");
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("Altura:");
+        jLabel8.setText("CNPJ:*");
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("Largura:");
+        jLabel9.setText("Telefone:*");
 
-        campoComprimento.setAutoscrolls(false);
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Nome fantasia:*");
 
-        comboMarcaId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Observações:");
 
-        comboProcedenciaId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        comboCarroceriaId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        campoObservacoes.setColumns(20);
+        campoObservacoes.setRows(5);
+        jScrollPane2.setViewportView(campoObservacoes);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -139,67 +190,66 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(campoNome)
-                                    .addComponent(comboMarcaId, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(67, 67, 67))
-                            .addComponent(comboProcedenciaId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(campoCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoComprimento, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoLargura, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(campoTelefone))
+                            .addComponent(campoRazaoSocial)
+                            .addComponent(campoNomeFantasia, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(comboCarroceriaId, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoEndereco)
+                            .addComponent(campoEmail)
+                            .addComponent(jScrollPane2))))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(campoComprimento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoNomeFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(comboMarcaId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(campoAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoLargura, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboProcedenciaId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboCarroceriaId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -228,11 +278,11 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(293, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFecharCadastro)
-                .addContainerGap(293, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +309,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 217, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -278,11 +328,11 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        abaModelo.addTab("Cadastrar ou editar modelo", jPanel1);
+        abaEmpresa.addTab("Cadastrar ou editar empresa", jPanel1);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
@@ -290,9 +340,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setText("Modelo:");
-
-        jLabel2.setText("Marca:");
+        jLabel1.setText("Razão social:");
 
         btnLimparBusca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-broom-16.png"))); // NOI18N
         btnLimparBusca.setText("Limpar busca");
@@ -310,8 +358,6 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             }
         });
 
-        comboFiltroMarcaId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -320,16 +366,12 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoFiltroModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboFiltroMarcaId, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoFiltroRazaoSocial)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLimparBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnLimparBusca)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,16 +379,14 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoFiltroRazaoSocial, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLimparBusca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(comboFiltroMarcaId, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoFiltroModelo, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(btnLimparBusca)))
                 .addContainerGap())
         );
 
-        tblModelo.setModel(new javax.swing.table.DefaultTableModel(
+        tblEmpresaVistoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -357,7 +397,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tblModelo);
+        jScrollPane1.setViewportView(tblEmpresaVistoria);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -419,7 +459,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -430,7 +470,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -453,22 +493,22 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        abaModelo.addTab("Listar modelos", jPanel3);
+        abaEmpresa.addTab("Listar empresas", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(abaModelo)
+                .addGap(11, 11, 11)
+                .addComponent(abaEmpresa)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(abaModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(abaEmpresa)
                 .addContainerGap())
         );
 
@@ -476,70 +516,60 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
-        campoFiltroModelo.setText("");
-        comboFiltroMarcaId.setSelectedIndex(0);
-        new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+        campoFiltroRazaoSocial.setText("");
+        new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        ComboItem filtroMarcaId = (ComboItem) comboFiltroMarcaId.getSelectedItem();
-        String filtro;
-        if (filtroMarcaId.getCodigo() == 0) {
-            filtro = "";
-        } else {
-            filtro = String.valueOf(filtroMarcaId.getCodigo());
-        }
-        new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), filtro);
+        new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        String codigoEditarModelo = String.valueOf(tblModelo.getValueAt(tblModelo.getSelectedRow(), 0));
+        String codigoEditarEmpresaVistoria = String.valueOf(tblEmpresaVistoria.getValueAt(tblEmpresaVistoria.getSelectedRow(), 0));
 
-        Object object = DaoGenerico.getInstance().obterPorId(Modelo.class, Integer.parseInt(codigoEditarModelo));
-        Modelo modelo = new Modelo((Modelo) object);
+        Object object = DaoGenerico.getInstance().obterPorId(EmpresaVistoria.class, Integer.parseInt(codigoEditarEmpresaVistoria));
+        EmpresaVistoria empresaVistoria = new EmpresaVistoria((EmpresaVistoria) object);
 
-        ComboItem marcaId = new ComboItem();
-        marcaId.setCodigo(modelo.getMarca_id().getId());
+        Object objectCidade = DaoGenerico.getInstance().obterPorId(Cidade.class, empresaVistoria.getCidade_id().getId());
+        Cidade cidade = new Cidade((Cidade) objectCidade);
 
-        ComboItem procedenciaId = new ComboItem();
-        procedenciaId.setCodigo(modelo.getProcedencia_id().getId());
+        if (empresaVistoria != null) {
+            abaEmpresa.setSelectedIndex(0);
 
-        ComboItem carroceriaId = new ComboItem();
-        carroceriaId.setCodigo(modelo.getCarroceria_id().getId());
+            campoRazaoSocial.setText(empresaVistoria.getRazao_social());
+            campoNomeFantasia.setText(empresaVistoria.getNome_fantasia());
+            campoCnpj.setText(empresaVistoria.getCnpj());
+            campoTelefone.setText(empresaVistoria.getTelefone());
 
-        if (modelo != null) {
-            abaModelo.setSelectedIndex(0);
+            campoIdCidadeBusca.setText(Integer.toString(cidade.getId()));
+            campoNomeCidadeBusca.setText(cidade.getNome());
 
-            campoNome.setText(modelo.getNome());
-            new ComboDao().definirItemCombo(comboMarcaId, marcaId);
-            new ComboDao().definirItemCombo(comboProcedenciaId, procedenciaId);
-            new ComboDao().definirItemCombo(comboCarroceriaId, carroceriaId);
-            campoComprimento.setText(Double.toString(modelo.getComprimento()).replace(".", ","));
-            campoAltura.setText(Double.toString(modelo.getAltura()).replace(".", ","));
-            campoLargura.setText(Double.toString(modelo.getLargura()).replace(".", ","));
-            modelo.setAlteradoEm(Calendar.getInstance());
+            campoEndereco.setText(empresaVistoria.getEndereco());
+            campoEmail.setText(empresaVistoria.getEmail());
+            campoObservacoes.setText(empresaVistoria.getObservacoes());
+            empresaVistoria.setAlteradoEm(Calendar.getInstance());
 
-            campoNome.requestFocus();
+            campoRazaoSocial.requestFocus();
 
-            codigo = modelo.getId();
+            codigo = empresaVistoria.getId();
 
         } else {
-            Mensagem.erro("Erro ao consultar modelo!", this);
+            Mensagem.erro("Erro ao consultar empresa!", this);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int codigoExcluirModelo = (int) tblModelo.getValueAt(tblModelo.getSelectedRow(), 0);
+        int codigoExcluirEmpresaVistoria = (int) tblEmpresaVistoria.getValueAt(tblEmpresaVistoria.getSelectedRow(), 0);
 
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
         if (mensagem == 0) {
-            boolean retornoExcluirModelo = DaoGenerico.getInstance().excluir(Modelo.class, codigoExcluirModelo);
+            boolean retornoExcluirEmpresaVistoria = DaoGenerico.getInstance().excluir(EmpresaVistoria.class, codigoExcluirEmpresaVistoria);
 
-            if (retornoExcluirModelo == true) {
-                Mensagem.informacao("Modelo excluído com sucesso!", this);
-                new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+            if (retornoExcluirEmpresaVistoria == true) {
+                Mensagem.informacao("Empresa excluída com sucesso!", this);
+                new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
             } else {
-                Mensagem.erro(tblModelo.getValueAt(tblModelo.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+                Mensagem.erro(tblEmpresaVistoria.getValueAt(tblEmpresaVistoria.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
@@ -549,79 +579,59 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFecharListaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        Modelo modelo = new Modelo();
+        EmpresaVistoria empresaVistoria = new EmpresaVistoria();
 
-        ComboItem marcaId = (ComboItem) comboMarcaId.getSelectedItem();
-        Marca marca = null;
-        if (marcaId.getCodigo() != 0) {
-            Object objectMarca = DaoGenerico.getInstance().obterPorId(Marca.class, marcaId.getCodigo());
-            marca = new Marca((Marca) objectMarca);
+        empresaVistoria.setId(codigo);
+        empresaVistoria.setRazao_social(campoRazaoSocial.getText());
+        empresaVistoria.setNome_fantasia(campoNomeFantasia.getText());
+        empresaVistoria.setCnpj(campoCnpj.getText());
+        empresaVistoria.setTelefone(campoTelefone.getText());
+
+        Cidade cidade = null;
+        if (!campoIdCidadeBusca.getText().equals("")) {
+            Object objectCidade = DaoGenerico.getInstance().obterPorId(Cidade.class, Integer.parseInt(campoIdCidadeBusca.getText()));
+            cidade = new Cidade((Cidade) objectCidade);
         }
 
-        ComboItem procedenciaId = (ComboItem) comboProcedenciaId.getSelectedItem();
-        Procedencia procedencia = null;
-        if (procedenciaId.getCodigo() != 0) {
-            Object objectProcedencia = DaoGenerico.getInstance().obterPorId(Procedencia.class, procedenciaId.getCodigo());
-            procedencia = new Procedencia((Procedencia) objectProcedencia);
-        }
+        empresaVistoria.setCidade_id(cidade);
+        empresaVistoria.setEndereco(campoEndereco.getText());
+        empresaVistoria.setEmail(campoEmail.getText());
+        empresaVistoria.setObservacoes(campoObservacoes.getText());
 
-        ComboItem carroceriaId = (ComboItem) comboCarroceriaId.getSelectedItem();
-        Carroceria carroceria = null;
-        if (carroceriaId.getCodigo() != 0) {
-            Object objectCarroceria = DaoGenerico.getInstance().obterPorId(Carroceria.class, carroceriaId.getCodigo());
-            carroceria = new Carroceria((Carroceria) objectCarroceria);
-        }
+        empresaVistoria.setCriadoEm(Calendar.getInstance());
+        empresaVistoria.setAlteradoEm(Calendar.getInstance());
 
-        modelo.setId(codigo);
-        modelo.setMarca_id(marca);
-        modelo.setProcedencia_id(procedencia);
-        modelo.setCarroceria_id(carroceria);
-        modelo.setNome(campoNome.getText());
-        modelo.setSlug(Funcoes.textoIdentificador(campoNome.getText()));
-
-        if (!campoComprimento.getText().equals("")) {
-            modelo.setComprimento(Double.parseDouble(campoComprimento.getText().replace(",", ".")));
-        }
-
-        if (!campoAltura.getText().equals("")) {
-            modelo.setAltura(Double.parseDouble(campoAltura.getText().replace(",", ".")));
-        }
-
-        if (!campoLargura.getText().equals("")) {
-            modelo.setLargura(Double.parseDouble(campoLargura.getText().replace(",", ".")));
-        }
-
-        modelo.setCriadoEm(Calendar.getInstance());
-        modelo.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarModelo = false;
+        boolean retornoSalvarEmpresaVistoria = false;
 
         if (validaCampos() == true) {
             if (codigo == 0) {
-                retornoSalvarModelo = DaoGenerico.getInstance().inserir(modelo);
+                retornoSalvarEmpresaVistoria = DaoGenerico.getInstance().inserir(empresaVistoria);
             } else {
-                retornoSalvarModelo = DaoGenerico.getInstance().atualizar(modelo);
+                retornoSalvarEmpresaVistoria = DaoGenerico.getInstance().atualizar(empresaVistoria);
             }
-            Mensagem.informacao("Modelo salvo com sucesso!", this);
+            Mensagem.informacao("Empresa salva com sucesso!", this);
         } else {
             Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
 
-        if (retornoSalvarModelo == true) {
+        if (retornoSalvarEmpresaVistoria == true) {
 
-            campoNome.setText("");
-            campoComprimento.setText("");
-            campoAltura.setText("");
-            campoLargura.setText("");
-            comboMarcaId.setSelectedIndex(0);
-            comboProcedenciaId.setSelectedIndex(0);
-            comboCarroceriaId.setSelectedIndex(0);
+            campoRazaoSocial.setText("");
+            campoNomeFantasia.setText("");
+            campoCnpj.setText("");
+            campoTelefone.setText("");
+            campoIdCidadeBusca.setText("");
+            campoNomeCidadeBusca.setText("");
+            campoEndereco.setText("");
+            campoTelefone.setText("");
+            campoEmail.setText("");
+            campoObservacoes.setText("");
 
-            campoNome.requestFocus();
+            campoRazaoSocial.requestFocus();
 
             codigo = 0;
 
-            new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+            new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -629,17 +639,29 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         funcaoFechar();
     }//GEN-LAST:event_btnFecharCadastroActionPerformed
 
-    public boolean validaCampos() {
-        ComboItem marcaId = (ComboItem) comboMarcaId.getSelectedItem();
-        ComboItem procedenciaId = (ComboItem) comboProcedenciaId.getSelectedItem();
-        ComboItem carroceriaId = (ComboItem) comboCarroceriaId.getSelectedItem();
+    private void btnBuscaCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaCidadeActionPerformed
+        TelaBuscaCidade buscaCidade = new TelaBuscaCidade(null, true, this);
+        buscaCidade.setLocationRelativeTo(this);
+        buscaCidade.setVisible(true);
+    }//GEN-LAST:event_btnBuscaCidadeActionPerformed
 
-        return marcaId.getCodigo() != 0 && procedenciaId.getCodigo() != 0
-                && carroceriaId.getCodigo() != 0
-                && !campoNome.getText().equals("");
+    public void definirCidade(int id, String nome) {
+        campoIdCidadeBusca.setText(Integer.toString(id));
+        campoNomeCidadeBusca.setText(nome);
+    }
+
+    public boolean validaCampos() {
+
+        return !campoRazaoSocial.getText().equals("") && !campoNomeFantasia.getText().equals("")
+                && !campoTelefone.getText().equals("(  )     -    ") && !campoTelefone.getText().equals("")
+                && !campoIdCidadeBusca.getText().equals("")
+                && !campoEndereco.getText().equals("") && !campoEmail.getText().equals("")
+                && !validarCNPJ(campoCnpj.getText());
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane abaModelo;
+    private javax.swing.JTabbedPane abaEmpresa;
+    private javax.swing.JButton btnBuscaCidade;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
@@ -647,22 +669,24 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnFecharLista;
     private javax.swing.JButton btnLimparBusca;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JTextField campoAltura;
-    private javax.swing.JTextField campoComprimento;
-    private javax.swing.JTextField campoFiltroModelo;
-    private javax.swing.JTextField campoLargura;
-    private javax.swing.JTextField campoNome;
-    private javax.swing.JComboBox<String> comboCarroceriaId;
-    private javax.swing.JComboBox<String> comboFiltroMarcaId;
-    private javax.swing.JComboBox<String> comboMarcaId;
-    private javax.swing.JComboBox<String> comboProcedenciaId;
+    private javax.swing.JFormattedTextField campoCnpj;
+    private javax.swing.JTextField campoEmail;
+    private javax.swing.JTextField campoEndereco;
+    private javax.swing.JTextField campoFiltroRazaoSocial;
+    private javax.swing.JTextField campoIdCidadeBusca;
+    private javax.swing.JTextField campoNomeCidadeBusca;
+    private javax.swing.JTextField campoNomeFantasia;
+    private javax.swing.JTextArea campoObservacoes;
+    private javax.swing.JTextField campoRazaoSocial;
+    private javax.swing.JFormattedTextField campoTelefone;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
@@ -672,11 +696,13 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblModelo;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblEmpresaVistoria;
     // End of variables declaration//GEN-END:variables
 }
