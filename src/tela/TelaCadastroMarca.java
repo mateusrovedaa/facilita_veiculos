@@ -36,7 +36,8 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         abaAdicionar = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -67,8 +68,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-save-close-16.png"))); // NOI18N
         btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSalvar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnSalvarActionPerformed(evt);
             }
         });
@@ -105,16 +108,20 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
 
         btnLimparBusca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-broom-16.png"))); // NOI18N
         btnLimparBusca.setText("Limpar busca");
-        btnLimparBusca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnLimparBusca.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnLimparBuscaActionPerformed(evt);
             }
         });
 
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-search-16.png"))); // NOI18N
         btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnBuscar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnBuscarActionPerformed(evt);
             }
         });
@@ -151,10 +158,12 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
         abaAdicionar.addTab("Pesquisar marcas", jPanel2);
 
         tblMarca.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
 
             }
         ));
@@ -165,8 +174,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-edit-16.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEditar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnEditarActionPerformed(evt);
             }
         });
@@ -174,8 +185,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-delete-16.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnExcluir.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnExcluirActionPerformed(evt);
             }
         });
@@ -183,8 +196,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
         btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-exit-16.png"))); // NOI18N
         btnFechar.setText("Fechar");
         btnFechar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnFechar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnFechar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnFecharActionPerformed(evt);
             }
         });
@@ -343,6 +358,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        System.out.println(campoFiltroMarca.getText());
         new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
