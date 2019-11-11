@@ -31,7 +31,7 @@
                   <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnDefinirModelo" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDefinirCidade" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnFecharBusca" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -52,7 +52,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnFecharBusca" alignment="3" max="32767" attributes="0"/>
-                  <Component id="btnDefinirModelo" alignment="3" max="32767" attributes="0"/>
+                  <Component id="btnDefinirCidade" alignment="3" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -66,7 +66,7 @@
           <Font name="Tahoma" size="14" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Selecione o modelo desejado"/>
+        <Property name="text" type="java.lang.String" value="Selecione a cidade desejada"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder/>
@@ -90,7 +90,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="campoFiltroModelo" min="-2" pref="179" max="-2" attributes="0"/>
+                  <Component id="campoFiltroCidade" min="-2" pref="179" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -105,7 +105,7 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="campoFiltroModelo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="campoFiltroCidade" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="btnBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -117,10 +117,10 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Modelo:"/>
+            <Property name="text" type="java.lang.String" value="Cidade:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="campoFiltroModelo">
+        <Component class="javax.swing.JTextField" name="campoFiltroCidade">
         </Component>
         <Component class="javax.swing.JButton" name="btnLimpar">
           <Properties>
@@ -153,7 +153,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblModelo">
+        <Component class="javax.swing.JTable" name="tblCidade">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="0" rowCount="4"/>
@@ -165,15 +165,15 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnDefinirModelo">
+    <Component class="javax.swing.JButton" name="btnDefinirCidade">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/images/icons8-ok-16.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Definir modelo"/>
+        <Property name="text" type="java.lang.String" value="Definir cidade"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDefinirModeloActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDefinirCidadeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFecharBusca">

@@ -5,11 +5,13 @@ import dao.PermissaoDao;
 import entidade.Permissao;
 import entidade.PermissaoId;
 import entidade.Usuario;
+import java.awt.Toolkit;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.regex.Pattern;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JTable;
 
 public class Funcoes {

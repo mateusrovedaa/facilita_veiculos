@@ -33,7 +33,7 @@ public class Marca implements Serializable {
     @Column(name = "nome", length = 200, nullable = false, unique = true)
     private String nome;
 
-    @Column(name = "slug", length = 200, nullable = false)
+    @Column(name = "slug", length = 200, nullable = false, unique = true)
     private String slug;
 
     @Column(name = "criado_em", nullable = false)

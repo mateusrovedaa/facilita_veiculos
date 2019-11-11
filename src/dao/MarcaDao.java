@@ -1,191 +1,166 @@
 package dao;
 
 import entidade.Marca;
-import static facilitaveiculos.FacilitaVeiculos.conexao;
-import functions.ConexaoBD;
-import functions.Formatacao;
-import functions.IDAO_T;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import functions.GerenciarJTable;
+import functions.HibernateUtil;
+import functions.LazyLoading;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.util.List;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
-public class MarcaDao implements IDAO_T<Marca> {
+public class MarcaDao implements LazyLoading
+{
 
-    ResultSet resultadoQ = null;
-    String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
-
-    @Override
-    public String salvar(Marca o) {
-        return null;
-    }
+    private final int registros = 25;
 
     @Override
-    public String atualizar(Marca o) {
-        return null;
-    }
+    public void incrementaTabela(JTable tabela, int linhas)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
 
-    @Override
-    public String excluir(int id) {
-        return null;
-    }
+        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE id > :limit ORDER BY id").setParameter("limit", linhas).setMaxResults(25).list();
 
-    @Override
-    public ArrayList<Marca> consultarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
-    @Override
-    public ArrayList<Marca> consultar(String criterio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Marca consultarId(int id) {
-        Marca marca = null;
-
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "SELECT * "
-                    + "FROM marcas "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            resultadoQ = st.executeQuery(sql);
-
-            while (resultadoQ.next()) {
-                marca = new Marca();
-
-                marca.setId(id);
-                marca.setNome(resultadoQ.getString("nome"));
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro consultar marca = " + e);
+        if (marcas.size() == this.registros)
+        {
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
+            model.addRow(new Object[]
+            {
+            });
         }
 
-        return marca;
+        for (Marca marca : marcas)
+        {
+            model.addRow(new Object[]
+            {
+                marca.getId(), marca.getNome()
+            });
+        }
     }
 
-    public void popularTabela(JTable tabela, String criterio) {
-        // dados da tabela
-        Object[][] dadosTabela = null;
+    @Override
+    public void recarregaTabela(JTable tabela, int linhas)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
 
-        // cabecalho da tabela
-        Object[] cabecalho = new Object[2];
-        cabecalho[0] = "Código";
-        cabecalho[1] = "Nome";
+        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE id < :limit ORDER BY id DESC").setParameter("limit", linhas).setMaxResults(25).list();
 
-        // cria matriz de acordo com nº de registros da tabela
-        try {
-            resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM marcas AS m WHERE m.NOME ILIKE '%" + criterio + "%' AND "
-                    + "m.id IN (SELECT id FROM marcas WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
-            resultadoQ.next();
-
-            dadosTabela = new Object[resultadoQ.getInt(1)][2];
-
-        } catch (Exception e) {
-            System.out.println("Erro ao consultar marca: " + e);
+        if (marcas.size() == this.registros)
+        {
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
         }
 
-        int lin = 0;
-
-        // efetua consulta na tabela
-        try {
-            resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT * FROM marcas "
-                    + "WHERE "
-                    + "NOME ILIKE '%" + criterio + "%' "
-                    + "ORDER BY CRIADO_EM DESC "
-                    + "LIMIT 50");
-
-            while (resultadoQ.next()) {
-
-                dadosTabela[lin][0] = resultadoQ.getInt("id");
-                dadosTabela[lin][1] = resultadoQ.getString("nome");
-
-                // caso a coluna precise exibir uma imagem
-//                if (resultadoQ.getBoolean("Situacao")) {
-//                    dadosTabela[lin][2] = new ImageIcon(getClass().getClassLoader().getResource("Interface/imagens/status_ativo.png"));
-//                } else {
-//                    dadosTabela[lin][2] = new ImageIcon(getClass().getClassLoader().getResource("Interface/imagens/status_inativo.png"));
-//                }
-                lin++;
-            }
-        } catch (Exception e) {
-            System.out.println("problemas para popular tabela...");
-            System.out.println(e);
+        for (Marca marca : marcas)
+        {
+            model.insertRow(0, new Object[]
+            {
+                marca.getId(), marca.getNome()
+            });
         }
 
-        // configuracoes adicionais no componente tabela
-        tabela.setModel(new DefaultTableModel(dadosTabela, cabecalho) {
-            @Override
-            // quando retorno for FALSE, a tabela nao é editavel
-            public boolean isCellEditable(int row, int column) {
-                return false;
-                /*  
-                 if (column == 3) {  // apenas a coluna 3 sera editavel
-                 return true;
-                 } else {
-                 return false;
-                 }
-                 */
-            }
+        if (marcas.size() == this.registros)
+        {
+            model.addRow(new Object[]
+            {
+            });
+        }
+    }
 
-            // alteracao no metodo que determina a coluna em que o objeto ImageIcon devera aparecer
-            @Override
-            public Class getColumnClass(int column) {
+    @Override
+    public void criaTabela(JTable tabela, JScrollPane barraScroll, String filtro)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
 
-                if (column == 2) {
-//                    return ImageIcon.class;
-                }
-                return Object.class;
-            }
+        List<Marca> marcas = newSession.createQuery("FROM Marca ORDER BY id").setFirstResult(0).setMaxResults(this.registros).list();
+
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
+
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+
+        model.addColumn("Id");
+        model.addColumn("Nome");
+
+        model.addRow(new Object[]
+        {
         });
 
-        // permite seleção de apenas uma linha da tabela
+        for (Marca marca : marcas)
+        {
+            model.addRow(new Object[]
+            {
+                marca.getId(), marca.getNome()
+            });
+        }
+
         tabela.setSelectionMode(0);
 
-        // redimensiona as colunas de uma tabela
         TableColumn column = null;
-        for (int i = 0; i < tabela.getColumnCount(); i++) {
+        for (int i = 0; i < tabela.getColumnCount(); i++)
+        {
             column = tabela.getColumnModel().getColumn(i);
-            switch (i) {
+            switch (i)
+            {
                 case 0:
                     column.setPreferredWidth(17);
                     break;
                 case 1:
                     column.setPreferredWidth(140);
                     break;
-//                case 2:
-//                    column.setPreferredWidth(14);
-//                    break;
             }
         }
-        // renderizacao das linhas da tabela = mudar a cor
-//        jTable1.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-//
-//            @Override
-//            public Component getTableCellRendererComponent(JTable table, Object value,
-//                    boolean isSelected, boolean hasFocus, int row, int column) {
-//                super.getTableCellRendererComponent(table, value, isSelected,
-//                        hasFocus, row, column);
-//                if (row % 2 == 0) {
-//                    setBackground(Color.GREEN);
-//                } else {
-//                    setBackground(Color.LIGHT_GRAY);
-//                }
-//                return this;
-//            }
-//        });
+
+        tabela.scrollRectToVisible(tabela.getCellRect(1, 0, true));
+        scrollTable(tabela, barraScroll);
+    }
+
+    @Override
+    public void scrollTable(JTable tabela, JScrollPane barraScroll)
+    {
+        MarcaDao dao = new MarcaDao();
+        GerenciarJTable gjt = new GerenciarJTable();
+        int registros = this.registros;
+
+        barraScroll.getVerticalScrollBar().addAdjustmentListener((AdjustmentEvent e) ->
+        {
+            if (!e.getValueIsAdjusting())
+            {
+                JScrollBar scrollBar = (JScrollBar) e.getAdjustable();
+                int extent = scrollBar.getModel().getExtent();
+                int maximum = scrollBar.getModel().getMaximum();
+                if (extent + e.getValue() == maximum)
+                {
+                    int id = gjt.obterValorUltimaLinha(tabela);
+                    dao.incrementaTabela(tabela, id);
+                    if (tabela.getRowCount() == registros + 1)
+                    {
+                        tabela.scrollRectToVisible(tabela.getCellRect(1, 0, true));
+                    }
+                } else if (e.getValue() == 0)
+                {
+                    int id = gjt.obterValorPrimeiraLinha(tabela);
+                    dao.recarregaTabela(tabela, id);
+                    if (tabela.getRowCount() == registros + 1)
+                    {
+                        tabela.scrollRectToVisible(tabela.getCellRect(registros - 1, 0, true));
+                    }
+                }
+            }
+        });
     }
 }

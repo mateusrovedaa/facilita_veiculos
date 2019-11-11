@@ -36,6 +36,7 @@ import functions.GerenciarJanelas;
 import functions.Mensagem;
 import java.awt.Dimension;
 import java.util.Calendar;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
@@ -47,6 +48,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     public TelaCadastroGeral() {
         initComponents();
         setaTbnInfos();
+        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
+        this.setFrameIcon(icon);
         new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
         new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
         new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
@@ -335,7 +338,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         campoFiltroCidade = new javax.swing.JTextField();
         btnLimparBuscaCidade = new javax.swing.JButton();
         btnBuscarCidade = new javax.swing.JButton();
-        jLabel32 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
         jScrollPane14 = new javax.swing.JScrollPane();
         tblCidade = new javax.swing.JTable();
         jPanel43 = new javax.swing.JPanel();
@@ -343,24 +346,24 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         btnExcluirCidade = new javax.swing.JButton();
         btnFecharCidade = new javax.swing.JButton();
         PainelEstado = new javax.swing.JPanel();
-        abaAdicionarEstado = new javax.swing.JTabbedPane();
-        jPanel38 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        campoNomeEstado = new javax.swing.JTextField();
-        btnSalvarEstado = new javax.swing.JButton();
-        jLabel29 = new javax.swing.JLabel();
-        campoUf = new javax.swing.JTextField();
-        jPanel39 = new javax.swing.JPanel();
-        jLabel26 = new javax.swing.JLabel();
-        campoFiltroEstado = new javax.swing.JTextField();
-        btnLimparBuscaEstado = new javax.swing.JButton();
-        btnBuscarEstado = new javax.swing.JButton();
         jScrollPane13 = new javax.swing.JScrollPane();
         tblEstado = new javax.swing.JTable();
         jPanel40 = new javax.swing.JPanel();
         btnEditarEstado = new javax.swing.JButton();
         btnExcluirEstado = new javax.swing.JButton();
         btnFecharEstado = new javax.swing.JButton();
+        abaAdicionarEstado = new javax.swing.JTabbedPane();
+        jPanel44 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        campoNomeEstado = new javax.swing.JTextField();
+        btnSalvarEstado = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        campoUf = new javax.swing.JTextField();
+        jPanel45 = new javax.swing.JPanel();
+        campoFiltroEstado = new javax.swing.JTextField();
+        btnLimparBuscaEstado = new javax.swing.JButton();
+        btnBuscarEstado = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
         PainelPerfil = new javax.swing.JPanel();
         abaAdicionarPerfil = new javax.swing.JTabbedPane();
         jPanel35 = new javax.swing.JPanel();
@@ -418,11 +421,11 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSalvarAcabamentoInterno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoNomeAcabamentoInterno, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                    .addComponent(campoNomeAcabamentoInterno, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         abaAdicionarAcabamentoInterno.addTab("Cadastrar ou editar acabamento interno", jPanel2);
@@ -560,7 +563,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarAcabamentoInterno, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -603,9 +606,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(campoNomeCambio, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSalvarCambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnSalvarCambio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoNomeCambio))
                 .addContainerGap())
         );
 
@@ -2444,12 +2447,12 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addComponent(campoNomeCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboEstadoId, 0, 321, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboEstadoId, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarCidade)
                 .addContainerGap())
         );
@@ -2458,18 +2461,12 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             .addGroup(jPanel41Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel41Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvarCidade)
+                    .addComponent(btnSalvarCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboEstadoId)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoNomeCidade))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel41Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
-            .addGroup(jPanel41Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(19, 19, 19))
+                .addGap(16, 16, 16))
         );
 
         abaAdicionarCidade.addTab("Cadastrar ou editar cidade", jPanel41);
@@ -2492,7 +2489,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel32.setText("Cidade:");
+        jLabel28.setText("Cidade:");
 
         javax.swing.GroupLayout jPanel42Layout = new javax.swing.GroupLayout(jPanel42);
         jPanel42.setLayout(jPanel42Layout);
@@ -2500,9 +2497,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel42Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel32)
+                .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoFiltroCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoFiltroCidade, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscarCidade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2511,15 +2508,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         );
         jPanel42Layout.setVerticalGroup(
             jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel42Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel42Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscarCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoFiltroCidade, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimparBuscaCidade)
                     .addGroup(jPanel42Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnLimparBuscaCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(campoFiltroCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscarCidade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 16, 16))
         );
 
         abaAdicionarCidade.addTab("Pesquisar cidade", jPanel42);
@@ -2597,9 +2594,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             .addGroup(PainelCidadeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PainelCidadeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE)
+                    .addComponent(jScrollPane14)
                     .addComponent(jPanel43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(abaAdicionarCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(abaAdicionarCidade, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         PainelCidadeLayout.setVerticalGroup(
@@ -2617,106 +2614,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         abaPerfil.addTab("Cidades", PainelCidade);
 
         PainelEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-
-        abaAdicionarEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        abaAdicionarEstado.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-
-        jPanel38.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel25.setText("Estado:");
-
-        btnSalvarEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-save-close-16.png"))); // NOI18N
-        btnSalvarEstado.setText("Salvar");
-        btnSalvarEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarEstadoActionPerformed(evt);
-            }
-        });
-
-        jLabel29.setText("UF:");
-
-        javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
-        jPanel38.setLayout(jPanel38Layout);
-        jPanel38Layout.setHorizontalGroup(
-            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel38Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoUf, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalvarEstado)
-                .addContainerGap(174, Short.MAX_VALUE))
-        );
-        jPanel38Layout.setVerticalGroup(
-            jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel38Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(campoNomeEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                    .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnSalvarEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(campoUf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-
-        abaAdicionarEstado.addTab("Cadastrar ou editar estado", jPanel38);
-
-        jPanel39.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel26.setText("Estado:");
-
-        btnLimparBuscaEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-broom-16.png"))); // NOI18N
-        btnLimparBuscaEstado.setText("Limpar busca");
-        btnLimparBuscaEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparBuscaEstadoActionPerformed(evt);
-            }
-        });
-
-        btnBuscarEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-search-16.png"))); // NOI18N
-        btnBuscarEstado.setText("Buscar");
-        btnBuscarEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarEstadoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
-        jPanel39.setLayout(jPanel39Layout);
-        jPanel39Layout.setHorizontalGroup(
-            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel39Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel26)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoFiltroEstado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscarEstado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLimparBuscaEstado)
-                .addContainerGap())
-        );
-        jPanel39Layout.setVerticalGroup(
-            jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel39Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscarEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLimparBuscaEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoFiltroEstado))
-                .addContainerGap())
-        );
-
-        abaAdicionarEstado.addTab("Pesquisar estado", jPanel39);
 
         tblEstado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2787,6 +2684,105 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        abaAdicionarEstado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        abaAdicionarEstado.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel44.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel32.setText("Estado:");
+
+        btnSalvarEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-save-close-16.png"))); // NOI18N
+        btnSalvarEstado.setText("Salvar");
+        btnSalvarEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarEstadoActionPerformed(evt);
+            }
+        });
+
+        jLabel33.setText("UF:");
+
+        javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
+        jPanel44.setLayout(jPanel44Layout);
+        jPanel44Layout.setHorizontalGroup(
+            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel44Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoNomeEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoUf, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalvarEstado)
+                .addContainerGap())
+        );
+        jPanel44Layout.setVerticalGroup(
+            jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel44Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(campoUf)
+                    .addComponent(btnSalvarEstado, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoNomeEstado, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
+        );
+
+        abaAdicionarEstado.addTab("Cadastrar ou editar estado", jPanel44);
+
+        jPanel45.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        btnLimparBuscaEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-broom-16.png"))); // NOI18N
+        btnLimparBuscaEstado.setText("Limpar busca");
+        btnLimparBuscaEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparBuscaEstadoActionPerformed(evt);
+            }
+        });
+
+        btnBuscarEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-search-16.png"))); // NOI18N
+        btnBuscarEstado.setText("Buscar");
+        btnBuscarEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarEstadoActionPerformed(evt);
+            }
+        });
+
+        jLabel34.setText("Estado:");
+
+        javax.swing.GroupLayout jPanel45Layout = new javax.swing.GroupLayout(jPanel45);
+        jPanel45.setLayout(jPanel45Layout);
+        jPanel45Layout.setHorizontalGroup(
+            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel45Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoFiltroEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscarEstado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLimparBuscaEstado)
+                .addContainerGap())
+        );
+        jPanel45Layout.setVerticalGroup(
+            jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel45Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLimparBuscaEstado)
+                    .addGroup(jPanel45Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoFiltroEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscarEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(16, 16, 16))
+        );
+
+        abaAdicionarEstado.addTab("Pesquisar estado", jPanel45);
+
         javax.swing.GroupLayout PainelEstadoLayout = new javax.swing.GroupLayout(PainelEstado);
         PainelEstado.setLayout(PainelEstadoLayout);
         PainelEstadoLayout.setHorizontalGroup(
@@ -2796,7 +2792,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addGroup(PainelEstadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane13)
-                    .addComponent(abaAdicionarEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE))
+                    .addComponent(abaAdicionarEstado))
                 .addContainerGap())
         );
         PainelEstadoLayout.setVerticalGroup(
@@ -2805,7 +2801,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2838,7 +2834,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel31)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomePerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 689, Short.MAX_VALUE)
+                .addComponent(campoNomePerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvarPerfil)
                 .addContainerGap())
@@ -2847,11 +2843,11 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel35Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(campoNomePerfil, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvarPerfil, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSalvarPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoNomePerfil, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         abaAdicionarPerfil.addTab("Cadastrar ou editar perfil", jPanel35);
@@ -2989,7 +2985,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(abaAdicionarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -3086,6 +3082,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarAcabamentoInterno.setSelectedIndex(0);
 
             campoNomeAcabamentoInterno.setText(acabamentoInterno.getNome());
+            acabamentoInterno.setAlteradoEm(Calendar.getInstance());
 
             campoNomeAcabamentoInterno.requestFocus();
 
@@ -3183,6 +3180,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarCambio.setSelectedIndex(0);
 
             campoNomeCambio.setText(cambio.getNome());
+            cambio.setAlteradoEm(Calendar.getInstance());
 
             campoNomeCambio.requestFocus();
 
@@ -3280,6 +3278,8 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarCarroceria.setSelectedIndex(0);
 
             campoNomeCarroceria.setText(carroceria.getNome());
+            carroceria.setAlteradoEm(Calendar.getInstance());
+            
 
             campoNomeCarroceria.requestFocus();
 
@@ -3377,6 +3377,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarCombustivel.setSelectedIndex(0);
 
             campoNomeCombustivel.setText(combustivel.getNome());
+            combustivel.setAlteradoEm(Calendar.getInstance());
 
             campoNomeCombustivel.requestFocus();
 
@@ -3474,6 +3475,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarConforto.setSelectedIndex(0);
 
             campoNomeConforto.setText(conforto.getNome());
+            conforto.setAlteradoEm(Calendar.getInstance());
 
             campoNomeConforto.requestFocus();
 
@@ -3571,6 +3573,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarCorExterna.setSelectedIndex(0);
 
             campoNomeCorExterna.setText(corExterna.getNome());
+            corExterna.setAlteradoEm(Calendar.getInstance());
 
             campoNomeCorExterna.requestFocus();
 
@@ -3668,6 +3671,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarCorInterna.setSelectedIndex(0);
 
             campoNomeCorInterna.setText(corInterna.getNome());
+            corInterna.setAlteradoEm(Calendar.getInstance());
 
             campoNomeCorInterna.requestFocus();
 
@@ -3765,6 +3769,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarEstilo.setSelectedIndex(0);
 
             campoNomeEstilo.setText(estilo.getNome());
+            estilo.setAlteradoEm(Calendar.getInstance());
 
             campoNomeEstilo.requestFocus();
 
@@ -3862,6 +3867,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarExtra.setSelectedIndex(0);
 
             campoNomeExtra.setText(extra.getNome());
+            extra.setAlteradoEm(Calendar.getInstance());
 
             campoNomeExtra.requestFocus();
 
@@ -3959,6 +3965,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarSeguranca.setSelectedIndex(0);
 
             campoNomeSeguranca.setText(seguranca.getNome());
+            seguranca.setAlteradoEm(Calendar.getInstance());
 
             campoNomeSeguranca.requestFocus();
 
@@ -4056,6 +4063,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarTecnologia.setSelectedIndex(0);
 
             campoNomeTecnologia.setText(tecnologia.getNome());
+            tecnologia.setAlteradoEm(Calendar.getInstance());
 
             campoNomeTecnologia.requestFocus();
 
@@ -4153,6 +4161,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             abaAdicionarPerfil.setSelectedIndex(0);
 
             campoNomePerfil.setText(perfil.getNome());
+            perfil.setAlteradoEm(Calendar.getInstance());
 
             campoNomePerfil.requestFocus();
 
@@ -4183,66 +4192,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         funcaoFechar();
     }//GEN-LAST:event_btnFecharPerfilActionPerformed
 
-    private void btnSalvarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEstadoActionPerformed
-        Estado estado = new Estado();
-
-        estado.setId(codigo);
-        estado.setNome(campoNomeEstado.getText());
-        estado.setSlug(Funcoes.textoIdentificador(campoNomeEstado.getText()));
-        estado.setUf(campoUf.getText());
-        estado.setCriadoEm(Calendar.getInstance());
-        estado.setAlteradoEm(Calendar.getInstance());
-
-        boolean retornoSalvarEstado = false;
-        String erroEstado = "";
-
-        if (campoNomeEstado.getText().length() > 1) {
-            if (codigo == 0) {
-                retornoSalvarEstado = DaoGenerico.getInstance().inserir(estado);
-            } else {
-                retornoSalvarEstado = DaoGenerico.getInstance().atualizar(estado);
-            }
-        } else {
-            erroEstado = null;
-            Mensagem.erro("Digite um estado válido!", this);
-        }
-
-        if (retornoSalvarEstado == true && erroEstado != null) {
-            Mensagem.informacao("Estado salvo com sucesso!", this);
-
-            campoNomeEstado.setText("");
-            campoUf.setText("");
-
-            campoNomeEstado.requestFocus();
-
-            campoFiltroEstado.setText("");
-
-            codigo = 0;
-
-            new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
-            new ComboDao().popularCombo("estados", 1, 4, comboEstadoId, "");
-        } else {
-            if (erroEstado != null) {
-                Mensagem.aviso("Estado " + campoNomeEstado.getText() + " já existe cadastrado!", this);
-
-                campoNomeEstado.setText("");
-
-                campoNomeEstado.requestFocus();
-
-                campoFiltroEstado.setText("");
-            }
-        }
-    }//GEN-LAST:event_btnSalvarEstadoActionPerformed
-
-    private void btnLimparBuscaEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaEstadoActionPerformed
-        campoFiltroEstado.setText("");
-        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
-    }//GEN-LAST:event_btnLimparBuscaEstadoActionPerformed
-
-    private void btnBuscarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstadoActionPerformed
-        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
-    }//GEN-LAST:event_btnBuscarEstadoActionPerformed
-
     private void btnEditarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstadoActionPerformed
         String codigoEditarEstado = String.valueOf(tblEstado.getValueAt(tblEstado.getSelectedRow(), 0));
 
@@ -4254,6 +4203,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             campoNomeEstado.setText(estado.getNome());
             campoUf.setText(estado.getUf());
+            estado.setAlteradoEm(Calendar.getInstance());
 
             campoNomeEstado.requestFocus();
 
@@ -4363,6 +4313,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             campoNomeCidade.setText(cidade.getNome());
             new ComboDao().definirItemCombo(comboEstadoId, estadoId);
+            cidade.setAlteradoEm(Calendar.getInstance());
 
             campoNomeCidade.requestFocus();
 
@@ -4392,6 +4343,65 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     private void btnFecharCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCidadeActionPerformed
         funcaoFechar();
     }//GEN-LAST:event_btnFecharCidadeActionPerformed
+
+    private void btnSalvarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarEstadoActionPerformed
+        Estado estado = new Estado();
+
+        estado.setId(codigo);
+        estado.setNome(campoNomeEstado.getText());
+        estado.setSlug(Funcoes.textoIdentificador(campoNomeEstado.getText()));
+        estado.setUf(campoUf.getText());
+        estado.setCriadoEm(Calendar.getInstance());
+        estado.setAlteradoEm(Calendar.getInstance());
+
+        boolean retornoSalvarEstado = false;
+        String erroEstado = "";
+
+        if (campoNomeEstado.getText().length() > 1) {
+            if (codigo == 0) {
+                retornoSalvarEstado = DaoGenerico.getInstance().inserir(estado);
+            } else {
+                retornoSalvarEstado = DaoGenerico.getInstance().atualizar(estado);
+            }
+        } else {
+            erroEstado = null;
+            Mensagem.erro("Digite um estado válido!", this);
+        }
+
+        if (retornoSalvarEstado == true && erroEstado != null) {
+            Mensagem.informacao("Estado salvo com sucesso!", this);
+
+            campoNomeEstado.setText("");
+            campoUf.setText("");
+
+            campoNomeEstado.requestFocus();
+
+            campoFiltroEstado.setText("");
+
+            codigo = 0;
+
+            new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+        } else {
+            if (erroEstado != null) {
+                Mensagem.aviso("Estado " + campoNomeEstado.getText() + " já existe cadastrado!", this);
+
+                campoNomeEstado.setText("");
+
+                campoNomeEstado.requestFocus();
+
+                campoFiltroEstado.setText("");
+            }
+        }
+    }//GEN-LAST:event_btnSalvarEstadoActionPerformed
+
+    private void btnLimparBuscaEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaEstadoActionPerformed
+        campoFiltroEstado.setText("");
+        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+    }//GEN-LAST:event_btnLimparBuscaEstadoActionPerformed
+
+    private void btnBuscarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstadoActionPerformed
+        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+    }//GEN-LAST:event_btnBuscarEstadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -4556,14 +4566,14 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -4600,13 +4610,13 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel37;
-    private javax.swing.JPanel jPanel38;
-    private javax.swing.JPanel jPanel39;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel40;
     private javax.swing.JPanel jPanel41;
     private javax.swing.JPanel jPanel42;
     private javax.swing.JPanel jPanel43;
+    private javax.swing.JPanel jPanel44;
+    private javax.swing.JPanel jPanel45;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;

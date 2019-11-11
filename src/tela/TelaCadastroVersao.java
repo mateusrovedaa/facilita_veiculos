@@ -11,6 +11,7 @@ import functions.ComboItem;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
 import java.util.Calendar;
+import javax.swing.ImageIcon;
 
 public class TelaCadastroVersao extends javax.swing.JInternalFrame {
 
@@ -20,6 +21,8 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
 
     public TelaCadastroVersao() {
         initComponents();
+        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
+        this.setFrameIcon(icon);
         campoIdModeloBusca.setEditable(false);
         campoNomeModeloBusca.setEditable(false);
         verificaPermissoes();
@@ -700,6 +703,7 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
             campoIdModeloBusca.setText(Integer.toString(modelo.getId()));
             campoNomeModeloBusca.setText(modelo.getNome());
             campoObservacoes.setText(versao.getObservacoes());
+            versao.setAlteradoEm(Calendar.getInstance());
 
             campoNome.requestFocus();
 

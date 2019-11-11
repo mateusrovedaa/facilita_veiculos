@@ -42,7 +42,7 @@ public class Modelo implements Serializable {
     @ManyToOne
     private Carroceria carroceria_id;
 
-    @Column(name = "nome", length = 100, nullable = false)
+    @Column(name = "nome", length = 200, nullable = false)
     private String nome;
 
     @Column(name = "slug", length = 200, nullable = false)

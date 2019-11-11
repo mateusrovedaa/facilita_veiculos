@@ -3,7 +3,6 @@ package entidade;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -32,7 +31,7 @@ public class Cidade implements Serializable {
     @ManyToOne
     private Estado estado_id;
 
-    @Column(name = "nome", length = 200, nullable = false, unique = true)
+    @Column(name = "nome", length = 200, nullable = false)
     private String nome;
 
     @Column(name = "slug", length = 200, nullable = false)
