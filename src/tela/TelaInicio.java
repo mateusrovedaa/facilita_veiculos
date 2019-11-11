@@ -22,6 +22,7 @@ public class TelaInicio extends javax.swing.JFrame {
         id = usuario;
         PermissaoDao.idUser = idUser();
         this.gerenciarJanelas = new GerenciarJanelas(dktInicial);
+        verificarPermissoes();
         setIcon();
     }
 
@@ -31,6 +32,39 @@ public class TelaInicio extends javax.swing.JFrame {
 
     public int idUser() {
         return this.id;
+    }
+
+    private void verificarPermissoes() {
+        if (!peDAO.consultarPermissao("Acessar", "versao")) {
+            btnCVersao.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Acessar", "usuario")) {
+            btnCUsuario.setEnabled(false);
+        }
+//        if (!peDAO.consultarPermissao("Acessar", "cliente")) {
+//            btnCCliente.setEnabled(false);
+//            btnAtalhoCCliente.setEnabled(false);
+//        }
+//        if (!peDAO.consultarPermissao("Acessar", "proprietario")) {
+//            btnCProprietario.setEnabled(false);
+//            btnAtalhoCProprietario.setEnabled(false);
+//        }
+//        if (!peDAO.consultarPermissao("Acessar", "geral")) {
+//            btnCGeral.setEnabled(false);
+//        }
+//        if (!peDAO.consultarPermissao("Acessar", "empresavistoria")) {
+//            btnCEmpresaVistoria.setEnabled(false);
+//        }
+        if (!peDAO.consultarPermissao("Acessar", "marca")) {
+            btnCMarca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Acessar", "modelo")) {
+            btnCModelo.setEnabled(false);
+        }
+//        if (!peDAO.consultarPermissao("Acessar", "veiculo")) {
+//            btnCVeiculo.setEnabled(false);
+//            btnAtalhoCVeiculo.setEnabled(false);
+//        }
     }
 
     @SuppressWarnings("unchecked")
@@ -231,14 +265,14 @@ public class TelaInicio extends javax.swing.JFrame {
         gerenciarJanelas.abreJanela(TelaCadastroVersao.getInstancia());
     }//GEN-LAST:event_btnCVersaoActionPerformed
 
-    private void btnCMarcaActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void btnCMarcaActionPerformed(java.awt.event.ActionEvent evt) {
         gerenciarJanelas.abreJanela(TelaCadastroMarca.getInstancia());
-    }                                         
+    }
 
     private void btnCGeraisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCGeraisActionPerformed
         gerenciarJanelas.abreJanela(TelaCadastroGeral.getInstancia());
     }//GEN-LAST:event_btnCGeraisActionPerformed
-                        
+
     private void btnCModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCModeloActionPerformed
         gerenciarJanelas.abreJanela(TelaCadastroModelo.getInstancia());
     }//GEN-LAST:event_btnCModeloActionPerformed
