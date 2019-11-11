@@ -24,9 +24,6 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
     public TelaCadastroModelo() {
         initComponents();
-
-    public TelaCadastroModelo() {
-        initComponents();
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
         this.setFrameIcon(icon);
         new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
@@ -516,7 +513,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroModelo.setText("");
         comboFiltroMarcaId.setSelectedIndex(0);
-        new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+        verificaPermissoes();
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed

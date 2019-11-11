@@ -21,8 +21,6 @@ public class TelaInicio extends javax.swing.JFrame {
         initComponents();
         id = usuario;
         PermissaoDao.idUser = idUser();
-        this.gerenciarJanelas = new GerenciarJanelas(dktGeral);
-        verificaPerms();
         this.gerenciarJanelas = new GerenciarJanelas(dktInicial);
         setIcon();
     }
@@ -33,15 +31,6 @@ public class TelaInicio extends javax.swing.JFrame {
 
     public int idUser() {
         return this.id;
-    }
-
-    private void verificaPerms() {
-        if (!peDAO.consultarPermissao("Acessar", "marca")) {
-            btnMarcas.setEnabled(false);
-        }
-        if (!peDAO.consultarPermissao("Acessar", "modelo")) {
-            btnCModelo.setEnabled(false);
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -121,9 +110,8 @@ public class TelaInicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(dktInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(btnAtalhoCVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(dktInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnAtalhoCProprietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAtalhoCCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnAtalhoCProprietario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAtalhoCCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(486, Short.MAX_VALUE))
         );
         dktInicialLayout.setVerticalGroup(
@@ -213,26 +201,6 @@ public class TelaInicio extends javax.swing.JFrame {
         });
         jMenu1.add(btnCVeiculo);
 
-        dktGeral.setLayer(btnMarcas, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dktGeral.setLayer(btnCGerais, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dktGeral.setLayer(btnCModelo, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dktGeral.setLayer(btnCVersao, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dktGeral.setLayer(btnCUsuario, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout dktGeralLayout = new javax.swing.GroupLayout(dktGeral);
-        dktGeral.setLayout(dktGeralLayout);
-        dktGeralLayout.setHorizontalGroup(
-            dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dktGeralLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(dktGeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnCUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCVersao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCModelo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMarcas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCGerais, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                .addContainerGap(253, Short.MAX_VALUE))
-        );
         jMenuBar1.add(jMenu1);
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-money-16.png"))); // NOI18N
@@ -263,23 +231,14 @@ public class TelaInicio extends javax.swing.JFrame {
         gerenciarJanelas.abreJanela(TelaCadastroVersao.getInstancia());
     }//GEN-LAST:event_btnCVersaoActionPerformed
 
-    private void btnCMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCMarcaActionPerformed
+    private void btnCMarcaActionPerformed(java.awt.event.ActionEvent evt) {                                          
         gerenciarJanelas.abreJanela(TelaCadastroMarca.getInstancia());
-    }//GEN-LAST:event_btnMarcasActionPerformed
+    }                                         
 
     private void btnCGeraisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCGeraisActionPerformed
         gerenciarJanelas.abreJanela(TelaCadastroGeral.getInstancia());
     }//GEN-LAST:event_btnCGeraisActionPerformed
-        //Funcoes.controlaIframes(TelaCadastroMarca.getInstancia(), dktGeral);
-//        jPanel1.add(marca);
-//        int lDesk = jPanel1.getWidth();
-//        int aDesk = jPanel1.getHeight();
-//        int lIFrame = marca.getWidth();
-//        int aIFrame = marca.getHeight();
-//        marca.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-//        marca.setVisible(true);
-    }//GEN-LAST:event_btnCMarcaActionPerformed
-
+                        
     private void btnCModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCModeloActionPerformed
         gerenciarJanelas.abreJanela(TelaCadastroModelo.getInstancia());
     }//GEN-LAST:event_btnCModeloActionPerformed

@@ -14,23 +14,20 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class TelaCadastroMarca extends javax.swing.JInternalFrame
-{
+public class TelaCadastroMarca extends javax.swing.JInternalFrame {
 
     private static TelaCadastroMarca tela;
     int codigo = 0;
     PermissaoDao peDAO = new PermissaoDao();
 
-    public TelaCadastroMarca()
-    {
+    public TelaCadastroMarca() {
         initComponents();
         verificaPermissoes();
+
     }
 
-    public static TelaCadastroMarca getInstancia()
-    {
-        if (tela == null)
-        {
+    public static TelaCadastroMarca getInstancia() {
+        if (tela == null) {
             tela = new TelaCadastroMarca();
         }
         return tela;
@@ -52,11 +49,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
         if (!peDAO.consultarPermissao("Editar", "marca")) {
             btnEditar.setEnabled(false);
         }
-        if (peDAO.consultarPermissao("Listar", "marca")){
-            new MarcaDao().popularTabela(tblMarca, campoFiltroMarca.getText());
+        if (peDAO.consultarPermissao("Listar", "marca")) {
+            new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
         }
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -292,23 +288,18 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
         boolean retornoSalvarMarca = false;
         String erroMarca = "";
 
-        if (validaCampos() == true)
-        {
-            if (codigo == 0)
-            {
+        if (validaCampos() == true) {
+            if (codigo == 0) {
                 retornoSalvarMarca = DaoGenerico.getInstance().inserir(marca);
-            } else
-            {
+            } else {
                 retornoSalvarMarca = DaoGenerico.getInstance().atualizar(marca);
             }
-        } else
-        {
+        } else {
             erroMarca = null;
             Mensagem.erro("Digite uma marca válida!", this);
         }
 
-        if (retornoSalvarMarca == true && erroMarca != null)
-        {
+        if (retornoSalvarMarca == true && erroMarca != null) {
             Mensagem.informacao("Marca salva com sucesso!", this);
 
             campoNome.setText("");
@@ -318,6 +309,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
             campoFiltroMarca.setText("");
 
             codigo = 0;
+
             verificaPermissoes();
         } else {
             if (erroMarca != null) {
@@ -343,19 +335,16 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
         Object object = DaoGenerico.getInstance().obterPorId(Marca.class, Integer.parseInt(codigoEditarMarca));
         Marca marca = new Marca((Marca) object);
 
-        if (marca != null)
-        {
+        if (marca != null) {
             abaAdicionar.setSelectedIndex(0);
 
             campoNome.setText(marca.getNome());
-            marca.setAlteradoEm(Calendar.getInstance());
 
             campoNome.requestFocus();
 
             codigo = marca.getId();
 
-        } else
-        {
+        } else {
             Mensagem.erro("Erro ao consultar marca!", this);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -364,12 +353,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
         int codigoExcluirMarca = (int) tblMarca.getValueAt(tblMarca.getSelectedRow(), 0);
 
         int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0)
-        {
+        if (mensagem == 0) {
             boolean retornoExcluirMarca = DaoGenerico.getInstance().excluir(Marca.class, codigoExcluirMarca);
 
-            if (retornoExcluirMarca == true)
-            {
+            if (retornoExcluirMarca == true) {
                 Mensagem.informacao("Marca excluída com sucesso!", this);
                 verificaPermissoes();
             } else {
@@ -385,11 +372,10 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroMarca.setText("");
-        verificaPermissoes();
+        new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
-    private boolean validaCampos()
-    {
+    private boolean validaCampos() {
         return !campoNome.getText().isEmpty() && campoNome.getText().length() > 2;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -145,10 +145,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="btnAtalhoCVeiculo" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnAtalhoCProprietario" max="32767" attributes="0"/>
-                          <Component id="btnAtalhoCCliente" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btnAtalhoCProprietario" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnAtalhoCCliente" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="486" max="32767" attributes="0"/>
               </Group>
