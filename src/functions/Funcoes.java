@@ -1,7 +1,9 @@
 package functions;
 
+import java.awt.Toolkit;
 import java.text.Normalizer;
 import java.util.regex.Pattern;
+import javax.swing.JFrame;
 import javax.swing.JTable;
 
 public class Funcoes {
@@ -27,5 +29,4 @@ public class Funcoes {
         String texto_slug = NONLATIN.matcher(normalized).replaceAll("");
         return texto_slug.toLowerCase();
     }
-
 }

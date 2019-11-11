@@ -33,10 +33,10 @@ public class Usuario implements Serializable {
     @ManyToOne
     private Perfil perfil_id;
 
-    @Column(name = "nome", length = 100, nullable = false, unique = true)
+    @Column(name = "nome", length = 200, nullable = false)
     private String nome;
 
-    @Column(name = "email", length = 100, nullable = false, unique = true)
+    @Column(name = "email", length = 200, nullable = false, unique = true)
     private String email;
 
     @Column(name = "data_nascimento", nullable = false)
