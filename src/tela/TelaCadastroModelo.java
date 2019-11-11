@@ -2,7 +2,9 @@ package tela;
 
 import dao.ComboDao;
 import dao.DaoGenerico;
+import dao.MarcaDao;
 import dao.ModeloDao;
+import dao.PermissaoDao;
 import entidade.Carroceria;
 import entidade.Marca;
 import entidade.Modelo;
@@ -18,16 +20,20 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
     private static TelaCadastroModelo tela;
     int codigo = 0;
+    PermissaoDao peDAO = new PermissaoDao();
+
+    public TelaCadastroModelo() {
+        initComponents();
 
     public TelaCadastroModelo() {
         initComponents();
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
         this.setFrameIcon(icon);
-        new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
-        new ComboDao().popularCombo("marcas", 1, 4, comboMarcaId, "");
         new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
-        new ComboDao().popularCombo("procedencias", 1, 4, comboProcedenciaId, "");
         new ComboDao().popularCombo("carrocerias", 1, 4, comboCarroceriaId, "");
+        new ComboDao().popularCombo("procedencias", 1, 4, comboProcedenciaId, "");
+        new ComboDao().popularCombo("marcas", 1, 4, comboMarcaId, "");
+        verificaPermissoes();
     }
 
     public static TelaCadastroModelo getInstancia() {
@@ -42,6 +48,38 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         tela = null;
     }
 
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "modelo")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "modelo")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "modelo")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "modelo")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "modelo")) {
+            btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "modelo")) {
+            new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+        }
+        if (!peDAO.consultarPermissao("ComboCadastro", "modelo")) {
+            comboMarcaId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboListar", "modelo")) {
+            comboFiltroMarcaId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboCarroceria", "modelo")) {
+            comboCarroceriaId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboProcedencia", "modelo")) {
+            comboProcedenciaId.setEnabled(false);
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -537,7 +575,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
             if (retornoExcluirModelo == true) {
                 Mensagem.informacao("Modelo excluído com sucesso!", this);
-                new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+                verificaPermissoes();
             } else {
                 Mensagem.erro(tblModelo.getValueAt(tblModelo.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -621,7 +659,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new ModeloDao().popularTabela(tblModelo, campoFiltroModelo.getText(), "");
+            verificaPermissoes();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

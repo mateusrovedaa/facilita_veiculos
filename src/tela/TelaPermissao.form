@@ -1,0 +1,1086 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+    <Property name="title" type="java.lang.String" value="Permiss&#xf5;es"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnFechar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jTabbedPane1" min="-2" pref="521" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jTabbedPane1" min="-2" pref="279" max="-2" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnSalvar" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="btnFechar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Marca">
+                <Property name="tabTitle" type="java.lang.String" value="Marca"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cbxMarcaAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxMarcaSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxMarcaLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxMarcaEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxMarcaExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxMarcaBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxMarcaListar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="280" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cbxMarcaAcessar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxMarcaSalvar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxMarcaEditar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxMarcaExcluir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxMarcaBuscar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxMarcaLimparBusca" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxMarcaListar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="cbxMarcaAcessar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Acessar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxMarcaSalvar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxMarcaEditar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxMarcaExcluir">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxMarcaBuscar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxMarcaLimparBusca">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxMarcaListar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar registros cadastrados"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel2">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Modelo">
+                <Property name="tabTitle" type="java.lang.String" value="Modelo"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cbxModeloBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxModeloLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxModeloListar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cbxModeloSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxModeloAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cbxModeloComboProcedencia" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxModeloComboCarroceria" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cbxModeloEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxModeloExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="cbxModeloComboMarcaListar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="cbxModeloComboMarcaCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="86" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbxModeloAcessar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxModeloComboProcedencia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbxModeloSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxModeloComboCarroceria" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbxModeloEditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxModeloComboMarcaListar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxModeloExcluir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxModeloBuscar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxModeloLimparBusca" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxModeloListar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxModeloComboMarcaCadastro" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloEditar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloSalvar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloAcessar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Acessar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloLimparBusca">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloBuscar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloExcluir">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloListar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar registros cadastrados"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloComboMarcaCadastro">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Combo Marca (cadastro)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloComboProcedencia">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Combo Proced&#xea;ncia"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloComboCarroceria">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Combo Carroceria"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxModeloComboMarcaListar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Combo Marca (listagem)"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Usu&#xe1;rio">
+                <Property name="tabTitle" type="java.lang.String" value="Usu&#xe1;rio"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cbxUsuarioLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cbxUsuarioAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxUsuarioSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxUsuarioExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxUsuarioBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxUsuarioEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cbxUsuarioComboCadastro" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxUsuarioComboListar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="cbxUsuarioPermissao" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxUsuarioListar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="90" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbxUsuarioAcessar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxUsuarioComboCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbxUsuarioSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxUsuarioComboListar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxUsuarioEditar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxUsuarioExcluir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxUsuarioBuscar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxUsuarioLimparBusca" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxUsuarioPermissao" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxUsuarioListar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioSalvar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioBuscar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioComboListar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Combo Perfil (listagem)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioListar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar registros cadastrados"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioComboCadastro">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Combo Perfil (cadastro)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioExcluir">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioLimparBusca">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioEditar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioAcessar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Acessar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxUsuarioPermissao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Permiss&#xf5;es"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel4">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Vers&#xe3;o">
+                <Property name="tabTitle" type="java.lang.String" value="Vers&#xe3;o"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cbxVersaoAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxVersaoSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cbxVersaoComboMarcaListar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbxVersaoComboCombCadastro" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="cbxVersaoEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxVersaoExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxVersaoLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxVersaoBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxVersaoListar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxVersaoProcurarModelo" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbxVersaoAcessar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxVersaoComboMarcaListar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cbxVersaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxVersaoComboCombCadastro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxVersaoEditar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxVersaoExcluir" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxVersaoBuscar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxVersaoLimparBusca" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxVersaoProcurarModelo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cbxVersaoListar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoEditar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoListar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar registros cadastrados"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoSalvar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoBuscar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoAcessar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Acessar"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoComboMarcaListar">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Combo Marca (listagem)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoExcluir">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoComboCombCadastro">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Combo Combust&#xed;vel (cadastro)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoLimparBusca">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="cbxVersaoProcurarModelo">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Modelo"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel5">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Geral">
+                <Property name="tabTitle" type="java.lang.String" value="Geral"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jTabbedPane2" min="-2" pref="514" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jTabbedPane2" alignment="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="jPanel6">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Ve&#xed;culos">
+                        <Property name="tabTitle" type="java.lang.String" value="Ve&#xed;culos"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jTabbedPane4" min="-2" pref="509" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTabbedPane4" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JTabbedPane" name="jTabbedPane4">
+                      <Properties>
+                        <Property name="tabPlacement" type="int" value="2"/>
+                      </Properties>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="pnlAcabInterno">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Acabamentos internos">
+                                <Property name="tabTitle" type="java.lang.String" value="Acabamentos internos"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cbxGeralAcessarAcab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralSalvarAcab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralEditarAcab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralExcluirAcab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralBuscarAcab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralLimparBuscaAcab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralListarAcab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxGeralAcessarAcab" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralSalvarAcab" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralEditarAcab" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralExcluirAcab" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralBuscarAcab" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralLimparBuscaAcab" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralListarAcab" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="100" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralBuscarAcab">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralListarAcab">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Listar registros cadastrados"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralExcluirAcab">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralSalvarAcab">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralLimparBuscaAcab">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralAcessarAcab">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Acessar"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralEditarAcab">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="pnlCambios">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="C&#xe2;mbios">
+                                <Property name="tabTitle" type="java.lang.String" value="C&#xe2;mbios"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cbxGeralBuscarAcab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralListarAcab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralExcluirAcab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralSalvarAcab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralLimparBuscaAcab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralAcessarAcab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxGeralEditarAcab1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxGeralAcessarAcab1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralSalvarAcab1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralEditarAcab1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralExcluirAcab1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralBuscarAcab1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralLimparBuscaAcab1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxGeralListarAcab1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="100" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralExcluirAcab1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralAcessarAcab1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Acessar"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralEditarAcab1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralListarAcab1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Listar registros cadastrados"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralBuscarAcab1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralSalvarAcab1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxGeralLimparBuscaAcab1">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel13">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Carrocerias">
+                                <Property name="tabTitle" type="java.lang.String" value="Carrocerias"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel14">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Combust&#xed;veis">
+                                <Property name="tabTitle" type="java.lang.String" value="Combust&#xed;veis"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel15">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Confortos">
+                                <Property name="tabTitle" type="java.lang.String" value="Confortos"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel16">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Cores externas">
+                                <Property name="tabTitle" type="java.lang.String" value="Cores externas"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel17">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Cores internas">
+                                <Property name="tabTitle" type="java.lang.String" value="Cores internas"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel18">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Estilos">
+                                <Property name="tabTitle" type="java.lang.String" value="Estilos"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel19">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Extras">
+                                <Property name="tabTitle" type="java.lang.String" value="Extras"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel20">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Seguran&#xe7;as">
+                                <Property name="tabTitle" type="java.lang.String" value="Seguran&#xe7;as"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel21">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Tecnologias">
+                                <Property name="tabTitle" type="java.lang.String" value="Tecnologias"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="321" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="jPanel7">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                      <JTabbedPaneConstraints tabName="Pessoal">
+                        <Property name="tabTitle" type="java.lang.String" value="Pessoal"/>
+                      </JTabbedPaneConstraints>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTabbedPane3" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTabbedPane3" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JTabbedPane" name="jTabbedPane3">
+                      <Properties>
+                        <Property name="tabPlacement" type="int" value="2"/>
+                      </Properties>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="jPanel8">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Cidades">
+                                <Property name="tabTitle" type="java.lang.String" value="Cidades"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="424" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel9">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Estados">
+                                <Property name="tabTitle" type="java.lang.String" value="Estados"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="424" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="jPanel10">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Perfis">
+                                <Property name="tabTitle" type="java.lang.String" value="Perfis"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="424" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnSalvar">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/icons8-save-close-16.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Salvar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFechar">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/images/icons8-exit-16.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Fechar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFecharActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

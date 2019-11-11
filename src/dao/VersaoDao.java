@@ -52,11 +52,12 @@ public class VersaoDao implements IDAO_T<Versao> {
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[4];
+        Object[] cabecalho = new Object[5];
         cabecalho[0] = "Código";
         cabecalho[1] = "Nome";
         cabecalho[2] = "Modelo";
         cabecalho[3] = "Fabricação/Modelo";
+        cabecalho[4] = "Marca";
 
         String marca = marca_id != "" ? "ma.ID = " + marca_id + " " : " 1 = 1 ";
 
@@ -81,7 +82,7 @@ public class VersaoDao implements IDAO_T<Versao> {
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][4];
+            dadosTabela = new Object[resultadoQ.getInt(1)][5];
 
         } catch (Exception e) {
             System.out.println("Erro ao consultar versão: " + e);
@@ -94,7 +95,8 @@ public class VersaoDao implements IDAO_T<Versao> {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
                     + "SELECT v.id AS id" + ","
                     + "v.nome AS nome" + ","
-                    + "mo.nome AS modelo" + ","
+                    + "mo.nome AS modelo " + ","
+                    + "ma.nome AS marca " + ","
                     + "CONCAT(v.ano_fabricacao, '/', v.ano_modelo) AS ano "
                     + "FROM versoes AS v "
                     + "INNER JOIN modelos AS mo "
@@ -114,6 +116,7 @@ public class VersaoDao implements IDAO_T<Versao> {
                 dadosTabela[lin][1] = resultadoQ.getString("nome");
                 dadosTabela[lin][2] = resultadoQ.getString("modelo");
                 dadosTabela[lin][3] = resultadoQ.getString("ano");
+                dadosTabela[lin][4] = resultadoQ.getString("marca");
 
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {

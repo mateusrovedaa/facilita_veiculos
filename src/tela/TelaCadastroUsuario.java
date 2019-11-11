@@ -2,6 +2,7 @@ package tela;
 
 import dao.ComboDao;
 import dao.DaoGenerico;
+import dao.PermissaoDao;
 import dao.UsuarioDao;
 import entidade.Perfil;
 import entidade.Usuario;
@@ -25,6 +26,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
     private static TelaCadastroUsuario tela;
     int codigo = 0;
+    PermissaoDao peDAO = new PermissaoDao();
 
     public TelaCadastroUsuario() {
         initComponents();
@@ -33,7 +35,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
         Formatacao.formatarData(campoDataNascimento);
         new ComboDao().popularCombo("perfis", 1, 4, comboPerfilId, "");
         new ComboDao().popularCombo("perfis", 1, 4, comboFiltroPerfilId, "");
-        new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText(), "");
+        verificaPermissoes();
     }
 
     public static TelaCadastroUsuario getInstancia() {
@@ -46,6 +48,33 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
     private void funcaoFechar() {
         GerenciarJanelas.fecharJanela(tela);
         tela = null;
+    }
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "usuario")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "usuario")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "usuario")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "usuario")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "usuario")) {
+            btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "usuario")) {
+            new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText(), "");
+        }
+        if (!peDAO.consultarPermissao("ComboCadastro", "usuario")) {
+            comboPerfilId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboListar", "usuario")) {
+            comboFiltroPerfilId.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -89,6 +118,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnFecharLista = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -106,7 +136,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel6.setText("E-mail:*");
@@ -145,11 +175,11 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(campoSenha)
-                            .addComponent(comboPerfilId, 0, 270, Short.MAX_VALUE))
+                            .addComponent(comboPerfilId, 0, 311, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(campoDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
@@ -308,7 +338,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLimparBusca, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                .addComponent(btnLimparBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 117, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -368,12 +398,22 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/key.png"))); // NOI18N
+        jButton1.setText("Permissões");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExcluir)
@@ -385,11 +425,15 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
-                    .addComponent(btnExcluir)
-                    .addComponent(btnFecharLista))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnEditar)
+                            .addComponent(btnExcluir)
+                            .addComponent(btnFecharLista))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -469,7 +513,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroUsuario.setText("");
         comboFiltroPerfilId.setSelectedIndex(0);
-        new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText(), "");
+        verificaPermissoes();
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnFecharListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharListaActionPerformed
@@ -565,7 +609,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new UsuarioDao().popularTabela(tblUsuario, campoFiltroUsuario.getText(), "");
+            verificaPermissoes();
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -599,6 +643,15 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
             Mensagem.erro("Erro ao consultar usuário!", this);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String codigoEditarUsuario = String.valueOf(tblUsuario.getValueAt(tblUsuario.getSelectedRow(), 0));
+        Object object = DaoGenerico.getInstance().obterPorId(Usuario.class, Integer.parseInt(codigoEditarUsuario));
+        Usuario usuario = new Usuario((Usuario) object);
+        TelaPermissao permissao = new TelaPermissao(null, true, usuario);
+        permissao.setLocationRelativeTo(this);
+        permissao.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public boolean validaCampos() {
 
@@ -643,6 +696,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JComboBox<String> comboFiltroPerfilId;
     private javax.swing.JComboBox<String> comboPerfilId;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

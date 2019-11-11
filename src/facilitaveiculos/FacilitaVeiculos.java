@@ -1,8 +1,8 @@
 package facilitaveiculos;
 
 import functions.HibernateUtil;
+import functions.Mensagem;
 import java.sql.Connection;
-import javax.swing.JOptionPane;
 import tela.TelaLogin;
 
 public class FacilitaVeiculos {
@@ -16,7 +16,7 @@ public class FacilitaVeiculos {
             TelaLogin tela = new TelaLogin();
             tela.setVisible(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao abrir conexão!");
+            Mensagem.erro("Erro ao abrir conexão!", null);
         }
     }
 }

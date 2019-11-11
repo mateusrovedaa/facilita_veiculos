@@ -68,6 +68,7 @@ Contributor(s):
     <mapping class="entidade.Cidade"/>
     <mapping class="entidade.Versao"/>
     <mapping class="entidade.Usuario"/>
+    <mapping class="entidade.Permissao"/>
     <mapping class="entidade.Cliente"/>
     <mapping class="entidade.Proprietario"/>
     <mapping class="entidade.EmpresaVistoria"/>
