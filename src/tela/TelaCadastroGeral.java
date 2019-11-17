@@ -14,6 +14,7 @@ import dao.EstadoDao;
 import dao.EstiloDao;
 import dao.ExtraDao;
 import dao.PerfilDao;
+import dao.PermissaoDao;
 import dao.SegurancaDao;
 import dao.TecnologiaDao;
 import entidade.AcabamentoInterno;
@@ -44,27 +45,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     int codigo = 0;
     private static TelaCadastroGeral tela;
+    PermissaoDao peDAO = new PermissaoDao();
 
     public TelaCadastroGeral() {
         initComponents();
         setaTbnInfos();
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
         this.setFrameIcon(icon);
-        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
-        new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
-        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
-        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
-        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
-        new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
-        new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
-        new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
-        new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
-        new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
-        new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
-        new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
-        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
         new ComboDao().popularCombo("estados", 1, 4, comboEstadoId, "");
-        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+        verificaPermissoes();
     }
 
     public static TelaCadastroGeral getInstancia() {
@@ -72,6 +61,333 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
             tela = new TelaCadastroGeral();
         }
         return tela;
+    }
+
+    private void verificaPermissoes() {
+        //acab interno
+        if (!peDAO.consultarPermissao("Acessar", "geralacab")) {
+            abaAcabamentoInterno.setEnabledAt(0, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralacab")) {
+            btnSalvarAcabamentoInterno.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralacab")) {
+            btnExcluirAcabamentoInterno.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralacab")) {
+            btnBuscarAcabamentoInterno.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralacab")) {
+            btnLimparBuscaAcabamentoInterno.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralacab")) {
+            btnEditarAcabamentoInterno.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralacab")) {
+            new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+        }
+
+        //cambios
+        if (!peDAO.consultarPermissao("Acessar", "geralcamb")) {
+            abaAcabamentoInterno.setEnabledAt(1, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralcamb")) {
+            btnSalvarCambio.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralcamb")) {
+            btnExcluirCambio.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralcamb")) {
+            btnBuscarCambio.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralcamb")) {
+            btnLimparBuscaCambio.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralcamb")) {
+            btnEditarCambio.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralcamb")) {
+            new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+        }
+
+        //carrocerias
+        if (!peDAO.consultarPermissao("Acessar", "geralcarr")) {
+            abaAcabamentoInterno.setEnabledAt(2, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralcarr")) {
+            btnSalvarCarroceria.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralcarr")) {
+            btnExcluirCarroceria.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralcarr")) {
+            btnBuscarCarroceria.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralcarr")) {
+            btnLimparBuscaCarroceria.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralcarr")) {
+            btnEditarCarroceria.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralcarr")) {
+            new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+        }
+
+        //combustiveis
+        if (!peDAO.consultarPermissao("Acessar", "geralcomb")) {
+            abaAcabamentoInterno.setEnabledAt(3, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralcomb")) {
+            btnSalvarCombustivel.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralcomb")) {
+            btnExcluirCombustivel.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralcomb")) {
+            btnBuscarCombustivel.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralcomb")) {
+            btnLimparBuscaCombustivel.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralcomb")) {
+            btnEditarCombustivel.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralcomb")) {
+            new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+        }
+
+        //confortos
+        if (!peDAO.consultarPermissao("Acessar", "geralconf")) {
+            abaAcabamentoInterno.setEnabledAt(4, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralconf")) {
+            btnSalvarConforto.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralconf")) {
+            btnExcluirConforto.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralconf")) {
+            btnBuscarConforto.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralconf")) {
+            btnLimparBuscaConforto.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralconf")) {
+            btnEditarConforto.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralconf")) {
+            new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+        }
+
+        //cor interna
+        if (!peDAO.consultarPermissao("Acessar", "geralcori")) {
+            abaAcabamentoInterno.setEnabledAt(5, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralcori")) {
+            btnSalvarCorInterna.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralcori")) {
+            btnExcluirCorInterna.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralcori")) {
+            btnBuscarCorInterna.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralcori")) {
+            btnLimparBuscaCorInterna.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralcori")) {
+            btnEditarCorInterna.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralcori")) {
+            new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+        }
+
+        //cor externa
+        if (!peDAO.consultarPermissao("Acessar", "geralcore")) {
+            abaAcabamentoInterno.setEnabledAt(6, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralcore")) {
+            btnSalvarCorExterna.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralcore")) {
+            btnExcluirCorExterna.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralcore")) {
+            btnBuscarCorExterna.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralcore")) {
+            btnLimparBuscaCorExterna.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralcore")) {
+            btnEditarCorExterna.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralcore")) {
+            new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+        }
+
+        //estilo
+        if (!peDAO.consultarPermissao("Acessar", "geralesti")) {
+            abaAcabamentoInterno.setEnabledAt(7, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralesti")) {
+            btnSalvarEstilo.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralesti")) {
+            btnExcluirEstilo.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralesti")) {
+            btnBuscarEstilo.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralesti")) {
+            btnLimparBuscaEstilo.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralesti")) {
+            btnEditarEstilo.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralesti")) {
+            new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+        }
+
+        //extra
+        if (!peDAO.consultarPermissao("Acessar", "geralextr")) {
+            abaAcabamentoInterno.setEnabledAt(8, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralextr")) {
+            btnSalvarExtra.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralextr")) {
+            btnExcluirExtra.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralextr")) {
+            btnBuscarExtra.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralextr")) {
+            btnLimparBuscaExtra.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralextr")) {
+            btnEditarExtra.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralextr")) {
+            new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+        }
+
+        //seguranca
+        if (!peDAO.consultarPermissao("Acessar", "geralsegu")) {
+            abaAcabamentoInterno.setEnabledAt(9, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralsegu")) {
+            btnSalvarSeguranca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralsegu")) {
+            btnExcluirSeguranca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralsegu")) {
+            btnBuscarSeguranca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralsegu")) {
+            btnLimparBuscaSeguranca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralsegu")) {
+            btnEditarSeguranca.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralsegu")) {
+            new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+        }
+
+        //tecnologia
+        if (!peDAO.consultarPermissao("Acessar", "geraltecn")) {
+            abaAcabamentoInterno.setEnabledAt(10, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geraltecn")) {
+            btnSalvarTecnologia.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geraltecn")) {
+            btnExcluirTecnologia.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geraltecn")) {
+            btnBuscarTecnologia.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geraltecn")) {
+            btnLimparBuscaTecnologia.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geraltecn")) {
+            btnEditarTecnologia.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geraltecn")) {
+            new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+        }
+
+        //cidade
+        if (!peDAO.consultarPermissao("Acessar", "geralcida")) {
+            abaPerfil.setEnabledAt(0, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralcida")) {
+            btnSalvarCidade.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralcida")) {
+            btnExcluirCidade.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralcida")) {
+            btnBuscarCidade.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralcida")) {
+            btnLimparBuscaCidade.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralcida")) {
+            btnEditarCidade.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboEstado", "geralcida")) {
+            comboEstadoId.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralcida")) {
+            new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+        }
+
+        //estado
+        if (!peDAO.consultarPermissao("Acessar", "geralesta")) {
+            abaPerfil.setEnabledAt(1, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralesta")) {
+            btnSalvarEstado.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralesta")) {
+            btnExcluirEstado.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralesta")) {
+            btnBuscarEstado.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralesta")) {
+            btnLimparBuscaEstado.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralesta")) {
+            btnEditarEstado.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralesta")) {
+            new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+        }
+
+        //perfil
+        if (!peDAO.consultarPermissao("Acessar", "geralperf")) {
+            abaPerfil.setEnabledAt(2, false);
+        }
+        if (!peDAO.consultarPermissao("Salvar", "geralperf")) {
+            btnSalvarPerfil.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "geralperf")) {
+            btnExcluirPerfil.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "geralperf")) {
+            btnBuscarPerfil.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "geralperf")) {
+            btnLimparBuscaPerfil.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "geralperf")) {
+            btnEditarPerfil.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "geralperf")) {
+            new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+        }
     }
 
     private void setaTbnInfos() {
@@ -3049,7 +3365,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+            if (peDAO.consultarPermissao("Listar", "geralacab")) {
+                new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+            }
         } else {
             if (erroAcabamentoInterno != null) {
                 Mensagem.aviso("Acabamento interno " + campoNomeAcabamentoInterno.getText() + " já existe cadastrado!", this);
@@ -3065,11 +3383,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaAcabamentoInternoActionPerformed
         campoFiltroAcabamentoInterno.setText("");
-        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+        if (peDAO.consultarPermissao("Listar", "geralacab")) {
+            new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaAcabamentoInternoActionPerformed
 
     private void btnBuscarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAcabamentoInternoActionPerformed
-        new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+        if (peDAO.consultarPermissao("Listar", "geralacab")) {
+            new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+        }
     }//GEN-LAST:event_btnBuscarAcabamentoInternoActionPerformed
 
     private void btnEditarAcabamentoInternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarAcabamentoInternoActionPerformed
@@ -3102,7 +3424,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirAcabamentoInterno == true) {
                 Mensagem.informacao("Acabamento interno excluído com sucesso!", this);
-                new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+                if (peDAO.consultarPermissao("Listar", "geralacab")) {
+                    new AcabamentoInternoDao().popularTabela(tblAcabamentoInterno, campoFiltroAcabamentoInterno.getText());
+                }
             } else {
                 Mensagem.erro(tblAcabamentoInterno.getValueAt(tblAcabamentoInterno.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -3147,7 +3471,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+            if (peDAO.consultarPermissao("Listar", "geralcamb")) {
+                new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+            }
         } else {
             if (erroCambio != null) {
                 Mensagem.aviso("Cambio " + campoNomeCambio.getText() + " já existe cadastrado!", this);
@@ -3163,11 +3489,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCambioActionPerformed
         campoFiltroCambio.setText("");
-        new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcamb")) {
+            new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaCambioActionPerformed
 
     private void btnBuscarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCambioActionPerformed
-        new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcamb")) {
+            new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+        }
     }//GEN-LAST:event_btnBuscarCambioActionPerformed
 
     private void btnEditarCambioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCambioActionPerformed
@@ -3200,7 +3530,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirCambio == true) {
                 Mensagem.informacao("Câmbio excluído com sucesso!", this);
-                new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+                if (peDAO.consultarPermissao("Listar", "geralcamb")) {
+                    new CambioDao().popularTabela(tblCambio, campoFiltroCambio.getText());
+                }
             } else {
                 Mensagem.erro(tblCambio.getValueAt(tblCambio.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -3245,7 +3577,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+            if (peDAO.consultarPermissao("Listar", "geralcarr")) {
+                new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+            }
         } else {
             if (erroCarroceria != null) {
                 Mensagem.aviso("Carroceria " + campoNomeCarroceria.getText() + " já existe cadastrada!", this);
@@ -3261,11 +3595,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCarroceriaActionPerformed
         campoFiltroCarroceria.setText("");
-        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcarr")) {
+            new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaCarroceriaActionPerformed
 
     private void btnBuscarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCarroceriaActionPerformed
-        new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcarr")) {
+            new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+        }
     }//GEN-LAST:event_btnBuscarCarroceriaActionPerformed
 
     private void btnEditarCarroceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCarroceriaActionPerformed
@@ -3279,7 +3617,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             campoNomeCarroceria.setText(carroceria.getNome());
             carroceria.setAlteradoEm(Calendar.getInstance());
-            
 
             campoNomeCarroceria.requestFocus();
 
@@ -3299,7 +3636,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirCarroceria == true) {
                 Mensagem.informacao("Carroceria excluída com sucesso!", this);
-                new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+                if (peDAO.consultarPermissao("Listar", "geralcarr")) {
+                    new CarroceriaDao().popularTabela(tblCarroceria, campoFiltroCarroceria.getText());
+                }
             } else {
                 Mensagem.erro(tblCarroceria.getValueAt(tblCarroceria.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -3344,7 +3683,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+            if (peDAO.consultarPermissao("Listar", "geralcomb")) {
+                new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+            }
         } else {
             if (erroCombustivel != null) {
                 Mensagem.aviso("Combustível " + campoNomeCombustivel.getText() + " já existe cadastrado!", this);
@@ -3360,11 +3701,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCombustivelActionPerformed
         campoFiltroCombustivel.setText("");
-        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcomb")) {
+            new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaCombustivelActionPerformed
 
     private void btnBuscarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCombustivelActionPerformed
-        new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcomb")) {
+            new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+        }
     }//GEN-LAST:event_btnBuscarCombustivelActionPerformed
 
     private void btnEditarCombustivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCombustivelActionPerformed
@@ -3397,7 +3742,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirCombustivel == true) {
                 Mensagem.informacao("Combustível excluído com sucesso!", this);
-                new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+                if (peDAO.consultarPermissao("Listar", "geralcomb")) {
+                    new CombustivelDao().popularTabela(tblCombustivel, campoFiltroCombustivel.getText());
+                }
             } else {
                 Mensagem.erro(tblCombustivel.getValueAt(tblCombustivel.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -3442,7 +3789,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+            if (peDAO.consultarPermissao("Listar", "geralconf")) {
+                new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+            }
         } else {
             if (erroConforto != null) {
                 Mensagem.aviso("Conforto " + campoNomeConforto.getText() + " já existe cadastrado!", this);
@@ -3458,11 +3807,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaConfortoActionPerformed
         campoFiltroConforto.setText("");
-        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+        if (peDAO.consultarPermissao("Listar", "geralconf")) {
+            new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaConfortoActionPerformed
 
     private void btnBuscarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConfortoActionPerformed
-        new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+        if (peDAO.consultarPermissao("Listar", "geralconf")) {
+            new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+        }
     }//GEN-LAST:event_btnBuscarConfortoActionPerformed
 
     private void btnEditarConfortoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarConfortoActionPerformed
@@ -3495,7 +3848,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirConforto == true) {
                 Mensagem.informacao("Conforto excluído com sucesso!", this);
-                new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+                if (peDAO.consultarPermissao("Listar", "geralconf")) {
+                    new ConfortoDao().popularTabela(tblConforto, campoFiltroConforto.getText());
+                }
             } else {
                 Mensagem.erro(tblConforto.getValueAt(tblConforto.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -3540,7 +3895,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+            if (peDAO.consultarPermissao("Listar", "geralcore")) {
+                new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+            }
         } else {
             if (erroCorExterna != null) {
                 Mensagem.aviso("Cor externa " + campoNomeCorExterna.getText() + " já existe cadastrada!", this);
@@ -3556,11 +3913,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCorExternaActionPerformed
         campoFiltroCorExterna.setText("");
-        new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcore")) {
+            new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaCorExternaActionPerformed
 
     private void btnBuscarCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCorExternaActionPerformed
-        new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcore")) {
+            new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+        }
     }//GEN-LAST:event_btnBuscarCorExternaActionPerformed
 
     private void btnEditarCorExternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCorExternaActionPerformed
@@ -3593,7 +3954,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirCorExterna == true) {
                 Mensagem.informacao("Cor externa excluída com sucesso!", this);
-                new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+                if (peDAO.consultarPermissao("Listar", "geralcore")) {
+                    new CorExternaDao().popularTabela(tblCorExterna, campoFiltroCorExterna.getText());
+                }
             } else {
                 Mensagem.erro(tblCorExterna.getValueAt(tblCorExterna.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -3638,7 +4001,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+            if (peDAO.consultarPermissao("Listar", "geralcori")) {
+                new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+            }
         } else {
             if (erroCorInterna != null) {
                 Mensagem.aviso("Cor interna " + campoNomeCorInterna.getText() + " já existe cadastrada!", this);
@@ -3654,11 +4019,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCorInternaActionPerformed
         campoFiltroCorInterna.setText("");
-        new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcori")) {
+            new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaCorInternaActionPerformed
 
     private void btnBuscarCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCorInternaActionPerformed
-        new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcori")) {
+            new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+        }
     }//GEN-LAST:event_btnBuscarCorInternaActionPerformed
 
     private void btnEditarCorInternaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarCorInternaActionPerformed
@@ -3691,7 +4060,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirCorInterna == true) {
                 Mensagem.informacao("Cor interna excluída com sucesso!", this);
-                new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+                if (peDAO.consultarPermissao("Listar", "geralcori")) {
+                    new CorInternaDao().popularTabela(tblCorInterna, campoFiltroCorInterna.getText());
+                }
             } else {
                 Mensagem.erro(tblCorInterna.getValueAt(tblCorInterna.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -3736,7 +4107,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+            if (peDAO.consultarPermissao("Listar", "geralesti")) {
+                new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+            }
         } else {
             if (erroEstilo != null) {
                 Mensagem.aviso("Estilo " + campoNomeEstilo.getText() + " já existe cadastrado!", this);
@@ -3752,11 +4125,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaEstiloActionPerformed
         campoFiltroEstilo.setText("");
-        new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+        if (peDAO.consultarPermissao("Listar", "geralesti")) {
+            new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaEstiloActionPerformed
 
     private void btnBuscarEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstiloActionPerformed
-        new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+        if (peDAO.consultarPermissao("Listar", "geralesti")) {
+            new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+        }
     }//GEN-LAST:event_btnBuscarEstiloActionPerformed
 
     private void btnEditarEstiloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarEstiloActionPerformed
@@ -3789,7 +4166,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirEstilo == true) {
                 Mensagem.informacao("Estilo excluído com sucesso!", this);
-                new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+                if (peDAO.consultarPermissao("Listar", "geralesti")) {
+                    new EstiloDao().popularTabela(tblEstilo, campoFiltroEstilo.getText());
+                }
             } else {
                 Mensagem.erro(tblEstilo.getValueAt(tblEstilo.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -3834,7 +4213,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+            if (peDAO.consultarPermissao("Listar", "geralextr")) {
+                new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+            }
         } else {
             if (erroExtra != null) {
                 Mensagem.aviso("Extra " + campoNomeExtra.getText() + " já existe cadastrado!", this);
@@ -3850,11 +4231,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaExtraActionPerformed
         campoFiltroExtra.setText("");
-        new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+        if (peDAO.consultarPermissao("Listar", "geralextr")) {
+            new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaExtraActionPerformed
 
     private void btnBuscarExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarExtraActionPerformed
-        new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+        if (peDAO.consultarPermissao("Listar", "geralextr")) {
+            new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+        }
     }//GEN-LAST:event_btnBuscarExtraActionPerformed
 
     private void btnEditarExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarExtraActionPerformed
@@ -3887,7 +4272,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirExtra == true) {
                 Mensagem.informacao("Extra excluído com sucesso!", this);
-                new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+                if (peDAO.consultarPermissao("Listar", "geralextr")) {
+                    new ExtraDao().popularTabela(tblExtra, campoFiltroExtra.getText());
+                }
             } else {
                 Mensagem.erro(tblExtra.getValueAt(tblExtra.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -3932,7 +4319,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+            if (peDAO.consultarPermissao("Listar", "geralsegu")) {
+                new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+            }
         } else {
             if (erroSeguranca != null) {
                 Mensagem.aviso("Segurança " + campoNomeSeguranca.getText() + " já existe cadastrada!", this);
@@ -3948,11 +4337,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaSegurancaActionPerformed
         campoFiltroSeguranca.setText("");
-        new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+        if (peDAO.consultarPermissao("Listar", "geralsegu")) {
+            new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaSegurancaActionPerformed
 
     private void btnBuscarSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSegurancaActionPerformed
-        new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+        if (peDAO.consultarPermissao("Listar", "geralsegu")) {
+            new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+        }
     }//GEN-LAST:event_btnBuscarSegurancaActionPerformed
 
     private void btnEditarSegurancaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarSegurancaActionPerformed
@@ -3985,7 +4378,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirSeguranca == true) {
                 Mensagem.informacao("Segurança excluída com sucesso!", this);
-                new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+                if (peDAO.consultarPermissao("Listar", "geralsegu")) {
+                    new SegurancaDao().popularTabela(tblSeguranca, campoFiltroSeguranca.getText());
+                }
             } else {
                 Mensagem.erro(tblSeguranca.getValueAt(tblSeguranca.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -4030,7 +4425,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+            if (peDAO.consultarPermissao("Listar", "geraltecn")) {
+                new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+            }
         } else {
             if (erroTecnologia != null) {
                 Mensagem.aviso("Tecnologia " + campoNomeTecnologia.getText() + " já existe cadastrada!", this);
@@ -4046,11 +4443,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaTecnologiaActionPerformed
         campoFiltroTecnologia.setText("");
-        new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+        if (peDAO.consultarPermissao("Listar", "geraltecn")) {
+            new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaTecnologiaActionPerformed
 
     private void btnBuscarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTecnologiaActionPerformed
-        new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+        if (peDAO.consultarPermissao("Listar", "geraltecn")) {
+            new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+        }
     }//GEN-LAST:event_btnBuscarTecnologiaActionPerformed
 
     private void btnEditarTecnologiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarTecnologiaActionPerformed
@@ -4083,7 +4484,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirTecnologia == true) {
                 Mensagem.informacao("Tecnologia excluída com sucesso!", this);
-                new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+                if (peDAO.consultarPermissao("Listar", "geraltecn")) {
+                    new TecnologiaDao().popularTabela(tblTecnologia, campoFiltroTecnologia.getText());
+                }
             } else {
                 Mensagem.erro(tblTecnologia.getValueAt(tblTecnologia.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -4128,7 +4531,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+            if (peDAO.consultarPermissao("Listar", "geralperf")) {
+                new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+            }
         } else {
             if (erroPerfil != null) {
                 Mensagem.aviso("Perfil " + campoNomePerfil.getText() + " já existe cadastrado!", this);
@@ -4144,11 +4549,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaPerfilActionPerformed
         campoFiltroPerfil.setText("");
-        new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+        if (peDAO.consultarPermissao("Listar", "geralperf")) {
+            new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaPerfilActionPerformed
 
     private void btnBuscarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPerfilActionPerformed
-        new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+        if (peDAO.consultarPermissao("Listar", "geralperf")) {
+            new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+        }
     }//GEN-LAST:event_btnBuscarPerfilActionPerformed
 
     private void btnEditarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPerfilActionPerformed
@@ -4181,7 +4590,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirPerfil == true) {
                 Mensagem.informacao("Perfil excluído com sucesso!", this);
-                new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+                if (peDAO.consultarPermissao("Listar", "geralperf")) {
+                    new PerfilDao().popularTabela(tblPerfil, campoFiltroPerfil.getText());
+                }
             } else {
                 Mensagem.erro(tblPerfil.getValueAt(tblPerfil.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -4223,7 +4634,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirEstado == true) {
                 Mensagem.informacao("Estado excluído com sucesso!", this);
-                new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+                if (peDAO.consultarPermissao("Listar", "geralesta")) {
+                    new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+                }
                 new ComboDao().popularCombo("estados", 1, 4, comboEstadoId, "");
             } else {
                 Mensagem.erro(tblEstado.getValueAt(tblEstado.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
@@ -4276,7 +4689,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+            if (peDAO.consultarPermissao("Listar", "geralcida")) {
+                new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+            }
         } else {
             if (erroCidade != null) {
                 Mensagem.aviso("Cidade " + campoNomeCidade.getText() + " já existe cadastrada!", this);
@@ -4292,11 +4707,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaCidadeActionPerformed
         campoFiltroCidade.setText("");
-        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcida")) {
+            new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaCidadeActionPerformed
 
     private void btnBuscarCidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCidadeActionPerformed
-        new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+        if (peDAO.consultarPermissao("Listar", "geralcida")) {
+            new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+        }
     }//GEN-LAST:event_btnBuscarCidadeActionPerformed
 
 
@@ -4333,7 +4752,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             if (retornoExcluirCidade == true) {
                 Mensagem.informacao("Cidade excluída com sucesso!", this);
-                new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+                if (peDAO.consultarPermissao("Listar", "geralcida")) {
+                    new CidadeDao().popularTabela(tblCidade, campoFiltroCidade.getText());
+                }
             } else {
                 Mensagem.erro(tblCidade.getValueAt(tblCidade.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -4380,7 +4801,9 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+            if (peDAO.consultarPermissao("Listar", "geralesta")) {
+                new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+            }
         } else {
             if (erroEstado != null) {
                 Mensagem.aviso("Estado " + campoNomeEstado.getText() + " já existe cadastrado!", this);
@@ -4396,11 +4819,15 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaEstadoActionPerformed
         campoFiltroEstado.setText("");
-        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+        if (peDAO.consultarPermissao("Listar", "geralesta")) {
+            new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaEstadoActionPerformed
 
     private void btnBuscarEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstadoActionPerformed
-        new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+        if (peDAO.consultarPermissao("Listar", "geralesta")) {
+            new EstadoDao().popularTabela(tblEstado, campoFiltroEstado.getText());
+        }
     }//GEN-LAST:event_btnBuscarEstadoActionPerformed
 
 

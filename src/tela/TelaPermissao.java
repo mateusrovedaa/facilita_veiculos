@@ -37,12 +37,27 @@ public class TelaPermissao extends javax.swing.JDialog {
     private final String comboProcedencia = "ComboProcedencia";
     private final String comboCarroceria = "ComboCarroceria";
     private final String comboListar = "ComboListar";
+    private final String comboEstado = "ComboEstado";
 
     //telas
     private final String telaMarca = "marca";
     private final String telaModelo = "modelo";
     private final String telaUsuario = "usuario";
     private final String telaVersao = "versao";
+    private final String telaGeralAcab = "geralacab";
+    private final String telaGeralCamb = "geralcamb";
+    private final String telaGeralCarr = "geralcarr";
+    private final String telaGeralComb = "geralcomb";
+    private final String telaGeralConf = "geralconf";
+    private final String telaGeralCorE = "geralcore";
+    private final String telaGeralCorI = "geralcori";
+    private final String telaGeralEsti = "geralesti";
+    private final String telaGeralExtr = "geralextr";
+    private final String telaGeralSegu = "geralsegu";
+    private final String telaGeralTecn = "geraltecn";
+    private final String telaGeralCida = "geralcida";
+    private final String telaGeralEsta = "geralesta";
+    private final String telaGeralPerf = "geralperf";
 
     /**
      * Creates new form TelaPermissao
@@ -60,6 +75,20 @@ public class TelaPermissao extends javax.swing.JDialog {
         preenchePermissoesModelo();
         preenchePermissoesUsuario();
         preenchePermissoesVersao();
+        preenchePermissoesGeralAcab();
+        preenchePermissoesGeralCamb();
+        preenchePermissoesGeralCarr();
+        preenchePermissoesGeralComb();
+        preenchePermissoesGeralConf();
+        preenchePermissoesGeralCorE();
+        preenchePermissoesGeralCorI();
+        preenchePermissoesGeralEsti();
+        preenchePermissoesGeralExtr();
+        preenchePermissoesGeralSegu();
+        preenchePermissoesGeralTecn();
+        preenchePermissoesGeralCida();
+        preenchePermissoesGeralEsta();
+        preenchePermissoesGeralPerf();
     }
 
     /**
@@ -127,27 +156,112 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralAcessarAcab = new javax.swing.JCheckBox();
         cbxGeralEditarAcab = new javax.swing.JCheckBox();
         pnlCambios = new javax.swing.JPanel();
-        cbxGeralExcluirAcab1 = new javax.swing.JCheckBox();
-        cbxGeralAcessarAcab1 = new javax.swing.JCheckBox();
-        cbxGeralEditarAcab1 = new javax.swing.JCheckBox();
-        cbxGeralListarAcab1 = new javax.swing.JCheckBox();
-        cbxGeralBuscarAcab1 = new javax.swing.JCheckBox();
-        cbxGeralSalvarAcab1 = new javax.swing.JCheckBox();
-        cbxGeralLimparBuscaAcab1 = new javax.swing.JCheckBox();
+        cbxGeralExcluirCamb = new javax.swing.JCheckBox();
+        cbxGeralAcessarCamb = new javax.swing.JCheckBox();
+        cbxGeralEditarCamb = new javax.swing.JCheckBox();
+        cbxGeralListarCamb = new javax.swing.JCheckBox();
+        cbxGeralBuscarCamb = new javax.swing.JCheckBox();
+        cbxGeralSalvarCamb = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaCamb = new javax.swing.JCheckBox();
         jPanel13 = new javax.swing.JPanel();
+        cbxGeralLimparBuscaCarr = new javax.swing.JCheckBox();
+        cbxGeralBuscarCarr = new javax.swing.JCheckBox();
+        cbxGeralAcessarCarr = new javax.swing.JCheckBox();
+        cbxGeralExcluirCarr = new javax.swing.JCheckBox();
+        cbxGeralSalvarCarr = new javax.swing.JCheckBox();
+        cbxGeralEditarCarr = new javax.swing.JCheckBox();
+        cbxGeralListarCarr = new javax.swing.JCheckBox();
         jPanel14 = new javax.swing.JPanel();
+        cbxGeralSalvarComb = new javax.swing.JCheckBox();
+        cbxGeralListarComb = new javax.swing.JCheckBox();
+        cbxGeralBuscarComb = new javax.swing.JCheckBox();
+        cbxGeralExcluirComb = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaComb = new javax.swing.JCheckBox();
+        cbxGeralAcessarComb = new javax.swing.JCheckBox();
+        cbxGeralEditarComb = new javax.swing.JCheckBox();
         jPanel15 = new javax.swing.JPanel();
+        cbxGeralSalvarConft = new javax.swing.JCheckBox();
+        cbxGeralBuscarConft = new javax.swing.JCheckBox();
+        cbxGeralExcluirConft = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaConft = new javax.swing.JCheckBox();
+        cbxGeralListarConft = new javax.swing.JCheckBox();
+        cbxGeralEditarConft = new javax.swing.JCheckBox();
+        cbxGeralAcessarConft = new javax.swing.JCheckBox();
         jPanel16 = new javax.swing.JPanel();
+        cbxGeralExcluirCorEx = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaCorEx = new javax.swing.JCheckBox();
+        cbxGeralSalvarCorEx = new javax.swing.JCheckBox();
+        cbxGeralListarCorEx = new javax.swing.JCheckBox();
+        cbxGeralAcessarCorEx = new javax.swing.JCheckBox();
+        cbxGeralEditarCorEx = new javax.swing.JCheckBox();
+        cbxGeralBuscarCorEx = new javax.swing.JCheckBox();
         jPanel17 = new javax.swing.JPanel();
+        cbxGeralAcessarCorInt = new javax.swing.JCheckBox();
+        cbxGeralExcluirCorInt = new javax.swing.JCheckBox();
+        cbxGeralListarCorInt = new javax.swing.JCheckBox();
+        cbxGeralBuscarCorInt = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaCorInt = new javax.swing.JCheckBox();
+        cbxGeralSalvarCorInt = new javax.swing.JCheckBox();
+        cbxGeralEditarCorInt = new javax.swing.JCheckBox();
         jPanel18 = new javax.swing.JPanel();
+        cbxGeralAcessarEst = new javax.swing.JCheckBox();
+        cbxGeralExcluirEst = new javax.swing.JCheckBox();
+        cbxGeralSalvarEst = new javax.swing.JCheckBox();
+        cbxGeralListarEst = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaEst = new javax.swing.JCheckBox();
+        cbxGeralEditarEst = new javax.swing.JCheckBox();
+        cbxGeralBuscarEst = new javax.swing.JCheckBox();
         jPanel19 = new javax.swing.JPanel();
+        cbxGeralAcessarExt = new javax.swing.JCheckBox();
+        cbxGeralSalvarExt = new javax.swing.JCheckBox();
+        cbxGeralExcluirExt = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaExt = new javax.swing.JCheckBox();
+        cbxGeralEditarExt = new javax.swing.JCheckBox();
+        cbxGeralListarExt = new javax.swing.JCheckBox();
+        cbxGeralBuscarExt = new javax.swing.JCheckBox();
         jPanel20 = new javax.swing.JPanel();
+        cbxGeralExcluirSeg = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaSeg = new javax.swing.JCheckBox();
+        cbxGeralEditarSeg = new javax.swing.JCheckBox();
+        cbxGeralSalvarSeg = new javax.swing.JCheckBox();
+        cbxGeralBuscarSeg = new javax.swing.JCheckBox();
+        cbxGeralListarSeg = new javax.swing.JCheckBox();
+        cbxGeralAcessarSeg = new javax.swing.JCheckBox();
         jPanel21 = new javax.swing.JPanel();
+        cbxGeralLimparBuscaTec = new javax.swing.JCheckBox();
+        cbxGeralSalvarTec = new javax.swing.JCheckBox();
+        cbxGeralListarTec = new javax.swing.JCheckBox();
+        cbxGeralAcessarTec = new javax.swing.JCheckBox();
+        cbxGeralExcluirTec = new javax.swing.JCheckBox();
+        cbxGeralBuscarTec = new javax.swing.JCheckBox();
+        cbxGeralEditarTec = new javax.swing.JCheckBox();
         jPanel7 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel8 = new javax.swing.JPanel();
+        cbxGeralListarCid = new javax.swing.JCheckBox();
+        cbxGeralSalvarCid = new javax.swing.JCheckBox();
+        cbxGeralBuscarCid = new javax.swing.JCheckBox();
+        cbxGeralEditarCid = new javax.swing.JCheckBox();
+        cbxGeralExcluirCid = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaCid = new javax.swing.JCheckBox();
+        cbxGeralAcessarCid = new javax.swing.JCheckBox();
+        cbxGeralComboCid = new javax.swing.JCheckBox();
         jPanel9 = new javax.swing.JPanel();
+        cbxGeralListarEsta = new javax.swing.JCheckBox();
+        cbxGeralSalvarEsta = new javax.swing.JCheckBox();
+        cbxGeralEditarEsta = new javax.swing.JCheckBox();
+        cbxGeralExcluirEsta = new javax.swing.JCheckBox();
+        cbxGeralBuscarEsta = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaEsta = new javax.swing.JCheckBox();
+        cbxGeralAcessarEsta = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
+        cbxGeralBuscarPerf = new javax.swing.JCheckBox();
+        cbxGeralLimparBuscaPerf = new javax.swing.JCheckBox();
+        cbxGeralAcessarPerf = new javax.swing.JCheckBox();
+        cbxGeralEditarPerf = new javax.swing.JCheckBox();
+        cbxGeralExcluirPerf = new javax.swing.JCheckBox();
+        cbxGeralListarPerf = new javax.swing.JCheckBox();
+        cbxGeralSalvarPerf = new javax.swing.JCheckBox();
         btnSalvar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
 
@@ -476,24 +590,24 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaAcab)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarAcab)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Acabamentos internos", pnlAcabInterno);
 
-        cbxGeralExcluirAcab1.setText("Botão Excluir");
+        cbxGeralExcluirCamb.setText("Botão Excluir");
 
-        cbxGeralAcessarAcab1.setText("Acessar");
+        cbxGeralAcessarCamb.setText("Acessar");
 
-        cbxGeralEditarAcab1.setText("Botão Editar");
+        cbxGeralEditarCamb.setText("Botão Editar");
 
-        cbxGeralListarAcab1.setText("Listar registros cadastrados");
+        cbxGeralListarCamb.setText("Listar registros cadastrados");
 
-        cbxGeralBuscarAcab1.setText("Botão Buscar");
+        cbxGeralBuscarCamb.setText("Botão Buscar");
 
-        cbxGeralSalvarAcab1.setText("Botão Salvar");
+        cbxGeralSalvarCamb.setText("Botão Salvar");
 
-        cbxGeralLimparBuscaAcab1.setText("Botão Limpar Busca");
+        cbxGeralLimparBuscaCamb.setText("Botão Limpar Busca");
 
         javax.swing.GroupLayout pnlCambiosLayout = new javax.swing.GroupLayout(pnlCambios);
         pnlCambios.setLayout(pnlCambiosLayout);
@@ -502,150 +616,501 @@ public class TelaPermissao extends javax.swing.JDialog {
             .addGroup(pnlCambiosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlCambiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxGeralBuscarAcab1)
-                    .addComponent(cbxGeralListarAcab1)
-                    .addComponent(cbxGeralExcluirAcab1)
-                    .addComponent(cbxGeralSalvarAcab1)
-                    .addComponent(cbxGeralLimparBuscaAcab1)
-                    .addComponent(cbxGeralAcessarAcab1)
-                    .addComponent(cbxGeralEditarAcab1))
+                    .addComponent(cbxGeralBuscarCamb)
+                    .addComponent(cbxGeralListarCamb)
+                    .addComponent(cbxGeralExcluirCamb)
+                    .addComponent(cbxGeralSalvarCamb)
+                    .addComponent(cbxGeralLimparBuscaCamb)
+                    .addComponent(cbxGeralAcessarCamb)
+                    .addComponent(cbxGeralEditarCamb))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         pnlCambiosLayout.setVerticalGroup(
             pnlCambiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCambiosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarAcab1)
+                .addComponent(cbxGeralAcessarCamb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbxGeralSalvarAcab1)
+                .addComponent(cbxGeralSalvarCamb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbxGeralEditarAcab1)
+                .addComponent(cbxGeralEditarCamb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbxGeralExcluirAcab1)
+                .addComponent(cbxGeralExcluirCamb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbxGeralBuscarAcab1)
+                .addComponent(cbxGeralBuscarCamb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbxGeralLimparBuscaAcab1)
+                .addComponent(cbxGeralLimparBuscaCamb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbxGeralListarAcab1)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addComponent(cbxGeralListarCamb)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Câmbios", pnlCambios);
+
+        cbxGeralLimparBuscaCarr.setText("Botão Limpar Busca");
+
+        cbxGeralBuscarCarr.setText("Botão Buscar");
+
+        cbxGeralAcessarCarr.setText("Acessar");
+
+        cbxGeralExcluirCarr.setText("Botão Excluir");
+
+        cbxGeralSalvarCarr.setText("Botão Salvar");
+
+        cbxGeralEditarCarr.setText("Botão Editar");
+
+        cbxGeralListarCarr.setText("Listar registros cadastrados");
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralExcluirCarr)
+                    .addComponent(cbxGeralAcessarCarr)
+                    .addComponent(cbxGeralEditarCarr)
+                    .addComponent(cbxGeralListarCarr)
+                    .addComponent(cbxGeralBuscarCarr)
+                    .addComponent(cbxGeralSalvarCarr)
+                    .addComponent(cbxGeralLimparBuscaCarr))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarCarr)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarCarr)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarCarr)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirCarr)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarCarr)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaCarr)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarCarr)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Carrocerias", jPanel13);
+
+        cbxGeralSalvarComb.setText("Botão Salvar");
+
+        cbxGeralListarComb.setText("Listar registros cadastrados");
+
+        cbxGeralBuscarComb.setText("Botão Buscar");
+
+        cbxGeralExcluirComb.setText("Botão Excluir");
+
+        cbxGeralLimparBuscaComb.setText("Botão Limpar Busca");
+
+        cbxGeralAcessarComb.setText("Acessar");
+
+        cbxGeralEditarComb.setText("Botão Editar");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralLimparBuscaComb)
+                    .addComponent(cbxGeralBuscarComb)
+                    .addComponent(cbxGeralAcessarComb)
+                    .addComponent(cbxGeralExcluirComb)
+                    .addComponent(cbxGeralSalvarComb)
+                    .addComponent(cbxGeralEditarComb)
+                    .addComponent(cbxGeralListarComb))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarComb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarComb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarComb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirComb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarComb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaComb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarComb)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Combustíveis", jPanel14);
+
+        cbxGeralSalvarConft.setText("Botão Salvar");
+
+        cbxGeralBuscarConft.setText("Botão Buscar");
+
+        cbxGeralExcluirConft.setText("Botão Excluir");
+
+        cbxGeralLimparBuscaConft.setText("Botão Limpar Busca");
+
+        cbxGeralListarConft.setText("Listar registros cadastrados");
+
+        cbxGeralEditarConft.setText("Botão Editar");
+
+        cbxGeralAcessarConft.setText("Acessar");
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralSalvarConft)
+                    .addComponent(cbxGeralListarConft)
+                    .addComponent(cbxGeralBuscarConft)
+                    .addComponent(cbxGeralExcluirConft)
+                    .addComponent(cbxGeralLimparBuscaConft)
+                    .addComponent(cbxGeralAcessarConft)
+                    .addComponent(cbxGeralEditarConft))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarConft)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarConft)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarConft)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirConft)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarConft)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaConft)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarConft)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Confortos", jPanel15);
+
+        cbxGeralExcluirCorEx.setText("Botão Excluir");
+
+        cbxGeralLimparBuscaCorEx.setText("Botão Limpar Busca");
+
+        cbxGeralSalvarCorEx.setText("Botão Salvar");
+
+        cbxGeralListarCorEx.setText("Listar registros cadastrados");
+
+        cbxGeralAcessarCorEx.setText("Acessar");
+
+        cbxGeralEditarCorEx.setText("Botão Editar");
+
+        cbxGeralBuscarCorEx.setText("Botão Buscar");
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralSalvarCorEx)
+                    .addComponent(cbxGeralBuscarCorEx)
+                    .addComponent(cbxGeralExcluirCorEx)
+                    .addComponent(cbxGeralLimparBuscaCorEx)
+                    .addComponent(cbxGeralListarCorEx)
+                    .addComponent(cbxGeralEditarCorEx)
+                    .addComponent(cbxGeralAcessarCorEx))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarCorEx)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarCorEx)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarCorEx)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirCorEx)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarCorEx)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaCorEx)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarCorEx)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Cores externas", jPanel16);
+
+        cbxGeralAcessarCorInt.setText("Acessar");
+
+        cbxGeralExcluirCorInt.setText("Botão Excluir");
+
+        cbxGeralListarCorInt.setText("Listar registros cadastrados");
+
+        cbxGeralBuscarCorInt.setText("Botão Buscar");
+
+        cbxGeralLimparBuscaCorInt.setText("Botão Limpar Busca");
+
+        cbxGeralSalvarCorInt.setText("Botão Salvar");
+
+        cbxGeralEditarCorInt.setText("Botão Editar");
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralExcluirCorInt)
+                    .addComponent(cbxGeralLimparBuscaCorInt)
+                    .addComponent(cbxGeralSalvarCorInt)
+                    .addComponent(cbxGeralListarCorInt)
+                    .addComponent(cbxGeralAcessarCorInt)
+                    .addComponent(cbxGeralEditarCorInt)
+                    .addComponent(cbxGeralBuscarCorInt))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarCorInt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarCorInt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarCorInt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirCorInt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarCorInt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaCorInt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarCorInt)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Cores internas", jPanel17);
+
+        cbxGeralAcessarEst.setText("Acessar");
+
+        cbxGeralExcluirEst.setText("Botão Excluir");
+
+        cbxGeralSalvarEst.setText("Botão Salvar");
+
+        cbxGeralListarEst.setText("Listar registros cadastrados");
+
+        cbxGeralLimparBuscaEst.setText("Botão Limpar Busca");
+
+        cbxGeralEditarEst.setText("Botão Editar");
+
+        cbxGeralBuscarEst.setText("Botão Buscar");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralAcessarEst)
+                    .addComponent(cbxGeralExcluirEst)
+                    .addComponent(cbxGeralListarEst)
+                    .addComponent(cbxGeralBuscarEst)
+                    .addComponent(cbxGeralLimparBuscaEst)
+                    .addComponent(cbxGeralSalvarEst)
+                    .addComponent(cbxGeralEditarEst))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarEst)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarEst)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarEst)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirEst)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarEst)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaEst)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarEst)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Estilos", jPanel18);
+
+        cbxGeralAcessarExt.setText("Acessar");
+
+        cbxGeralSalvarExt.setText("Botão Salvar");
+
+        cbxGeralExcluirExt.setText("Botão Excluir");
+
+        cbxGeralLimparBuscaExt.setText("Botão Limpar Busca");
+
+        cbxGeralEditarExt.setText("Botão Editar");
+
+        cbxGeralListarExt.setText("Listar registros cadastrados");
+
+        cbxGeralBuscarExt.setText("Botão Buscar");
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralAcessarExt)
+                    .addComponent(cbxGeralExcluirExt)
+                    .addComponent(cbxGeralSalvarExt)
+                    .addComponent(cbxGeralListarExt)
+                    .addComponent(cbxGeralLimparBuscaExt)
+                    .addComponent(cbxGeralEditarExt)
+                    .addComponent(cbxGeralBuscarExt))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarExt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarExt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarExt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirExt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarExt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaExt)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarExt)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Extras", jPanel19);
+
+        cbxGeralExcluirSeg.setText("Botão Excluir");
+
+        cbxGeralLimparBuscaSeg.setText("Botão Limpar Busca");
+
+        cbxGeralEditarSeg.setText("Botão Editar");
+
+        cbxGeralSalvarSeg.setText("Botão Salvar");
+
+        cbxGeralBuscarSeg.setText("Botão Buscar");
+
+        cbxGeralListarSeg.setText("Listar registros cadastrados");
+
+        cbxGeralAcessarSeg.setText("Acessar");
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralAcessarSeg)
+                    .addComponent(cbxGeralSalvarSeg)
+                    .addComponent(cbxGeralExcluirSeg)
+                    .addComponent(cbxGeralLimparBuscaSeg)
+                    .addComponent(cbxGeralEditarSeg)
+                    .addComponent(cbxGeralListarSeg)
+                    .addComponent(cbxGeralBuscarSeg))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarSeg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarSeg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarSeg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirSeg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarSeg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaSeg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarSeg)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Seguranças", jPanel20);
+
+        cbxGeralLimparBuscaTec.setText("Botão Limpar Busca");
+
+        cbxGeralSalvarTec.setText("Botão Salvar");
+
+        cbxGeralListarTec.setText("Listar registros cadastrados");
+
+        cbxGeralAcessarTec.setText("Acessar");
+
+        cbxGeralExcluirTec.setText("Botão Excluir");
+
+        cbxGeralBuscarTec.setText("Botão Buscar");
+
+        cbxGeralEditarTec.setText("Botão Editar");
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 321, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralExcluirTec)
+                    .addComponent(cbxGeralLimparBuscaTec)
+                    .addComponent(cbxGeralEditarTec)
+                    .addComponent(cbxGeralSalvarTec)
+                    .addComponent(cbxGeralBuscarTec)
+                    .addComponent(cbxGeralListarTec)
+                    .addComponent(cbxGeralAcessarTec))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarTec)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarTec)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarTec)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirTec)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarTec)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaTec)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarTec)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Tecnologias", jPanel21);
@@ -667,41 +1132,168 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         jTabbedPane3.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        cbxGeralListarCid.setText("Listar registros cadastrados");
+
+        cbxGeralSalvarCid.setText("Botão Salvar");
+
+        cbxGeralBuscarCid.setText("Botão Buscar");
+
+        cbxGeralEditarCid.setText("Botão Editar");
+
+        cbxGeralExcluirCid.setText("Botão Excluir");
+
+        cbxGeralLimparBuscaCid.setText("Botão Limpar Busca");
+
+        cbxGeralAcessarCid.setText("Acessar");
+
+        cbxGeralComboCid.setText("Combo Estado");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(cbxGeralAcessarCid)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addComponent(cbxGeralComboCid)
+                        .addGap(47, 47, 47))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxGeralBuscarCid)
+                            .addComponent(cbxGeralListarCid)
+                            .addComponent(cbxGeralExcluirCid)
+                            .addComponent(cbxGeralSalvarCid)
+                            .addComponent(cbxGeralLimparBuscaCid)
+                            .addComponent(cbxGeralEditarCid))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxGeralAcessarCid)
+                    .addComponent(cbxGeralComboCid))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarCid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarCid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirCid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarCid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaCid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarCid)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Cidades", jPanel8);
+
+        cbxGeralListarEsta.setText("Listar registros cadastrados");
+
+        cbxGeralSalvarEsta.setText("Botão Salvar");
+
+        cbxGeralEditarEsta.setText("Botão Editar");
+
+        cbxGeralExcluirEsta.setText("Botão Excluir");
+
+        cbxGeralBuscarEsta.setText("Botão Buscar");
+
+        cbxGeralLimparBuscaEsta.setText("Botão Limpar Busca");
+
+        cbxGeralAcessarEsta.setText("Acessar");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralListarEsta)
+                    .addComponent(cbxGeralSalvarEsta)
+                    .addComponent(cbxGeralBuscarEsta)
+                    .addComponent(cbxGeralEditarEsta)
+                    .addComponent(cbxGeralExcluirEsta)
+                    .addComponent(cbxGeralLimparBuscaEsta)
+                    .addComponent(cbxGeralAcessarEsta))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarEsta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarEsta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarEsta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirEsta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarEsta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaEsta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarEsta)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Estados", jPanel9);
+
+        cbxGeralBuscarPerf.setText("Botão Buscar");
+
+        cbxGeralLimparBuscaPerf.setText("Botão Limpar Busca");
+
+        cbxGeralAcessarPerf.setText("Acessar");
+
+        cbxGeralEditarPerf.setText("Botão Editar");
+
+        cbxGeralExcluirPerf.setText("Botão Excluir");
+
+        cbxGeralListarPerf.setText("Listar registros cadastrados");
+
+        cbxGeralSalvarPerf.setText("Botão Salvar");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxGeralListarPerf)
+                    .addComponent(cbxGeralSalvarPerf)
+                    .addComponent(cbxGeralEditarPerf)
+                    .addComponent(cbxGeralExcluirPerf)
+                    .addComponent(cbxGeralBuscarPerf)
+                    .addComponent(cbxGeralLimparBuscaPerf)
+                    .addComponent(cbxGeralAcessarPerf))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 293, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarPerf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralSalvarPerf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralEditarPerf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralExcluirPerf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralBuscarPerf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralLimparBuscaPerf)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralListarPerf)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Perfis", jPanel10);
@@ -757,7 +1349,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(btnSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFechar))
@@ -912,6 +1503,387 @@ public class TelaPermissao extends javax.swing.JDialog {
             }
             if (perm.get(i).equals(procurar)) {
                 cbxVersaoProcurarModelo.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralAcab() {
+        perm = peDAO.consultarPermissoes(telaGeralAcab, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarAcab.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarAcab.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarAcab.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirAcab.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarAcab.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaAcab.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarAcab.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralCamb() {
+        perm = peDAO.consultarPermissoes(telaGeralCamb, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarCamb.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarCamb.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarCamb.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirCamb.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarCamb.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaCamb.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarCamb.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralCarr() {
+        perm = peDAO.consultarPermissoes(telaGeralCarr, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarCarr.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarCarr.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarCarr.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirCarr.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarCarr.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaCarr.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarCarr.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralComb() {
+        perm = peDAO.consultarPermissoes(telaGeralComb, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarComb.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarComb.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarComb.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirComb.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarComb.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaComb.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarComb.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralConf() {
+        perm = peDAO.consultarPermissoes(telaGeralConf, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarConft.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarConft.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarConft.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirConft.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarConft.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaConft.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarConft.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralCorE() {
+        perm = peDAO.consultarPermissoes(telaGeralCorE, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarCorEx.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarCorEx.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarCorEx.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirCorEx.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarCorEx.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaCorEx.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarCorEx.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralCorI() {
+        perm = peDAO.consultarPermissoes(telaGeralCorI, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarCorInt.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarCorInt.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarCorInt.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirCorInt.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarCorInt.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaCorInt.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarCorInt.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralEsti() {
+        perm = peDAO.consultarPermissoes(telaGeralEsti, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarEst.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarEst.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarEst.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirEst.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarEst.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaEst.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarEst.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralExtr() {
+        perm = peDAO.consultarPermissoes(telaGeralExtr, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarExt.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarExt.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarExt.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirExt.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarExt.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaExt.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarExt.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralSegu() {
+        perm = peDAO.consultarPermissoes(telaGeralSegu, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarSeg.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarSeg.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarSeg.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirSeg.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarSeg.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaSeg.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarSeg.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralTecn() {
+        perm = peDAO.consultarPermissoes(telaGeralTecn, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarTec.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarTec.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarTec.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirTec.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarTec.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaTec.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarTec.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralCida() {
+        perm = peDAO.consultarPermissoes(telaGeralCida, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarCid.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarCid.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarCid.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirCid.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarCid.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaCid.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarCid.setSelected(true);
+            }
+            if (perm.get(i).equals(comboEstado)) {
+                cbxGeralComboCid.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralEsta() {
+        perm = peDAO.consultarPermissoes(telaGeralEsta, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarEsta.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarEsta.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarEsta.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirEsta.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarEsta.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaEsta.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarEsta.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesGeralPerf() {
+        perm = peDAO.consultarPermissoes(telaGeralPerf, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxGeralAcessarPerf.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxGeralEditarPerf.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxGeralSalvarPerf.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxGeralExcluirPerf.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxGeralBuscarPerf.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxGeralLimparBuscaPerf.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxGeralListarPerf.setSelected(true);
             }
         }
     }
@@ -1081,18 +2053,414 @@ public class TelaPermissao extends javax.swing.JDialog {
             versao = false;
         }
 
-        if (marca == true && modelo == true && user == true && versao == true) {
+        //geral acab
+        boolean gacab = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarAcab, acessar, telaGeralAcab, usuario, peDAO);
+        if (!ok == true) {
+            gacab = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarAcab, editar, telaGeralAcab, usuario, peDAO);
+        if (!ok == true) {
+            gacab = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarAcab, salvar, telaGeralAcab, usuario, peDAO);
+        if (!ok == true) {
+            gacab = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirAcab, excluir, telaGeralAcab, usuario, peDAO);
+        if (!ok == true) {
+            gacab = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarAcab, buscar, telaGeralAcab, usuario, peDAO);
+        if (!ok == true) {
+            gacab = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaAcab, limparBusca, telaGeralAcab, usuario, peDAO);
+        if (!ok == true) {
+            gacab = false;
+        }
+
+        //geral camb
+        boolean gcamb = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCamb, acessar, telaGeralCamb, usuario, peDAO);
+        if (!ok == true) {
+            gcamb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarCamb, editar, telaGeralCamb, usuario, peDAO);
+        if (!ok == true) {
+            gcamb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarCamb, salvar, telaGeralCamb, usuario, peDAO);
+        if (!ok == true) {
+            gcamb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirCamb, excluir, telaGeralCamb, usuario, peDAO);
+        if (!ok == true) {
+            gcamb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarCamb, buscar, telaGeralCamb, usuario, peDAO);
+        if (!ok == true) {
+            gcamb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaCamb, limparBusca, telaGeralCamb, usuario, peDAO);
+        if (!ok == true) {
+            gcamb = false;
+        }
+
+        //geral carr
+        boolean gcarr = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCarr, acessar, telaGeralCarr, usuario, peDAO);
+        if (!ok == true) {
+            gcarr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarCarr, editar, telaGeralCarr, usuario, peDAO);
+        if (!ok == true) {
+            gcarr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarCarr, salvar, telaGeralCarr, usuario, peDAO);
+        if (!ok == true) {
+            gcarr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirCarr, excluir, telaGeralCarr, usuario, peDAO);
+        if (!ok == true) {
+            gcarr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarCarr, buscar, telaGeralCarr, usuario, peDAO);
+        if (!ok == true) {
+            gcarr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaCarr, limparBusca, telaGeralCarr, usuario, peDAO);
+        if (!ok == true) {
+            gcarr = false;
+        }
+
+        //geral comb
+        boolean gcomb = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarComb, acessar, telaGeralComb, usuario, peDAO);
+        if (!ok == true) {
+            gcomb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarComb, editar, telaGeralComb, usuario, peDAO);
+        if (!ok == true) {
+            gcomb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarComb, salvar, telaGeralComb, usuario, peDAO);
+        if (!ok == true) {
+            gcomb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirComb, excluir, telaGeralComb, usuario, peDAO);
+        if (!ok == true) {
+            gcomb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarComb, buscar, telaGeralComb, usuario, peDAO);
+        if (!ok == true) {
+            gcomb = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaComb, limparBusca, telaGeralComb, usuario, peDAO);
+        if (!ok == true) {
+            gcomb = false;
+        }
+
+        //geral conf
+        boolean gconf = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarConft, acessar, telaGeralConf, usuario, peDAO);
+        if (!ok == true) {
+            gconf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarConft, editar, telaGeralConf, usuario, peDAO);
+        if (!ok == true) {
+            gconf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarConft, salvar, telaGeralConf, usuario, peDAO);
+        if (!ok == true) {
+            gconf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirConft, excluir, telaGeralConf, usuario, peDAO);
+        if (!ok == true) {
+            gconf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarConft, buscar, telaGeralConf, usuario, peDAO);
+        if (!ok == true) {
+            gconf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaConft, limparBusca, telaGeralConf, usuario, peDAO);
+        if (!ok == true) {
+            gconf = false;
+        }
+
+        //geral cor externa
+        boolean gcore = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCorEx, acessar, telaGeralCorE, usuario, peDAO);
+        if (!ok == true) {
+            gcore = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarCorEx, editar, telaGeralCorE, usuario, peDAO);
+        if (!ok == true) {
+            gcore = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarCorEx, salvar, telaGeralCorE, usuario, peDAO);
+        if (!ok == true) {
+            gcore = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirCorEx, excluir, telaGeralCorE, usuario, peDAO);
+        if (!ok == true) {
+            gcore = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarCorEx, buscar, telaGeralCorE, usuario, peDAO);
+        if (!ok == true) {
+            gcore = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaCorEx, limparBusca, telaGeralCorE, usuario, peDAO);
+        if (!ok == true) {
+            gcore = false;
+        }
+
+        //geral cor interna
+        boolean gcori = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCorInt, acessar, telaGeralCorI, usuario, peDAO);
+        if (!ok == true) {
+            gcori = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarCorInt, editar, telaGeralCorI, usuario, peDAO);
+        if (!ok == true) {
+            gcori = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarCorInt, salvar, telaGeralCorI, usuario, peDAO);
+        if (!ok == true) {
+            gcori = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirCorInt, excluir, telaGeralCorI, usuario, peDAO);
+        if (!ok == true) {
+            gcori = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarCorInt, buscar, telaGeralCorI, usuario, peDAO);
+        if (!ok == true) {
+            gcori = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaCorInt, limparBusca, telaGeralCorI, usuario, peDAO);
+        if (!ok == true) {
+            gcori = false;
+        }
+
+        //geral estilos
+        boolean gesti = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarEst, acessar, telaGeralEsti, usuario, peDAO);
+        if (!ok == true) {
+            gesti = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarEst, editar, telaGeralEsti, usuario, peDAO);
+        if (!ok == true) {
+            gesti = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarEst, salvar, telaGeralEsti, usuario, peDAO);
+        if (!ok == true) {
+            gesti = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirEst, excluir, telaGeralEsti, usuario, peDAO);
+        if (!ok == true) {
+            gesti = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarEst, buscar, telaGeralEsti, usuario, peDAO);
+        if (!ok == true) {
+            gesti = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaEst, limparBusca, telaGeralEsti, usuario, peDAO);
+        if (!ok == true) {
+            gesti = false;
+        }
+
+        //geral extras
+        boolean gextr = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarExt, acessar, telaGeralExtr, usuario, peDAO);
+        if (!ok == true) {
+            gextr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarExt, editar, telaGeralExtr, usuario, peDAO);
+        if (!ok == true) {
+            gextr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarExt, salvar, telaGeralExtr, usuario, peDAO);
+        if (!ok == true) {
+            gextr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirExt, excluir, telaGeralExtr, usuario, peDAO);
+        if (!ok == true) {
+            gextr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarExt, buscar, telaGeralExtr, usuario, peDAO);
+        if (!ok == true) {
+            gextr = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaExt, limparBusca, telaGeralExtr, usuario, peDAO);
+        if (!ok == true) {
+            gextr = false;
+        }
+
+        //geral segurança
+        boolean gsegu = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarSeg, acessar, telaGeralSegu, usuario, peDAO);
+        if (!ok == true) {
+            gsegu = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarSeg, editar, telaGeralSegu, usuario, peDAO);
+        if (!ok == true) {
+            gsegu = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarSeg, salvar, telaGeralSegu, usuario, peDAO);
+        if (!ok == true) {
+            gsegu = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirSeg, excluir, telaGeralSegu, usuario, peDAO);
+        if (!ok == true) {
+            gsegu = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarSeg, buscar, telaGeralSegu, usuario, peDAO);
+        if (!ok == true) {
+            gsegu = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaSeg, limparBusca, telaGeralSegu, usuario, peDAO);
+        if (!ok == true) {
+            gsegu = false;
+        }
+
+        //geral tecnologia
+        boolean gtecn = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarTec, acessar, telaGeralTecn, usuario, peDAO);
+        if (!ok == true) {
+            gtecn = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarTec, editar, telaGeralTecn, usuario, peDAO);
+        if (!ok == true) {
+            gtecn = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarTec, salvar, telaGeralTecn, usuario, peDAO);
+        if (!ok == true) {
+            gtecn = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirTec, excluir, telaGeralTecn, usuario, peDAO);
+        if (!ok == true) {
+            gtecn = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarTec, buscar, telaGeralTecn, usuario, peDAO);
+        if (!ok == true) {
+            gtecn = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaTec, limparBusca, telaGeralTecn, usuario, peDAO);
+        if (!ok == true) {
+            gtecn = false;
+        }
+
+        //geral cidade
+        boolean gcid = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCid, acessar, telaGeralCida, usuario, peDAO);
+        if (!ok == true) {
+            gcid = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarCid, editar, telaGeralCida, usuario, peDAO);
+        if (!ok == true) {
+            gcid = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarCid, salvar, telaGeralCida, usuario, peDAO);
+        if (!ok == true) {
+            gcid = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirCid, excluir, telaGeralCida, usuario, peDAO);
+        if (!ok == true) {
+            gcid = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarCid, buscar, telaGeralCida, usuario, peDAO);
+        if (!ok == true) {
+            gcid = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaCid, limparBusca, telaGeralCida, usuario, peDAO);
+        if (!ok == true) {
+            gcid = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralComboCid, comboEstado, telaGeralCida, usuario, peDAO);
+        if (!ok == true) {
+            gcid = false;
+        }
+        
+//geral estados
+        boolean gest = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarEsta, acessar, telaGeralEsta, usuario, peDAO);
+        if (!ok == true) {
+            gest = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarEsta, editar, telaGeralEsta, usuario, peDAO);
+        if (!ok == true) {
+            gest = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarEsta, salvar, telaGeralEsta, usuario, peDAO);
+        if (!ok == true) {
+            gest = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirEsta, excluir, telaGeralEsta, usuario, peDAO);
+        if (!ok == true) {
+            gest = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarEsta, buscar, telaGeralEsta, usuario, peDAO);
+        if (!ok == true) {
+            gest = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaEsta, limparBusca, telaGeralEsta, usuario, peDAO);
+        if (!ok == true) {
+            gest = false;
+        }
+
+        //geral perfis
+        boolean gperf = true;
+
+        ok = Funcoes.verificaPermissoes(cbxGeralAcessarPerf, acessar, telaGeralPerf, usuario, peDAO);
+        if (!ok == true) {
+            gperf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralEditarPerf, editar, telaGeralPerf, usuario, peDAO);
+        if (!ok == true) {
+            gperf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralSalvarPerf, salvar, telaGeralPerf, usuario, peDAO);
+        if (!ok == true) {
+            gperf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralExcluirPerf, excluir, telaGeralPerf, usuario, peDAO);
+        if (!ok == true) {
+            gperf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralBuscarPerf, buscar, telaGeralPerf, usuario, peDAO);
+        if (!ok == true) {
+            gperf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaPerf, limparBusca, telaGeralPerf, usuario, peDAO);
+        if (!ok == true) {
+            gperf = false;
+        }
+
+        if (marca && modelo && user && versao && gacab && gcamb && gcarr && gcomb && gconf && gcore && gcori && gesti && gextr && gsegu && gtecn && gcid && gest && gperf) {
             return true;
         } else {
             return false;
         }
     }
 
-    private void sucesso(){
+    private void sucesso() {
         Mensagem.informacao("Permissões aplicadas com sucesso!", this);
     }
-    
-    private void erro(){
+
+    private void erro() {
         Mensagem.informacao("Ocorreu um erro ao aplicar as permissões!", this);
     }
 
@@ -1119,8 +2487,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 if (ok) {
                     carregando.dispose();
                     sucesso();
-                }
-                else{
+                } else {
                     erro();
                 }
             }
@@ -1173,19 +2540,104 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox cbxGeralAcessarAcab;
-    private javax.swing.JCheckBox cbxGeralAcessarAcab1;
+    private javax.swing.JCheckBox cbxGeralAcessarCamb;
+    private javax.swing.JCheckBox cbxGeralAcessarCarr;
+    private javax.swing.JCheckBox cbxGeralAcessarCid;
+    private javax.swing.JCheckBox cbxGeralAcessarComb;
+    private javax.swing.JCheckBox cbxGeralAcessarConft;
+    private javax.swing.JCheckBox cbxGeralAcessarCorEx;
+    private javax.swing.JCheckBox cbxGeralAcessarCorInt;
+    private javax.swing.JCheckBox cbxGeralAcessarEst;
+    private javax.swing.JCheckBox cbxGeralAcessarEsta;
+    private javax.swing.JCheckBox cbxGeralAcessarExt;
+    private javax.swing.JCheckBox cbxGeralAcessarPerf;
+    private javax.swing.JCheckBox cbxGeralAcessarSeg;
+    private javax.swing.JCheckBox cbxGeralAcessarTec;
     private javax.swing.JCheckBox cbxGeralBuscarAcab;
-    private javax.swing.JCheckBox cbxGeralBuscarAcab1;
+    private javax.swing.JCheckBox cbxGeralBuscarCamb;
+    private javax.swing.JCheckBox cbxGeralBuscarCarr;
+    private javax.swing.JCheckBox cbxGeralBuscarCid;
+    private javax.swing.JCheckBox cbxGeralBuscarComb;
+    private javax.swing.JCheckBox cbxGeralBuscarConft;
+    private javax.swing.JCheckBox cbxGeralBuscarCorEx;
+    private javax.swing.JCheckBox cbxGeralBuscarCorInt;
+    private javax.swing.JCheckBox cbxGeralBuscarEst;
+    private javax.swing.JCheckBox cbxGeralBuscarEsta;
+    private javax.swing.JCheckBox cbxGeralBuscarExt;
+    private javax.swing.JCheckBox cbxGeralBuscarPerf;
+    private javax.swing.JCheckBox cbxGeralBuscarSeg;
+    private javax.swing.JCheckBox cbxGeralBuscarTec;
+    private javax.swing.JCheckBox cbxGeralComboCid;
     private javax.swing.JCheckBox cbxGeralEditarAcab;
-    private javax.swing.JCheckBox cbxGeralEditarAcab1;
+    private javax.swing.JCheckBox cbxGeralEditarCamb;
+    private javax.swing.JCheckBox cbxGeralEditarCarr;
+    private javax.swing.JCheckBox cbxGeralEditarCid;
+    private javax.swing.JCheckBox cbxGeralEditarComb;
+    private javax.swing.JCheckBox cbxGeralEditarConft;
+    private javax.swing.JCheckBox cbxGeralEditarCorEx;
+    private javax.swing.JCheckBox cbxGeralEditarCorInt;
+    private javax.swing.JCheckBox cbxGeralEditarEst;
+    private javax.swing.JCheckBox cbxGeralEditarEsta;
+    private javax.swing.JCheckBox cbxGeralEditarExt;
+    private javax.swing.JCheckBox cbxGeralEditarPerf;
+    private javax.swing.JCheckBox cbxGeralEditarSeg;
+    private javax.swing.JCheckBox cbxGeralEditarTec;
     private javax.swing.JCheckBox cbxGeralExcluirAcab;
-    private javax.swing.JCheckBox cbxGeralExcluirAcab1;
+    private javax.swing.JCheckBox cbxGeralExcluirCamb;
+    private javax.swing.JCheckBox cbxGeralExcluirCarr;
+    private javax.swing.JCheckBox cbxGeralExcluirCid;
+    private javax.swing.JCheckBox cbxGeralExcluirComb;
+    private javax.swing.JCheckBox cbxGeralExcluirConft;
+    private javax.swing.JCheckBox cbxGeralExcluirCorEx;
+    private javax.swing.JCheckBox cbxGeralExcluirCorInt;
+    private javax.swing.JCheckBox cbxGeralExcluirEst;
+    private javax.swing.JCheckBox cbxGeralExcluirEsta;
+    private javax.swing.JCheckBox cbxGeralExcluirExt;
+    private javax.swing.JCheckBox cbxGeralExcluirPerf;
+    private javax.swing.JCheckBox cbxGeralExcluirSeg;
+    private javax.swing.JCheckBox cbxGeralExcluirTec;
     private javax.swing.JCheckBox cbxGeralLimparBuscaAcab;
-    private javax.swing.JCheckBox cbxGeralLimparBuscaAcab1;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaCamb;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaCarr;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaCid;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaComb;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaConft;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaCorEx;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaCorInt;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaEst;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaEsta;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaExt;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaPerf;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaSeg;
+    private javax.swing.JCheckBox cbxGeralLimparBuscaTec;
     private javax.swing.JCheckBox cbxGeralListarAcab;
-    private javax.swing.JCheckBox cbxGeralListarAcab1;
+    private javax.swing.JCheckBox cbxGeralListarCamb;
+    private javax.swing.JCheckBox cbxGeralListarCarr;
+    private javax.swing.JCheckBox cbxGeralListarCid;
+    private javax.swing.JCheckBox cbxGeralListarComb;
+    private javax.swing.JCheckBox cbxGeralListarConft;
+    private javax.swing.JCheckBox cbxGeralListarCorEx;
+    private javax.swing.JCheckBox cbxGeralListarCorInt;
+    private javax.swing.JCheckBox cbxGeralListarEst;
+    private javax.swing.JCheckBox cbxGeralListarEsta;
+    private javax.swing.JCheckBox cbxGeralListarExt;
+    private javax.swing.JCheckBox cbxGeralListarPerf;
+    private javax.swing.JCheckBox cbxGeralListarSeg;
+    private javax.swing.JCheckBox cbxGeralListarTec;
     private javax.swing.JCheckBox cbxGeralSalvarAcab;
-    private javax.swing.JCheckBox cbxGeralSalvarAcab1;
+    private javax.swing.JCheckBox cbxGeralSalvarCamb;
+    private javax.swing.JCheckBox cbxGeralSalvarCarr;
+    private javax.swing.JCheckBox cbxGeralSalvarCid;
+    private javax.swing.JCheckBox cbxGeralSalvarComb;
+    private javax.swing.JCheckBox cbxGeralSalvarConft;
+    private javax.swing.JCheckBox cbxGeralSalvarCorEx;
+    private javax.swing.JCheckBox cbxGeralSalvarCorInt;
+    private javax.swing.JCheckBox cbxGeralSalvarEst;
+    private javax.swing.JCheckBox cbxGeralSalvarEsta;
+    private javax.swing.JCheckBox cbxGeralSalvarExt;
+    private javax.swing.JCheckBox cbxGeralSalvarPerf;
+    private javax.swing.JCheckBox cbxGeralSalvarSeg;
+    private javax.swing.JCheckBox cbxGeralSalvarTec;
     private javax.swing.JCheckBox cbxMarcaAcessar;
     private javax.swing.JCheckBox cbxMarcaBuscar;
     private javax.swing.JCheckBox cbxMarcaEditar;
