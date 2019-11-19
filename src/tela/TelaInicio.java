@@ -37,9 +37,13 @@ public class TelaInicio extends javax.swing.JFrame {
     private void verificarPermissoes() {
         if (!peDAO.consultarPermissao("Acessar", "versao")) {
             btnCVersao.setEnabled(false);
+        } else {
+            btnCVersao.setEnabled(true);
         }
         if (!peDAO.consultarPermissao("Acessar", "usuario")) {
             btnCUsuario.setEnabled(false);
+        } else {
+            btnCUsuario.setEnabled(true);
         }
 //        if (!peDAO.consultarPermissao("Acessar", "cliente")) {
 //            btnCCliente.setEnabled(false);
@@ -49,17 +53,23 @@ public class TelaInicio extends javax.swing.JFrame {
 //            btnCProprietario.setEnabled(false);
 //            btnAtalhoCProprietario.setEnabled(false);
 //        }
-//        if (!peDAO.consultarPermissao("Acessar", "geral")) {
-//            btnCGeral.setEnabled(false);
-//        }
+        if (!peDAO.consultarPermissao("Acessar", "geralacab")) {
+            btnCGeral.setEnabled(false);
+        } else {
+            btnCGeral.setEnabled(true);
+        }
 //        if (!peDAO.consultarPermissao("Acessar", "empresavistoria")) {
 //            btnCEmpresaVistoria.setEnabled(false);
 //        }
         if (!peDAO.consultarPermissao("Acessar", "marca")) {
             btnCMarca.setEnabled(false);
+        } else {
+            btnCMarca.setEnabled(true);
         }
         if (!peDAO.consultarPermissao("Acessar", "modelo")) {
             btnCModelo.setEnabled(false);
+        } else {
+            btnCModelo.setEnabled(true);
         }
 //        if (!peDAO.consultarPermissao("Acessar", "veiculo")) {
 //            btnCVeiculo.setEnabled(false);
@@ -162,6 +172,11 @@ public class TelaInicio extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-add-property-16.png"))); // NOI18N
         jMenu1.setText("Cadastros");
+        jMenu1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jMenu1StateChanged(evt);
+            }
+        });
 
         btnCUsuario.setText("Usuários");
         btnCUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -308,6 +323,10 @@ public class TelaInicio extends javax.swing.JFrame {
     private void btnAtalhoCVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCVeiculoActionPerformed
         gerenciarJanelas.abreJanela(TelaCadastroVeiculo.getInstancia());
     }//GEN-LAST:event_btnAtalhoCVeiculoActionPerformed
+
+    private void jMenu1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jMenu1StateChanged
+        verificarPermissoes();
+    }//GEN-LAST:event_jMenu1StateChanged
 
     /**
      * @param args the command line arguments

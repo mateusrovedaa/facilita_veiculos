@@ -10,8 +10,6 @@ import entidade.Usuario;
 import functions.Funcoes;
 import functions.Mensagem;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -71,6 +69,7 @@ public class TelaPermissao extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.usuario = usuario;
+        jLabel2.setText("Aplicando permissões ao usuário: " + usuario.getNome());
         preenchePermissoesMarca();
         preenchePermissoesModelo();
         preenchePermissoesUsuario();
@@ -100,6 +99,10 @@ public class TelaPermissao extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel12 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        btnSalvar = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         cbxMarcaAcessar = new javax.swing.JCheckBox();
@@ -153,11 +156,9 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralExcluirAcab = new javax.swing.JCheckBox();
         cbxGeralSalvarAcab = new javax.swing.JCheckBox();
         cbxGeralLimparBuscaAcab = new javax.swing.JCheckBox();
-        cbxGeralAcessarAcab = new javax.swing.JCheckBox();
         cbxGeralEditarAcab = new javax.swing.JCheckBox();
         pnlCambios = new javax.swing.JPanel();
         cbxGeralExcluirCamb = new javax.swing.JCheckBox();
-        cbxGeralAcessarCamb = new javax.swing.JCheckBox();
         cbxGeralEditarCamb = new javax.swing.JCheckBox();
         cbxGeralListarCamb = new javax.swing.JCheckBox();
         cbxGeralBuscarCamb = new javax.swing.JCheckBox();
@@ -166,7 +167,6 @@ public class TelaPermissao extends javax.swing.JDialog {
         jPanel13 = new javax.swing.JPanel();
         cbxGeralLimparBuscaCarr = new javax.swing.JCheckBox();
         cbxGeralBuscarCarr = new javax.swing.JCheckBox();
-        cbxGeralAcessarCarr = new javax.swing.JCheckBox();
         cbxGeralExcluirCarr = new javax.swing.JCheckBox();
         cbxGeralSalvarCarr = new javax.swing.JCheckBox();
         cbxGeralEditarCarr = new javax.swing.JCheckBox();
@@ -177,7 +177,6 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralBuscarComb = new javax.swing.JCheckBox();
         cbxGeralExcluirComb = new javax.swing.JCheckBox();
         cbxGeralLimparBuscaComb = new javax.swing.JCheckBox();
-        cbxGeralAcessarComb = new javax.swing.JCheckBox();
         cbxGeralEditarComb = new javax.swing.JCheckBox();
         jPanel15 = new javax.swing.JPanel();
         cbxGeralSalvarConft = new javax.swing.JCheckBox();
@@ -186,17 +185,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralLimparBuscaConft = new javax.swing.JCheckBox();
         cbxGeralListarConft = new javax.swing.JCheckBox();
         cbxGeralEditarConft = new javax.swing.JCheckBox();
-        cbxGeralAcessarConft = new javax.swing.JCheckBox();
         jPanel16 = new javax.swing.JPanel();
         cbxGeralExcluirCorEx = new javax.swing.JCheckBox();
         cbxGeralLimparBuscaCorEx = new javax.swing.JCheckBox();
         cbxGeralSalvarCorEx = new javax.swing.JCheckBox();
         cbxGeralListarCorEx = new javax.swing.JCheckBox();
-        cbxGeralAcessarCorEx = new javax.swing.JCheckBox();
         cbxGeralEditarCorEx = new javax.swing.JCheckBox();
         cbxGeralBuscarCorEx = new javax.swing.JCheckBox();
         jPanel17 = new javax.swing.JPanel();
-        cbxGeralAcessarCorInt = new javax.swing.JCheckBox();
         cbxGeralExcluirCorInt = new javax.swing.JCheckBox();
         cbxGeralListarCorInt = new javax.swing.JCheckBox();
         cbxGeralBuscarCorInt = new javax.swing.JCheckBox();
@@ -204,7 +200,6 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralSalvarCorInt = new javax.swing.JCheckBox();
         cbxGeralEditarCorInt = new javax.swing.JCheckBox();
         jPanel18 = new javax.swing.JPanel();
-        cbxGeralAcessarEst = new javax.swing.JCheckBox();
         cbxGeralExcluirEst = new javax.swing.JCheckBox();
         cbxGeralSalvarEst = new javax.swing.JCheckBox();
         cbxGeralListarEst = new javax.swing.JCheckBox();
@@ -212,7 +207,6 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralEditarEst = new javax.swing.JCheckBox();
         cbxGeralBuscarEst = new javax.swing.JCheckBox();
         jPanel19 = new javax.swing.JPanel();
-        cbxGeralAcessarExt = new javax.swing.JCheckBox();
         cbxGeralSalvarExt = new javax.swing.JCheckBox();
         cbxGeralExcluirExt = new javax.swing.JCheckBox();
         cbxGeralLimparBuscaExt = new javax.swing.JCheckBox();
@@ -226,12 +220,10 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralSalvarSeg = new javax.swing.JCheckBox();
         cbxGeralBuscarSeg = new javax.swing.JCheckBox();
         cbxGeralListarSeg = new javax.swing.JCheckBox();
-        cbxGeralAcessarSeg = new javax.swing.JCheckBox();
         jPanel21 = new javax.swing.JPanel();
         cbxGeralLimparBuscaTec = new javax.swing.JCheckBox();
         cbxGeralSalvarTec = new javax.swing.JCheckBox();
         cbxGeralListarTec = new javax.swing.JCheckBox();
-        cbxGeralAcessarTec = new javax.swing.JCheckBox();
         cbxGeralExcluirTec = new javax.swing.JCheckBox();
         cbxGeralBuscarTec = new javax.swing.JCheckBox();
         cbxGeralEditarTec = new javax.swing.JCheckBox();
@@ -244,7 +236,6 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralEditarCid = new javax.swing.JCheckBox();
         cbxGeralExcluirCid = new javax.swing.JCheckBox();
         cbxGeralLimparBuscaCid = new javax.swing.JCheckBox();
-        cbxGeralAcessarCid = new javax.swing.JCheckBox();
         cbxGeralComboCid = new javax.swing.JCheckBox();
         jPanel9 = new javax.swing.JPanel();
         cbxGeralListarEsta = new javax.swing.JCheckBox();
@@ -253,20 +244,59 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralExcluirEsta = new javax.swing.JCheckBox();
         cbxGeralBuscarEsta = new javax.swing.JCheckBox();
         cbxGeralLimparBuscaEsta = new javax.swing.JCheckBox();
-        cbxGeralAcessarEsta = new javax.swing.JCheckBox();
         jPanel10 = new javax.swing.JPanel();
         cbxGeralBuscarPerf = new javax.swing.JCheckBox();
         cbxGeralLimparBuscaPerf = new javax.swing.JCheckBox();
-        cbxGeralAcessarPerf = new javax.swing.JCheckBox();
         cbxGeralEditarPerf = new javax.swing.JCheckBox();
         cbxGeralExcluirPerf = new javax.swing.JCheckBox();
         cbxGeralListarPerf = new javax.swing.JCheckBox();
         cbxGeralSalvarPerf = new javax.swing.JCheckBox();
-        btnSalvar = new javax.swing.JButton();
-        btnFechar = new javax.swing.JButton();
+        cbxGeralAcessarAcab = new javax.swing.JCheckBox();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Permissões");
+
+        jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-save-close-16.png"))); // NOI18N
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-exit-16.png"))); // NOI18N
+        btnFechar.setText("Fechar");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFechar)
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnFechar))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         cbxMarcaAcessar.setText("Acessar");
 
@@ -296,7 +326,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                     .addComponent(cbxMarcaExcluir)
                     .addComponent(cbxMarcaBuscar)
                     .addComponent(cbxMarcaListar))
-                .addContainerGap(280, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +345,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxMarcaLimparBusca)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxMarcaListar)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Marca", jPanel1);
@@ -367,7 +397,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                         .addGap(111, 111, 111)
                         .addComponent(cbxModeloComboMarcaListar))
                     .addComponent(cbxModeloComboMarcaCadastro))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,7 +424,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxModeloListar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxModeloComboMarcaCadastro)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modelo", jPanel2);
@@ -440,7 +470,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                             .addComponent(cbxUsuarioComboListar)))
                     .addComponent(cbxUsuarioPermissao)
                     .addComponent(cbxUsuarioListar))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,7 +495,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxUsuarioPermissao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxUsuarioListar)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Usuário", jPanel3);
@@ -497,6 +527,7 @@ public class TelaPermissao extends javax.swing.JDialog {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxVersaoListar)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbxVersaoAcessar)
@@ -509,9 +540,8 @@ public class TelaPermissao extends javax.swing.JDialog {
                     .addComponent(cbxVersaoExcluir)
                     .addComponent(cbxVersaoLimparBusca)
                     .addComponent(cbxVersaoBuscar)
-                    .addComponent(cbxVersaoListar)
                     .addComponent(cbxVersaoProcurarModelo))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -536,7 +566,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxVersaoProcurarModelo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxVersaoListar)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Versão", jPanel4);
@@ -553,8 +583,6 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         cbxGeralLimparBuscaAcab.setText("Botão Limpar Busca");
 
-        cbxGeralAcessarAcab.setText("Acessar");
-
         cbxGeralEditarAcab.setText("Botão Editar");
 
         javax.swing.GroupLayout pnlAcabInternoLayout = new javax.swing.GroupLayout(pnlAcabInterno);
@@ -564,7 +592,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             .addGroup(pnlAcabInternoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlAcabInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxGeralAcessarAcab)
                     .addComponent(cbxGeralSalvarAcab)
                     .addComponent(cbxGeralEditarAcab)
                     .addComponent(cbxGeralExcluirAcab)
@@ -577,8 +604,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             pnlAcabInternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAcabInternoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarAcab)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarAcab)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarAcab)
@@ -590,14 +615,12 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaAcab)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarAcab)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Acabamentos internos", pnlAcabInterno);
 
         cbxGeralExcluirCamb.setText("Botão Excluir");
-
-        cbxGeralAcessarCamb.setText("Acessar");
 
         cbxGeralEditarCamb.setText("Botão Editar");
 
@@ -621,7 +644,6 @@ public class TelaPermissao extends javax.swing.JDialog {
                     .addComponent(cbxGeralExcluirCamb)
                     .addComponent(cbxGeralSalvarCamb)
                     .addComponent(cbxGeralLimparBuscaCamb)
-                    .addComponent(cbxGeralAcessarCamb)
                     .addComponent(cbxGeralEditarCamb))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
@@ -629,8 +651,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             pnlCambiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCambiosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarCamb)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarCamb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarCamb)
@@ -642,7 +662,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaCamb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarCamb)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Câmbios", pnlCambios);
@@ -650,8 +670,6 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralLimparBuscaCarr.setText("Botão Limpar Busca");
 
         cbxGeralBuscarCarr.setText("Botão Buscar");
-
-        cbxGeralAcessarCarr.setText("Acessar");
 
         cbxGeralExcluirCarr.setText("Botão Excluir");
 
@@ -669,7 +687,6 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxGeralExcluirCarr)
-                    .addComponent(cbxGeralAcessarCarr)
                     .addComponent(cbxGeralEditarCarr)
                     .addComponent(cbxGeralListarCarr)
                     .addComponent(cbxGeralBuscarCarr)
@@ -681,8 +698,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarCarr)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarCarr)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarCarr)
@@ -694,7 +709,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaCarr)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarCarr)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Carrocerias", jPanel13);
@@ -709,8 +724,6 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         cbxGeralLimparBuscaComb.setText("Botão Limpar Busca");
 
-        cbxGeralAcessarComb.setText("Acessar");
-
         cbxGeralEditarComb.setText("Botão Editar");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -722,7 +735,6 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxGeralLimparBuscaComb)
                     .addComponent(cbxGeralBuscarComb)
-                    .addComponent(cbxGeralAcessarComb)
                     .addComponent(cbxGeralExcluirComb)
                     .addComponent(cbxGeralSalvarComb)
                     .addComponent(cbxGeralEditarComb)
@@ -733,8 +745,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarComb)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarComb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarComb)
@@ -746,7 +756,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaComb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarComb)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Combustíveis", jPanel14);
@@ -763,8 +773,6 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         cbxGeralEditarConft.setText("Botão Editar");
 
-        cbxGeralAcessarConft.setText("Acessar");
-
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
@@ -777,7 +785,6 @@ public class TelaPermissao extends javax.swing.JDialog {
                     .addComponent(cbxGeralBuscarConft)
                     .addComponent(cbxGeralExcluirConft)
                     .addComponent(cbxGeralLimparBuscaConft)
-                    .addComponent(cbxGeralAcessarConft)
                     .addComponent(cbxGeralEditarConft))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
@@ -785,8 +792,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarConft)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarConft)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarConft)
@@ -798,7 +803,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaConft)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarConft)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Confortos", jPanel15);
@@ -810,8 +815,6 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralSalvarCorEx.setText("Botão Salvar");
 
         cbxGeralListarCorEx.setText("Listar registros cadastrados");
-
-        cbxGeralAcessarCorEx.setText("Acessar");
 
         cbxGeralEditarCorEx.setText("Botão Editar");
 
@@ -829,16 +832,13 @@ public class TelaPermissao extends javax.swing.JDialog {
                     .addComponent(cbxGeralExcluirCorEx)
                     .addComponent(cbxGeralLimparBuscaCorEx)
                     .addComponent(cbxGeralListarCorEx)
-                    .addComponent(cbxGeralEditarCorEx)
-                    .addComponent(cbxGeralAcessarCorEx))
+                    .addComponent(cbxGeralEditarCorEx))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarCorEx)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarCorEx)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarCorEx)
@@ -850,12 +850,10 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaCorEx)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarCorEx)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Cores externas", jPanel16);
-
-        cbxGeralAcessarCorInt.setText("Acessar");
 
         cbxGeralExcluirCorInt.setText("Botão Excluir");
 
@@ -880,7 +878,6 @@ public class TelaPermissao extends javax.swing.JDialog {
                     .addComponent(cbxGeralLimparBuscaCorInt)
                     .addComponent(cbxGeralSalvarCorInt)
                     .addComponent(cbxGeralListarCorInt)
-                    .addComponent(cbxGeralAcessarCorInt)
                     .addComponent(cbxGeralEditarCorInt)
                     .addComponent(cbxGeralBuscarCorInt))
                 .addContainerGap(85, Short.MAX_VALUE))
@@ -889,8 +886,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarCorInt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarCorInt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarCorInt)
@@ -902,12 +897,10 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaCorInt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarCorInt)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Cores internas", jPanel17);
-
-        cbxGeralAcessarEst.setText("Acessar");
 
         cbxGeralExcluirEst.setText("Botão Excluir");
 
@@ -928,7 +921,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxGeralAcessarEst)
                     .addComponent(cbxGeralExcluirEst)
                     .addComponent(cbxGeralListarEst)
                     .addComponent(cbxGeralBuscarEst)
@@ -941,8 +933,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarEst)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarEst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarEst)
@@ -954,12 +944,10 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaEst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarEst)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Estilos", jPanel18);
-
-        cbxGeralAcessarExt.setText("Acessar");
 
         cbxGeralSalvarExt.setText("Botão Salvar");
 
@@ -980,7 +968,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxGeralAcessarExt)
                     .addComponent(cbxGeralExcluirExt)
                     .addComponent(cbxGeralSalvarExt)
                     .addComponent(cbxGeralListarExt)
@@ -993,8 +980,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarExt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarExt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarExt)
@@ -1006,7 +991,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaExt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarExt)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Extras", jPanel19);
@@ -1023,8 +1008,6 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         cbxGeralListarSeg.setText("Listar registros cadastrados");
 
-        cbxGeralAcessarSeg.setText("Acessar");
-
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
@@ -1032,7 +1015,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbxGeralAcessarSeg)
                     .addComponent(cbxGeralSalvarSeg)
                     .addComponent(cbxGeralExcluirSeg)
                     .addComponent(cbxGeralLimparBuscaSeg)
@@ -1045,8 +1027,6 @@ public class TelaPermissao extends javax.swing.JDialog {
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarSeg)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarSeg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarSeg)
@@ -1058,7 +1038,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaSeg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarSeg)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Seguranças", jPanel20);
@@ -1068,8 +1048,6 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralSalvarTec.setText("Botão Salvar");
 
         cbxGeralListarTec.setText("Listar registros cadastrados");
-
-        cbxGeralAcessarTec.setText("Acessar");
 
         cbxGeralExcluirTec.setText("Botão Excluir");
 
@@ -1089,16 +1067,13 @@ public class TelaPermissao extends javax.swing.JDialog {
                     .addComponent(cbxGeralEditarTec)
                     .addComponent(cbxGeralSalvarTec)
                     .addComponent(cbxGeralBuscarTec)
-                    .addComponent(cbxGeralListarTec)
-                    .addComponent(cbxGeralAcessarTec))
+                    .addComponent(cbxGeralListarTec))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarTec)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarTec)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarTec)
@@ -1110,7 +1085,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaTec)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarTec)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Tecnologias", jPanel21);
@@ -1144,8 +1119,6 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         cbxGeralLimparBuscaCid.setText("Botão Limpar Busca");
 
-        cbxGeralAcessarCid.setText("Acessar");
-
         cbxGeralComboCid.setText("Combo Estado");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -1155,29 +1128,19 @@ public class TelaPermissao extends javax.swing.JDialog {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(cbxGeralAcessarCid)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                        .addComponent(cbxGeralComboCid)
-                        .addGap(47, 47, 47))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbxGeralBuscarCid)
-                            .addComponent(cbxGeralListarCid)
-                            .addComponent(cbxGeralExcluirCid)
-                            .addComponent(cbxGeralSalvarCid)
-                            .addComponent(cbxGeralLimparBuscaCid)
-                            .addComponent(cbxGeralEditarCid))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(cbxGeralBuscarCid)
+                    .addComponent(cbxGeralListarCid)
+                    .addComponent(cbxGeralExcluirCid)
+                    .addComponent(cbxGeralSalvarCid)
+                    .addComponent(cbxGeralLimparBuscaCid)
+                    .addComponent(cbxGeralEditarCid)
+                    .addComponent(cbxGeralComboCid))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxGeralAcessarCid)
-                    .addComponent(cbxGeralComboCid))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarCid)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarCid)
@@ -1189,7 +1152,9 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaCid)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarCid)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxGeralComboCid)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Cidades", jPanel8);
@@ -1206,8 +1171,6 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         cbxGeralLimparBuscaEsta.setText("Botão Limpar Busca");
 
-        cbxGeralAcessarEsta.setText("Acessar");
-
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -1220,16 +1183,13 @@ public class TelaPermissao extends javax.swing.JDialog {
                     .addComponent(cbxGeralBuscarEsta)
                     .addComponent(cbxGeralEditarEsta)
                     .addComponent(cbxGeralExcluirEsta)
-                    .addComponent(cbxGeralLimparBuscaEsta)
-                    .addComponent(cbxGeralAcessarEsta))
+                    .addComponent(cbxGeralLimparBuscaEsta))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarEsta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarEsta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarEsta)
@@ -1241,7 +1201,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaEsta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarEsta)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Estados", jPanel9);
@@ -1249,8 +1209,6 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralBuscarPerf.setText("Botão Buscar");
 
         cbxGeralLimparBuscaPerf.setText("Botão Limpar Busca");
-
-        cbxGeralAcessarPerf.setText("Acessar");
 
         cbxGeralEditarPerf.setText("Botão Editar");
 
@@ -1272,16 +1230,13 @@ public class TelaPermissao extends javax.swing.JDialog {
                     .addComponent(cbxGeralEditarPerf)
                     .addComponent(cbxGeralExcluirPerf)
                     .addComponent(cbxGeralBuscarPerf)
-                    .addComponent(cbxGeralLimparBuscaPerf)
-                    .addComponent(cbxGeralAcessarPerf))
+                    .addComponent(cbxGeralLimparBuscaPerf))
                 .addContainerGap(188, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cbxGeralAcessarPerf)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralSalvarPerf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralEditarPerf)
@@ -1293,7 +1248,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxGeralLimparBuscaPerf)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxGeralListarPerf)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Perfis", jPanel10);
@@ -1311,59 +1266,75 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         jTabbedPane2.addTab("Pessoal", jPanel7);
 
+        cbxGeralAcessarAcab.setText("Acessar");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarAcab)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxGeralAcessarAcab)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Geral", jPanel5);
 
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-save-close-16.png"))); // NOI18N
-        btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("jLabel2");
 
-        btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-exit-16.png"))); // NOI18N
-        btnFechar.setText("Fechar");
-        btnFechar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFecharActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnFechar))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 17, Short.MAX_VALUE))
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFechar))
-                .addContainerGap())
+            .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1537,9 +1508,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralCamb() {
         perm = peDAO.consultarPermissoes(telaGeralCamb, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarCamb.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarCamb.setSelected(true);
             }
@@ -1564,9 +1532,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralCarr() {
         perm = peDAO.consultarPermissoes(telaGeralCarr, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarCarr.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarCarr.setSelected(true);
             }
@@ -1591,9 +1556,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralComb() {
         perm = peDAO.consultarPermissoes(telaGeralComb, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarComb.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarComb.setSelected(true);
             }
@@ -1618,9 +1580,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralConf() {
         perm = peDAO.consultarPermissoes(telaGeralConf, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarConft.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarConft.setSelected(true);
             }
@@ -1645,9 +1604,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralCorE() {
         perm = peDAO.consultarPermissoes(telaGeralCorE, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarCorEx.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarCorEx.setSelected(true);
             }
@@ -1672,9 +1628,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralCorI() {
         perm = peDAO.consultarPermissoes(telaGeralCorI, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarCorInt.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarCorInt.setSelected(true);
             }
@@ -1699,9 +1652,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralEsti() {
         perm = peDAO.consultarPermissoes(telaGeralEsti, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarEst.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarEst.setSelected(true);
             }
@@ -1726,9 +1676,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralExtr() {
         perm = peDAO.consultarPermissoes(telaGeralExtr, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarExt.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarExt.setSelected(true);
             }
@@ -1753,9 +1700,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralSegu() {
         perm = peDAO.consultarPermissoes(telaGeralSegu, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarSeg.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarSeg.setSelected(true);
             }
@@ -1780,9 +1724,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralTecn() {
         perm = peDAO.consultarPermissoes(telaGeralTecn, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarTec.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarTec.setSelected(true);
             }
@@ -1807,9 +1748,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralCida() {
         perm = peDAO.consultarPermissoes(telaGeralCida, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarCid.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarCid.setSelected(true);
             }
@@ -1837,9 +1775,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralEsta() {
         perm = peDAO.consultarPermissoes(telaGeralEsta, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarEsta.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarEsta.setSelected(true);
             }
@@ -1864,9 +1799,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private void preenchePermissoesGeralPerf() {
         perm = peDAO.consultarPermissoes(telaGeralPerf, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
-            if (perm.get(i).equals(acessar)) {
-                cbxGeralAcessarPerf.setSelected(true);
-            }
             if (perm.get(i).equals(editar)) {
                 cbxGeralEditarPerf.setSelected(true);
             }
@@ -2052,6 +1984,10 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             versao = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxVersaoListar, listar, telaVersao, usuario, peDAO);
+        if (!ok == true) {
+            versao = false;
+        }
 
         //geral acab
         boolean gacab = true;
@@ -2080,14 +2016,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gacab = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarAcab, listar, telaGeralAcab, usuario, peDAO);
+        if (!ok == true) {
+            gacab = false;
+        }
 
         //geral camb
         boolean gcamb = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCamb, acessar, telaGeralCamb, usuario, peDAO);
-        if (!ok == true) {
-            gcamb = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarCamb, editar, telaGeralCamb, usuario, peDAO);
         if (!ok == true) {
             gcamb = false;
@@ -2108,14 +2044,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gcamb = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarCamb, listar, telaGeralCamb, usuario, peDAO);
+        if (!ok == true) {
+            gcamb = false;
+        }
 
         //geral carr
         boolean gcarr = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCarr, acessar, telaGeralCarr, usuario, peDAO);
-        if (!ok == true) {
-            gcarr = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarCarr, editar, telaGeralCarr, usuario, peDAO);
         if (!ok == true) {
             gcarr = false;
@@ -2136,14 +2072,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gcarr = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarCarr, listar, telaGeralCarr, usuario, peDAO);
+        if (!ok == true) {
+            gcarr = false;
+        }
 
         //geral comb
         boolean gcomb = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarComb, acessar, telaGeralComb, usuario, peDAO);
-        if (!ok == true) {
-            gcomb = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarComb, editar, telaGeralComb, usuario, peDAO);
         if (!ok == true) {
             gcomb = false;
@@ -2164,14 +2100,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gcomb = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarComb, listar, telaGeralComb, usuario, peDAO);
+        if (!ok == true) {
+            gcomb = false;
+        }
 
         //geral conf
         boolean gconf = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarConft, acessar, telaGeralConf, usuario, peDAO);
-        if (!ok == true) {
-            gconf = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarConft, editar, telaGeralConf, usuario, peDAO);
         if (!ok == true) {
             gconf = false;
@@ -2192,14 +2128,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gconf = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarConft, listar, telaGeralConf, usuario, peDAO);
+        if (!ok == true) {
+            gconf = false;
+        }
 
         //geral cor externa
         boolean gcore = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCorEx, acessar, telaGeralCorE, usuario, peDAO);
-        if (!ok == true) {
-            gcore = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarCorEx, editar, telaGeralCorE, usuario, peDAO);
         if (!ok == true) {
             gcore = false;
@@ -2220,14 +2156,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gcore = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarCorEx, listar, telaGeralCorE, usuario, peDAO);
+        if (!ok == true) {
+            gcore = false;
+        }
 
         //geral cor interna
         boolean gcori = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCorInt, acessar, telaGeralCorI, usuario, peDAO);
-        if (!ok == true) {
-            gcori = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarCorInt, editar, telaGeralCorI, usuario, peDAO);
         if (!ok == true) {
             gcori = false;
@@ -2248,14 +2184,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gcori = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarCorInt, listar, telaGeralCorI, usuario, peDAO);
+        if (!ok == true) {
+            gcori = false;
+        }
 
         //geral estilos
         boolean gesti = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarEst, acessar, telaGeralEsti, usuario, peDAO);
-        if (!ok == true) {
-            gesti = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarEst, editar, telaGeralEsti, usuario, peDAO);
         if (!ok == true) {
             gesti = false;
@@ -2276,14 +2212,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gesti = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarEst, listar, telaGeralEsti, usuario, peDAO);
+        if (!ok == true) {
+            gesti = false;
+        }
 
         //geral extras
         boolean gextr = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarExt, acessar, telaGeralExtr, usuario, peDAO);
-        if (!ok == true) {
-            gextr = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarExt, editar, telaGeralExtr, usuario, peDAO);
         if (!ok == true) {
             gextr = false;
@@ -2304,14 +2240,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gextr = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarExt, listar, telaGeralExtr, usuario, peDAO);
+        if (!ok == true) {
+            gextr = false;
+        }
 
         //geral segurança
         boolean gsegu = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarSeg, acessar, telaGeralSegu, usuario, peDAO);
-        if (!ok == true) {
-            gsegu = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarSeg, editar, telaGeralSegu, usuario, peDAO);
         if (!ok == true) {
             gsegu = false;
@@ -2332,14 +2268,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gsegu = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarSeg, listar, telaGeralSegu, usuario, peDAO);
+        if (!ok == true) {
+            gsegu = false;
+        }
 
         //geral tecnologia
         boolean gtecn = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarTec, acessar, telaGeralTecn, usuario, peDAO);
-        if (!ok == true) {
-            gtecn = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarTec, editar, telaGeralTecn, usuario, peDAO);
         if (!ok == true) {
             gtecn = false;
@@ -2360,14 +2296,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gtecn = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarTec, listar, telaGeralTecn, usuario, peDAO);
+        if (!ok == true) {
+            gtecn = false;
+        }
 
         //geral cidade
         boolean gcid = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarCid, acessar, telaGeralCida, usuario, peDAO);
-        if (!ok == true) {
-            gcid = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarCid, editar, telaGeralCida, usuario, peDAO);
         if (!ok == true) {
             gcid = false;
@@ -2392,14 +2328,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gcid = false;
         }
-        
-//geral estados
+        ok = Funcoes.verificaPermissoes(cbxGeralListarCid, listar, telaGeralCida, usuario, peDAO);
+        if (!ok == true) {
+            gcid = false;
+        }
+
+        //geral estados
         boolean gest = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarEsta, acessar, telaGeralEsta, usuario, peDAO);
-        if (!ok == true) {
-            gest = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarEsta, editar, telaGeralEsta, usuario, peDAO);
         if (!ok == true) {
             gest = false;
@@ -2420,14 +2356,14 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             gest = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarEsta, listar, telaGeralEsta, usuario, peDAO);
+        if (!ok == true) {
+            gest = false;
+        }
 
         //geral perfis
         boolean gperf = true;
 
-        ok = Funcoes.verificaPermissoes(cbxGeralAcessarPerf, acessar, telaGeralPerf, usuario, peDAO);
-        if (!ok == true) {
-            gperf = false;
-        }
         ok = Funcoes.verificaPermissoes(cbxGeralEditarPerf, editar, telaGeralPerf, usuario, peDAO);
         if (!ok == true) {
             gperf = false;
@@ -2445,6 +2381,10 @@ public class TelaPermissao extends javax.swing.JDialog {
             gperf = false;
         }
         ok = Funcoes.verificaPermissoes(cbxGeralLimparBuscaPerf, limparBusca, telaGeralPerf, usuario, peDAO);
+        if (!ok == true) {
+            gperf = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxGeralListarPerf, listar, telaGeralPerf, usuario, peDAO);
         if (!ok == true) {
             gperf = false;
         }
@@ -2540,19 +2480,6 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JCheckBox cbxGeralAcessarAcab;
-    private javax.swing.JCheckBox cbxGeralAcessarCamb;
-    private javax.swing.JCheckBox cbxGeralAcessarCarr;
-    private javax.swing.JCheckBox cbxGeralAcessarCid;
-    private javax.swing.JCheckBox cbxGeralAcessarComb;
-    private javax.swing.JCheckBox cbxGeralAcessarConft;
-    private javax.swing.JCheckBox cbxGeralAcessarCorEx;
-    private javax.swing.JCheckBox cbxGeralAcessarCorInt;
-    private javax.swing.JCheckBox cbxGeralAcessarEst;
-    private javax.swing.JCheckBox cbxGeralAcessarEsta;
-    private javax.swing.JCheckBox cbxGeralAcessarExt;
-    private javax.swing.JCheckBox cbxGeralAcessarPerf;
-    private javax.swing.JCheckBox cbxGeralAcessarSeg;
-    private javax.swing.JCheckBox cbxGeralAcessarTec;
     private javax.swing.JCheckBox cbxGeralBuscarAcab;
     private javax.swing.JCheckBox cbxGeralBuscarCamb;
     private javax.swing.JCheckBox cbxGeralBuscarCarr;
@@ -2676,8 +2603,11 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JCheckBox cbxVersaoListar;
     private javax.swing.JCheckBox cbxVersaoProcurarModelo;
     private javax.swing.JCheckBox cbxVersaoSalvar;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;

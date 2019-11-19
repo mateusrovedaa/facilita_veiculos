@@ -35,6 +35,7 @@ import functions.ComboItem;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
@@ -65,9 +66,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
     private void verificaPermissoes() {
         //acab interno
-        if (!peDAO.consultarPermissao("Acessar", "geralacab")) {
-            abaAcabamentoInterno.setEnabledAt(0, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralacab")) {
             btnSalvarAcabamentoInterno.setEnabled(false);
         }
@@ -88,9 +86,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //cambios
-        if (!peDAO.consultarPermissao("Acessar", "geralcamb")) {
-            abaAcabamentoInterno.setEnabledAt(1, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralcamb")) {
             btnSalvarCambio.setEnabled(false);
         }
@@ -111,9 +106,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //carrocerias
-        if (!peDAO.consultarPermissao("Acessar", "geralcarr")) {
-            abaAcabamentoInterno.setEnabledAt(2, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralcarr")) {
             btnSalvarCarroceria.setEnabled(false);
         }
@@ -134,9 +126,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //combustiveis
-        if (!peDAO.consultarPermissao("Acessar", "geralcomb")) {
-            abaAcabamentoInterno.setEnabledAt(3, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralcomb")) {
             btnSalvarCombustivel.setEnabled(false);
         }
@@ -157,9 +146,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //confortos
-        if (!peDAO.consultarPermissao("Acessar", "geralconf")) {
-            abaAcabamentoInterno.setEnabledAt(4, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralconf")) {
             btnSalvarConforto.setEnabled(false);
         }
@@ -180,9 +166,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //cor interna
-        if (!peDAO.consultarPermissao("Acessar", "geralcori")) {
-            abaAcabamentoInterno.setEnabledAt(5, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralcori")) {
             btnSalvarCorInterna.setEnabled(false);
         }
@@ -203,9 +186,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //cor externa
-        if (!peDAO.consultarPermissao("Acessar", "geralcore")) {
-            abaAcabamentoInterno.setEnabledAt(6, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralcore")) {
             btnSalvarCorExterna.setEnabled(false);
         }
@@ -226,9 +206,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //estilo
-        if (!peDAO.consultarPermissao("Acessar", "geralesti")) {
-            abaAcabamentoInterno.setEnabledAt(7, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralesti")) {
             btnSalvarEstilo.setEnabled(false);
         }
@@ -249,9 +226,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //extra
-        if (!peDAO.consultarPermissao("Acessar", "geralextr")) {
-            abaAcabamentoInterno.setEnabledAt(8, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralextr")) {
             btnSalvarExtra.setEnabled(false);
         }
@@ -272,9 +246,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //seguranca
-        if (!peDAO.consultarPermissao("Acessar", "geralsegu")) {
-            abaAcabamentoInterno.setEnabledAt(9, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralsegu")) {
             btnSalvarSeguranca.setEnabled(false);
         }
@@ -295,9 +266,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //tecnologia
-        if (!peDAO.consultarPermissao("Acessar", "geraltecn")) {
-            abaAcabamentoInterno.setEnabledAt(10, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geraltecn")) {
             btnSalvarTecnologia.setEnabled(false);
         }
@@ -318,9 +286,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //cidade
-        if (!peDAO.consultarPermissao("Acessar", "geralcida")) {
-            abaPerfil.setEnabledAt(0, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralcida")) {
             btnSalvarCidade.setEnabled(false);
         }
@@ -344,9 +309,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //estado
-        if (!peDAO.consultarPermissao("Acessar", "geralesta")) {
-            abaPerfil.setEnabledAt(1, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralesta")) {
             btnSalvarEstado.setEnabled(false);
         }
@@ -367,9 +329,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         }
 
         //perfil
-        if (!peDAO.consultarPermissao("Acessar", "geralperf")) {
-            abaPerfil.setEnabledAt(2, false);
-        }
         if (!peDAO.consultarPermissao("Salvar", "geralperf")) {
             btnSalvarPerfil.setEnabled(false);
         }
