@@ -72,5 +72,12 @@ Contributor(s):
     <mapping class="entidade.Cliente"/>
     <mapping class="entidade.Proprietario"/>
     <mapping class="entidade.EmpresaVistoria"/>
+    <mapping class="entidade.Veiculo"/>
+    <mapping class="entidade.SituacaoVeiculo"/>
+    <mapping class="entidade.VeiculoConforto"/>
+    <mapping class="entidade.VeiculoExtra"/>
+    <mapping class="entidade.VeiculoEstilo"/>
+    <mapping class="entidade.VeiculoSeguranca"/>
+    <mapping class="entidade.VeiculoTecnologia"/>
   </session-factory>
 </hibernate-configuration>
