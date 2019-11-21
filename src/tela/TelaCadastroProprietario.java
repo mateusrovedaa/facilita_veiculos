@@ -1,6 +1,7 @@
 package tela;
 
 import dao.DaoGenerico;
+import dao.PermissaoDao;
 import dao.ProprietarioDao;
 import entidade.Cidade;
 import entidade.Proprietario;
@@ -20,18 +21,19 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
 
     private static TelaCadastroProprietario tela;
     int codigo = 0;
+    PermissaoDao peDAO = new PermissaoDao();
 
     public TelaCadastroProprietario() {
         initComponents();
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
         this.setFrameIcon(icon);
+        verificaPermissoes();
         Formatacao.formatarRg(campoRg);
         Formatacao.formatarCpf(campoCpf);
         Formatacao.formatarTelefone(campoTelefone);
         Formatacao.formatarData(campoDataNascimento);
         campoIdCidadeBusca.setEditable(false);
         campoNomeCidadeBusca.setEditable(false);
-        new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
     }
 
     public static TelaCadastroProprietario getInstancia() {
@@ -39,6 +41,30 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
             tela = new TelaCadastroProprietario();
         }
         return tela;
+    }
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "proprietario")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "proprietario")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "proprietario")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "proprietario")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "proprietario")) {
+            btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "proprietario")) {
+            new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+        }
+        if (!peDAO.consultarPermissao("Procurar", "proprietario")) {
+            btnBuscaCidade.setEnabled(false);
+        }
     }
 
     private void funcaoFechar() {
@@ -514,11 +540,15 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroNome.setText("");
-        new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+        if (peDAO.consultarPermissao("Listar", "proprietario")) {
+            new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+        if (peDAO.consultarPermissao("Listar", "proprietario")) {
+            new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -566,7 +596,9 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
 
             if (retornoExcluirProprietario == true) {
                 Mensagem.informacao("Proprietário excluído com sucesso!", this);
-                new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+                if (peDAO.consultarPermissao("Listar", "proprietario")) {
+                    new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+                }
             } else {
                 Mensagem.erro(tblProprietario.getValueAt(tblProprietario.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -636,7 +668,9 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+            if (peDAO.consultarPermissao("Listar", "proprietario")) {
+                new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+            }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

@@ -41,7 +41,7 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
         GerenciarJanelas.fecharJanela(tela);
         tela = null;
     }
-    
+
     private void verificaPermissoes() {
         if (!peDAO.consultarPermissao("Salvar", "versao")) {
             btnSalvar.setEnabled(false);
@@ -187,9 +187,9 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeModeloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoNomeModeloBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscaModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, Short.MAX_VALUE)
+                .addComponent(btnBuscaModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -668,7 +668,9 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
         } else {
             filtro = String.valueOf(filtroMarcaId.getCodigo());
         }
-        new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtro);
+        if (peDAO.consultarPermissao("Listar", "versao")) {
+            new VersaoDao().popularTabela(tblVersao, campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtro);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -723,7 +725,7 @@ public class TelaCadastroVersao extends javax.swing.JInternalFrame {
 
             if (retornoExcluirVersao == true) {
                 Mensagem.informacao("Versão excluída com sucesso!", this);
-               verificaPermissoes();
+                verificaPermissoes();
             } else {
                 Mensagem.erro(tblVersao.getValueAt(tblVersao.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }

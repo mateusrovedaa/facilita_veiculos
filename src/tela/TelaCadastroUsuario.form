@@ -448,11 +448,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="comboFiltroPerfilId" min="-2" pref="223" max="-2" attributes="0"/>
+                              <Component id="comboFiltroPerfilId" min="-2" pref="192" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnLimparBusca" pref="117" max="32767" attributes="0"/>
+                              <Component id="btnLimparBusca" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -463,11 +463,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="btnLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                      <Component id="comboFiltroPerfilId" alignment="3" max="32767" attributes="0"/>
                                       <Component id="btnBuscar" alignment="3" max="32767" attributes="0"/>
-                                      <Component id="btnLimparBusca" alignment="3" max="32767" attributes="0"/>
                                   </Group>
-                                  <Component id="comboFiltroPerfilId" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
                                   <Component id="campoFiltroUsuario" alignment="1" max="32767" attributes="0"/>
                               </Group>

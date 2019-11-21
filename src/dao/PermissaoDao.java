@@ -3,6 +3,7 @@ package dao;
 import entidade.Permissao;
 import functions.ConexaoBD;
 import functions.IDAO_T;
+import functions.Log;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ public class PermissaoDao implements IDAO_T<Permissao> {
 
     public static int idUser = 0;
     ResultSet resultadoQ = null;
+    DaoGenerico dao = new DaoGenerico();
     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
     @Override
@@ -39,6 +41,7 @@ public class PermissaoDao implements IDAO_T<Permissao> {
             return true;
         } catch (Exception e) {
             System.out.println(e);
+            Log.geraLogBD(dao.pegarNome(), "Excluir Permissao", Permissao.class, e.toString());
             return false;
         }
     }
@@ -71,6 +74,7 @@ public class PermissaoDao implements IDAO_T<Permissao> {
             }
         } catch (Exception e) {
             System.out.println("Erro consultar permissao = " + e);
+            Log.geraLogBD(dao.pegarNome(), "Consultar Permissao", Permissao.class, e.toString());
         }
         return permissoes;
     }
@@ -93,6 +97,7 @@ public class PermissaoDao implements IDAO_T<Permissao> {
             }
         } catch (Exception e) {
             System.out.println("Erro consultar permissao = " + e);
+            Log.geraLogBD(dao.pegarNome(), "Consultar Permissao " + tela + "", Permissao.class, e.toString());
         }
         return permissoes;
     }
@@ -115,6 +120,7 @@ public class PermissaoDao implements IDAO_T<Permissao> {
             }
         } catch (Exception e) {
             System.out.println("Erro consultar permissao = " + e);
+            Log.geraLogBD(dao.pegarNome(), "Consultar Permissao " + tela + "", Permissao.class, e.toString());
         }
         return permissoes;
     }
@@ -142,6 +148,7 @@ public class PermissaoDao implements IDAO_T<Permissao> {
             }
         } catch (Exception e) {
             System.out.println("Erro consultar permissao = " + e);
+            Log.geraLogBD(dao.pegarNome(), "Consultar Permissao " + tela + ", " + permissao + "", Permissao.class, e.toString());
             ok = false;
         }
         return ok;
@@ -165,6 +172,7 @@ public class PermissaoDao implements IDAO_T<Permissao> {
             }
         } catch (Exception e) {
             System.out.println("Erro consultar permissao = " + e);
+            Log.geraLogBD(dao.pegarNome(), "Consultar Permissao " + tela + ", " + permissao + ", " + id + "", Permissao.class, e.toString());
             ok = false;
         }
         return ok;

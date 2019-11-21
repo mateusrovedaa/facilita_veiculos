@@ -4,13 +4,24 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import functions.HibernateUtil;
+import functions.Log;
+import org.hibernate.Query;
 
 public class DaoGenerico {
 
     public static DaoGenerico daoGenerico = null;
 
+    private static String userName;
     private SessionFactory factory;
     private Transaction transaction;
+
+    public void setarNome(String email) {
+        userName = email;
+    }
+
+    public String pegarNome() {
+        return userName;
+    }
 
     public DaoGenerico() {
         factory = HibernateUtil.getSessionFactory();
@@ -28,6 +39,8 @@ public class DaoGenerico {
         Session sessao = factory.openSession();
         try {
             transaction = sessao.beginTransaction();
+            Query query = sessao.createSQLQuery("SET SESSION \"myapp.user\" = '" + userName + "'");
+            query.executeUpdate();
             sessao.save(o);
             transaction.commit();
             retorno = true;
@@ -35,6 +48,7 @@ public class DaoGenerico {
             transaction.rollback();
             retorno = false;
             e.printStackTrace();
+            Log.geraLogBD(userName, "inserir", o.getClass(), e.toString());
         } finally {
             sessao.close();
         }
@@ -46,6 +60,8 @@ public class DaoGenerico {
         Session sessao = factory.openSession();
         try {
             transaction = sessao.beginTransaction();
+            Query query = sessao.createSQLQuery("SET SESSION \"myapp.user\" = '" + userName + "'");
+            query.executeUpdate();
             sessao.update(o);
             transaction.commit();
             retorno = true;
@@ -53,6 +69,7 @@ public class DaoGenerico {
             transaction.rollback();
             retorno = false;
             e.printStackTrace();
+            Log.geraLogBD(userName, "atualizar", o.getClass(), e.toString());
         } finally {
             sessao.close();
         }
@@ -66,6 +83,8 @@ public class DaoGenerico {
             transaction = sessao.beginTransaction();
 
             Object entidade = sessao.load(classe, id);
+            Query query = sessao.createSQLQuery("SET SESSION \"myapp.user\" = '" + userName + "'");
+            query.executeUpdate();
 
             sessao.delete(entidade);
 
@@ -76,6 +95,7 @@ public class DaoGenerico {
             transaction.rollback();
             retorno = false;
             e.printStackTrace();
+            Log.geraLogBD(userName, "excluir", classe, e.toString());
         } finally {
             sessao.close();
         }
@@ -87,11 +107,12 @@ public class DaoGenerico {
         Session sessao = factory.openSession();
         try {
             Object entidade = sessao.get(classe, id);
-            
+
             return entidade;
-            
-        } catch (Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
+            Log.geraLogBD(userName, "obterPorId", classe, e.toString());
         } finally {
             sessao.close();
         }

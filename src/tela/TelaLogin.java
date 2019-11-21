@@ -1,5 +1,6 @@
 package tela;
 
+import dao.DaoGenerico;
 import dao.UsuarioDao;
 import functions.Mensagem;
 import functions.Validacao;
@@ -10,6 +11,8 @@ import java.util.logging.Logger;
 
 public class TelaLogin extends javax.swing.JFrame {
 
+    private DaoGenerico dao = new DaoGenerico();
+    
     public TelaLogin() {
         initComponents();
         campoEmail.requestFocus();
@@ -131,6 +134,7 @@ public class TelaLogin extends javax.swing.JFrame {
         if (usuarioDao.validarLogin(email, senha) != 0) {
             dispose();
             TelaInicio telaInicio = new TelaInicio(usuarioDao.validarLogin(email, senha));
+            dao.setarNome(email);
             telaInicio.setVisible(true);
         } else {
             Mensagem.erro("Usúario ou senha incorretos", this);

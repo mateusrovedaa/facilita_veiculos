@@ -159,7 +159,7 @@
                                       <Component id="btnSalvarAcabamentoInterno" max="32767" attributes="0"/>
                                       <Component id="campoNomeAcabamentoInterno" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -4171,7 +4171,7 @@
                                       <Component id="btnSalvarPerfil" max="32767" attributes="0"/>
                                       <Component id="campoNomePerfil" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
