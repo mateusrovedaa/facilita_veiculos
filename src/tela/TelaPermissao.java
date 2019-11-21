@@ -46,6 +46,10 @@ public class TelaPermissao extends javax.swing.JDialog {
     private final String telaModelo = "modelo";
     private final String telaUsuario = "usuario";
     private final String telaVersao = "versao";
+    private final String telaCliente = "cliente";
+    private final String telaEmpVistoria = "empvistoria";
+    private final String telaVeiculo = "veiculo";
+    private final String telaProprietario = "proprietario";
     private final String telaGeralAcab = "geralacab";
     private final String telaGeralCamb = "geralcamb";
     private final String telaGeralCarr = "geralcarr";
@@ -63,6 +67,9 @@ public class TelaPermissao extends javax.swing.JDialog {
 
     /**
      * Creates new form TelaPermissao
+     *
+     * @param parent
+     * @param modal
      */
     public TelaPermissao(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -92,6 +99,9 @@ public class TelaPermissao extends javax.swing.JDialog {
         preenchePermissoesGeralCida();
         preenchePermissoesGeralEsta();
         preenchePermissoesGeralPerf();
+        preenchePermissoesCliente();
+        preenchePermissoesEmpVistoria();
+        preenchePermissoesProprietario();
     }
 
     /**
@@ -258,6 +268,34 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxGeralListarPerf = new javax.swing.JCheckBox();
         cbxGeralSalvarPerf = new javax.swing.JCheckBox();
         cbxGeralAcessarAcab = new javax.swing.JCheckBox();
+        pnlCliente = new javax.swing.JPanel();
+        cbxClienteSalvar = new javax.swing.JCheckBox();
+        cbxClienteExcluir = new javax.swing.JCheckBox();
+        cbxClienteEditar = new javax.swing.JCheckBox();
+        cbxClienteAcessar = new javax.swing.JCheckBox();
+        cbxClienteListar = new javax.swing.JCheckBox();
+        cbxClienteLimparBusca = new javax.swing.JCheckBox();
+        cbxClienteBuscar = new javax.swing.JCheckBox();
+        cbxClienteProcCid = new javax.swing.JCheckBox();
+        pnlEmpVistoria = new javax.swing.JPanel();
+        cbxEmpVistAcessar = new javax.swing.JCheckBox();
+        cbxEmpVistListar = new javax.swing.JCheckBox();
+        cbxEmpVistBuscar = new javax.swing.JCheckBox();
+        cbxEmpVistEditar = new javax.swing.JCheckBox();
+        cbxEmpVistSalvar = new javax.swing.JCheckBox();
+        cbxEmpVistLimparBusca = new javax.swing.JCheckBox();
+        cbxEmpVistExcluir = new javax.swing.JCheckBox();
+        cbxEmpVistProcCid = new javax.swing.JCheckBox();
+        pnlVeiculo = new javax.swing.JPanel();
+        pnlProprietario = new javax.swing.JPanel();
+        cbxProprietarioEditar = new javax.swing.JCheckBox();
+        cbxProprietarioSalvar = new javax.swing.JCheckBox();
+        cbxProprietarioProcCid = new javax.swing.JCheckBox();
+        cbxProprietarioBuscar = new javax.swing.JCheckBox();
+        cbxProprietarioListar = new javax.swing.JCheckBox();
+        cbxProprietarioExcluir = new javax.swing.JCheckBox();
+        cbxProprietarioAcessar = new javax.swing.JCheckBox();
+        cbxProprietarioLimparBusca = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -373,7 +411,7 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addComponent(cbxMarcaLimparBusca)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbxMarcaListar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         Painel.addTab("Marca", pnlMarca);
@@ -1309,11 +1347,196 @@ public class TelaPermissao extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlGeralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbxGeralAcessarAcab)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Painel.addTab("Geral", pnlGeral);
+
+        cbxClienteSalvar.setText("Botão Salvar");
+
+        cbxClienteExcluir.setText("Botão Excluir");
+
+        cbxClienteEditar.setText("Botão Editar");
+
+        cbxClienteAcessar.setText("Acessar");
+
+        cbxClienteListar.setText("Listar registros cadastrados");
+
+        cbxClienteLimparBusca.setText("Botão Limpar Busca");
+
+        cbxClienteBuscar.setText("Botão Buscar");
+
+        cbxClienteProcCid.setText("Botão Procurar Cidade");
+
+        javax.swing.GroupLayout pnlClienteLayout = new javax.swing.GroupLayout(pnlCliente);
+        pnlCliente.setLayout(pnlClienteLayout);
+        pnlClienteLayout.setHorizontalGroup(
+            pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxClienteAcessar)
+                    .addComponent(cbxClienteSalvar)
+                    .addComponent(cbxClienteEditar)
+                    .addComponent(cbxClienteExcluir)
+                    .addComponent(cbxClienteBuscar)
+                    .addComponent(cbxClienteLimparBusca)
+                    .addComponent(cbxClienteListar)
+                    .addComponent(cbxClienteProcCid))
+                .addContainerGap(373, Short.MAX_VALUE))
+        );
+        pnlClienteLayout.setVerticalGroup(
+            pnlClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlClienteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxClienteAcessar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxClienteSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxClienteEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxClienteExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxClienteBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxClienteLimparBusca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxClienteProcCid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxClienteListar)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
+        Painel.addTab("Cliente", pnlCliente);
+
+        cbxEmpVistAcessar.setText("Acessar");
+
+        cbxEmpVistListar.setText("Listar registros cadastrados");
+
+        cbxEmpVistBuscar.setText("Botão Buscar");
+
+        cbxEmpVistEditar.setText("Botão Editar");
+
+        cbxEmpVistSalvar.setText("Botão Salvar");
+
+        cbxEmpVistLimparBusca.setText("Botão Limpar Busca");
+
+        cbxEmpVistExcluir.setText("Botão Excluir");
+
+        cbxEmpVistProcCid.setText("Botão Procurar Cidade");
+
+        javax.swing.GroupLayout pnlEmpVistoriaLayout = new javax.swing.GroupLayout(pnlEmpVistoria);
+        pnlEmpVistoria.setLayout(pnlEmpVistoriaLayout);
+        pnlEmpVistoriaLayout.setHorizontalGroup(
+            pnlEmpVistoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEmpVistoriaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlEmpVistoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxEmpVistListar)
+                    .addComponent(cbxEmpVistProcCid)
+                    .addComponent(cbxEmpVistLimparBusca)
+                    .addComponent(cbxEmpVistBuscar)
+                    .addComponent(cbxEmpVistExcluir)
+                    .addComponent(cbxEmpVistEditar)
+                    .addComponent(cbxEmpVistSalvar)
+                    .addComponent(cbxEmpVistAcessar))
+                .addContainerGap(373, Short.MAX_VALUE))
+        );
+        pnlEmpVistoriaLayout.setVerticalGroup(
+            pnlEmpVistoriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEmpVistoriaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxEmpVistAcessar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxEmpVistSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxEmpVistEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxEmpVistExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxEmpVistBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxEmpVistLimparBusca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxEmpVistProcCid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxEmpVistListar)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
+        Painel.addTab("Empresa de Vistoria", pnlEmpVistoria);
+
+        javax.swing.GroupLayout pnlVeiculoLayout = new javax.swing.GroupLayout(pnlVeiculo);
+        pnlVeiculo.setLayout(pnlVeiculoLayout);
+        pnlVeiculoLayout.setHorizontalGroup(
+            pnlVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 609, Short.MAX_VALUE)
+        );
+        pnlVeiculoLayout.setVerticalGroup(
+            pnlVeiculoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 280, Short.MAX_VALUE)
+        );
+
+        Painel.addTab("Veículo", pnlVeiculo);
+
+        cbxProprietarioEditar.setText("Botão Editar");
+
+        cbxProprietarioSalvar.setText("Botão Salvar");
+
+        cbxProprietarioProcCid.setText("Botão Procurar Cidade");
+
+        cbxProprietarioBuscar.setText("Botão Buscar");
+
+        cbxProprietarioListar.setText("Listar registros cadastrados");
+
+        cbxProprietarioExcluir.setText("Botão Excluir");
+
+        cbxProprietarioAcessar.setText("Acessar");
+
+        cbxProprietarioLimparBusca.setText("Botão Limpar Busca");
+
+        javax.swing.GroupLayout pnlProprietarioLayout = new javax.swing.GroupLayout(pnlProprietario);
+        pnlProprietario.setLayout(pnlProprietarioLayout);
+        pnlProprietarioLayout.setHorizontalGroup(
+            pnlProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlProprietarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxProprietarioListar)
+                    .addComponent(cbxProprietarioProcCid)
+                    .addComponent(cbxProprietarioLimparBusca)
+                    .addComponent(cbxProprietarioBuscar)
+                    .addComponent(cbxProprietarioExcluir)
+                    .addComponent(cbxProprietarioEditar)
+                    .addComponent(cbxProprietarioSalvar)
+                    .addComponent(cbxProprietarioAcessar))
+                .addContainerGap(373, Short.MAX_VALUE))
+        );
+        pnlProprietarioLayout.setVerticalGroup(
+            pnlProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlProprietarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(cbxProprietarioAcessar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxProprietarioSalvar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxProprietarioEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxProprietarioExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxProprietarioBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxProprietarioLimparBusca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxProprietarioProcCid)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxProprietarioListar)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
+        Painel.addTab("Proprietário", pnlProprietario);
 
         jLabel2.setText("jLabel2");
 
@@ -1335,8 +1558,8 @@ public class TelaPermissao extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(Painel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1837,6 +2060,96 @@ public class TelaPermissao extends javax.swing.JDialog {
             }
             if (perm.get(i).equals(listar)) {
                 cbxGeralListarPerf.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesCliente() {
+        perm = peDAO.consultarPermissoes(telaCliente, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxClienteAcessar.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxClienteEditar.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxClienteSalvar.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxClienteExcluir.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxClienteBuscar.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxClienteLimparBusca.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxClienteListar.setSelected(true);
+            }
+            if (perm.get(i).equals(procurar)) {
+                cbxClienteProcCid.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesEmpVistoria() {
+        perm = peDAO.consultarPermissoes(telaEmpVistoria, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxEmpVistAcessar.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxEmpVistEditar.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxEmpVistSalvar.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxEmpVistExcluir.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxEmpVistBuscar.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxEmpVistLimparBusca.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxEmpVistListar.setSelected(true);
+            }
+            if (perm.get(i).equals(procurar)) {
+                cbxEmpVistProcCid.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesProprietario() {
+        perm = peDAO.consultarPermissoes(telaProprietario, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxProprietarioAcessar.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxProprietarioEditar.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxProprietarioSalvar.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxProprietarioExcluir.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxProprietarioBuscar.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxProprietarioLimparBusca.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxProprietarioListar.setSelected(true);
+            }
+            if (perm.get(i).equals(procurar)) {
+                cbxProprietarioProcCid.setSelected(true);
             }
         }
     }
@@ -2410,11 +2723,114 @@ public class TelaPermissao extends javax.swing.JDialog {
             gperf = false;
         }
 
-        if (marca && modelo && user && versao && gacab && gcamb && gcarr && gcomb && gconf && gcore && gcori && gesti && gextr && gsegu && gtecn && gcid && gest && gperf) {
-            return true;
-        } else {
-            return false;
+        //cliente
+        boolean cliente = true;
+
+        ok = Funcoes.verificaPermissoes(cbxClienteAcessar, acessar, telaCliente, usuario, peDAO);
+        if (!ok == true) {
+            cliente = false;
         }
+        ok = Funcoes.verificaPermissoes(cbxClienteEditar, editar, telaCliente, usuario, peDAO);
+        if (!ok == true) {
+            cliente = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxClienteSalvar, salvar, telaCliente, usuario, peDAO);
+        if (!ok == true) {
+            cliente = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxClienteExcluir, excluir, telaCliente, usuario, peDAO);
+        if (!ok == true) {
+            cliente = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxClienteBuscar, buscar, telaCliente, usuario, peDAO);
+        if (!ok == true) {
+            cliente = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxClienteLimparBusca, limparBusca, telaCliente, usuario, peDAO);
+        if (!ok == true) {
+            cliente = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxClienteListar, listar, telaCliente, usuario, peDAO);
+        if (!ok == true) {
+            cliente = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxClienteProcCid, procurar, telaCliente, usuario, peDAO);
+        if (!ok == true) {
+            cliente = false;
+        }
+
+        //empresa vistoria
+        boolean empvist = true;
+        ok = Funcoes.verificaPermissoes(cbxEmpVistAcessar, acessar, telaEmpVistoria, usuario, peDAO);
+        if (!ok == true) {
+            empvist = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxEmpVistEditar, editar, telaEmpVistoria, usuario, peDAO);
+        if (!ok == true) {
+            empvist = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxEmpVistSalvar, salvar, telaEmpVistoria, usuario, peDAO);
+        if (!ok == true) {
+            empvist = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxEmpVistExcluir, excluir, telaEmpVistoria, usuario, peDAO);
+        if (!ok == true) {
+            empvist = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxEmpVistBuscar, buscar, telaEmpVistoria, usuario, peDAO);
+        if (!ok == true) {
+            empvist = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxEmpVistLimparBusca, limparBusca, telaEmpVistoria, usuario, peDAO);
+        if (!ok == true) {
+            empvist = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxEmpVistListar, listar, telaEmpVistoria, usuario, peDAO);
+        if (!ok == true) {
+            empvist = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxEmpVistProcCid, procurar, telaEmpVistoria, usuario, peDAO);
+        if (!ok == true) {
+            empvist = false;
+        }
+
+        //proprietario
+        boolean prop = true;
+
+        ok = Funcoes.verificaPermissoes(cbxProprietarioAcessar, acessar, telaProprietario, usuario, peDAO);
+        if (!ok == true) {
+            empvist = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxProprietarioEditar, editar, telaProprietario, usuario, peDAO);
+        if (!ok == true) {
+            prop = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxProprietarioSalvar, salvar, telaProprietario, usuario, peDAO);
+        if (!ok == true) {
+            prop = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxProprietarioExcluir, excluir, telaProprietario, usuario, peDAO);
+        if (!ok == true) {
+            prop = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxProprietarioBuscar, buscar, telaProprietario, usuario, peDAO);
+        if (!ok == true) {
+            prop = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxProprietarioLimparBusca, limparBusca, telaProprietario, usuario, peDAO);
+        if (!ok == true) {
+            prop = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxProprietarioListar, listar, telaProprietario, usuario, peDAO);
+        if (!ok == true) {
+            prop = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxProprietarioProcCid, procurar, telaProprietario, usuario, peDAO);
+        if (!ok == true) {
+            prop = false;
+        }
+
+        return marca && modelo && user && versao && gacab && gcamb && gcarr && gcomb && gconf && gcore && gcori && gesti && gextr && gsegu && gtecn && gcid && gest && gperf && cliente && empvist && prop;
     }
 
     private void sucesso() {
@@ -2446,6 +2862,10 @@ public class TelaPermissao extends javax.swing.JDialog {
         paineis.add(pnlCidades);
         paineis.add(pnlEstados);
         paineis.add(pnlPerfis);
+        paineis.add(pnlCliente);
+        paineis.add(pnlEmpVistoria);
+        paineis.add(pnlVeiculo);
+        paineis.add(pnlProprietario);
 
         for (int i = 0; i < paineis.size(); i++) {
             Component c[] = paineis.get(i).getComponents();
@@ -2550,6 +2970,22 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnMarcarTodos;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JCheckBox cbxClienteAcessar;
+    private javax.swing.JCheckBox cbxClienteBuscar;
+    private javax.swing.JCheckBox cbxClienteEditar;
+    private javax.swing.JCheckBox cbxClienteExcluir;
+    private javax.swing.JCheckBox cbxClienteLimparBusca;
+    private javax.swing.JCheckBox cbxClienteListar;
+    private javax.swing.JCheckBox cbxClienteProcCid;
+    private javax.swing.JCheckBox cbxClienteSalvar;
+    private javax.swing.JCheckBox cbxEmpVistAcessar;
+    private javax.swing.JCheckBox cbxEmpVistBuscar;
+    private javax.swing.JCheckBox cbxEmpVistEditar;
+    private javax.swing.JCheckBox cbxEmpVistExcluir;
+    private javax.swing.JCheckBox cbxEmpVistLimparBusca;
+    private javax.swing.JCheckBox cbxEmpVistListar;
+    private javax.swing.JCheckBox cbxEmpVistProcCid;
+    private javax.swing.JCheckBox cbxEmpVistSalvar;
     private javax.swing.JCheckBox cbxGeralAcessarAcab;
     private javax.swing.JCheckBox cbxGeralBuscarAcab;
     private javax.swing.JCheckBox cbxGeralBuscarCamb;
@@ -2654,6 +3090,14 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JCheckBox cbxModeloLimparBusca;
     private javax.swing.JCheckBox cbxModeloListar;
     private javax.swing.JCheckBox cbxModeloSalvar;
+    private javax.swing.JCheckBox cbxProprietarioAcessar;
+    private javax.swing.JCheckBox cbxProprietarioBuscar;
+    private javax.swing.JCheckBox cbxProprietarioEditar;
+    private javax.swing.JCheckBox cbxProprietarioExcluir;
+    private javax.swing.JCheckBox cbxProprietarioLimparBusca;
+    private javax.swing.JCheckBox cbxProprietarioListar;
+    private javax.swing.JCheckBox cbxProprietarioProcCid;
+    private javax.swing.JCheckBox cbxProprietarioSalvar;
     private javax.swing.JCheckBox cbxUsuarioAcessar;
     private javax.swing.JCheckBox cbxUsuarioBuscar;
     private javax.swing.JCheckBox cbxUsuarioComboCadastro;
@@ -2686,10 +3130,12 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JPanel pnlCambios;
     private javax.swing.JPanel pnlCarrocerias;
     private javax.swing.JPanel pnlCidades;
+    private javax.swing.JPanel pnlCliente;
     private javax.swing.JPanel pnlCombustiveis;
     private javax.swing.JPanel pnlConfortos;
     private javax.swing.JPanel pnlCoresExt;
     private javax.swing.JPanel pnlCoresInt;
+    private javax.swing.JPanel pnlEmpVistoria;
     private javax.swing.JPanel pnlEstados;
     private javax.swing.JPanel pnlEstilos;
     private javax.swing.JPanel pnlExtras;
@@ -2697,9 +3143,11 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JPanel pnlMarca;
     private javax.swing.JPanel pnlModelo;
     private javax.swing.JPanel pnlPerfis;
+    private javax.swing.JPanel pnlProprietario;
     private javax.swing.JPanel pnlSegurancas;
     private javax.swing.JPanel pnlTecnologias;
     private javax.swing.JPanel pnlUsuario;
+    private javax.swing.JPanel pnlVeiculo;
     private javax.swing.JPanel pnlVersao;
     // End of variables declaration//GEN-END:variables
 }

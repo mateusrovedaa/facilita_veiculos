@@ -45,22 +45,30 @@ public class TelaInicio extends javax.swing.JFrame {
         } else {
             btnCUsuario.setEnabled(true);
         }
-//        if (!peDAO.consultarPermissao("Acessar", "cliente")) {
-//            btnCCliente.setEnabled(false);
-//            btnAtalhoCCliente.setEnabled(false);
-//        }
-//        if (!peDAO.consultarPermissao("Acessar", "proprietario")) {
-//            btnCProprietario.setEnabled(false);
-//            btnAtalhoCProprietario.setEnabled(false);
-//        }
+        if (!peDAO.consultarPermissao("Acessar", "cliente")) {
+            btnCCliente.setEnabled(false);
+            btnAtalhoCCliente.setEnabled(false);
+        } else {
+            btnCCliente.setEnabled(true);
+            btnAtalhoCCliente.setEnabled(true);
+        }
+        if (!peDAO.consultarPermissao("Acessar", "proprietario")) {
+            btnCProprietario.setEnabled(false);
+            btnAtalhoCProprietario.setEnabled(false);
+        } else {
+            btnCProprietario.setEnabled(true);
+            btnAtalhoCProprietario.setEnabled(true);
+        }
         if (!peDAO.consultarPermissao("Acessar", "geralacab")) {
             btnCGeral.setEnabled(false);
         } else {
             btnCGeral.setEnabled(true);
         }
-//        if (!peDAO.consultarPermissao("Acessar", "empresavistoria")) {
-//            btnCEmpresaVistoria.setEnabled(false);
-//        }
+        if (!peDAO.consultarPermissao("Acessar", "empvistoria")) {
+            btnCEmpresaVistoria.setEnabled(false);
+        } else {
+            btnCEmpresaVistoria.setEnabled(true);
+        }
         if (!peDAO.consultarPermissao("Acessar", "marca")) {
             btnCMarca.setEnabled(false);
         } else {

@@ -2,6 +2,7 @@ package tela;
 
 import dao.DaoGenerico;
 import dao.EmpresaVistoriaDao;
+import dao.PermissaoDao;
 import entidade.Cidade;
 import entidade.EmpresaVistoria;
 import functions.Formatacao;
@@ -21,16 +22,18 @@ public class TelaCadastroEmpresaVistoria extends javax.swing.JInternalFrame {
 
     private static TelaCadastroEmpresaVistoria tela;
     int codigo = 0;
+    PermissaoDao peDAO = new PermissaoDao();
 
     public TelaCadastroEmpresaVistoria() {
         initComponents();
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
         this.setFrameIcon(icon);
+        verificaPermissoes();
         Formatacao.formatarCnpj(campoCnpj);
         Formatacao.formatarTelefone(campoTelefone);
         campoIdCidadeBusca.setEditable(false);
         campoNomeCidadeBusca.setEditable(false);
-        new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+
     }
 
     public static TelaCadastroEmpresaVistoria getInstancia() {
@@ -38,6 +41,30 @@ public class TelaCadastroEmpresaVistoria extends javax.swing.JInternalFrame {
             tela = new TelaCadastroEmpresaVistoria();
         }
         return tela;
+    }
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "empvistoria")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "empvistoria")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "empvistoria")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "empvistoria")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "empvistoria")) {
+            btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "empvistoria")) {
+            new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+        }
+        if (!peDAO.consultarPermissao("Procurar", "empvistoria")) {
+            btnBuscaCidade.setEnabled(false);
+        }
     }
 
     private void funcaoFechar() {
@@ -517,11 +544,15 @@ public class TelaCadastroEmpresaVistoria extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroRazaoSocial.setText("");
-        new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+        if (peDAO.consultarPermissao("Listar", "empvistoria")) {
+            new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+        if (peDAO.consultarPermissao("Listar", "empvistoria")) {
+            new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -567,7 +598,9 @@ public class TelaCadastroEmpresaVistoria extends javax.swing.JInternalFrame {
 
             if (retornoExcluirEmpresaVistoria == true) {
                 Mensagem.informacao("Empresa excluída com sucesso!", this);
-                new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+                if (peDAO.consultarPermissao("Listar", "empvistoria")) {
+                    new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+                }
             } else {
                 Mensagem.erro(tblEmpresaVistoria.getValueAt(tblEmpresaVistoria.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -631,7 +664,9 @@ public class TelaCadastroEmpresaVistoria extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+            if (peDAO.consultarPermissao("Listar", "empvistoria")) {
+                new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+            }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

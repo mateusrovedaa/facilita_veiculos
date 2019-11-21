@@ -56,8 +56,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Painel" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="Painel" min="-2" pref="329" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -207,7 +207,7 @@
                           <Component id="cbxMarcaLimparBusca" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="cbxMarcaListar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="87" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -649,8 +649,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cbxGeralAcessarAcab" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jTabbedPane2" min="-2" pref="241" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1845,6 +1846,313 @@
                 <Component class="javax.swing.JCheckBox" name="cbxGeralAcessarAcab">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Acessar"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlCliente">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Cliente">
+                    <Property name="tabTitle" type="java.lang.String" value="Cliente"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxClienteAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxClienteSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxClienteEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxClienteExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxClienteBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxClienteLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxClienteListar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxClienteProcCid" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="373" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cbxClienteAcessar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxClienteSalvar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxClienteEditar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxClienteExcluir" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxClienteBuscar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxClienteLimparBusca" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxClienteProcCid" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxClienteListar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="cbxClienteSalvar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxClienteExcluir">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxClienteEditar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxClienteAcessar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Acessar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxClienteListar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Listar registros cadastrados"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxClienteLimparBusca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxClienteBuscar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxClienteProcCid">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Cidade"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlEmpVistoria">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Empresa de Vistoria">
+                    <Property name="tabTitle" type="java.lang.String" value="Empresa de Vistoria"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxEmpVistListar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxEmpVistProcCid" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxEmpVistLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxEmpVistBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxEmpVistExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxEmpVistEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxEmpVistSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxEmpVistAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="373" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cbxEmpVistAcessar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxEmpVistSalvar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxEmpVistEditar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxEmpVistExcluir" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxEmpVistBuscar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxEmpVistLimparBusca" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxEmpVistProcCid" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxEmpVistListar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="cbxEmpVistAcessar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Acessar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxEmpVistListar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Listar registros cadastrados"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxEmpVistBuscar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxEmpVistEditar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxEmpVistSalvar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxEmpVistLimparBusca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxEmpVistExcluir">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxEmpVistProcCid">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Cidade"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlVeiculo">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Ve&#xed;culo">
+                    <Property name="tabTitle" type="java.lang.String" value="Ve&#xed;culo"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="609" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="280" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlProprietario">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Propriet&#xe1;rio">
+                    <Property name="tabTitle" type="java.lang.String" value="Propriet&#xe1;rio"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxProprietarioListar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxProprietarioProcCid" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxProprietarioLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxProprietarioBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxProprietarioExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxProprietarioEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxProprietarioSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxProprietarioAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="373" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cbxProprietarioAcessar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxProprietarioSalvar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxProprietarioEditar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxProprietarioExcluir" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxProprietarioBuscar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxProprietarioLimparBusca" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxProprietarioProcCid" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxProprietarioListar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="60" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="cbxProprietarioEditar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxProprietarioSalvar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxProprietarioProcCid">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Cidade"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxProprietarioBuscar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxProprietarioListar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Listar registros cadastrados"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxProprietarioExcluir">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxProprietarioAcessar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Acessar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxProprietarioLimparBusca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
                   </Properties>
                 </Component>
               </SubComponents>

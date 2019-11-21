@@ -2,6 +2,7 @@ package tela;
 
 import dao.ClienteDao;
 import dao.DaoGenerico;
+import dao.PermissaoDao;
 import entidade.Cidade;
 import entidade.Cliente;
 import functions.Formatacao;
@@ -20,18 +21,19 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
 
     private static TelaCadastroCliente tela;
     int codigo = 0;
+    PermissaoDao peDAO = new PermissaoDao();
 
     public TelaCadastroCliente() {
         initComponents();
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
         this.setFrameIcon(icon);
+        verificaPermissoes();
         Formatacao.formatarRg(campoRg);
         Formatacao.formatarCpf(campoCpf);
         Formatacao.formatarTelefone(campoTelefone);
         Formatacao.formatarData(campoDataNascimento);
         campoIdCidadeBusca.setEditable(false);
         campoNomeCidadeBusca.setEditable(false);
-        new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
     }
 
     public static TelaCadastroCliente getInstancia() {
@@ -39,6 +41,30 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
             tela = new TelaCadastroCliente();
         }
         return tela;
+    }
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "cliente")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "cliente")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "cliente")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "cliente")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "cliente")) {
+            btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "cliente")) {
+            new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+        }
+        if (!peDAO.consultarPermissao("Procurar", "cliente")) {
+            btnBuscaCidade.setEnabled(false);
+        }
     }
 
     private void funcaoFechar() {
@@ -514,11 +540,15 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroNome.setText("");
-        new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+        if (peDAO.consultarPermissao("Listar", "cliente")) {
+            new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+        if (peDAO.consultarPermissao("Listar", "cliente")) {
+            new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -566,7 +596,9 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
 
             if (retornoExcluirCliente == true) {
                 Mensagem.informacao("Cliente excluído com sucesso!", this);
-                new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+                if (peDAO.consultarPermissao("Listar", "cliente")) {
+                    new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+                }
             } else {
                 Mensagem.erro(tblCliente.getValueAt(tblCliente.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -636,7 +668,9 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+            if (peDAO.consultarPermissao("Listar", "cliente")) {
+                new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+            }
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
