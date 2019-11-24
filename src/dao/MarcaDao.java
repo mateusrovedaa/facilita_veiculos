@@ -77,6 +77,14 @@ public class MarcaDao implements LazyLoading
             {
             });
         }
+
+        if (tabela.getRowCount() == this.registros + 1)
+        {
+            if (marcas.size() != 0)
+            {
+                tabela.scrollRectToVisible(tabela.getCellRect(this.registros - 1, 0, true));
+            }
+        }
     }
 
     @Override
@@ -164,10 +172,6 @@ public class MarcaDao implements LazyLoading
                     {
                         dao.recarregaTabela(tabela, id);
                     }
-                    if (tabela.getRowCount() == registros + 1)
-                    {
-                        tabela.scrollRectToVisible(tabela.getCellRect(registros - 1, 0, true));
-                    }
                 }
             }
         });
@@ -178,8 +182,10 @@ public class MarcaDao implements LazyLoading
     {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
+        
+        filtro = filtro.toLowerCase();
 
-        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE nome LIKE :filtro ORDER BY id").setParameter("filtro", "%" + filtro + "%").setFirstResult(0).setMaxResults(90).list();
+        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE LOWER(nome) LIKE :filtro ORDER BY id").setParameter("filtro", "%" + filtro + "%").setFirstResult(0).setMaxResults(90).list();
 
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
