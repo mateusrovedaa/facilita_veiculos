@@ -1,0 +1,8 @@
+Usuário: admin
+Método: inserir
+Classe: class entidade.Marca
+
+Erro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+
+Horário: 23/11/2019 15:35:51
+
