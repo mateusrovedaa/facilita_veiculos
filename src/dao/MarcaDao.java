@@ -5,7 +5,6 @@ import functions.GerenciarJTable;
 import functions.HibernateUtil;
 import functions.LazyLoading;
 import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.util.List;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -18,7 +17,7 @@ import org.hibernate.SessionFactory;
 public class MarcaDao implements LazyLoading
 {
 
-    private final int registros = 25;
+    private final int registros = 100;
 
     @Override
     public void incrementaTabela(JTable tabela, int linhas)
@@ -26,7 +25,7 @@ public class MarcaDao implements LazyLoading
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
 
-        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE id > :limit ORDER BY id").setParameter("limit", linhas).setMaxResults(25).list();
+        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE id > :limit ORDER BY id").setParameter("limit", linhas).setMaxResults(this.registros).list();
 
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
@@ -54,7 +53,7 @@ public class MarcaDao implements LazyLoading
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
 
-        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE id < :limit ORDER BY id DESC").setParameter("limit", linhas).setMaxResults(25).list();
+        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE id < :limit ORDER BY id DESC").setParameter("limit", linhas).setMaxResults(this.registros).list();
 
         DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
@@ -81,7 +80,7 @@ public class MarcaDao implements LazyLoading
     }
 
     @Override
-    public void criaTabela(JTable tabela, JScrollPane barraScroll, String filtro)
+    public void criaTabela(JTable tabela, JScrollPane barraScroll)
     {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session newSession = sessionFactory.openSession();
@@ -93,8 +92,11 @@ public class MarcaDao implements LazyLoading
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
 
-        model.addColumn("Id");
-        model.addColumn("Nome");
+        if (model.getColumnCount() < 1)
+        {
+            model.addColumn("Id");
+            model.addColumn("Nome");
+        }
 
         model.addRow(new Object[]
         {
@@ -127,6 +129,7 @@ public class MarcaDao implements LazyLoading
 
         tabela.scrollRectToVisible(tabela.getCellRect(1, 0, true));
         scrollTable(tabela, barraScroll);
+
     }
 
     @Override
@@ -146,7 +149,10 @@ public class MarcaDao implements LazyLoading
                 if (extent + e.getValue() == maximum)
                 {
                     int id = gjt.obterValorUltimaLinha(tabela);
-                    dao.incrementaTabela(tabela, id);
+                    if (tabela.getRowCount() > 99)
+                    {
+                        dao.incrementaTabela(tabela, id);
+                    }
                     if (tabela.getRowCount() == registros + 1)
                     {
                         tabela.scrollRectToVisible(tabela.getCellRect(1, 0, true));
@@ -154,7 +160,10 @@ public class MarcaDao implements LazyLoading
                 } else if (e.getValue() == 0)
                 {
                     int id = gjt.obterValorPrimeiraLinha(tabela);
-                    dao.recarregaTabela(tabela, id);
+                    if (tabela.getRowCount() > 99)
+                    {
+                        dao.recarregaTabela(tabela, id);
+                    }
                     if (tabela.getRowCount() == registros + 1)
                     {
                         tabela.scrollRectToVisible(tabela.getCellRect(registros - 1, 0, true));
@@ -162,5 +171,44 @@ public class MarcaDao implements LazyLoading
                 }
             }
         });
+    }
+
+    @Override
+    public void tabelaFiltro(JTable tabela, String filtro)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
+
+        List<Marca> marcas = newSession.createQuery("FROM Marca WHERE nome LIKE :filtro ORDER BY id").setParameter("filtro", "%" + filtro + "%").setFirstResult(0).setMaxResults(90).list();
+
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
+
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+
+        for (Marca marca : marcas)
+        {
+            model.addRow(new Object[]
+            {
+                marca.getId(), marca.getNome()
+            });
+        }
+
+        tabela.setSelectionMode(0);
+
+        TableColumn column = null;
+        for (int i = 0; i < tabela.getColumnCount(); i++)
+        {
+            column = tabela.getColumnModel().getColumn(i);
+            switch (i)
+            {
+                case 0:
+                    column.setPreferredWidth(17);
+                    break;
+                case 1:
+                    column.setPreferredWidth(140);
+                    break;
+            }
+        }
     }
 }

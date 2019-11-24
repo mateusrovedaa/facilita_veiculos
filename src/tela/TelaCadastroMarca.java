@@ -50,7 +50,7 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
             btnEditar.setEnabled(false);
         }
         if (peDAO.consultarPermissao("Listar", "marca")) {
-            new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
+            new MarcaDao().criaTabela(tblMarca, jScrollPane2);
         }
     }
 
@@ -366,13 +366,18 @@ public class TelaCadastroMarca extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        System.out.println(campoFiltroMarca.getText());
-        new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
+        if ( campoFiltroMarca.getText().length() > 0)
+        {
+            new MarcaDao().tabelaFiltro(tblMarca, campoFiltroMarca.getText());
+        }
+        else
+        {
+            new MarcaDao().criaTabela(tblMarca, jScrollPane2);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
-        campoFiltroMarca.setText("");
-        new MarcaDao().criaTabela(tblMarca, jScrollPane2, campoFiltroMarca.getText());
+        new MarcaDao().criaTabela(tblMarca, jScrollPane2);
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private boolean validaCampos() {
