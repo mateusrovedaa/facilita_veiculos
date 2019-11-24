@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import functions.HibernateUtil;
 import functions.Log;
+import java.io.Serializable;
 import org.hibernate.Query;
 
 public class DaoGenerico {
@@ -55,6 +56,29 @@ public class DaoGenerico {
         return retorno;
     }
 
+    public int inserirVeiculo(Object o) {
+        boolean retorno = false;
+        int id = 0;
+        Session sessao = factory.openSession();
+        try {
+            transaction = sessao.beginTransaction();
+            Query query = sessao.createSQLQuery("SET SESSION \"myapp.user\" = '" + userName + "'");
+            query.executeUpdate();
+            id = (Integer) sessao.save(o);
+            transaction.commit();
+            retorno = true;
+        } catch (Exception e) {
+            transaction.rollback();
+            retorno = false;
+            e.printStackTrace();
+            Log.geraLogBD(userName, "inserir", o.getClass(), e.toString());
+        } finally {
+            sessao.close();
+        }
+
+        return id;
+    }
+
     public boolean atualizar(Object o) {
         boolean retorno = false;
         Session sessao = factory.openSession();
@@ -99,6 +123,7 @@ public class DaoGenerico {
         } finally {
             sessao.close();
         }
+
         return retorno;
     }
 

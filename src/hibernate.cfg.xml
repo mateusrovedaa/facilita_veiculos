@@ -79,5 +79,17 @@ Contributor(s):
     <mapping class="entidade.VeiculoEstilo"/>
     <mapping class="entidade.VeiculoSeguranca"/>
     <mapping class="entidade.VeiculoTecnologia"/>
+    <mapping class="entidade.Compra"/>
+    <mapping class="entidade.ContratoCompra"/>
+    <mapping class="entidade.SituacaoCompra"/>
+    <mapping class="entidade.SituacaoContrato"/>
+    <mapping class="entidade.Proposta"/>
+    <mapping class="entidade.SituacaoProposta"/>
+    <mapping class="entidade.SituacaoVenda"/>
+    <mapping class="entidade.TipoPagamento"/>
+    <mapping class="entidade.ContratoVenda"/>
+    <mapping class="entidade.Parcela"/>
+    <mapping class="entidade.Venda"/>
+    <mapping class="entidade.VendaVeiculo"/>
   </session-factory>
 </hibernate-configuration>

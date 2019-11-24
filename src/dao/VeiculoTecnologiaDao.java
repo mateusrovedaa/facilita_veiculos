@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JTable;
 
 public class VeiculoTecnologiaDao implements IDAO_T<VeiculoTecnologia> {
@@ -112,7 +113,9 @@ public class VeiculoTecnologiaDao implements IDAO_T<VeiculoTecnologia> {
             if (selecionado) {
                 veiculoTecnologia.setVeiculo_id(veiculo);
                 veiculoTecnologia.setTecnologia_id(tecnologia);
-                veiculoTecnologiaDao.salvar(veiculoTecnologia);
+                veiculoTecnologia.setCriadoEm(Calendar.getInstance());
+                veiculoTecnologia.setAlteradoEm(Calendar.getInstance());
+                boolean retorno = DaoGenerico.getInstance().inserir(veiculoTecnologia);
             }
         }
         return null;

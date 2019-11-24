@@ -24,24 +24,25 @@ import functions.ComboItem;
 import functions.Formatacao;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
-import functions.Mensagem;
+import java.io.Serializable;
 import java.time.LocalDate;
+import static java.time.LocalDateTime.now;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
+public class TelaCadastroVeiculo_OLD extends javax.swing.JInternalFrame {
 
-    private static TelaCadastroVeiculo tela;
+    private static TelaCadastroVeiculo_OLD tela;
     int codigo = 0;
     LocalDate now = LocalDate.now();
 
-    public TelaCadastroVeiculo() {
+    public TelaCadastroVeiculo_OLD() {
         initComponents();
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
         this.setFrameIcon(icon);
-        campoIdVersaoBusca.setEditable(false);
-        campoNomeVersaoBusca.setEditable(false);
+//        campoIdVersaoBusca1.setEditable(false);
+//        campoNomeVersaoBusca.setEditable(false);
         new ConfortoDao().listarConforto(tblConforto, "");
         new EstiloDao().listarEstilo(tblEstilo, "");
         new ExtraDao().listarExtra(tblExtra, "");
@@ -52,8 +53,6 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         new ComboDao().popularCombo("acabamentos_internos", 1, 4, comboAcabamentoInternoId, "");
         new ComboDao().popularCombo("cambios", 1, 4, comboCambioId, "");
         new ComboDao().popularCombo("situacoes_veiculos", comboSituacaoVeiculoId);
-        new ComboDao().popularCombo("situacoes_veiculos", comboFiltroSituacaoVeiculoId);
-        new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
         Formatacao.formatarData(campoFiltroDataDe);
         Formatacao.formatarData(campoFiltroDataAte);
         campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
@@ -61,9 +60,9 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
     }
 
-    public static TelaCadastroVeiculo getInstancia() {
+    public static TelaCadastroVeiculo_OLD getInstancia() {
         if (tela == null) {
-            tela = new TelaCadastroVeiculo();
+            tela = new TelaCadastroVeiculo_OLD();
         }
         return tela;
     }
@@ -93,33 +92,33 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         jPanel10 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        campoIdVersaoBusca = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        campoNomeVersaoBusca = new javax.swing.JTextField();
-        btnBuscaVersao = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
+        jPanel30 = new javax.swing.JPanel();
+        campoIdVersaoBusca1 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        campoNomeVersaoBusca1 = new javax.swing.JTextField();
+        btnBuscaVersao1 = new javax.swing.JButton();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        comboSituacaoVeiculoId = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         comboCorExternaId = new javax.swing.JComboBox<>();
         comboCorInternaId = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        campoPlaca = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        campoQuilometragem = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         comboAcabamentoInternoId = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
         campoChassi = new javax.swing.JTextField();
+        campoValor = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         comboCambioId = new javax.swing.JComboBox<>();
         campoRenavam = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        comboSituacaoVeiculoId = new javax.swing.JComboBox<>();
-        jLabel32 = new javax.swing.JLabel();
-        campoPlaca = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
-        campoQuilometragem = new javax.swing.JTextField();
-        jLabel34 = new javax.swing.JLabel();
-        campoValor = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         campoInformacoesVeiculo = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
@@ -149,6 +148,38 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         radioExibirSiteSim = new javax.swing.JRadioButton();
         radioExibirSiteNao = new javax.swing.JRadioButton();
         jPanel23 = new javax.swing.JPanel();
+        jPanel13 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel24 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        campoPesquisaProcedencia = new javax.swing.JTextArea();
+        jPanel14 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        campoIdentificacao = new javax.swing.JTextArea();
+        jPanel15 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        campoEstrutura = new javax.swing.JTextArea();
+        jPanel16 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        campoMecanica = new javax.swing.JTextArea();
+        jPanel17 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        campoEquipamentoObrigatorio = new javax.swing.JTextArea();
+        jPanel18 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        campoCarroceria = new javax.swing.JTextArea();
+        jPanel19 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        campoInterior = new javax.swing.JTextArea();
+        jPanel20 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        campoPneu = new javax.swing.JTextArea();
+        jPanel21 = new javax.swing.JPanel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        campoPastilhaFreio = new javax.swing.JTextArea();
+        jPanel22 = new javax.swing.JPanel();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        campoOutraInformacao = new javax.swing.JTextArea();
         jPanel25 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
         tblConforto = new javax.swing.JTable();
@@ -248,51 +279,54 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
 
-        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Versão*"));
+        jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder("Versão*"));
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("Nome:");
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setText("Nome:");
 
-        btnBuscaVersao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-search-16.png"))); // NOI18N
-        btnBuscaVersao.setText("Procurar");
-        btnBuscaVersao.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscaVersao1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-search-16.png"))); // NOI18N
+        btnBuscaVersao1.setText("Procurar");
+        btnBuscaVersao1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscaVersaoActionPerformed(evt);
             }
         });
 
-        jLabel17.setText("Código:");
+        jLabel32.setText("Código:");
 
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
+        jPanel30.setLayout(jPanel30Layout);
+        jPanel30Layout.setHorizontalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel30Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jLabel17)
+                .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoIdVersaoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(campoIdVersaoBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(campoNomeVersaoBusca)
+                .addComponent(campoNomeVersaoBusca1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscaVersao)
+                .addComponent(btnBuscaVersao1)
                 .addContainerGap())
         );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
+        jPanel30Layout.setVerticalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel30Layout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(campoNomeVersaoBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBuscaVersao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(campoIdVersaoBusca)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(campoNomeVersaoBusca1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscaVersao1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoIdVersaoBusca1)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("Situação do veículo:*");
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Cor externa:*");
@@ -300,12 +334,20 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Cor interna:*");
 
+        comboSituacaoVeiculoId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Acabamento interno:*");
 
         comboCorExternaId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         comboCorInternaId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel13.setText("Valor:*");
+
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel33.setText("Placa:*");
 
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Chassi:*");
@@ -315,6 +357,9 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
 
         comboAcabamentoInternoId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel18.setText("Quilometragem:*");
+
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel19.setText("Câmbio:*");
 
@@ -322,20 +367,6 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         jLabel20.setText("Informações do veículo:");
 
         comboCambioId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("Situação do veículo:*");
-
-        comboSituacaoVeiculoId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel32.setText("Placa:*");
-
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel33.setText("Quilometragem:*");
-
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel34.setText("Valor:*");
 
         campoInformacoesVeiculo.setColumns(20);
         campoInformacoesVeiculo.setRows(5);
@@ -349,8 +380,21 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboSituacaoVeiculoId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campoPlaca, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
@@ -373,58 +417,50 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(campoRenavam)
-                                    .addComponent(campoChassi)
-                                    .addComponent(comboCambioId, 0, 200, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campoPlaca)
-                            .addComponent(campoQuilometragem)
-                            .addComponent(comboSituacaoVeiculoId, 0, 200, Short.MAX_VALUE)
-                            .addComponent(campoValor)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6))
+                                    .addComponent(campoChassi, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(comboCambioId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(campoRenavam))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campoQuilometragem, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(campoValor))))
+                        .addComponent(jLabel6)))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboSituacaoVeiculoId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboSituacaoVeiculoId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(campoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoQuilometragem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboCorExternaId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboCambioId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoQuilometragem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboCambioId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboCorInternaId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoRenavam, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoValor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoRenavam, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -670,6 +706,292 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
 
         abaInformacoes.addTab("Informações adicionais", jPanel5);
 
+        jPanel13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        jTabbedPane1.setToolTipText("");
+
+        jPanel24.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoPesquisaProcedencia.setColumns(20);
+        campoPesquisaProcedencia.setRows(5);
+        campoPesquisaProcedencia.setToolTipText("Informações sobre pesquisa de procedência");
+        jScrollPane3.setViewportView(campoPesquisaProcedencia);
+        campoPesquisaProcedencia.getAccessibleContext().setAccessibleDescription("");
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Pesquisa de procedência", jPanel24);
+
+        jPanel14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoIdentificacao.setColumns(20);
+        campoIdentificacao.setRows(5);
+        campoIdentificacao.setToolTipText("Informações sobre identificação");
+        jScrollPane4.setViewportView(campoIdentificacao);
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Identificação", jPanel14);
+
+        jPanel15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoEstrutura.setColumns(20);
+        campoEstrutura.setRows(5);
+        campoEstrutura.setToolTipText("Informações sobre estrutura");
+        jScrollPane5.setViewportView(campoEstrutura);
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Estrutura", jPanel15);
+
+        jPanel16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoMecanica.setColumns(20);
+        campoMecanica.setRows(5);
+        campoMecanica.setToolTipText("Informações sobre mecânica");
+        jScrollPane6.setViewportView(campoMecanica);
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Mecânica", jPanel16);
+
+        jPanel17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoEquipamentoObrigatorio.setColumns(20);
+        campoEquipamentoObrigatorio.setRows(5);
+        campoEquipamentoObrigatorio.setToolTipText("Informações sobre equipamentos obrigatórios");
+        jScrollPane7.setViewportView(campoEquipamentoObrigatorio);
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Equipamentos obrigatórios", jPanel17);
+
+        jPanel18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoCarroceria.setColumns(20);
+        campoCarroceria.setRows(5);
+        campoCarroceria.setToolTipText("Informações sobre carroceria");
+        jScrollPane8.setViewportView(campoCarroceria);
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Carroceria", jPanel18);
+
+        jPanel19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoInterior.setColumns(20);
+        campoInterior.setRows(5);
+        campoInterior.setToolTipText("Informações sobre interior");
+        jScrollPane9.setViewportView(campoInterior);
+
+        javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        jPanel19.setLayout(jPanel19Layout);
+        jPanel19Layout.setHorizontalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel19Layout.setVerticalGroup(
+            jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Interior", jPanel19);
+
+        jPanel20.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoPneu.setColumns(20);
+        campoPneu.setRows(5);
+        campoPneu.setToolTipText("Informações sobre pneus");
+        jScrollPane10.setViewportView(campoPneu);
+
+        javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
+        jPanel20.setLayout(jPanel20Layout);
+        jPanel20Layout.setHorizontalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel20Layout.setVerticalGroup(
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Pneus", jPanel20);
+
+        jPanel21.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoPastilhaFreio.setColumns(20);
+        campoPastilhaFreio.setRows(5);
+        campoPastilhaFreio.setToolTipText("Informações sobre pastilhas de freio");
+        jScrollPane11.setViewportView(campoPastilhaFreio);
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Pastilhas de freio", jPanel21);
+
+        jPanel22.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+
+        campoOutraInformacao.setColumns(20);
+        campoOutraInformacao.setRows(5);
+        campoOutraInformacao.setToolTipText("Outras informações importantes");
+        jScrollPane12.setViewportView(campoOutraInformacao);
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 952, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Outras informações", jPanel22);
+
+        javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
+        jPanel13.setLayout(jPanel13Layout);
+        jPanel13Layout.setHorizontalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
+        );
+        jPanel13Layout.setVerticalGroup(
+            jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
+        );
+
+        abaInformacoes.addTab("Informações de avarias", jPanel13);
+
         jPanel25.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
         tblConforto.setModel(new javax.swing.table.DefaultTableModel(
@@ -691,7 +1013,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel25Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel25Layout.setVerticalGroup(
@@ -725,7 +1047,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
@@ -759,7 +1081,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel27Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+                .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel27Layout.setVerticalGroup(
@@ -793,7 +1115,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+                .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel28Layout.setVerticalGroup(
@@ -827,7 +1149,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel29Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+                .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 985, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel29Layout.setVerticalGroup(
@@ -1126,151 +1448,19 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
-        campoFiltroPlaca.setText("");
-        campoFiltroVersao.setText("");
-        campoFiltroModelo.setText("");
-        comboFiltroMarcaId.setSelectedIndex(0);
-        comboFiltroSituacaoVeiculoId.setSelectedIndex(0);
-        campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
-        campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
-        new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        ComboItem filtroSituacaoVeiculoId = (ComboItem) comboFiltroSituacaoVeiculoId.getSelectedItem();
-        String filtroSituacao;
-        if (filtroSituacaoVeiculoId.getCodigo() == 0) {
-            filtroSituacao = "";
-        } else {
-            filtroSituacao = String.valueOf(filtroSituacaoVeiculoId.getCodigo());
-        }
 
-        ComboItem filtroMarcaId = (ComboItem) comboFiltroMarcaId.getSelectedItem();
-        String filtroMarca;
-        if (filtroMarcaId.getCodigo() == 0) {
-            filtroMarca = "";
-        } else {
-            filtroMarca = String.valueOf(filtroMarcaId.getCodigo());
-        }
-        new VeiculoDao().popularTabela(tblVeiculo, campoFiltroPlaca.getText(), campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtroMarca, filtroSituacao, campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        Funcoes funcoes = new Funcoes();
-        funcoes.limparCheckTabela(tblConforto);
-        funcoes.limparCheckTabela(tblSeguranca);
-        funcoes.limparCheckTabela(tblTecnologia);
-        funcoes.limparCheckTabela(tblEstilo);
-        funcoes.limparCheckTabela(tblExtra);
 
-        String codigoEditarVeiculo = String.valueOf(tblVeiculo.getValueAt(tblVeiculo.getSelectedRow(), 0));
-
-        Object objectVeiculo = DaoGenerico.getInstance().obterPorId(Veiculo.class, Integer.parseInt(codigoEditarVeiculo));
-        Veiculo veiculo = new Veiculo((Veiculo) objectVeiculo);
-
-        Object objectVersao = DaoGenerico.getInstance().obterPorId(Versao.class, veiculo.getVersao_id().getId());
-        Versao versao = new Versao((Versao) objectVersao);
-
-        ComboItem corInternaId = new ComboItem();
-        corInternaId.setCodigo(veiculo.getCor_interna_id().getId());
-
-        ComboItem corExternaId = new ComboItem();
-        corExternaId.setCodigo(veiculo.getCor_externa_id().getId());
-
-        ComboItem cambioId = new ComboItem();
-        cambioId.setCodigo(veiculo.getCambio_id().getId());
-
-        ComboItem situacaoVeiculoId = new ComboItem();
-        situacaoVeiculoId.setCodigo(veiculo.getSituacao_veiculo_id().getId());
-
-        ComboItem acabamentoInternoId = new ComboItem();
-        acabamentoInternoId.setCodigo(veiculo.getAcabamento_interno_id().getId());
-
-        if (versao != null) {
-            abaVeiculo.setSelectedIndex(0);
-
-            campoIdVersaoBusca.setText(Integer.toString(veiculo.getVersao_id().getId()));
-            campoNomeVersaoBusca.setText(versao.getNome());
-            new ComboDao().definirItemCombo(comboCorInternaId, corInternaId);
-            new ComboDao().definirItemCombo(comboCorExternaId, corExternaId);
-            new ComboDao().definirItemCombo(comboCambioId, cambioId);
-            new ComboDao().definirItemCombo(comboSituacaoVeiculoId, situacaoVeiculoId);
-            new ComboDao().definirItemCombo(comboAcabamentoInternoId, acabamentoInternoId);
-            campoQuilometragem.setText(veiculo.getQuilometragem());
-            campoPlaca.setText(veiculo.getPlaca());
-            campoChassi.setText(veiculo.getChassi());
-            campoRenavam.setText(veiculo.getRenavam());
-            campoValor.setText(Double.toString(veiculo.getValor()).replace(".", ","));
-            campoNumeroProprietario.setText(Integer.toString(veiculo.getNumero_proprietarios()));
-            campoNumeroOcorrencia.setText(Integer.toString(veiculo.getNumero_ocorrencias()));
-            if (veiculo.isChave_reserva()) {
-                radioChaveReservaSim.setSelected(true);
-            } else {
-                radioChaveReservaNao.setSelected(true);
-            }
-
-            if (veiculo.isManual_veiculo()) {
-                radioManualVeiculoSim.setSelected(true);
-            } else {
-                radioManualVeiculoNao.setSelected(true);
-            }
-
-            if (veiculo.isVistoriado()) {
-                radioVistoriadoSim.setSelected(true);
-            } else {
-                radioVistoriadoNao.setSelected(true);
-            }
-
-            if (veiculo.isBlindado()) {
-                radioBlindadoSim.setSelected(true);
-            } else {
-                radioBlindadoNao.setSelected(true);
-            }
-
-            campoGarantia.setText(veiculo.getGarantia());
-
-            if (veiculo.isIpva_pago()) {
-                radioIpvaPagoSim.setSelected(true);
-            } else {
-                radioIpvaPagoNao.setSelected(true);
-            }
-
-            if (veiculo.isExibir_site()) {
-                radioExibirSiteSim.setSelected(true);
-            } else {
-                radioExibirSiteNao.setSelected(true);
-            }
-
-            campoInformacoesVeiculo.setText(veiculo.getInformacoes_veiculo());
-
-            VeiculoDao veiculoDao = new VeiculoDao();
-            veiculoDao.obterVeiculoConforto(tblConforto, Integer.parseInt(codigoEditarVeiculo));
-            veiculoDao.obterVeiculoSeguranca(tblSeguranca, Integer.parseInt(codigoEditarVeiculo));
-            veiculoDao.obterVeiculoTecnologia(tblTecnologia, Integer.parseInt(codigoEditarVeiculo));
-            veiculoDao.obterVeiculoEstilo(tblEstilo, Integer.parseInt(codigoEditarVeiculo));
-            veiculoDao.obterVeiculoExtra(tblExtra, Integer.parseInt(codigoEditarVeiculo));
-
-            codigo = veiculo.getId();
-
-        } else {
-            Mensagem.erro("Erro ao consultar veículo!", this);
-        }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int codigoExcluirVeiculo = (int) tblVeiculo.getValueAt(tblVeiculo.getSelectedRow(), 0);
 
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirVeiculo = DaoGenerico.getInstance().excluir(Veiculo.class, codigoExcluirVeiculo);
-
-            if (retornoExcluirVeiculo == true) {
-                Mensagem.informacao("Veículo excluído com sucesso!", this);
-                new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
-            } else {
-                Mensagem.erro(tblVeiculo.getValueAt(tblVeiculo.getSelectedRow(), 3) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnFecharListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharListaActionPerformed
@@ -1282,8 +1472,8 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         Funcoes funcoes = new Funcoes();
 
         Versao versao = null;
-        if (!campoIdVersaoBusca.getText().equals("")) {
-            Object objectVersao = DaoGenerico.getInstance().obterPorId(Versao.class, Integer.parseInt(campoIdVersaoBusca.getText()));
+        if (!campoIdVersaoBusca1.getText().equals("")) {
+            Object objectVersao = DaoGenerico.getInstance().obterPorId(Versao.class, Integer.parseInt(campoIdVersaoBusca1.getText()));
             versao = new Versao((Versao) objectVersao);
         }
 
@@ -1324,7 +1514,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
 
         veiculo.setId(codigo);
 
-        if (!campoIdVersaoBusca.getText().equals("")) {
+        if (!campoIdVersaoBusca1.getText().equals("")) {
             veiculo.setVersao_id(versao);
         }
 
@@ -1347,6 +1537,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         }
 
         veiculo.setInformacoes_veiculo(campoInformacoesVeiculo.getText());
+
         if (!campoNumeroProprietario.getText().equals("")) {
             veiculo.setNumero_proprietarios(Integer.parseInt(campoNumeroProprietario.getText()));
         }
@@ -1419,39 +1610,32 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
                 veiculoEstiloDao.salvarVeiculoEstilo(tblEstilo, retornoSalvarVeiculo);
                 veiculoExtraDao.salvarVeiculoExtra(tblExtra, retornoSalvarVeiculo);
             } else {
-                boolean retornoUpdate = DaoGenerico.getInstance().atualizar(veiculo);
-
-                if (retornoUpdate == true) {
-                    retornoSalvarVeiculo = veiculo.getId();
-                } else {
-                    retornoSalvarVeiculo = 0;
-                }
-
-                retornoExcluirConforto = veiculoConofortoDao.excluir(retornoSalvarVeiculo);
-                if (retornoExcluirConforto == null) {
-                    veiculoConofortoDao.salvarVeiculoConforto(tblConforto, retornoSalvarVeiculo);
-                }
-                retornoExcluirSeguranca = veiculoSegurancaDao.excluir(retornoSalvarVeiculo);
-                if (retornoExcluirSeguranca == null) {
-                    veiculoSegurancaDao.salvarVeiculoSeguranca(tblSeguranca, retornoSalvarVeiculo);
-                }
-                retornoExcluirTecnologia = veiculoTecnologiaDao.excluir(retornoSalvarVeiculo);
-                if (retornoExcluirTecnologia == null) {
-                    veiculoTecnologiaDao.salvarVeiculoTecnologia(tblTecnologia, retornoSalvarVeiculo);
-                }
-                retornoExcluirEstilo = veiculoEstiloDao.excluir(retornoSalvarVeiculo);
-                if (retornoExcluirEstilo == null) {
-                    veiculoEstiloDao.salvarVeiculoEstilo(tblEstilo, retornoSalvarVeiculo);
-                }
-                retornoExcluirExtra = veiculoExtraDao.excluir(retornoSalvarVeiculo);
-                if (retornoExcluirExtra == null) {
-                    veiculoExtraDao.salvarVeiculoExtra(tblExtra, retornoSalvarVeiculo);
-                }
+//                retornoSalvarVeiculo = DaoGenerico.getInstance().atualizar(veiculo);
+//                retornoExcluirConforto = veiculoConofortoDao.excluir(Integer.parseInt(retornoSalvarVeiculo));
+//                if (retornoExcluirConforto == null) {
+//                    veiculoConofortoDao.salvarVeiculoConforto(tblConforto, Integer.parseInt(retornoSalvarVeiculo));
+//                }
+//                retornoExcluirSeguranca = veiculoSegurancaDao.excluir(Integer.parseInt(retornoSalvarVeiculo));
+//                if (retornoExcluirSeguranca == null) {
+//                    veiculoSegurancaDao.salvarVeiculoSeguranca(tblSeguranca, Integer.parseInt(retornoSalvarVeiculo));
+//                }
+//                retornoExcluirTecnologia = veiculoTecnologiaDao.excluir(Integer.parseInt(retornoSalvarVeiculo));
+//                if (retornoExcluirTecnologia == null) {
+//                    veiculoTecnologiaDao.salvarVeiculoTecnologia(tblTecnologia, Integer.parseInt(retornoSalvarVeiculo));
+//                }
+//                retornoExcluirEstilo = veiculoEstiloDao.excluir(Integer.parseInt(retornoSalvarVeiculo));
+//                if (retornoExcluirEstilo == null) {
+//                    veiculoEstiloDao.salvarVeiculoEstilo(tblEstilo, Integer.parseInt(retornoSalvarVeiculo));
+//                }
+//                retornoExcluirExtra = veiculoExtraDao.excluir(Integer.parseInt(retornoSalvarVeiculo));
+//                if (retornoExcluirExtra == null) {
+//                    veiculoExtraDao.salvarVeiculoExtra(tblExtra, Integer.parseInt(retornoSalvarVeiculo));
+//                }
             }
-            Mensagem.informacao("Veículo salvo com sucesso!", this);
+            JOptionPane.showMessageDialog(null, "Veículo salvo com sucesso!");
         } else {
-            campoIdVersaoBusca.setText("");
-            campoNomeVersaoBusca.setText("");
+            campoIdVersaoBusca1.setText("");
+            campoNomeVersaoBusca1.setText("");
             comboCorInternaId.setSelectedIndex(0);
             comboCorExternaId.setSelectedIndex(0);
             comboCambioId.setSelectedIndex(0);
@@ -1481,8 +1665,8 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
 
         if (retornoSalvarVeiculo != 0) {
 
-            campoIdVersaoBusca.setText("");
-            campoNomeVersaoBusca.setText("");
+            campoIdVersaoBusca1.setText("");
+            campoNomeVersaoBusca1.setText("");
             comboCorInternaId.setSelectedIndex(0);
             comboCorExternaId.setSelectedIndex(0);
             comboCambioId.setSelectedIndex(0);
@@ -1520,7 +1704,8 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
             new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         } else {
-            Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
+            JOptionPane.showMessageDialog(null, "Campos obrigatórios (*) devem ser preenchidos corretamente!");
+            //JOptionPane.showMessageDialog(null, "Deu erro: \n\nMensagem técnica:" + retornoSalvarVeiculo);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -1529,14 +1714,12 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFecharCadastroActionPerformed
 
     private void btnBuscaVersaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaVersaoActionPerformed
-        TelaBuscaVersao buscaVersao = new TelaBuscaVersao(null, true, this);
-        buscaVersao.setLocationRelativeTo(this);
-        buscaVersao.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscaVersaoActionPerformed
 
     public void definirVersao(int id, String nome) {
-        campoIdVersaoBusca.setText(Integer.toString(id));
-        campoNomeVersaoBusca.setText(nome);
+        campoIdVersaoBusca1.setText(Integer.toString(id));
+        campoNomeVersaoBusca1.setText(nome);
     }
 
     public boolean validaCampos() {
@@ -1547,7 +1730,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         ComboItem situacaoVeiculoId = (ComboItem) comboSituacaoVeiculoId.getSelectedItem();
         ComboItem acabamentoInternoId = (ComboItem) comboAcabamentoInternoId.getSelectedItem();
 
-        return !campoIdVersaoBusca.getText().equals("") && !campoNomeVersaoBusca.getText().equals("")
+        return !campoIdVersaoBusca1.getText().equals("") && !campoNomeVersaoBusca1.getText().equals("")
                 && cambioId.getCodigo() != 0 && corInternaId.getCodigo() != 0
                 && corExternaId.getCodigo() != 0 && acabamentoInternoId.getCodigo() != 0
                 && situacaoVeiculoId.getCodigo() != 0 && !campoQuilometragem.getText().equals("")
@@ -1564,7 +1747,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup agrupadorIpva;
     private javax.swing.ButtonGroup agrupadorManualVeiculo;
     private javax.swing.ButtonGroup agrupadorVistoriado;
-    private javax.swing.JButton btnBuscaVersao;
+    private javax.swing.JButton btnBuscaVersao1;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
@@ -1572,19 +1755,29 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnFecharLista;
     private javax.swing.JButton btnLimparBusca;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JTextArea campoCarroceria;
     private javax.swing.JTextField campoChassi;
+    private javax.swing.JTextArea campoEquipamentoObrigatorio;
+    private javax.swing.JTextArea campoEstrutura;
     private javax.swing.JFormattedTextField campoFiltroDataAte;
     private javax.swing.JFormattedTextField campoFiltroDataDe;
     private javax.swing.JTextField campoFiltroModelo;
     private javax.swing.JTextField campoFiltroPlaca;
     private javax.swing.JTextField campoFiltroVersao;
     private javax.swing.JTextField campoGarantia;
-    private javax.swing.JTextField campoIdVersaoBusca;
+    private javax.swing.JTextField campoIdVersaoBusca1;
+    private javax.swing.JTextArea campoIdentificacao;
     private javax.swing.JTextArea campoInformacoesVeiculo;
-    private javax.swing.JTextField campoNomeVersaoBusca;
+    private javax.swing.JTextArea campoInterior;
+    private javax.swing.JTextArea campoMecanica;
+    private javax.swing.JTextField campoNomeVersaoBusca1;
     private javax.swing.JTextField campoNumeroOcorrencia;
     private javax.swing.JTextField campoNumeroProprietario;
+    private javax.swing.JTextArea campoOutraInformacao;
+    private javax.swing.JTextArea campoPastilhaFreio;
+    private javax.swing.JTextArea campoPesquisaProcedencia;
     private javax.swing.JTextField campoPlaca;
+    private javax.swing.JTextArea campoPneu;
     private javax.swing.JTextField campoQuilometragem;
     private javax.swing.JTextField campoRenavam;
     private javax.swing.JTextField campoValor;
@@ -1595,12 +1788,14 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> comboFiltroMarcaId;
     private javax.swing.JComboBox<String> comboFiltroSituacaoVeiculoId;
     private javax.swing.JComboBox<String> comboSituacaoVeiculoId;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1619,24 +1814,33 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -1644,12 +1848,23 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane16;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JRadioButton radioBlindadoNao;
     private javax.swing.JRadioButton radioBlindadoSim;
     private javax.swing.JRadioButton radioChaveReservaNao;

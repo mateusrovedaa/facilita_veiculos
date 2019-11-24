@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JTable;
 
 public class VeiculoConfortoDao implements IDAO_T<VeiculoConforto> {
@@ -22,7 +23,7 @@ public class VeiculoConfortoDao implements IDAO_T<VeiculoConforto> {
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
 
-            String sql = "INSERT INTO veiculos_confortos VALUES "
+            String sql = "INSERT INTO veiculos_confortos (id, veiculo_id, conforto_id, criado_em, alterado_em) VALUES "
                     + "(DEFAULT, "
                     + "'" + veiculoConforto.getVeiculo_id() + "',"
                     + "'" + veiculoConforto.getConforto_id() + "',"
@@ -96,7 +97,7 @@ public class VeiculoConfortoDao implements IDAO_T<VeiculoConforto> {
 
             //boolean selecionado = tabela.getValueAt(i, 0) == null ? false : true;
             boolean selecionado;
-
+            
             if (tabela.getValueAt(i, 0) == null) {
                 selecionado = false;
             } else {
@@ -112,7 +113,9 @@ public class VeiculoConfortoDao implements IDAO_T<VeiculoConforto> {
             if (selecionado) {
                 veiculoConforto.setVeiculo_id(veiculo);
                 veiculoConforto.setConforto_id(conforto);
-                veiculoConofortoDao.salvar(veiculoConforto);
+                veiculoConforto.setCriadoEm(Calendar.getInstance());
+                veiculoConforto.setAlteradoEm(Calendar.getInstance());
+                boolean retorno = DaoGenerico.getInstance().inserir(veiculoConforto);
             }
         }
         return null;

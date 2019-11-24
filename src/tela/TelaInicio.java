@@ -93,6 +93,9 @@ public class TelaInicio extends javax.swing.JFrame {
         btnAtalhoCCliente = new javax.swing.JButton();
         btnAtalhoCProprietario = new javax.swing.JButton();
         btnAtalhoCVeiculo = new javax.swing.JButton();
+        btnAtalhoCCompra = new javax.swing.JButton();
+        btnAtalhoCVenda = new javax.swing.JButton();
+        btnAtalhoCSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnCUsuario = new javax.swing.JMenuItem();
@@ -105,6 +108,8 @@ public class TelaInicio extends javax.swing.JFrame {
         btnCVersao = new javax.swing.JMenuItem();
         btnCVeiculo = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        btnCCompra = new javax.swing.JMenuItem();
+        btnCVenda = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Facilita Veículos");
@@ -112,7 +117,7 @@ public class TelaInicio extends javax.swing.JFrame {
         dktInicial.setForeground(new java.awt.Color(60, 63, 65));
 
         btnAtalhoCCliente.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnAtalhoCCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/network.png"))); // NOI18N
+        btnAtalhoCCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/network1.png"))); // NOI18N
         btnAtalhoCCliente.setText("Clientes");
         btnAtalhoCCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAtalhoCCliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -125,7 +130,7 @@ public class TelaInicio extends javax.swing.JFrame {
         });
 
         btnAtalhoCProprietario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnAtalhoCProprietario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/team.png"))); // NOI18N
+        btnAtalhoCProprietario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/team (1).png"))); // NOI18N
         btnAtalhoCProprietario.setText("Proprietários");
         btnAtalhoCProprietario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAtalhoCProprietario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -138,7 +143,7 @@ public class TelaInicio extends javax.swing.JFrame {
         });
 
         btnAtalhoCVeiculo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnAtalhoCVeiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ExecutiveCar_Black_icon-icons.com_54904.png"))); // NOI18N
+        btnAtalhoCVeiculo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ExecutiveCar_Black_icon-icons.com_549041.png"))); // NOI18N
         btnAtalhoCVeiculo.setText("Veículos");
         btnAtalhoCVeiculo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAtalhoCVeiculo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -150,9 +155,51 @@ public class TelaInicio extends javax.swing.JFrame {
             }
         });
 
+        btnAtalhoCCompra.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAtalhoCCompra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/payment-method.png"))); // NOI18N
+        btnAtalhoCCompra.setText("Compras");
+        btnAtalhoCCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAtalhoCCompra.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAtalhoCCompra.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnAtalhoCCompra.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAtalhoCCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtalhoCCompraActionPerformed(evt);
+            }
+        });
+
+        btnAtalhoCVenda.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAtalhoCVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carsell.png"))); // NOI18N
+        btnAtalhoCVenda.setText("Vendas");
+        btnAtalhoCVenda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAtalhoCVenda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAtalhoCVenda.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnAtalhoCVenda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAtalhoCVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtalhoCVendaActionPerformed(evt);
+            }
+        });
+
+        btnAtalhoCSair.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btnAtalhoCSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/power-off.png"))); // NOI18N
+        btnAtalhoCSair.setText("Sair");
+        btnAtalhoCSair.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAtalhoCSair.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAtalhoCSair.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnAtalhoCSair.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAtalhoCSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtalhoCSairActionPerformed(evt);
+            }
+        });
+
         dktInicial.setLayer(btnAtalhoCCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktInicial.setLayer(btnAtalhoCProprietario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktInicial.setLayer(btnAtalhoCVeiculo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dktInicial.setLayer(btnAtalhoCCompra, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dktInicial.setLayer(btnAtalhoCVenda, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dktInicial.setLayer(btnAtalhoCSair, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dktInicialLayout = new javax.swing.GroupLayout(dktInicial);
         dktInicial.setLayout(dktInicialLayout);
@@ -161,6 +208,9 @@ public class TelaInicio extends javax.swing.JFrame {
             .addGroup(dktInicialLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(dktInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnAtalhoCSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAtalhoCVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAtalhoCCompra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAtalhoCVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAtalhoCProprietario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAtalhoCCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -175,7 +225,13 @@ public class TelaInicio extends javax.swing.JFrame {
                 .addComponent(btnAtalhoCProprietario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAtalhoCVeiculo)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAtalhoCCompra)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAtalhoCVenda)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAtalhoCSair)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-add-property-16.png"))); // NOI18N
@@ -262,6 +318,23 @@ public class TelaInicio extends javax.swing.JFrame {
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-money-16.png"))); // NOI18N
         jMenu2.setText("Financeiro");
+
+        btnCCompra.setText("Compras");
+        btnCCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCCompraActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnCCompra);
+
+        btnCVenda.setText("Vendas");
+        btnCVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCVendaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnCVenda);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -317,7 +390,7 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCEmpresaVistoriaActionPerformed
 
     private void btnCVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCVeiculoActionPerformed
-        gerenciarJanelas.abreJanela(TelaCadastroVeiculo.getInstancia());
+        gerenciarJanelas.abreJanela(TelaCadastroVeiculo_OLD.getInstancia());
     }//GEN-LAST:event_btnCVeiculoActionPerformed
 
     private void btnAtalhoCProprietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCProprietarioActionPerformed
@@ -335,6 +408,26 @@ public class TelaInicio extends javax.swing.JFrame {
     private void jMenu1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jMenu1StateChanged
         verificarPermissoes();
     }//GEN-LAST:event_jMenu1StateChanged
+
+    private void btnAtalhoCCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCCompraActionPerformed
+        gerenciarJanelas.abreJanela(TelaCadastroCompra.getInstancia());
+    }//GEN-LAST:event_btnAtalhoCCompraActionPerformed
+
+    private void btnAtalhoCVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCVendaActionPerformed
+        gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia());
+    }//GEN-LAST:event_btnAtalhoCVendaActionPerformed
+
+    private void btnAtalhoCSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCSairActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnAtalhoCSairActionPerformed
+
+    private void btnCCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCCompraActionPerformed
+        gerenciarJanelas.abreJanela(TelaCadastroCompra.getInstancia());
+    }//GEN-LAST:event_btnCCompraActionPerformed
+
+    private void btnCVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCVendaActionPerformed
+        gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia());
+    }//GEN-LAST:event_btnCVendaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,9 +466,13 @@ public class TelaInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtalhoCCliente;
+    private javax.swing.JButton btnAtalhoCCompra;
     private javax.swing.JButton btnAtalhoCProprietario;
+    private javax.swing.JButton btnAtalhoCSair;
     private javax.swing.JButton btnAtalhoCVeiculo;
+    private javax.swing.JButton btnAtalhoCVenda;
     private javax.swing.JMenuItem btnCCliente;
+    private javax.swing.JMenuItem btnCCompra;
     private javax.swing.JMenuItem btnCEmpresaVistoria;
     private javax.swing.JMenuItem btnCGeral;
     private javax.swing.JMenuItem btnCMarca;
@@ -383,6 +480,7 @@ public class TelaInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCProprietario;
     private javax.swing.JMenuItem btnCUsuario;
     private javax.swing.JMenuItem btnCVeiculo;
+    private javax.swing.JMenuItem btnCVenda;
     private javax.swing.JMenuItem btnCVersao;
     private javax.swing.JDesktopPane dktInicial;
     private javax.swing.JMenu jMenu1;

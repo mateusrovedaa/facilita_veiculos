@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import javax.swing.JTable;
 
 public class VeiculoSegurancaDao implements IDAO_T<VeiculoSeguranca> {
@@ -113,7 +114,9 @@ public class VeiculoSegurancaDao implements IDAO_T<VeiculoSeguranca> {
             if (selecionado) {
                 veiculoSeguranca.setVeiculo_id(veiculo);
                 veiculoSeguranca.setSeguranca_id(seguranca);
-                veiculoSegurancaDao.salvar(veiculoSeguranca);
+                veiculoSeguranca.setCriadoEm(Calendar.getInstance());
+                veiculoSeguranca.setAlteradoEm(Calendar.getInstance());
+                boolean retorno = DaoGenerico.getInstance().inserir(veiculoSeguranca);
             }
         }
         return null;
