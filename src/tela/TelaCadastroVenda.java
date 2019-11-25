@@ -3,9 +3,11 @@ package tela;
 import dao.ComboDao;
 import dao.DaoGenerico;
 import dao.PermissaoDao;
+import dao.VeiculoDao;
 import dao.VersaoDao;
 import entidade.Combustivel;
 import entidade.Modelo;
+import entidade.Veiculo;
 import entidade.Venda;
 import entidade.Versao;
 import functions.ComboItem;
@@ -16,6 +18,7 @@ import java.time.LocalDate;
 import static java.time.LocalDateTime.now;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
@@ -371,6 +374,11 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
         btnAddVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-add-162.png"))); // NOI18N
         btnAddVenda.setText("Adicionar nova venda");
+        btnAddVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddVendaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -724,7 +732,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFecharListaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
+       
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnFecharCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCadastroActionPerformed
@@ -756,6 +764,23 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 //        parcela.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
 //        parcela.setVisible(true);
     }//GEN-LAST:event_btnVerParcelasActionPerformed
+
+    private void btnAddVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVendaActionPerformed
+        btnSalvar.setEnabled(true);
+        codigo = 0;
+        campoIdVeiculoBusca.setText("");
+        campoPlacaVeiculoBusca.setText("");
+        campoIdClienteBusca.setText("");
+        campoNomeClienteBusca.setText("");
+        campoDataVenda.setText("");
+        comboSituacaoVendaId.setSelectedIndex(0);
+        comboTipoPagamentoId.setSelectedIndex(0);
+        campoValorVeiculo.setText("");
+        campoValorEntrada.setText("");
+        comboParcelaId.setSelectedIndex(0);
+        campoJuros.setText("");
+        campoObservacoes.setText("");
+    }//GEN-LAST:event_btnAddVendaActionPerformed
 
     public void definirVeiculo(int id, String placa) {
         campoIdVeiculoBusca.setText(Integer.toString(id));

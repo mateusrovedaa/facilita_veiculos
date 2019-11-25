@@ -167,14 +167,26 @@ public class TelaBuscaVeiculo extends javax.swing.JDialog {
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         campoFiltroPlaca.setText("");
-        new VeiculoDao().listarVeiculo(tblVeiculo, "", "2");
+        if (telaCompra != null) {
+            new VeiculoDao().listarVeiculo(tblVeiculo, "", "2");
+        } else if (telaVenda != null) {
+            new VeiculoDao().listarVeiculo(tblVeiculo, "", "1");
+        }
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         if (campoFiltroPlaca.getText().equals("")) {
-            new VeiculoDao().listarVeiculo(tblVeiculo, "", "2");
+            if (telaCompra != null) {
+                new VeiculoDao().listarVeiculo(tblVeiculo, "", "2");
+            } else if (telaVenda != null) {
+                new VeiculoDao().listarVeiculo(tblVeiculo, "", "1");
+            }
         } else {
-            new VeiculoDao().listarVeiculo(tblVeiculo, campoFiltroPlaca.getText(), "2");
+            if (telaCompra != null) {
+                new VeiculoDao().listarVeiculo(tblVeiculo, campoFiltroPlaca.getText(), "2");
+            } else if (telaVenda != null) {
+                new VeiculoDao().listarVeiculo(tblVeiculo, campoFiltroPlaca.getText(), "1");
+            }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
