@@ -2,8 +2,11 @@ package tela;
 
 import dao.PermissaoDao;
 import functions.GerenciarJanelas;
+import functions.Mensagem;
+import java.awt.SystemColor;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 
 public class TelaInicio extends javax.swing.JFrame {
 
@@ -418,7 +421,12 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtalhoCVendaActionPerformed
 
     private void btnAtalhoCSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCSairActionPerformed
-        this.dispose();
+        int sair = Mensagem.confirmacao("Deseja sair do sistema?", this);
+        if (sair == 0){
+            System.exit(0);
+        }
+    
+    //this.dispose();
     }//GEN-LAST:event_btnAtalhoCSairActionPerformed
 
     private void btnCCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCCompraActionPerformed
