@@ -33,7 +33,7 @@ public class GeradorDeGrafico {
 
         JFreeChart chart = ChartFactory.createPieChart(tituloGrafico, data, true, true, true);
 
-        java.awt.Color cor = new java.awt.Color(200, 200, 200);
+        java.awt.Color cor = new java.awt.Color(192, 192, 192);
         chart.setBackgroundPaint(cor);
         PiePlot plot = (PiePlot) chart.getPlot();
         plot.setLabelLinksVisible(true);

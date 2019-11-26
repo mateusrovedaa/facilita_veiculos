@@ -6,12 +6,13 @@
 package tela;
 
 import functions.GeradorDeGrafico;
+import functions.GerenciarJanelas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
 import java.util.ArrayList;
-import javax.swing.JInternalFrame;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
 
 /**
  *
@@ -20,12 +21,15 @@ import javax.swing.WindowConstants;
 public class TelaGrafico extends javax.swing.JInternalFrame {
 
     private static TelaGrafico tela;
-
+    private final Color cinza = new Color(192, 192, 192);
+    
     /**
      * Creates new form TelaGrafico
      */
     public TelaGrafico() {
         initComponents();
+        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
+        this.setFrameIcon(icon);
         criaGrafico();
     }
 
@@ -47,10 +51,12 @@ public class TelaGrafico extends javax.swing.JInternalFrame {
             valores.add(5 + i);
         }
 
-        painel.add(GeradorDeGrafico.pizza3DStatic(nomes, valores,"Título do Gráfico"));
+        painel.add(GeradorDeGrafico.pizza3DStatic(nomes, valores, "Título do Gráfico"));
+        painel.setBackground(cinza);
         scroll.add(painel);
         scroll.setSize(new Dimension(879, 539));
         scroll.setPreferredSize(new Dimension(879, 539));
+        scroll.setBackground(cinza);
         this.getContentPane().add(scroll);
     }
 
@@ -64,25 +70,65 @@ public class TelaGrafico extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         piePlot1 = new org.jfree.chart.plot.PiePlot();
+        jPanel1 = new javax.swing.JPanel();
+        btnFechar = new javax.swing.JButton();
 
-        setClosable(true);
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-exit-16.png"))); // NOI18N
+        btnFechar.setText("Fechar");
+        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(388, Short.MAX_VALUE)
+                .addComponent(btnFechar)
+                .addGap(382, 382, 382))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnFechar)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 879, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 659, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(568, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        GerenciarJanelas.fecharJanela(tela);
+        tela = null;
+    }//GEN-LAST:event_btnFecharActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFechar;
+    private javax.swing.JPanel jPanel1;
     private org.jfree.chart.plot.PiePlot piePlot1;
     // End of variables declaration//GEN-END:variables
 }
