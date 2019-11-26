@@ -3,7 +3,6 @@ package tela;
 import dao.PermissaoDao;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
-import java.awt.SystemColor;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
 
@@ -421,11 +420,11 @@ public class TelaInicio extends javax.swing.JFrame {
 
     private void btnAtalhoCSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCSairActionPerformed
         int sair = Mensagem.confirmacao("Deseja sair do sistema?", this);
-        if (sair == 0){
+        if (sair == 0) {
             System.exit(0);
         }
-    
-    //this.dispose();
+
+        //this.dispose();
     }//GEN-LAST:event_btnAtalhoCSairActionPerformed
 
     private void btnCCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCCompraActionPerformed
@@ -450,16 +449,24 @@ public class TelaInicio extends javax.swing.JFrame {
                 if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

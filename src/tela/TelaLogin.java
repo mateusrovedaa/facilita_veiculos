@@ -86,6 +86,11 @@ public class TelaLogin extends javax.swing.JFrame {
 
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-login-16.png"))); // NOI18N
         btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
         btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnEntrarKeyPressed(evt);
@@ -156,6 +161,10 @@ public class TelaLogin extends javax.swing.JFrame {
             realizaLogin();
         }
     }//GEN-LAST:event_campoSenhaKeyPressed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        realizaLogin();
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/Car-32.png")));
