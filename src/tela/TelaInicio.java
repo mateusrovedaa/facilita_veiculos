@@ -6,7 +6,6 @@ import functions.Mensagem;
 import java.awt.SystemColor;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
-import javax.swing.JOptionPane;
 
 public class TelaInicio extends javax.swing.JFrame {
 
