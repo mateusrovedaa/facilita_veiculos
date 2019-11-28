@@ -1,11 +1,11 @@
 package tela;
 
-import com.sun.glass.events.KeyEvent;
 import dao.DaoGenerico;
 import dao.UsuarioDao;
 import functions.Mensagem;
 import functions.Validacao;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

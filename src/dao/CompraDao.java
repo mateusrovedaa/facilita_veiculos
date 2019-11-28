@@ -6,10 +6,13 @@ import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.IDAO_T;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -46,6 +49,19 @@ public class CompraDao implements IDAO_T<Compra> {
     @Override
     public Compra consultarId(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int contarCompra() {
+        int i = 0;
+        try {
+            resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
+                    + "SELECT count(*) FROM compras");
+            resultadoQ.next();
+            i = resultadoQ.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return i;
     }
 
     public void popularTabela(JTable tabela, String placa, String versao, String modelo, String marca_id, String situacao_compra_id, String proprietario, String data_de, String data_ate) {

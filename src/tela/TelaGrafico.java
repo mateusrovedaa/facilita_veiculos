@@ -5,6 +5,8 @@
  */
 package tela;
 
+import dao.CompraDao;
+import dao.VendaVeiculoDao;
 import functions.GeradorDeGrafico;
 import functions.GerenciarJanelas;
 import java.awt.Color;
@@ -21,7 +23,8 @@ import javax.swing.JPanel;
 public class TelaGrafico extends javax.swing.JInternalFrame {
 
     private static TelaGrafico tela;
-    private final Color cinza = new Color(192, 192, 192);
+    private final CompraDao coDAO = new CompraDao();
+    private final VendaVeiculoDao veDAO = new VendaVeiculoDao();
     
     /**
      * Creates new form TelaGrafico
@@ -45,18 +48,20 @@ public class TelaGrafico extends javax.swing.JInternalFrame {
         ArrayList valores = new ArrayList();
         JPanel painel = new JPanel();
         ScrollPane scroll = new ScrollPane(1);
+        int contaCompra = coDAO.contarCompra();
+        int contaVenda = veDAO.contarVenda(); 
+        int total = contaCompra + contaVenda;
+        int compras = contaCompra/total;
+        int vendas = contaVenda/total;
+        nomes.add("Compras");
+        nomes.add("Vendas");
+        valores.add(compras);
+        valores.add(vendas);
 
-        for (int i = 0; i < 5; i++) {
-            nomes.add("Nome" + i);
-            valores.add(5 + i);
-        }
-
-        painel.add(GeradorDeGrafico.pizza3DStatic(nomes, valores, "Título do Gráfico"));
-        painel.setBackground(cinza);
+        painel.add(GeradorDeGrafico.pizza3DStatic(nomes, valores, "Quantidade de vendas/compras"));
         scroll.add(painel);
         scroll.setSize(new Dimension(879, 539));
         scroll.setPreferredSize(new Dimension(879, 539));
-        scroll.setBackground(cinza);
         this.getContentPane().add(scroll);
     }
 

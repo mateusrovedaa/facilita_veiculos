@@ -5,6 +5,7 @@
  */
 package functions;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
@@ -32,8 +33,8 @@ public class GeradorDeGrafico {
         }
 
         JFreeChart chart = ChartFactory.createPieChart(tituloGrafico, data, true, true, true);
-
-        java.awt.Color cor = new java.awt.Color(192, 192, 192);
+        java.awt.Color cor = new java.awt.Color(238, 238, 238);
+        chart.getPlot().setBackgroundPaint(cor);
         chart.setBackgroundPaint(cor);
         PiePlot plot = (PiePlot) chart.getPlot();
         plot.setLabelLinksVisible(true);
@@ -46,7 +47,6 @@ public class GeradorDeGrafico {
         plot.setInteriorGap(0.20);
 
         ChartPanel chartPanel = new ChartPanel(chart);
-
         return chartPanel;
     }
 
