@@ -647,31 +647,33 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
             } else {
                 retornoSalvarProprietario = DaoGenerico.getInstance().atualizar(proprietario);
             }
-            Mensagem.informacao("Proprietário salvo com sucesso!", this);
+            if (retornoSalvarProprietario == true) {
+                Mensagem.informacao("Proprietário salvo com sucesso!", this);
+                campoNome.setText("");
+                campoRg.setText("");
+                campoCpf.setText("");
+                campoDataNascimento.setText("");
+                campoIdCidadeBusca.setText("");
+                campoNomeCidadeBusca.setText("");
+                campoEndereco.setText("");
+                campoTelefone.setText("");
+                campoEmail.setText("");
+
+                campoNome.requestFocus();
+
+                codigo = 0;
+
+                if (peDAO.consultarPermissao("Listar", "proprietario")) {
+                    new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
+                }
+            } else {
+                Mensagem.erro("Já existe um proprietário com esse RG, CPF ou email!", this);
+            }
+
         } else {
             Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
 
-        if (retornoSalvarProprietario == true) {
-
-            campoNome.setText("");
-            campoRg.setText("");
-            campoCpf.setText("");
-            campoDataNascimento.setText("");
-            campoIdCidadeBusca.setText("");
-            campoNomeCidadeBusca.setText("");
-            campoEndereco.setText("");
-            campoTelefone.setText("");
-            campoEmail.setText("");
-
-            campoNome.requestFocus();
-
-            codigo = 0;
-
-            if (peDAO.consultarPermissao("Listar", "proprietario")) {
-                new ProprietarioDao().popularTabela(tblProprietario, campoFiltroNome.getText());
-            }
-        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnFecharCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCadastroActionPerformed

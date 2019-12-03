@@ -642,31 +642,33 @@ public class TelaCadastroEmpresaVistoria extends javax.swing.JInternalFrame {
             } else {
                 retornoSalvarEmpresaVistoria = DaoGenerico.getInstance().atualizar(empresaVistoria);
             }
-            Mensagem.informacao("Empresa salva com sucesso!", this);
-        } else {
-            Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
-        }
+            if (retornoSalvarEmpresaVistoria == true) {
+                Mensagem.informacao("Empresa salva com sucesso!", this);
+                campoRazaoSocial.setText("");
+                campoNomeFantasia.setText("");
+                campoCnpj.setText("");
+                campoTelefone.setText("");
+                campoIdCidadeBusca.setText("");
+                campoNomeCidadeBusca.setText("");
+                campoEndereco.setText("");
+                campoTelefone.setText("");
+                campoEmail.setText("");
+                campoObservacoes.setText("");
 
-        if (retornoSalvarEmpresaVistoria == true) {
+                campoRazaoSocial.requestFocus();
 
-            campoRazaoSocial.setText("");
-            campoNomeFantasia.setText("");
-            campoCnpj.setText("");
-            campoTelefone.setText("");
-            campoIdCidadeBusca.setText("");
-            campoNomeCidadeBusca.setText("");
-            campoEndereco.setText("");
-            campoTelefone.setText("");
-            campoEmail.setText("");
-            campoObservacoes.setText("");
+                codigo = 0;
 
-            campoRazaoSocial.requestFocus();
+                if (peDAO.consultarPermissao("Listar", "empvistoria")) {
+                    new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+                } else {
+                    Mensagem.erro("Já existe uma empresa de vistoria cadastrada com esse CNPJ ou email!", this);
+                }
 
-            codigo = 0;
-
-            if (peDAO.consultarPermissao("Listar", "empvistoria")) {
-                new EmpresaVistoriaDao().popularTabela(tblEmpresaVistoria, campoFiltroRazaoSocial.getText());
+            } else {
+                Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
             }
+
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

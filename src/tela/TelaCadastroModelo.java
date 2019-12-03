@@ -13,6 +13,7 @@ import functions.ComboItem;
 import functions.Funcoes;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import functions.SoNumerosEPonto;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
 
@@ -26,6 +27,9 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
         initComponents();
         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
         this.setFrameIcon(icon);
+        campoComprimento.setDocument(new SoNumerosEPonto());
+        campoLargura.setDocument(new SoNumerosEPonto());
+        campoAltura.setDocument(new SoNumerosEPonto());
         new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
         new ComboDao().popularCombo("carrocerias", 1, 4, comboCarroceriaId, "");
         new ComboDao().popularCombo("procedencias", 1, 4, comboProcedenciaId, "");
@@ -77,6 +81,7 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             comboProcedenciaId.setEnabled(false);
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -637,27 +642,30 @@ public class TelaCadastroModelo extends javax.swing.JInternalFrame {
             } else {
                 retornoSalvarModelo = DaoGenerico.getInstance().atualizar(modelo);
             }
-            Mensagem.informacao("Modelo salvo com sucesso!", this);
+            if (retornoSalvarModelo == true) {
+                Mensagem.informacao("Modelo salvo com sucesso!", this);
+                campoNome.setText("");
+                campoComprimento.setText("");
+                campoAltura.setText("");
+                campoLargura.setText("");
+                comboMarcaId.setSelectedIndex(0);
+                comboProcedenciaId.setSelectedIndex(0);
+                comboCarroceriaId.setSelectedIndex(0);
+
+                campoNome.requestFocus();
+
+                codigo = 0;
+
+                verificaPermissoes();
+            }else{
+                Mensagem.erro("Ocorreu um erro ao salvar modelo!", this);
+            }
+
         } else {
             Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
 
-        if (retornoSalvarModelo == true) {
 
-            campoNome.setText("");
-            campoComprimento.setText("");
-            campoAltura.setText("");
-            campoLargura.setText("");
-            comboMarcaId.setSelectedIndex(0);
-            comboProcedenciaId.setSelectedIndex(0);
-            comboCarroceriaId.setSelectedIndex(0);
-
-            campoNome.requestFocus();
-
-            codigo = 0;
-
-            verificaPermissoes();
-        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnFecharCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCadastroActionPerformed
