@@ -17,10 +17,12 @@ import entidade.SituacaoVeiculo;
 import entidade.Veiculo;
 import entidade.Versao;
 import functions.ComboItem;
+import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
 import functions.Validacao;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -28,8 +30,16 @@ import static java.time.LocalDateTime.now;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class TelaCadastroCompra extends javax.swing.JInternalFrame {
 
@@ -132,6 +142,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnFecharLista = new javax.swing.JButton();
+        btnEditar1 = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -149,7 +160,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Veículo*"));
 
@@ -465,8 +476,8 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 62, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoFiltroDataDe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -560,12 +571,23 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-view-16.png"))); // NOI18N
+        btnEditar1.setText("Gerar contrato");
+        btnEditar1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(315, 315, 315)
+                .addComponent(btnEditar1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExcluir)
@@ -580,7 +602,8 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar)
                     .addComponent(btnExcluir)
-                    .addComponent(btnFecharLista))
+                    .addComponent(btnFecharLista)
+                    .addComponent(btnEditar1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -843,6 +866,33 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         buscaProprietario.setVisible(true);
     }//GEN-LAST:event_btnBuscaProprietarioActionPerformed
 
+    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+        int idInt = Integer.parseInt(tblCompra.getValueAt(tblCompra.getSelectedRow(), 0).toString());
+        if (idInt == 0) {
+            Mensagem.aviso("Selecione um registro para imprimir!", this);
+        } else {
+            try {
+                // Compila o relatorio
+                URL web = getClass().getResource("/relatorios/");
+                JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/contrato_compra.jrxml"));
+
+                // Mapeia campos de parametros para o relatorio, mesmo que nao existam
+                Map parametros = new HashMap();
+
+                // adiciona parametros
+                parametros.put("idcompra", idInt);
+
+                // Executa relatoio
+                JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());
+
+                // Exibe resultado em video
+                JasperViewer.viewReport(impressao, false);
+            } catch (JRException e) {
+                Mensagem.erro("Erro ao gerar relatório: " + e, this);
+            }
+        }
+    }//GEN-LAST:event_btnEditar1ActionPerformed
+
     public void definirVeiculo(int id, String placa) {
         campoIdVeiculoBusca.setText(Integer.toString(id));
         campoPlacaVeiculoBusca.setText(placa);
@@ -870,6 +920,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscaVeiculo;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFecharCadastro;
     private javax.swing.JButton btnFecharLista;
