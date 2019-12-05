@@ -6,3 +6,43 @@ Erro: org.hibernate.exception.ConstraintViolationException: could not execute st
 
 Horário: 23/11/2019 15:35:51
 
+Usuário: daniela
+Método: inserir
+Classe: class entidade.Cliente
+
+Erro: org.hibernate.PropertyValueException: not-null property references a null or transient value : entidade.Cliente.data_nascimento
+
+Horário: 25/11/2019 20:23:41
+
+Usuário: daniela
+Método: inserir
+Classe: class entidade.Cliente
+
+Erro: org.hibernate.PropertyValueException: not-null property references a null or transient value : entidade.Cliente.data_nascimento
+
+Horário: 25/11/2019 20:23:48
+
+Usuário: daniela
+Método: inserir
+Classe: class entidade.Modelo
+
+Erro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+
+Horário: 25/11/2019 20:29:04
+
+Usuário: daniela
+Método: inserir
+Classe: class entidade.Modelo
+
+Erro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+
+Horário: 25/11/2019 20:30:58
+
+Usuário: daniela
+Método: excluir
+Classe: class entidade.Modelo
+
+Erro: org.hibernate.exception.ConstraintViolationException: could not execute statement
+
+Horário: 25/11/2019 20:33:24
+

@@ -169,11 +169,11 @@
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabel12" alignment="1" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel12" alignment="1" pref="108" max="32767" attributes="0"/>
                                   <Component id="jLabel14" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jLabel7" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel15" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel17" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel17" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -205,7 +205,7 @@
                                           <Component id="campoNumeroAssento" alignment="1" max="32767" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Component id="campoAnoModelo" min="-2" pref="78" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>

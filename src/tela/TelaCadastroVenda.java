@@ -35,6 +35,11 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         campoPlacaVeiculoBusca.setEditable(false);
         campoIdClienteBusca.setEditable(false);
         campoNomeClienteBusca.setEditable(false);
+        new ComboDao().popularCombo("situacoes_vendas", 1, 4, comboSituacaoVendaId, "");
+        new ComboDao().popularCombo("situacoes_vendas", 1, 4, comboFiltroSituacaoCompraId, "");
+        new ComboDao().popularCombo("tipos_pagamentos", 1, 4, comboTipoPagamentoId, "");
+        new ComboDao().popularCombo("parcelas", 1, 4, comboParcelaId, "");
+        new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
         Formatacao.formatarData(campoFiltroDataDe);
         Formatacao.formatarData(campoFiltroDataAte);
         Formatacao.formatarData(campoDataVenda);
@@ -114,12 +119,12 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         campoFiltroDataAte = new javax.swing.JFormattedTextField();
         jLabel13 = new javax.swing.JLabel();
         campoFiltroVersao = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
         campoFiltroModelo = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         comboFiltroSituacaoCompraId = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         campoFiltroCliente = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCompra = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
@@ -483,9 +488,6 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Versão:");
 
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("Modelo:");
-
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Situação da venda:");
 
@@ -493,6 +495,8 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Cliente:");
+
+        jLabel23.setText("Modelo:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -512,7 +516,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,8 +531,8 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
                         .addComponent(btnLimparBusca))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel23))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(campoFiltroModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
@@ -544,8 +548,8 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
                     .addComponent(campoFiltroPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoFiltroVersao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoFiltroModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoFiltroModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -831,7 +835,6 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -840,6 +843,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
