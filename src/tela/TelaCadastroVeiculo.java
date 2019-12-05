@@ -53,8 +53,9 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
         Formatacao.formatarData(campoFiltroDataDe);
         Formatacao.formatarData(campoFiltroDataAte);
-        campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
+        campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
+        new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         verificaPermissoes();
     }
 
@@ -1196,7 +1197,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         campoFiltroModelo.setText("");
         comboFiltroMarcaId.setSelectedIndex(0);
         comboFiltroSituacaoVeiculoId.setSelectedIndex(0);
-        campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
+        campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
         if (peDAO.consultarPermissao("Listar", "veiculolist")) {
             new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
@@ -1587,7 +1588,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             campoFiltroModelo.setText("");
             comboFiltroMarcaId.setSelectedIndex(0);
             comboFiltroSituacaoVeiculoId.setSelectedIndex(0);
-            campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
+            campoFiltroDataDe.setText(Formatacao.getDataMes());
             campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
             if (peDAO.consultarPermissao("Listar", "veiculolist")) {
                 new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());

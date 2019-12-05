@@ -2,7 +2,9 @@ package functions;
 
 import java.text.*;
 import java.text.Normalizer.Form;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.regex.Pattern;
 import javax.swing.*;
@@ -181,5 +183,16 @@ public class Formatacao {
         String normalized = Normalizer.normalize(nowhitespace, Form.NFD);
         String texto_slug = NONLATIN.matcher(normalized).replaceAll("");
         return texto_slug.toLowerCase();
+    }
+    
+        public static String getDataMes() {
+        GregorianCalendar today = new GregorianCalendar();
+        today.add(Calendar.DAY_OF_MONTH, -30); //retrocede 30 dias
+        Date incioMes = today.getTime();
+//        Date now = new Date();
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String dataHoje = df.format(incioMes);
+
+        return dataHoje;
     }
 }

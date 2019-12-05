@@ -80,10 +80,13 @@ public class TelaInicio extends javax.swing.JFrame {
         } else {
             btnCModelo.setEnabled(true);
         }
-//        if (!peDAO.consultarPermissao("Acessar", "veiculo")) {
-//            btnCVeiculo.setEnabled(false);
-//            btnAtalhoCVeiculo.setEnabled(false);
-//        }
+        if (!peDAO.consultarPermissao("Acessar", "veiculoinfo")) {
+            btnCVeiculo.setEnabled(false);
+            btnAtalhoCVeiculo.setEnabled(false);
+        } else {
+            btnCVeiculo.setEnabled(true);
+            btnAtalhoCVeiculo.setEnabled(true);
+        }
     }
 
     @SuppressWarnings("unchecked")
