@@ -2557,7 +2557,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel1">
+            <Container class="javax.swing.JPanel" name="pnlCompra">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Compra">
@@ -2572,82 +2572,140 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox6" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cbxCompraProcurarV" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxCompraExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraGerarContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxCompraListar" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraCmbSitComList" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraCmbMarList" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraCmbSit" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraProcurarProp" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="407" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="cbxCompraCmbSit" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxCompraCmbMarList" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxCompraCmbSitComList" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cbxCompraAcessar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraProcurarProp" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxCompraSalvar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxCompraEditar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="4" max="32767" attributes="0"/>
+                                  <Component id="cbxCompraExcluir" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxCompraGerarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxCompraListar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="4" max="32767" attributes="0"/>
-                          <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxCompraBuscar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxCompraLimparBusca" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jCheckBox6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jCheckBox7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jCheckBox8" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbxCompraProcurarV" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                <Component class="javax.swing.JCheckBox" name="cbxCompraAcessar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Acessar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+                <Component class="javax.swing.JCheckBox" name="cbxCompraSalvar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+                <Component class="javax.swing.JCheckBox" name="cbxCompraEditar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+                <Component class="javax.swing.JCheckBox" name="cbxCompraGerarContrato">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bot&#xe3;o Gerar Contrato"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+                <Component class="javax.swing.JCheckBox" name="cbxCompraExcluir">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+                <Component class="javax.swing.JCheckBox" name="cbxCompraBuscar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+                <Component class="javax.swing.JCheckBox" name="cbxCompraProcurarV">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Ve&#xed;culo"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+                <Component class="javax.swing.JCheckBox" name="cbxCompraProcurarProp">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Propriet&#xe1;rio"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraCmbSit">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Situa&#xe7;&#xe3;o da compra"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraCmbMarList">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Marca - Listar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraCmbSitComList">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Situa&#xe7;&#xe3;o da compra - Listar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraLimparBusca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraListar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Listar registros"/>
                   </Properties>
                 </Component>
               </SubComponents>

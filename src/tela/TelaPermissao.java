@@ -35,6 +35,8 @@ public class TelaPermissao extends javax.swing.JDialog {
     private final String listar = "Listar";
     private final String permissao = "Permissao";
     private final String procurar = "Procurar";
+    private final String procurar2 = "Procurar2";
+    private final String gerarcontrato = "GerarContrato";
     private final String comboCadastro = "ComboCadastro";
     private final String comboProcedencia = "ComboProcedencia";
     private final String comboCarroceria = "ComboCarroceria";
@@ -46,6 +48,8 @@ public class TelaPermissao extends javax.swing.JDialog {
     private final String comboCambio = "ComboCambio";
     private final String comboAcabInt = "ComboAcabInt";
     private final String comboMarca = "ComboMarca";
+    private final String comboSitCompra1 = "ComboSitCompra1";
+    private final String comboSitCompra2 = "ComboSitCompra2";
 
     //telas
     private final String telaMarca = "marca";
@@ -76,6 +80,7 @@ public class TelaPermissao extends javax.swing.JDialog {
     private final String telaGeralCida = "geralcida";
     private final String telaGeralEsta = "geralesta";
     private final String telaGeralPerf = "geralperf";
+    private final String telaCompra = "compra";
 
     /**
      * Creates new form TelaPermissao
@@ -121,6 +126,7 @@ public class TelaPermissao extends javax.swing.JDialog {
         preenchePermissoesVeiculoSegu();
         preenchePermissoesVeiculoTecn();
         preenchePermissoesVeiculoList();
+        preenchePermissoesCompra();
     }
 
     /**
@@ -344,15 +350,20 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxProprietarioExcluir = new javax.swing.JCheckBox();
         cbxProprietarioAcessar = new javax.swing.JCheckBox();
         cbxProprietarioLimparBusca = new javax.swing.JCheckBox();
-        jPanel1 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jCheckBox7 = new javax.swing.JCheckBox();
-        jCheckBox8 = new javax.swing.JCheckBox();
+        pnlCompra = new javax.swing.JPanel();
+        cbxCompraAcessar = new javax.swing.JCheckBox();
+        cbxCompraSalvar = new javax.swing.JCheckBox();
+        cbxCompraEditar = new javax.swing.JCheckBox();
+        cbxCompraGerarContrato = new javax.swing.JCheckBox();
+        cbxCompraExcluir = new javax.swing.JCheckBox();
+        cbxCompraBuscar = new javax.swing.JCheckBox();
+        cbxCompraProcurarV = new javax.swing.JCheckBox();
+        cbxCompraProcurarProp = new javax.swing.JCheckBox();
+        cbxCompraCmbSit = new javax.swing.JCheckBox();
+        cbxCompraCmbMarList = new javax.swing.JCheckBox();
+        cbxCompraCmbSitComList = new javax.swing.JCheckBox();
+        cbxCompraLimparBusca = new javax.swing.JCheckBox();
+        cbxCompraListar = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -1819,62 +1830,96 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         Painel.addTab("Proprietário", pnlProprietario);
 
-        jCheckBox1.setText("Acessar");
+        cbxCompraAcessar.setText("Acessar");
 
-        jCheckBox2.setText("Botão Salvar");
+        cbxCompraSalvar.setText("Botão Salvar");
 
-        jCheckBox3.setText("Botão Editar");
+        cbxCompraEditar.setText("Botão Editar");
 
-        jCheckBox4.setText("Botão Gerar Contrato");
+        cbxCompraGerarContrato.setText("Botão Gerar Contrato");
 
-        jCheckBox5.setText("Botão Excluir");
+        cbxCompraExcluir.setText("Botão Excluir");
 
-        jCheckBox6.setText("Botão Buscar");
+        cbxCompraBuscar.setText("Botão Buscar");
 
-        jCheckBox7.setText("Botão Procurar Veículo");
+        cbxCompraProcurarV.setText("Botão Procurar Veículo");
 
-        jCheckBox8.setText("Botão Salvar");
+        cbxCompraProcurarProp.setText("Botão Procurar Proprietário");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        cbxCompraCmbSit.setText("Combo Situação da compra");
+
+        cbxCompraCmbMarList.setText("Combo Marca - Listar");
+
+        cbxCompraCmbSitComList.setText("Combo Situação da compra - Listar");
+
+        cbxCompraLimparBusca.setText("Botão Limpar Busca");
+
+        cbxCompraListar.setText("Listar registros");
+
+        javax.swing.GroupLayout pnlCompraLayout = new javax.swing.GroupLayout(pnlCompra);
+        pnlCompra.setLayout(pnlCompraLayout);
+        pnlCompraLayout.setHorizontalGroup(
+            pnlCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCompraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox5)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox6)
-                    .addComponent(jCheckBox7)
-                    .addComponent(jCheckBox8))
-                .addContainerGap(407, Short.MAX_VALUE))
+                .addGroup(pnlCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlCompraLayout.createSequentialGroup()
+                        .addComponent(cbxCompraProcurarV)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCompraLayout.createSequentialGroup()
+                        .addGroup(pnlCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxCompraExcluir)
+                            .addComponent(cbxCompraEditar)
+                            .addComponent(cbxCompraAcessar)
+                            .addComponent(cbxCompraSalvar)
+                            .addComponent(cbxCompraGerarContrato)
+                            .addComponent(cbxCompraBuscar)
+                            .addComponent(cbxCompraLimparBusca))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addGroup(pnlCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxCompraListar)
+                            .addComponent(cbxCompraCmbSitComList)
+                            .addComponent(cbxCompraCmbMarList)
+                            .addComponent(cbxCompraCmbSit)
+                            .addComponent(cbxCompraProcurarProp))
+                        .addGap(93, 93, 93))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pnlCompraLayout.setVerticalGroup(
+            pnlCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlCompraLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCheckBox1)
+                .addGroup(pnlCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlCompraLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(cbxCompraCmbSit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbxCompraCmbMarList)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbxCompraCmbSitComList))
+                    .addGroup(pnlCompraLayout.createSequentialGroup()
+                        .addGroup(pnlCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbxCompraAcessar)
+                            .addComponent(cbxCompraProcurarProp))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbxCompraSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbxCompraEditar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
+                        .addComponent(cbxCompraExcluir)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox2)
+                .addGroup(pnlCompraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxCompraGerarContrato)
+                    .addComponent(cbxCompraListar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, Short.MAX_VALUE)
-                .addComponent(jCheckBox5)
+                .addComponent(cbxCompraBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox4)
+                .addComponent(cbxCompraLimparBusca)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox8)
+                .addComponent(cbxCompraProcurarV)
                 .addGap(60, 60, 60))
         );
 
-        Painel.addTab("Compra", jPanel1);
+        Painel.addTab("Compra", pnlCompra);
 
         jLabel2.setText("jLabel2");
 
@@ -2593,7 +2638,52 @@ public class TelaPermissao extends javax.swing.JDialog {
             }
         }
     }
-    
+
+    private void preenchePermissoesCompra() {
+        perm = peDAO.consultarPermissoes(telaCompra, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxCompraAcessar.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxCompraEditar.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxCompraSalvar.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxCompraExcluir.setSelected(true);
+            }
+            if (perm.get(i).equals(gerarcontrato)) {
+                cbxCompraGerarContrato.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxCompraLimparBusca.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxCompraBuscar.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxCompraListar.setSelected(true);
+            }
+            if (perm.get(i).equals(procurar)) {
+                cbxCompraProcurarV.setSelected(true);
+            }
+            if (perm.get(i).equals(procurar2)) {
+                cbxCompraProcurarProp.setSelected(true);
+            }
+            if (perm.get(i).equals(comboSitCompra1)) {
+                cbxCompraCmbSit.setSelected(true);
+            }
+            if (perm.get(i).equals(comboSitCompra2)) {
+                cbxCompraCmbSitComList.setSelected(true);
+            }
+            if (perm.get(i).equals(comboMarca)) {
+                cbxCompraCmbMarList.setSelected(true);
+            }
+        }
+    }
+
     private Boolean atualizaPerms() {
         boolean ok;
         //marca
@@ -3372,9 +3462,64 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             veiclist = false;
         }
-        
 
-        return veicsegu && veictecn && veicextr && veicesti && veicconf && veicinf && marca && modelo && user && versao && gacab && gcamb
+        //compra
+        boolean compra = true;
+
+        ok = Funcoes.verificaPermissoes(cbxCompraAcessar, acessar, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraEditar, editar, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraSalvar, salvar, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraExcluir, excluir, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraGerarContrato, gerarcontrato, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraLimparBusca, limparBusca, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraBuscar, buscar, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraListar, listar, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraProcurarV, procurar, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraProcurarProp, procurar2, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraCmbSit, comboSitCompra1, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraCmbSitComList, comboSitCompra2, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxCompraCmbMarList, comboMarca, telaCompra, usuario, peDAO);
+        if (!ok == true) {
+            compra = false;
+        }
+
+        return compra && veicsegu && veictecn && veicextr && veicesti && veicconf && veicinf && marca && modelo && user && versao && gacab && gcamb
                 && veiclist && gcarr && gcomb && gconf && gcore && gcori && gesti && gextr && gsegu && gtecn && gcid && gest
                 && gperf && cliente && empvist && prop;
     }
@@ -3420,6 +3565,7 @@ public class TelaPermissao extends javax.swing.JDialog {
         paineis.add(pnlListar);
         paineis.add(pnlProprietario);
         paineis.add(pnlVeiculo);
+        paineis.add(pnlCompra);
 
         for (int i = 0; i < paineis.size(); i++) {
             Component c[] = paineis.get(i).getComponents();
@@ -3532,6 +3678,19 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JCheckBox cbxClienteListar;
     private javax.swing.JCheckBox cbxClienteProcCid;
     private javax.swing.JCheckBox cbxClienteSalvar;
+    private javax.swing.JCheckBox cbxCompraAcessar;
+    private javax.swing.JCheckBox cbxCompraBuscar;
+    private javax.swing.JCheckBox cbxCompraCmbMarList;
+    private javax.swing.JCheckBox cbxCompraCmbSit;
+    private javax.swing.JCheckBox cbxCompraCmbSitComList;
+    private javax.swing.JCheckBox cbxCompraEditar;
+    private javax.swing.JCheckBox cbxCompraExcluir;
+    private javax.swing.JCheckBox cbxCompraGerarContrato;
+    private javax.swing.JCheckBox cbxCompraLimparBusca;
+    private javax.swing.JCheckBox cbxCompraListar;
+    private javax.swing.JCheckBox cbxCompraProcurarProp;
+    private javax.swing.JCheckBox cbxCompraProcurarV;
+    private javax.swing.JCheckBox cbxCompraSalvar;
     private javax.swing.JCheckBox cbxEmpVistAcessar;
     private javax.swing.JCheckBox cbxEmpVistBuscar;
     private javax.swing.JCheckBox cbxEmpVistEditar;
@@ -3692,16 +3851,7 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JCheckBox cbxVersaoListar;
     private javax.swing.JCheckBox cbxVersaoProcurarModelo;
     private javax.swing.JCheckBox cbxVersaoSalvar;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
-    private javax.swing.JCheckBox jCheckBox7;
-    private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel6;
@@ -3717,6 +3867,7 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JPanel pnlCidades;
     private javax.swing.JPanel pnlCliente;
     private javax.swing.JPanel pnlCombustiveis;
+    private javax.swing.JPanel pnlCompra;
     private javax.swing.JPanel pnlConfortos;
     private javax.swing.JPanel pnlCoresExt;
     private javax.swing.JPanel pnlCoresInt;

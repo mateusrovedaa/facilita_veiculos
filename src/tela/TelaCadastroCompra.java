@@ -59,12 +59,12 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         Formatacao.formatarData(campoFiltroDataDe);
         Formatacao.formatarData(campoFiltroDataAte);
         Formatacao.formatarData(campoData);
-        campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
+        campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
         new ComboDao().popularCombo("situacoes_compras", 1, 4, comboSituacaoCompraId, "");
         new ComboDao().popularCombo("situacoes_compras", 1, 4, comboFiltroSituacaoCompraId, "");
         new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
-        new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        verificaPermissoes();
     }
 
     public static TelaCadastroCompra getInstancia() {
@@ -77,6 +77,45 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
     private void funcaoFechar() {
         GerenciarJanelas.fecharJanela(tela);
         tela = null;
+    }
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "compra")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "compra")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "compra")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "compra")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "compra")) {
+            btnEditar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("GerarContrato", "compra")) {
+            btnGerarContrato.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "compra")) {
+            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        }
+        if (!peDAO.consultarPermissao("Procurar", "compra")) {
+            btnBuscaVeiculo.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Procurar2", "compra")) {
+            btnBuscaProprietario.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboSitCompra1", "compra")) {
+            comboSituacaoCompraId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboSitCompra2", "compra")) {
+            comboFiltroSituacaoCompraId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboMarca", "compra")) {
+            comboFiltroMarcaId.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -142,7 +181,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnFecharLista = new javax.swing.JButton();
-        btnEditar1 = new javax.swing.JButton();
+        btnGerarContrato = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -579,12 +618,12 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEditar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-view-16.png"))); // NOI18N
-        btnEditar1.setText("Gerar contrato");
-        btnEditar1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnEditar1.addActionListener(new java.awt.event.ActionListener() {
+        btnGerarContrato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-view-16.png"))); // NOI18N
+        btnGerarContrato.setText("Gerar contrato");
+        btnGerarContrato.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btnGerarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditar1ActionPerformed(evt);
+                btnGerarContratoActionPerformed(evt);
             }
         });
 
@@ -594,7 +633,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(315, 315, 315)
-                .addComponent(btnEditar1)
+                .addComponent(btnGerarContrato)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -611,7 +650,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
                     .addComponent(btnEditar)
                     .addComponent(btnExcluir)
                     .addComponent(btnFecharLista)
-                    .addComponent(btnEditar1))
+                    .addComponent(btnGerarContrato))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -685,9 +724,11 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         comboFiltroMarcaId.setSelectedIndex(0);
         comboFiltroSituacaoCompraId.setSelectedIndex(0);
         campoFiltroProprietario.setText("");
-        campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
+        campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
-        new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        if (peDAO.consultarPermissao("Listar", "compra")) {
+            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        }
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -708,11 +749,12 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         }
 
         if (Validacao.validarDataFormatada(campoFiltroDataDe.getText()) || Validacao.validarDataFormatada(campoFiltroDataAte.getText())) {
-            new CompraDao().popularTabela(tblCompra, campoFiltroPlaca.getText(), campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtroMarca, filtroSituacaoCompra, campoFiltroProprietario.getText(), campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            if (peDAO.consultarPermissao("Listar", "compra")) {
+                new CompraDao().popularTabela(tblCompra, campoFiltroPlaca.getText(), campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtroMarca, filtroSituacaoCompra, campoFiltroProprietario.getText(), campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            }
         } else {
             Mensagem.aviso("Digite uma data válida!", this);
-            campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
-            campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
+            campoFiltroDataDe.setText(Formatacao.getDataMes());
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -761,7 +803,9 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
 
             if (retornoExcluirCompra == true) {
                 Mensagem.informacao("Compra excluída com sucesso!", this);
-                new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                if (peDAO.consultarPermissao("Listar", "compra")) {
+                    new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                }
             } else {
                 Mensagem.erro(tblCompra.getValueAt(tblCompra.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -852,7 +896,9 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
+            if (peDAO.consultarPermissao("Listar", "compra")) {
             new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        }
         } else {
             Mensagem.erro("Erro ao cadastrar compra!", this);
         }
@@ -874,7 +920,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         buscaProprietario.setVisible(true);
     }//GEN-LAST:event_btnBuscaProprietarioActionPerformed
 
-    private void btnEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar1ActionPerformed
+    private void btnGerarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarContratoActionPerformed
         int idInt = Integer.parseInt(tblCompra.getValueAt(tblCompra.getSelectedRow(), 0).toString());
         if (idInt == 0) {
             Mensagem.aviso("Selecione um registro para imprimir!", this);
@@ -899,7 +945,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
                 Mensagem.erro("Erro ao gerar relatório: " + e, this);
             }
         }
-    }//GEN-LAST:event_btnEditar1ActionPerformed
+    }//GEN-LAST:event_btnGerarContratoActionPerformed
 
     public void definirVeiculo(int id, String placa) {
         campoIdVeiculoBusca.setText(Integer.toString(id));
@@ -928,10 +974,10 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscaVeiculo;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnEditar1;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFecharCadastro;
     private javax.swing.JButton btnFecharLista;
+    private javax.swing.JButton btnGerarContrato;
     private javax.swing.JButton btnLimparBusca;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JFormattedTextField campoData;

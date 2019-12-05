@@ -87,6 +87,13 @@ public class TelaInicio extends javax.swing.JFrame {
             btnCVeiculo.setEnabled(true);
             btnAtalhoCVeiculo.setEnabled(true);
         }
+        if (!peDAO.consultarPermissao("Acessar", "compra")) {
+            btnCCompra.setEnabled(false);
+            btnAtalhoCCompra.setEnabled(false);
+        } else {
+            btnCCompra.setEnabled(true);
+            btnAtalhoCCompra.setEnabled(true);
+        }
     }
 
     @SuppressWarnings("unchecked")
