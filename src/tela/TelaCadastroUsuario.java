@@ -591,26 +591,28 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
             } else {
                 retornoSalvarUsuario = DaoGenerico.getInstance().atualizar(usuario);
             }
-            Mensagem.informacao("Usuário salvo com sucesso!", this);
+            if (retornoSalvarUsuario == true) {
+                Mensagem.informacao("Usuário salvo com sucesso!", this);
+                campoNome.setText("");
+                comboPerfilId.setSelectedIndex(0);
+                campoDataNascimento.setText("");
+                campoEmail.setText("");
+                campoSenha.setText("");
+                campoConfirmaSenha.setText("");
+
+                campoNome.requestFocus();
+
+                codigo = 0;
+
+                verificaPermissoes();
+            } else {
+                Mensagem.erro("Já existe um usuário com esse nome ou email!", this);
+            }
+
         } else {
             Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
 
-        if (retornoSalvarUsuario == true) {
-
-            campoNome.setText("");
-            comboPerfilId.setSelectedIndex(0);
-            campoDataNascimento.setText("");
-            campoEmail.setText("");
-            campoSenha.setText("");
-            campoConfirmaSenha.setText("");
-
-            campoNome.requestFocus();
-
-            codigo = 0;
-
-            verificaPermissoes();
-        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed

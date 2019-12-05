@@ -2,6 +2,7 @@ package tela;
 
 import dao.PermissaoDao;
 import functions.GerenciarJanelas;
+import functions.Mensagem;
 import java.awt.Toolkit;
 import javax.swing.JDesktopPane;
 
@@ -79,10 +80,20 @@ public class TelaInicio extends javax.swing.JFrame {
         } else {
             btnCModelo.setEnabled(true);
         }
-//        if (!peDAO.consultarPermissao("Acessar", "veiculo")) {
-//            btnCVeiculo.setEnabled(false);
-//            btnAtalhoCVeiculo.setEnabled(false);
-//        }
+        if (!peDAO.consultarPermissao("Acessar", "veiculoinfo")) {
+            btnCVeiculo.setEnabled(false);
+            btnAtalhoCVeiculo.setEnabled(false);
+        } else {
+            btnCVeiculo.setEnabled(true);
+            btnAtalhoCVeiculo.setEnabled(true);
+        }
+        if (!peDAO.consultarPermissao("Acessar", "compra")) {
+            btnCCompra.setEnabled(false);
+            btnAtalhoCCompra.setEnabled(false);
+        } else {
+            btnCCompra.setEnabled(true);
+            btnAtalhoCCompra.setEnabled(true);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -110,6 +121,8 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         btnCCompra = new javax.swing.JMenuItem();
         btnCVenda = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Facilita Veículos");
@@ -337,6 +350,18 @@ public class TelaInicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Gráficos");
+
+        jMenuItem1.setText("Gráfico 1");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -418,7 +443,12 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtalhoCVendaActionPerformed
 
     private void btnAtalhoCSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCSairActionPerformed
-        this.dispose();
+        int sair = Mensagem.confirmacao("Deseja sair do sistema?", this);
+        if (sair == 0) {
+            System.exit(0);
+        }
+
+        //this.dispose();
     }//GEN-LAST:event_btnAtalhoCSairActionPerformed
 
     private void btnCCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCCompraActionPerformed
@@ -428,6 +458,10 @@ public class TelaInicio extends javax.swing.JFrame {
     private void btnCVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCVendaActionPerformed
         gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia());
     }//GEN-LAST:event_btnCVendaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        gerenciarJanelas.abreJanela(TelaGrafico.getInstancia());
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,16 +477,24 @@ public class TelaInicio extends javax.swing.JFrame {
                 if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaInicio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -485,7 +527,9 @@ public class TelaInicio extends javax.swing.JFrame {
     private javax.swing.JDesktopPane dktInicial;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {

@@ -5,6 +5,7 @@ import dao.UsuarioDao;
 import functions.Mensagem;
 import functions.Validacao;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,11 +13,35 @@ import java.util.logging.Logger;
 public class TelaLogin extends javax.swing.JFrame {
 
     private DaoGenerico dao = new DaoGenerico();
-    
+
     public TelaLogin() {
         initComponents();
         campoEmail.requestFocus();
         setIcon();
+    }
+
+    private void realizaLogin() {
+        String email = campoEmail.getText();
+        String senha = null;
+
+        try {
+            senha = Validacao.criptografarSenha(campoSenha.getText());
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        UsuarioDao usuarioDao = new UsuarioDao();
+        if (usuarioDao.validarLogin(email, senha) != 0) {
+            dispose();
+            TelaInicio telaInicio = new TelaInicio(usuarioDao.validarLogin(email, senha));
+            dao.setarNome(email);
+            telaInicio.setVisible(true);
+        } else {
+            Mensagem.erro("Usúario ou senha incorretos", this);
+            campoEmail.setText("");
+            campoSenha.setText("");
+            campoEmail.requestFocus();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -37,15 +62,15 @@ public class TelaLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
 
-        campoEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoEmailActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Email:");
 
         jLabel2.setText("Senha:");
+
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoSenhaKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 11)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -64,6 +89,11 @@ public class TelaLogin extends javax.swing.JFrame {
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
+            }
+        });
+        btnEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnEntrarKeyPressed(evt);
             }
         });
 
@@ -116,41 +146,30 @@ public class TelaLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void campoEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoEmailActionPerformed
-
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        String email = campoEmail.getText();
-        String senha = null;
-
-        try {
-            senha = Validacao.criptografarSenha(campoSenha.getText());
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        UsuarioDao usuarioDao = new UsuarioDao();
-        if (usuarioDao.validarLogin(email, senha) != 0) {
-            dispose();
-            TelaInicio telaInicio = new TelaInicio(usuarioDao.validarLogin(email, senha));
-            dao.setarNome(email);
-            telaInicio.setVisible(true);
-        } else {
-            Mensagem.erro("Usúario ou senha incorretos", this);
-            campoEmail.setText("");
-            campoSenha.setText("");
-            campoEmail.requestFocus();
-        }
-    }//GEN-LAST:event_btnEntrarActionPerformed
-
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnFecharActionPerformed
 
+    private void btnEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnEntrarKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            realizaLogin();
+        }
+    }//GEN-LAST:event_btnEntrarKeyPressed
+
+    private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
+               if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            realizaLogin();
+        }
+    }//GEN-LAST:event_campoSenhaKeyPressed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        realizaLogin();
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/Car-32.png")));
     }
+
     /**
      * @param args the command line arguments
      */

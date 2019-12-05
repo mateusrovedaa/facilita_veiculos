@@ -43,8 +43,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
-                      <Component id="Painel" max="32767" attributes="0"/>
                       <Component id="jPanel11" alignment="0" max="32767" attributes="0"/>
+                      <Component id="Painel" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -82,7 +82,7 @@
                       <Component id="btnMarcarTodos" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnDesmarcarTodos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                       <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnFechar" min="-2" max="-2" attributes="0"/>
@@ -186,7 +186,7 @@
                               <Component id="cbxMarcaBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxMarcaListar" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="373" max="32767" attributes="0"/>
+                          <EmptySpace pref="366" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -289,7 +289,7 @@
                               </Group>
                               <Component id="cbxModeloComboMarcaCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="179" max="32767" attributes="0"/>
+                          <EmptySpace pref="172" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -417,7 +417,7 @@
                               <Component id="cbxUsuarioPermissao" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxUsuarioListar" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="183" max="32767" attributes="0"/>
+                          <EmptySpace pref="176" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -537,7 +537,7 @@
                               <Component id="cbxVersaoBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxVersaoProcurarModelo" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="134" max="32767" attributes="0"/>
+                          <EmptySpace pref="127" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -647,10 +647,9 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="cbxGeralAcessarAcab" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTabbedPane2" min="-2" pref="241" max="-2" attributes="0"/>
+                          <Component id="jTabbedPane2" min="-2" pref="249" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -731,7 +730,7 @@
                                           <Component id="cbxGeralLimparBuscaAcab" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarAcab" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -810,7 +809,7 @@
                                           <Component id="cbxGeralLimparBuscaCamb" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarCamb" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -889,7 +888,7 @@
                                           <Component id="cbxGeralLimparBuscaCarr" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarCarr" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -968,7 +967,7 @@
                                           <Component id="cbxGeralLimparBuscaComb" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarComb" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1047,7 +1046,7 @@
                                           <Component id="cbxGeralLimparBuscaConft" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarConft" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1126,7 +1125,7 @@
                                           <Component id="cbxGeralLimparBuscaCorEx" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarCorEx" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1205,7 +1204,7 @@
                                           <Component id="cbxGeralLimparBuscaCorInt" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarCorInt" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1284,7 +1283,7 @@
                                           <Component id="cbxGeralLimparBuscaEst" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarEst" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1363,7 +1362,7 @@
                                           <Component id="cbxGeralLimparBuscaExt" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarExt" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1442,7 +1441,7 @@
                                           <Component id="cbxGeralLimparBuscaSeg" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarSeg" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1521,7 +1520,7 @@
                                           <Component id="cbxGeralLimparBuscaTec" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarTec" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1636,7 +1635,7 @@
                                           <Component id="cbxGeralListarCid" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralComboCid" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="14" max="32767" attributes="0"/>
+                                          <EmptySpace pref="22" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1720,7 +1719,7 @@
                                           <Component id="cbxGeralLimparBuscaEsta" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarEsta" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1799,7 +1798,7 @@
                                           <Component id="cbxGeralLimparBuscaPerf" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="cbxGeralListarPerf" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                                          <EmptySpace pref="49" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1874,7 +1873,7 @@
                               <Component id="cbxClienteListar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxClienteProcCid" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="373" max="32767" attributes="0"/>
+                          <EmptySpace pref="366" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1969,7 +1968,7 @@
                               <Component id="cbxEmpVistSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxEmpVistAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="373" max="32767" attributes="0"/>
+                          <EmptySpace pref="366" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2052,15 +2051,416 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="609" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jTabbedPane5" min="-2" pref="601" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="cbxVeiculoAcessar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="280" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                          <Component id="cbxVeiculoAcessar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jTabbedPane5" min="-2" pref="243" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JTabbedPane" name="jTabbedPane5">
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+                  <SubComponents>
+                    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+                      <Properties>
+                        <Property name="tabPlacement" type="int" value="2"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Cadastrar ou editar">
+                            <Property name="tabTitle" type="java.lang.String" value="Cadastrar ou editar"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+                      <SubComponents>
+                        <Container class="javax.swing.JPanel" name="pnlInfosVeic">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Informa&#xe7;&#xf5;es do ve&#xed;culo">
+                                <Property name="tabTitle" type="java.lang.String" value="Informa&#xe7;&#xf5;es do ve&#xed;culo"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cbxProcurarVersao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxVeiculoCmbSituacao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxVeiculoCmbCorExt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxVeiculoCmbCorInt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxVeiculoCmbCambio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxVeiculoCmbAcabInt" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbxVeiculoSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace pref="177" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxProcurarVersao" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoCmbSituacao" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoCmbCorExt" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoCmbCorInt" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoCmbCambio" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoCmbAcabInt" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoSalvar" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JCheckBox" name="cbxProcurarVersao">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Procurar Vers&#xe3;o"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoCmbSituacao">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Combo Situa&#xe7;&#xe3;o do Ve&#xed;culo"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoCmbCorExt">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Combo Cor Externa"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoCmbCorInt">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Combo Cor Interna"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoCmbCambio">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Combo C&#xe2;mbio"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoCmbAcabInt">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Combo Acabamento Interno"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoSalvar">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="pnlVecConfortos">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Confortos">
+                                <Property name="tabTitle" type="java.lang.String" value="Confortos"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarConf" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="172" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarConf" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="178" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoListarConf">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Listar e selecionar registros"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="pnlVecEstilos">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Estilos">
+                                <Property name="tabTitle" type="java.lang.String" value="Estilos"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarEsti" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="172" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarEsti" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="178" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoListarEsti">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Listar e selecionar registros"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="pnlVecExtras">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Extras">
+                                <Property name="tabTitle" type="java.lang.String" value="Extras"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarExtr" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="172" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarExtr" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="178" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoListarExtr">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Listar e selecionar registros"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="pnlVecSegurancas">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Seguran&#xe7;as">
+                                <Property name="tabTitle" type="java.lang.String" value="Seguran&#xe7;as"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarSegu" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="172" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarSegu" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="178" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoListarSegu">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Listar e selecionar registros"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                        <Container class="javax.swing.JPanel" name="pnlVecTecnologias">
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                              <JTabbedPaneConstraints tabName="Tecnologias">
+                                <Property name="tabTitle" type="java.lang.String" value="Tecnologias"/>
+                              </JTabbedPaneConstraints>
+                            </Constraint>
+                          </Constraints>
+
+                          <Layout>
+                            <DimensionLayout dim="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarTecn" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="172" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                            <DimensionLayout dim="1">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbxVeiculoListarTecn" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="178" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                            </DimensionLayout>
+                          </Layout>
+                          <SubComponents>
+                            <Component class="javax.swing.JCheckBox" name="cbxVeiculoListarTecn">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Listar e selecionar registros"/>
+                              </Properties>
+                            </Component>
+                          </SubComponents>
+                        </Container>
+                      </SubComponents>
+                    </Container>
+                    <Container class="javax.swing.JPanel" name="pnlListar">
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="Listar">
+                            <Property name="tabTitle" type="java.lang.String" value="Listar"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+
+                      <Layout>
+                        <DimensionLayout dim="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxVecListCmbSit" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxVecListCmbMar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxVecListBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxVecListLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxVecListEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxVecListExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxListarVeiculos" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="423" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                        <DimensionLayout dim="1">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="cbxVecListCmbSit" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxVecListCmbMar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxVecListBuscar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxVecListLimparBusca" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxVecListEditar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxVecListExcluir" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxListarVeiculos" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                        </DimensionLayout>
+                      </Layout>
+                      <SubComponents>
+                        <Component class="javax.swing.JCheckBox" name="cbxVecListCmbSit">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Combo Situa&#xe7;&#xe3;o"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="cbxVecListCmbMar">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Combo Marca"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="cbxVecListBuscar">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="cbxVecListLimparBusca">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="cbxVecListEditar">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="cbxVecListExcluir">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+                          </Properties>
+                        </Component>
+                        <Component class="javax.swing.JCheckBox" name="cbxListarVeiculos">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Listar Ve&#xed;culos"/>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JCheckBox" name="cbxVeiculoAcessar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Acessar"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlProprietario">
               <Constraints>
@@ -2086,7 +2486,7 @@
                               <Component id="cbxProprietarioSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="cbxProprietarioAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="373" max="32767" attributes="0"/>
+                          <EmptySpace pref="366" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2153,6 +2553,159 @@
                 <Component class="javax.swing.JCheckBox" name="cbxProprietarioLimparBusca">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlCompra">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Compra">
+                    <Property name="tabTitle" type="java.lang.String" value="Compra"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cbxCompraProcurarV" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxCompraExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraGerarContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxCompraListar" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraCmbSitComList" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraCmbMarList" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraCmbSit" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraProcurarProp" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="cbxCompraCmbSit" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxCompraCmbMarList" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxCompraCmbSitComList" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cbxCompraAcessar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxCompraProcurarProp" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxCompraSalvar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxCompraEditar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="4" max="32767" attributes="0"/>
+                                  <Component id="cbxCompraExcluir" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxCompraGerarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxCompraListar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxCompraBuscar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxCompraLimparBusca" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxCompraProcurarV" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraAcessar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Acessar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraSalvar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraEditar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraGerarContrato">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Gerar Contrato"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraExcluir">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraBuscar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraProcurarV">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Ve&#xed;culo"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraProcurarProp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Propriet&#xe1;rio"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraCmbSit">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Situa&#xe7;&#xe3;o da compra"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraCmbMarList">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Marca - Listar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraCmbSitComList">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Situa&#xe7;&#xe3;o da compra - Listar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraLimparBusca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxCompraListar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Listar registros"/>
                   </Properties>
                 </Component>
               </SubComponents>

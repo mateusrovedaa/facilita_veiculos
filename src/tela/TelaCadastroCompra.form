@@ -556,7 +556,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane1" max="32767" attributes="0"/>
-                              <Component id="jPanel2" max="32767" attributes="0"/>
+                              <Component id="jPanel2" pref="1079" max="32767" attributes="0"/>
                               <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -607,34 +607,47 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel13" max="32767" attributes="0"/>
                                   <Component id="jLabel10" max="32767" attributes="0"/>
-                                  <Component id="jLabel18" alignment="1" pref="62" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="campoFiltroDataDe" alignment="1" min="-2" pref="240" max="-2" attributes="0"/>
-                                  <Component id="campoFiltroVersao" alignment="1" min="-2" pref="241" max="-2" attributes="0"/>
-                                  <Component id="campoFiltroProprietario" alignment="1" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      <Component id="campoFiltroProprietario" min="-2" pref="220" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                          <Component id="campoFiltroDataDe" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="campoFiltroVersao" min="-2" pref="221" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jLabel12" max="32767" attributes="0"/>
+                                          <Component id="jLabel14" min="-2" pref="61" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="campoFiltroDataAte" pref="231" max="32767" attributes="0"/>
+                                          <Component id="campoFiltroModelo" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="btnLimparBusca" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="jLabel12" max="32767" attributes="0"/>
-                                          <Component id="jLabel14" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="campoFiltroDataAte" pref="241" max="32767" attributes="0"/>
-                                          <Component id="campoFiltroModelo" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -821,8 +834,10 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="315" max="-2" attributes="0"/>
+                              <Component id="btnGerarContrato" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnEditar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnExcluir" min="-2" max="-2" attributes="0"/>
@@ -840,6 +855,7 @@
                                   <Component id="btnEditar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnFecharLista" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnGerarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -881,6 +897,18 @@
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFecharListaActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnGerarContrato">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/images/icons8-view-16.png"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Gerar contrato"/>
+                        <Property name="horizontalAlignment" type="int" value="4"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerarContratoActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

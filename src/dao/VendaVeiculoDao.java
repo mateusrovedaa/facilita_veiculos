@@ -4,10 +4,13 @@ import entidade.Cidade;
 import functions.ConexaoBD;
 import functions.IDAO_T;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -40,6 +43,19 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
     @Override
     public ArrayList<Cidade> consultar(String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int contarVenda() {
+        int i = 0;
+        try {
+            resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
+                    + "SELECT count(*) FROM vendas");
+            resultadoQ.next();
+            i = resultadoQ.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return i;
     }
 
     @Override

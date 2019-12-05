@@ -647,30 +647,32 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
             } else {
                 retornoSalvarCliente = DaoGenerico.getInstance().atualizar(cliente);
             }
-            Mensagem.informacao("Cliente salvo com sucesso!", this);
-        } else {
-            Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
-        }
+            if (retornoSalvarCliente == true) {
+                Mensagem.informacao("Cliente salvo com sucesso!", this);
+                campoNome.setText("");
+                campoRg.setText("");
+                campoCpf.setText("");
+                campoDataNascimento.setText("");
+                campoIdCidadeBusca.setText("");
+                campoNomeCidadeBusca.setText("");
+                campoEndereco.setText("");
+                campoTelefone.setText("");
+                campoEmail.setText("");
 
-        if (retornoSalvarCliente == true) {
+                campoNome.requestFocus();
 
-            campoNome.setText("");
-            campoRg.setText("");
-            campoCpf.setText("");
-            campoDataNascimento.setText("");
-            campoIdCidadeBusca.setText("");
-            campoNomeCidadeBusca.setText("");
-            campoEndereco.setText("");
-            campoTelefone.setText("");
-            campoEmail.setText("");
+                codigo = 0;
 
-            campoNome.requestFocus();
+                if (peDAO.consultarPermissao("Listar", "cliente")) {
+                    new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+                } else {
+                    Mensagem.erro("Já existe um cliente com esse RG, CPF ou email!", this);
+                }
 
-            codigo = 0;
-
-            if (peDAO.consultarPermissao("Listar", "cliente")) {
-                new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+            } else {
+                Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
             }
+
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

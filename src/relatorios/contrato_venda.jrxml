@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contrato_venda" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f8850c60-ac24-4d05-bde7-87106947c3cc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="154"/>
+	<parameter name="idcompra" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT v.chassi, v.placa, v.renavam, c.valor, p.cpf,
+p.data_nascimento, p.endereco, p.nome AS nomepessoa, p.rg, ve.ano_fabricacao, ve.ano_modelo, ve.motor, m.nome AS marcanome, mo.nome AS modelonome, c.observacoes
+FROM proprietarios p, veiculos v, compras c, versoes ve, marcas m, modelos mo
+WHERE c.proprietario_id = p.id AND c.veiculo_id = v.id AND v.versao_id = ve.id AND ve.modelo_id = mo.id AND mo.marca_id = m.id AND c.id = $P{idcompra}]]>
+	</queryString>
+	<field name="chassi" class="java.lang.String"/>
+	<field name="placa" class="java.lang.String"/>
+	<field name="renavam" class="java.lang.String"/>
+	<field name="valor" class="java.lang.Double"/>
+	<field name="cpf" class="java.lang.String"/>
+	<field name="data_nascimento" class="java.sql.Timestamp"/>
+	<field name="endereco" class="java.lang.String"/>
+	<field name="nomepessoa" class="java.lang.String"/>
+	<field name="rg" class="java.lang.String"/>
+	<field name="ano_fabricacao" class="java.lang.String"/>
+	<field name="ano_modelo" class="java.lang.String"/>
+	<field name="motor" class="java.lang.String"/>
+	<field name="marcanome" class="java.lang.String"/>
+	<field name="modelonome" class="java.lang.String"/>
+	<field name="observacoes" class="java.lang.String"/>
+	<title>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="21" uuid="927a6703-2727-41bf-aee0-7b6e79fcb95e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTRATO DE COMPRA E VENDA DE VEÍCULO]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="736">
+			<textField>
+				<reportElement x="0" y="15" width="555" height="85" uuid="7f0efe78-2544-4eee-865e-bf875817ec3b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression><![CDATA["De um lado, "+$F{nomepessoa}+", RG: "+$F{rg}+", CPF: "+$F{cpf}+", residente e domiciliado na "+$F{endereco}+", neste ato denominado VENDEDOR." +"<br>"
+
++ "De outro lado, denominado COMPRADOR, Facilita Veículos Ltda, 886/0854987, 96.024.699/0001-07, com sede na Rua Erva-Mate, 962, Linha Bonita, Jaguarão, RS." +"<br>"
+
++ "Têm entre os mesmos, de maneira justa e acordada, o presente CONTRATO PARTICULAR DE COMPRA E VENDA DE VEÍCULO/AUTOMÓVEL USADO, ficando desde já aceito, pelas cláusulas abaixo descritas."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="15" uuid="c7e3680b-da74-41ff-83be-f56a9bd81451"/>
+				<textElement>
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Partes]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="117" width="555" height="163" uuid="b60c1ba9-7ff5-47e0-8d66-d6716c39d16b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="SansSerif" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["O presente tem como OBJETO o veículo/automóvel nas seguintes condições acordadas:"+"<br>"
++ " - Modelo: "+$F{modelonome} +", Marca: "+$F{marcanome}+", Motor: "+$F{motor}  +"<br>"
++ " - Ano de fabricação: "+$F{ano_fabricacao}+"<br>"
++ " - Ano do modelo: "+$F{ano_modelo}+"<br>"
++ " - Chassi: "+$F{chassi}+"<br>"
++ " - Renavam: "+$F{renavam}+"<br>"
++ " - Placa: "+$F{placa}+"<br>"+
+"<br>"
++ "<b><i>Parágrafo primeiro.</b></i> O veículo/automóvel, objeto do presente contrato, é usado, apresentando um desgaste e envelhecimento inerentes aos seus anos e quilometragem."+"<br>"
+
++ "<b><i>Parágrafo segundo.</b></i> Antes da sua revenda, o VENDEDOR inspecionou o veículo/automóvel e verificou as suas condições de funcionamento, corrigindo as anomalias detectadas, não inerentes ao desgaste e envelhecimento do veículo."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="100" width="268" height="17" uuid="aef20027-7d1d-4bb7-a60f-ea9f7a6cfda8"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 1ª - Objeto do Contrato]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="297" width="555" height="92" uuid="4159ca75-8c71-4f2c-94cf-98fd35e40c93"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="SansSerif" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sem prejuízo do disposto no parágrafo primeiro da cláusula 1ª, o VENDEDOR responde pelo bom estado e bom funcionamento do veículo, pelo prazo de 1 mês, a contar da data da sua entrega, com exceção dos elementos que, em declaração anexa, sejam excluídos pelas partes do âmbito da garantia."+"<br>"+
+"<br>"+
+"<b><i>Parágrafo único.</b></i> A exceção prevista no caput da presente cláusula somente é aplicável a elementos que não se relacionem, direta ou indiretamente, com a segurança do veículo e cuja ausência ou deformação não impeçam a satisfação dos fins a que se destina."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="280" width="376" height="17" uuid="fb38d885-3f81-4cab-ad8f-860711da8c65"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 2ª - Responsabilidades do VENDEDOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="389" width="391" height="17" uuid="0b080fd9-edde-483d-9d89-ace3e1975690"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 3ª - Responsabilidades do COMPRADOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="406" width="555" height="100" uuid="466459c4-faba-40a1-9e09-ecef9496984a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="SansSerif" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["É dever do COMPRADOR verificar, até ao momento da entrega do veículo automóvel, se o mesmo se encontra nas condições negociadas, conforme descritivo constante no quadro da cláusula 3ª das condições particulares."+"<br>"+
+"<br>"+
+"<b><i>Parágrafo único.</b></i> Qualquer substituição de peças e/ou componentes, além daquelas que forem efetuadas na inspeção referida, e que não constituam elementos indispensáveis à segurança e ao bom funcionamento do veículo, apenas será efetuada mediante pedido escrito do COMPRADOR e eventual revisão do preço pago na venda do veículo automóvel."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="506" width="351" height="17" uuid="f5993cff-275d-4515-a665-f3b2082c000b"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 4ª - Preço e Forma de Pagamento]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="0" y="523" width="555" height="100" uuid="642b1ab6-7c59-44fc-af86-819f5880c4d5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="SansSerif" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["O COMPRADOR concorda em realizar o pagamento do preço total de "+"<br>"+
+"<br>"+
+"<b><i>Parágrafo primeiro.</b></i> Na determinação do preço supramencionados foram fatores relevantes à sua fixação: o fato de não ser um veículo novo, o uso e desgaste do veículo e a quilometragem do mesmo."+ "<br>"+
+"<b><i>Parágrafo segundo.</b></i> O preço referido acima não inclui os custos inerentes à formalização da transmissão de propriedade."+ "<br>"+
+"<b><i>Parágrafo terceiro.</b></i> Sem prejuízo do disposto nas cláusulas anteriores, o veículo é vendido livre de quaisquer ônus ou encargos."+ "<br>"]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="345" y="523" width="100" height="20" uuid="cbea1614-4b7a-48f7-a71e-2e8b1e998178"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="716" width="80" height="20" uuid="0feb1279-7446-46f6-b38a-f6c7517dc239"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="716" width="40" height="20" uuid="a6c89fef-dfe0-471b-b6f3-cf98f98bd0bf"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="731" width="100" height="1" uuid="2012b490-ebbf-4cc4-b044-67d14a62ca8a"/>
+			</break>
+		</band>
+		<band height="703">
+			<textField pattern="">
+				<reportElement x="0" y="18" width="555" height="108" uuid="340e9616-9c27-4365-ba20-9664c89f7fc8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="SansSerif" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Perante qualquer anomalia verificada no veículo, o COMPRADOR deverá denunciá-la ao VENDEDOR no prazo de 30 dias, após o seu conhecimento. Todas as operações de manutenção e revisões periódicas prescritas pelo fabricante do veículo automóvel correm por conta e encargo exclusivo do COMPRADOR que se compromete a efetuá-las, no prazo e quilometragem estabelecidos."+"<br>"+
+"<br>"+
+"<b><i>Parágrafo primeiro.</b></i> O VENDEDOR não se responsabiliza pela utilização negligente do veículo automóvel ou por defeitos ou vícios resultantes de operações de manutenção, revisão ou reparação, realizadas por oficinas que não as recomendadas pela entidade vendedora ou por entidades por ele não indicadas."+ "<br>"+
+"<b><i>Parágrafo segundo.</b></i> O COMPRADOR deverá fazer carimbar o livro de revisões do veículo ou fazer a sua prova mediante documento escrito e respectivas faturas."+ "<br>"+
+"<b><i>Parágrafo terceiro.</b></i> O veículo será entregue nas instalações do VENDEDOR, salvo convenção escrita em contrário."+ "<br>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="1" width="351" height="17" uuid="c1df992a-e897-42b3-86a9-655a3f0f700a"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 5ª - Condições Gerais do Contrato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="135" width="351" height="17" uuid="8828c48e-2446-4ca6-ad02-921aa46b8905"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 6ª - Transferência da Propriedade]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="0" y="152" width="555" height="22" uuid="e73d44fb-819c-4431-935a-741bed7fadd8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="SansSerif" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["A Escritura de Compra e Venda será formalizada até o 15º dia útil após o pagamento do valor do OBJETO."
+]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="174" width="351" height="17" uuid="7da67995-9584-420b-8aff-9a65cec24cee"/>
+				<textElement>
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cláusula 7ª - Disposições finais]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="0" y="191" width="555" height="108" uuid="8e2f5454-04d4-426b-9533-4e916e105398"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
+					<font fontName="SansSerif" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["O presente contrato passa a vigorar entre as partes a partir da assinatura do mesmo, as quais elegem o foro da cidade de Jaguarão, para dirimirem quaisquer dúvidas provenientes da execução e cumprimento do mesmo."+"<br>"+
+"Os herdeiros ou sucessores das partes contratantes se obrigam desde já ao inteiro teor deste contrato."+"<br>" +
+"E, por estarem de pleno acordo, as partes assinam o presente CONTRATO DE COMPRA E VENDA DE VEÍCULO USADO em três vias de igual teor, juntamente com 2 (duas) testemunhas."+"<br>"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="683" width="40" height="20" uuid="7775967c-6bfa-4691-a765-e9ffbf558d95"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="683" width="80" height="20" uuid="e632cadc-277d-4c00-8d8e-411f81b833b1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="317" width="555" height="20" uuid="d86a76de-2edb-420d-afe9-51e9bcd5b67a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Jaguarão"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="337" width="555" height="20" uuid="cbd92e85-0235-4f51-8ae8-7d3c6a77a77a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="371" width="555" height="20" uuid="eb707b27-27bd-4c8e-bd15-3f2ed420452d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Vendedor: " + $F{nomepessoa}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="391" width="555" height="20" uuid="faea359b-9b5b-440d-8ccb-41269dc89dbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["__________________________________________"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="448" width="555" height="20" uuid="0bd12bb3-a313-43fd-9c28-b76e323e0abd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["__________________________________________"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="428" width="555" height="20" uuid="bbbc5292-924e-46b5-a583-de67d09d9fc8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Comprador: Facilita Veículos Ltda"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="490" width="555" height="20" uuid="d94171f6-b3dd-447f-83ff-313b8b460809"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Testemunha 1: Nome:____________________________"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="530" width="555" height="20" uuid="e1dcce24-23da-4628-a15b-b98d173bfce1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["__________________________________________"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="510" width="555" height="20" uuid="f0afdc52-a007-4d44-b235-9970815570e0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RG:____________________________"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="587" width="555" height="20" uuid="12de7880-40b7-455a-b1b8-ee405e7111fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RG:____________________________"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="567" width="555" height="20" uuid="30c6c002-4fb7-4dbf-bedf-0a5ff8a9a24f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Testemunha 2: Nome:____________________________"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="0" y="607" width="555" height="20" uuid="9f97bf10-e4d3-407d-b770-2438c1ecf8cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["__________________________________________"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
