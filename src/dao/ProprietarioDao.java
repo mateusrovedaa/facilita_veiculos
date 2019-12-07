@@ -1,75 +1,190 @@
 package dao;
 
+import entidade.Cliente;
 import entidade.Proprietario;
 import functions.ConexaoBD;
+import functions.GerenciarJTable;
+import functions.HibernateUtil;
 import functions.IDAO_T;
+import functions.LazyLoading;
+import java.awt.event.AdjustmentEvent;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
-public class ProprietarioDao implements IDAO_T<Proprietario> {
+public class ProprietarioDao implements LazyLoading {
 
     ResultSet resultadoQ = null;
     String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+    private final int registros = 100;
 
     @Override
-    public String salvar(Proprietario o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void incrementaTabela(JTable tabela, int linhas)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
 
-    @Override
-    public String atualizar(Proprietario o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        List<Proprietario> proprietarios = newSession.createQuery("FROM Proprietario WHERE id > :limit ORDER BY id").setParameter("limit", linhas).setMaxResults(this.registros).list();
 
-    @Override
-    public String excluir(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
 
-    @Override
-    public ArrayList<Proprietario> consultarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ArrayList<Proprietario> consultar(String criterio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Proprietario consultarId(int id) {
-        Proprietario proprietario = null;
-
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "SELECT * "
-                    + "FROM proprietarios "
-                    + "WHERE id = " + id;
-
-            System.out.println("Sql: " + sql);
-
-            resultadoQ = st.executeQuery(sql);
-
-            while (resultadoQ.next()) {
-                proprietario = new Proprietario();
-
-                proprietario.setId(id);
-                proprietario.setNome(resultadoQ.getString("nome"));
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro consultar proprietario = " + e);
+        if (proprietarios.size() == this.registros)
+        {
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
+            model.addRow(new Object[]
+            {
+            });
         }
 
-        return proprietario;
+        for (Proprietario proprietario : proprietarios)
+        {
+            model.addRow(new Object[]
+            {
+                proprietario.getId(), proprietario.getNome(), proprietario.getCidade_id().getNome()
+            });
+        }
+    }
+
+    @Override
+    public void recarregaTabela(JTable tabela, int linhas)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
+
+        List<Proprietario> proprietarios = newSession.createQuery("FROM Proprietario WHERE id < :limit ORDER BY id DESC").setParameter("limit", linhas).setMaxResults(this.registros).list();
+
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
+
+        if (proprietarios.size() == this.registros)
+        {
+            model.getDataVector().removeAllElements();
+            model.fireTableDataChanged();
+        }
+
+        for (Proprietario proprietario : proprietarios)
+        {
+            model.insertRow(0, new Object[]
+            {
+                proprietario.getId(), proprietario.getNome(), proprietario.getCidade_id().getNome()
+            });
+        }
+
+        if (proprietarios.size() == this.registros)
+        {
+            model.addRow(new Object[]
+            {
+            });
+        }
+
+        if (tabela.getRowCount() == this.registros + 1)
+        {
+            if (proprietarios.size() != 0)
+            {
+                tabela.scrollRectToVisible(tabela.getCellRect(this.registros - 1, 0, true));
+            }
+        }
+    }
+
+    @Override
+    public void criaTabela(JTable tabela, JScrollPane barraScroll)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session newSession = sessionFactory.openSession();
+
+        List<Proprietario> proprietarios = newSession.createQuery("FROM Proprietario ORDER BY id").setFirstResult(0).setMaxResults(this.registros).list();
+
+        DefaultTableModel model = (DefaultTableModel) tabela.getModel();
+
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+
+        if (model.getColumnCount() < 1)
+        {
+            model.addColumn("Código");
+            model.addColumn("Nome");
+            model.addColumn("Cidade");
+        }
+
+        model.addRow(new Object[]
+        {
+        });
+
+        for (Proprietario proprietario : proprietarios)
+        {
+            model.addRow(new Object[]
+            {
+                proprietario.getId(), proprietario.getNome(), proprietario.getCidade_id().getNome()
+            });
+        }
+
+        tabela.setSelectionMode(0);
+
+        TableColumn column = null;
+        for (int i = 0; i < tabela.getColumnCount(); i++)
+        {
+            column = tabela.getColumnModel().getColumn(i);
+            switch (i)
+            {
+                case 0:
+                    column.setPreferredWidth(17);
+                    break;
+                case 1:
+                    column.setPreferredWidth(140);
+                    break;
+            }
+        }
+
+        tabela.scrollRectToVisible(tabela.getCellRect(1, 0, true));
+        scrollTable(tabela, barraScroll);
+
+    }
+
+    @Override
+    public void scrollTable(JTable tabela, JScrollPane barraScroll)
+    {
+        ClienteDao dao = new ClienteDao();
+        GerenciarJTable gjt = new GerenciarJTable();
+        int registros = this.registros;
+
+        barraScroll.getVerticalScrollBar().addAdjustmentListener((AdjustmentEvent e) ->
+        {
+            if (!e.getValueIsAdjusting())
+            {
+                JScrollBar scrollBar = (JScrollBar) e.getAdjustable();
+                int extent = scrollBar.getModel().getExtent();
+                int maximum = scrollBar.getModel().getMaximum();
+                if (extent + e.getValue() == maximum)
+                {
+                    int id = gjt.obterValorUltimaLinha(tabela);
+                    if (tabela.getRowCount() > 99)
+                    {
+                        dao.incrementaTabela(tabela, id);
+                    }
+                    if (tabela.getRowCount() == registros + 1)
+                    {
+                        tabela.scrollRectToVisible(tabela.getCellRect(1, 0, true));
+                    }
+                } else if (e.getValue() == 0)
+                {
+                    int id = gjt.obterValorPrimeiraLinha(tabela);
+                    if (tabela.getRowCount() > 99)
+                    {
+                        dao.recarregaTabela(tabela, id);
+                    }
+                }
+            }
+        });
     }
 
     public void popularTabela(JTable tabela, String criterio) {
@@ -203,5 +318,10 @@ public class ProprietarioDao implements IDAO_T<Proprietario> {
 //                return this;
 //            }
 //        });
+    }
+
+    @Override
+    public void tabelaFiltro(JTable tabela, String filtro) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
