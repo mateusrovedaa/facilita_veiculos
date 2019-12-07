@@ -55,7 +55,8 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         Formatacao.formatarData(campoFiltroDataAte);
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
-        new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        new VeiculoDao().criaTabela(tblVeiculo, jScrollPane1);
+//        new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         verificaPermissoes();
     }
 
@@ -133,7 +134,8 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             btnExcluir.setEnabled(false);
         }
         if (peDAO.consultarPermissao("Listar", "veiculolist")) {
-            new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            new VeiculoDao().criaTabela(tblVeiculo, jScrollPane1);
+//            new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         }
 
     }
@@ -1200,7 +1202,8 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
         if (peDAO.consultarPermissao("Listar", "veiculolist")) {
-            new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            new VeiculoDao().criaTabela(tblVeiculo, jScrollPane1);
+//            new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         }
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
@@ -1337,7 +1340,8 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             if (retornoExcluirVeiculo == true) {
                 Mensagem.informacao("Veículo excluído com sucesso!", this);
                 if (peDAO.consultarPermissao("Listar", "veiculolist")) {
-                    new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                    new VeiculoDao().criaTabela(tblVeiculo, jScrollPane1);
+//                    new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
                 }
             } else {
                 Mensagem.erro(tblVeiculo.getValueAt(tblVeiculo.getSelectedRow(), 3) + " está sendo usado(a) para outros cadastros!", this);
@@ -1591,7 +1595,8 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             campoFiltroDataDe.setText(Formatacao.getDataMes());
             campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
             if (peDAO.consultarPermissao("Listar", "veiculolist")) {
-                new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                new VeiculoDao().criaTabela(tblVeiculo, jScrollPane1);
+//                new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
             }
         } else {
             Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);

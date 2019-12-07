@@ -60,7 +60,8 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
             btnEditar.setEnabled(false);
         }
         if (peDAO.consultarPermissao("Listar", "cliente")) {
-            new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+            new ClienteDao().criaTabela(tblCliente, jScrollPane1);
+//            new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
         }
         if (!peDAO.consultarPermissao("Procurar", "cliente")) {
             btnBuscaCidade.setEnabled(false);
@@ -541,7 +542,8 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
         campoFiltroNome.setText("");
         if (peDAO.consultarPermissao("Listar", "cliente")) {
-            new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+            new ClienteDao().criaTabela(tblCliente, jScrollPane1);
+//            new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
         }
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
@@ -597,7 +599,8 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
             if (retornoExcluirCliente == true) {
                 Mensagem.informacao("Cliente excluído com sucesso!", this);
                 if (peDAO.consultarPermissao("Listar", "cliente")) {
-                    new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+                    new ClienteDao().criaTabela(tblCliente, jScrollPane1);
+//                    new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
                 }
             } else {
                 Mensagem.erro(tblCliente.getValueAt(tblCliente.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
@@ -664,7 +667,8 @@ public class TelaCadastroCliente extends javax.swing.JInternalFrame {
                 codigo = 0;
 
                 if (peDAO.consultarPermissao("Listar", "cliente")) {
-                    new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
+                    new ClienteDao().criaTabela(tblCliente, jScrollPane1);
+//                    new ClienteDao().popularTabela(tblCliente, campoFiltroNome.getText());
                 } else {
                     Mensagem.erro("Já existe um cliente com esse RG, CPF ou email!", this);
                 }
