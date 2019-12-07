@@ -1,6 +1,7 @@
 package tela;
 
 import dao.PermissaoDao;
+import dao.UsuarioDao;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
 import java.awt.Toolkit;
@@ -24,6 +25,7 @@ public class TelaInicio extends javax.swing.JFrame {
         PermissaoDao.idUser = idUser();
         this.gerenciarJanelas = new GerenciarJanelas(dktInicial);
         verificarPermissoes();
+        new UsuarioDao().listarAniversariantes(tblAniversariantes);
         setIcon();
     }
 
@@ -107,6 +109,9 @@ public class TelaInicio extends javax.swing.JFrame {
         btnAtalhoCCompra = new javax.swing.JButton();
         btnAtalhoCVenda = new javax.swing.JButton();
         btnAtalhoCSair = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblAniversariantes = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         btnCUsuario = new javax.swing.JMenuItem();
@@ -207,12 +212,31 @@ public class TelaInicio extends javax.swing.JFrame {
             }
         });
 
+        tblAniversariantes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tblAniversariantes);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Aniversariantes do mês");
+        jLabel1.setToolTipText("");
+
         dktInicial.setLayer(btnAtalhoCCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktInicial.setLayer(btnAtalhoCProprietario, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktInicial.setLayer(btnAtalhoCVeiculo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktInicial.setLayer(btnAtalhoCCompra, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktInicial.setLayer(btnAtalhoCVenda, javax.swing.JLayeredPane.DEFAULT_LAYER);
         dktInicial.setLayer(btnAtalhoCSair, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dktInicial.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        dktInicial.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout dktInicialLayout = new javax.swing.GroupLayout(dktInicial);
         dktInicial.setLayout(dktInicialLayout);
@@ -227,23 +251,34 @@ public class TelaInicio extends javax.swing.JFrame {
                     .addComponent(btnAtalhoCVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAtalhoCProprietario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAtalhoCCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(486, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(dktInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dktInicialLayout.setVerticalGroup(
             dktInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dktInicialLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAtalhoCCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtalhoCProprietario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtalhoCVeiculo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtalhoCCompra)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtalhoCVenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAtalhoCSair)
+                .addGroup(dktInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(dktInicialLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dktInicialLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnAtalhoCCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtalhoCProprietario)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtalhoCVeiculo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtalhoCCompra)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtalhoCVenda)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtalhoCSair)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -350,6 +385,7 @@ public class TelaInicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-gráfico-combinado-16.png"))); // NOI18N
         jMenu3.setText("Gráficos");
 
         jMenuItem1.setText("Gráfico 1");
@@ -439,7 +475,15 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtalhoCCompraActionPerformed
 
     private void btnAtalhoCVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCVendaActionPerformed
-        gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia());
+        //gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia());
+        TelaCadastroVenda venda = new TelaCadastroVenda(idUser());
+        int lDesk = dktInicial.getWidth();
+        int aDesk = dktInicial.getHeight();
+        int lIFrame = venda.getWidth();
+        int aIFrame = venda.getHeight();
+        venda.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
+        dktInicial.add(venda);
+        venda.setVisible(true);
     }//GEN-LAST:event_btnAtalhoCVendaActionPerformed
 
     private void btnAtalhoCSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCSairActionPerformed
@@ -456,7 +500,15 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCCompraActionPerformed
 
     private void btnCVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCVendaActionPerformed
-        gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia());
+        //gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia());
+        TelaCadastroVenda venda = new TelaCadastroVenda(idUser());
+        int lDesk = dktInicial.getWidth();
+        int aDesk = dktInicial.getHeight();
+        int lIFrame = venda.getWidth();
+        int aIFrame = venda.getHeight();
+        venda.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
+        dktInicial.add(venda);
+        venda.setVisible(true);
     }//GEN-LAST:event_btnCVendaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -525,11 +577,14 @@ public class TelaInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCVenda;
     private javax.swing.JMenuItem btnCVersao;
     private javax.swing.JDesktopPane dktInicial;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblAniversariantes;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {

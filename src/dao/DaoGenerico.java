@@ -78,6 +78,29 @@ public class DaoGenerico {
 
         return id;
     }
+    
+    public int inserirVenda(Object o) {
+        boolean retorno = false;
+        int id = 0;
+        Session sessao = factory.openSession();
+        try {
+            transaction = sessao.beginTransaction();
+            Query query = sessao.createSQLQuery("SET SESSION \"myapp.user\" = '" + userName + "'");
+            query.executeUpdate();
+            id = (Integer) sessao.save(o);
+            transaction.commit();
+            retorno = true;
+        } catch (Exception e) {
+            transaction.rollback();
+            retorno = false;
+            e.printStackTrace();
+            Log.geraLogBD(userName, "inserir", o.getClass(), e.toString());
+        } finally {
+            sessao.close();
+        }
+
+        return id;
+    }
 
     public boolean atualizar(Object o) {
         boolean retorno = false;

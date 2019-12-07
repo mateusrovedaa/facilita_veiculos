@@ -495,7 +495,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel20">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="text" type="java.lang.String" value="N&#xfa;mero de parcelas:"/>
+                        <Property name="text" type="java.lang.String" value="N&#xfa;mero de parcelas:*"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="comboParcelaId">

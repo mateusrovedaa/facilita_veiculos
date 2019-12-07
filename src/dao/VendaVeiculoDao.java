@@ -1,8 +1,11 @@
 package dao;
 
 import entidade.Cidade;
+import entidade.VendaVeiculo;
 import functions.ConexaoBD;
+import functions.Data;
 import functions.IDAO_T;
+import functions.Parcelas;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -86,6 +89,58 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
         }
 
         return cidade;
+    }
+    
+    public String gerarParcelas(int parcelas, double valor, int vendaId) {
+        
+        String v = "";
+        String valorTotal = "";
+        int resultado = 0;
+        boolean status = false;
+        
+        try {
+            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
+            
+            Data d = new Data();
+            
+            Parcelas p = new Parcelas();
+            ArrayList<Double> x = p.calculaParcelas(valor, parcelas);
+            
+            d.avancarDias(30);
+            
+            for (int i = 0; i < x.size(); i++) {
+                
+                v = (p.df2.format(x.get(i)));
+                valorTotal = v.replace(',', '.');
+                
+                VendaVeiculo vv = new VendaVeiculo();
+                
+                String sql = " INSERT INTO vendas_veiculos VALUES "
+                        + "(DEFAULT, "
+                        + "'" + vendaId + "', "
+                        + "'" + d.obterDataFormatada() + "',"
+                        + "'" + valorTotal + "', "
+                        + "'" + status + "', "
+                        + "'" + now + "', "
+                        + "'" + now + "'"
+                        + " )";
+                
+                d.avancarDias(30);
+                status = false;
+                
+                resultado = st.executeUpdate(sql);
+            }
+            
+            if (resultado == 0) {
+                return "Erro ao inserir";
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao inserir parcelas = " + e);
+            return e.toString();
+            
+        }
     }
 
     public void popularTabela(JTable tabela, String criterio) {
