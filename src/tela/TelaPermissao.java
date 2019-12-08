@@ -54,6 +54,8 @@ public class TelaPermissao extends javax.swing.JDialog {
     private final String comboSitCompra2 = "ComboSitCompra2";
     private final String comboTipoPagamento = "ComboTipoPagamento";
     private final String comboNumeroParcela = "ComboNumeroParcela";
+    private final String comboEmpresaVistoria = "ComboEmpresaVistoria";
+    private final String comboEmpresaVistoriaList = "ComboEmpresaVistoriaList";
 
     //telas
     private final String telaMarca = "marca";
@@ -86,6 +88,7 @@ public class TelaPermissao extends javax.swing.JDialog {
     private final String telaGeralPerf = "geralperf";
     private final String telaCompra = "compra";
     private final String telaVenda = "venda";
+    private final String telaRevisao = "revisao";
 
     /**
      * Creates new form TelaPermissao
@@ -133,6 +136,7 @@ public class TelaPermissao extends javax.swing.JDialog {
         preenchePermissoesVeiculoList();
         preenchePermissoesCompra();
         preenchePermissoesVenda();
+        preenchePermissoesRevisao();
     }
 
     /**
@@ -387,6 +391,18 @@ public class TelaPermissao extends javax.swing.JDialog {
         cbxVendaVerParcelas = new javax.swing.JCheckBox();
         cbxVendaTipoP = new javax.swing.JCheckBox();
         cbxVendaParcelas = new javax.swing.JCheckBox();
+        pnlRevisao = new javax.swing.JPanel();
+        cbxRevisaoCmbVist = new javax.swing.JCheckBox();
+        cbxRevisaoListar = new javax.swing.JCheckBox();
+        cbxRevisaoSalvar = new javax.swing.JCheckBox();
+        cbxRevisaoAcessar = new javax.swing.JCheckBox();
+        cbxRevisaoLimparBusca = new javax.swing.JCheckBox();
+        cbxRevisaoCmbVistList = new javax.swing.JCheckBox();
+        cbxRevisaoExcluir = new javax.swing.JCheckBox();
+        cbxRevisaoBuscar = new javax.swing.JCheckBox();
+        cbxRevisaoProcurarV = new javax.swing.JCheckBox();
+        cbxRevisaoEditar = new javax.swing.JCheckBox();
+        cbxRevisaoCmbMarList = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -2045,6 +2061,87 @@ public class TelaPermissao extends javax.swing.JDialog {
 
         Abas.addTab("Venda", pnlVenda);
 
+        cbxRevisaoCmbVist.setText("Combo Empresa de Vistoria");
+
+        cbxRevisaoListar.setText("Listar registros");
+
+        cbxRevisaoSalvar.setText("Botão Salvar");
+
+        cbxRevisaoAcessar.setText("Acessar");
+
+        cbxRevisaoLimparBusca.setText("Botão Limpar Busca");
+
+        cbxRevisaoCmbVistList.setText("Combo Empresa de vistoria - Listar");
+
+        cbxRevisaoExcluir.setText("Botão Excluir");
+
+        cbxRevisaoBuscar.setText("Botão Buscar");
+
+        cbxRevisaoProcurarV.setText("Botão Procurar Veículo");
+
+        cbxRevisaoEditar.setText("Botão Editar");
+
+        cbxRevisaoCmbMarList.setText("Combo Marca - Listar");
+
+        javax.swing.GroupLayout pnlRevisaoLayout = new javax.swing.GroupLayout(pnlRevisao);
+        pnlRevisao.setLayout(pnlRevisaoLayout);
+        pnlRevisaoLayout.setHorizontalGroup(
+            pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRevisaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlRevisaoLayout.createSequentialGroup()
+                        .addComponent(cbxRevisaoProcurarV)
+                        .addGap(400, 400, 400))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRevisaoLayout.createSequentialGroup()
+                        .addGroup(pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxRevisaoAcessar)
+                            .addComponent(cbxRevisaoSalvar)
+                            .addComponent(cbxRevisaoEditar)
+                            .addComponent(cbxRevisaoExcluir))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxRevisaoCmbVist)
+                            .addComponent(cbxRevisaoCmbMarList)
+                            .addComponent(cbxRevisaoCmbVistList)
+                            .addComponent(cbxRevisaoListar))
+                        .addGap(93, 93, 93))
+                    .addGroup(pnlRevisaoLayout.createSequentialGroup()
+                        .addGroup(pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbxRevisaoBuscar)
+                            .addComponent(cbxRevisaoLimparBusca))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        pnlRevisaoLayout.setVerticalGroup(
+            pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRevisaoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxRevisaoAcessar)
+                    .addComponent(cbxRevisaoCmbVist))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxRevisaoSalvar)
+                    .addComponent(cbxRevisaoCmbMarList))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxRevisaoEditar)
+                    .addComponent(cbxRevisaoCmbVistList))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlRevisaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxRevisaoExcluir)
+                    .addComponent(cbxRevisaoListar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxRevisaoBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxRevisaoLimparBusca)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbxRevisaoProcurarV)
+                .addContainerGap(87, Short.MAX_VALUE))
+        );
+
+        Abas.addTab("Revisão", pnlRevisao);
+
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -2807,7 +2904,7 @@ public class TelaPermissao extends javax.swing.JDialog {
             }
         }
     }
-    
+
     private void preenchePermissoesVenda() {
         perm = peDAO.consultarPermissoes(telaVenda, usuario.getId());
         for (int i = 0; i < perm.size(); i++) {
@@ -2858,6 +2955,45 @@ public class TelaPermissao extends javax.swing.JDialog {
             }
             if (perm.get(i).equals(comboNumeroParcela)) {
                 cbxVendaParcelas.setSelected(true);
+            }
+        }
+    }
+
+    private void preenchePermissoesRevisao() {
+        perm = peDAO.consultarPermissoes(telaRevisao, usuario.getId());
+        for (int i = 0; i < perm.size(); i++) {
+            if (perm.get(i).equals(acessar)) {
+                cbxRevisaoAcessar.setSelected(true);
+            }
+            if (perm.get(i).equals(editar)) {
+                cbxRevisaoEditar.setSelected(true);
+            }
+            if (perm.get(i).equals(salvar)) {
+                cbxRevisaoSalvar.setSelected(true);
+            }
+            if (perm.get(i).equals(excluir)) {
+                cbxRevisaoExcluir.setSelected(true);
+            }
+            if (perm.get(i).equals(limparBusca)) {
+                cbxRevisaoLimparBusca.setSelected(true);
+            }
+            if (perm.get(i).equals(buscar)) {
+                cbxRevisaoBuscar.setSelected(true);
+            }
+            if (perm.get(i).equals(listar)) {
+                cbxRevisaoListar.setSelected(true);
+            }
+            if (perm.get(i).equals(procurar)) {
+                cbxRevisaoProcurarV.setSelected(true);
+            }
+            if (perm.get(i).equals(comboEmpresaVistoria)) {
+                cbxRevisaoCmbVist.setSelected(true);
+            }
+            if (perm.get(i).equals(comboEmpresaVistoriaList)) {
+                cbxRevisaoCmbVistList.setSelected(true);
+            }
+            if (perm.get(i).equals(comboMarca)) {
+                cbxRevisaoCmbMarList.setSelected(true);
             }
         }
     }
@@ -3696,7 +3832,7 @@ public class TelaPermissao extends javax.swing.JDialog {
         if (!ok == true) {
             compra = false;
         }
-        
+
         //venda
         boolean venda = true;
 
@@ -3765,6 +3901,54 @@ public class TelaPermissao extends javax.swing.JDialog {
             venda = false;
         }
 
+        //revisao
+        boolean revisao = true;
+
+        ok = Funcoes.verificaPermissoes(cbxRevisaoAcessar, acessar, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoEditar, editar, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoSalvar, salvar, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoExcluir, excluir, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoLimparBusca, limparBusca, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoBuscar, buscar, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoListar, listar, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoProcurarV, procurar, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoCmbVist, comboEmpresaVistoria, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoCmbVistList, comboEmpresaVistoriaList, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+        ok = Funcoes.verificaPermissoes(cbxRevisaoCmbMarList, comboMarca, telaRevisao, usuario, peDAO);
+        if (!ok == true) {
+            revisao = false;
+        }
+
         return venda && compra && veicsegu && veictecn && veicextr && veicesti && veicconf && veicinf && marca && modelo && user && versao && gacab && gcamb
                 && veiclist && gcarr && gcomb && gconf && gcore && gcori && gesti && gextr && gsegu && gtecn && gcid && gest
                 && gperf && cliente && empvist && prop;
@@ -3813,7 +3997,7 @@ public class TelaPermissao extends javax.swing.JDialog {
         paineis.add(pnlVeiculo);
         paineis.add(pnlCompra);
         paineis.add(pnlVenda);
-
+        paineis.add(pnlRevisao);
         for (int i = 0; i < paineis.size(); i++) {
             Component c[] = paineis.get(i).getComponents();
             for (int j = 0; j < c.length; j++) {
@@ -4060,6 +4244,17 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JCheckBox cbxProprietarioListar;
     private javax.swing.JCheckBox cbxProprietarioProcCid;
     private javax.swing.JCheckBox cbxProprietarioSalvar;
+    private javax.swing.JCheckBox cbxRevisaoAcessar;
+    private javax.swing.JCheckBox cbxRevisaoBuscar;
+    private javax.swing.JCheckBox cbxRevisaoCmbMarList;
+    private javax.swing.JCheckBox cbxRevisaoCmbVist;
+    private javax.swing.JCheckBox cbxRevisaoCmbVistList;
+    private javax.swing.JCheckBox cbxRevisaoEditar;
+    private javax.swing.JCheckBox cbxRevisaoExcluir;
+    private javax.swing.JCheckBox cbxRevisaoLimparBusca;
+    private javax.swing.JCheckBox cbxRevisaoListar;
+    private javax.swing.JCheckBox cbxRevisaoProcurarV;
+    private javax.swing.JCheckBox cbxRevisaoSalvar;
     private javax.swing.JCheckBox cbxUsuarioAcessar;
     private javax.swing.JCheckBox cbxUsuarioBuscar;
     private javax.swing.JCheckBox cbxUsuarioComboCadastro;
@@ -4145,6 +4340,7 @@ public class TelaPermissao extends javax.swing.JDialog {
     private javax.swing.JPanel pnlModelo;
     private javax.swing.JPanel pnlPerfis;
     private javax.swing.JPanel pnlProprietario;
+    private javax.swing.JPanel pnlRevisao;
     private javax.swing.JPanel pnlSegurancas;
     private javax.swing.JPanel pnlTecnologias;
     private javax.swing.JPanel pnlUsuario;

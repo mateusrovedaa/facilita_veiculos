@@ -2883,6 +2883,144 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Container class="javax.swing.JPanel" name="pnlRevisao">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Revis&#xe3;o">
+                    <Property name="tabTitle" type="java.lang.String" value="Revis&#xe3;o"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cbxRevisaoProcurarV" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="400" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxRevisaoAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxRevisaoSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxRevisaoEditar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxRevisaoExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxRevisaoCmbVist" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxRevisaoCmbMarList" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxRevisaoCmbVistList" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxRevisaoListar" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cbxRevisaoBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbxRevisaoLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxRevisaoAcessar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxRevisaoCmbVist" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxRevisaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxRevisaoCmbMarList" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxRevisaoEditar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxRevisaoCmbVistList" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxRevisaoExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxRevisaoListar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxRevisaoBuscar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxRevisaoLimparBusca" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cbxRevisaoProcurarV" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="87" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoCmbVist">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Empresa de Vistoria"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoListar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Listar registros"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoSalvar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoAcessar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Acessar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoLimparBusca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoCmbVistList">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Empresa de vistoria - Listar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoExcluir">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoBuscar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoProcurarV">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Ve&#xed;culo"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoEditar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Editar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxRevisaoCmbMarList">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Marca - Listar"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel2">

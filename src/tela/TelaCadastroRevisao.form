@@ -168,8 +168,8 @@
                                       <Component id="jLabel4" min="-2" pref="105" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="campoData" min="-2" pref="260" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel12" min="-2" pref="105" max="-2" attributes="0"/>
+                                      <EmptySpace pref="208" max="32767" attributes="0"/>
+                                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="comboEmpresaVistoriaId" min="-2" pref="260" max="-2" attributes="0"/>
                                   </Group>
@@ -198,7 +198,7 @@
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" pref="25" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane2" pref="156" max="32767" attributes="0"/>
+                              <Component id="jScrollPane2" pref="157" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -586,9 +586,9 @@
                                           <Component id="campoFiltroVersao" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel32" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel30" alignment="0" pref="47" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">

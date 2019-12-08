@@ -141,17 +141,6 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu4">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/config.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Auditoria"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu4ActionPerformed"/>
-          </Events>
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
