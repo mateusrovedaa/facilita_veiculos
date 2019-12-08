@@ -91,5 +91,6 @@ Contributor(s):
     <mapping class="entidade.Parcela"/>
     <mapping class="entidade.Venda"/>
     <mapping class="entidade.VendaVeiculo"/>
+    <mapping class="entidade.Revisao"/>
   </session-factory>
 </hibernate-configuration>

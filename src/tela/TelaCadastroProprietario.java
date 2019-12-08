@@ -85,7 +85,6 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         campoDataNascimento = new javax.swing.JFormattedTextField();
         jPanel5 = new javax.swing.JPanel();
@@ -95,15 +94,16 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
         btnBuscaCidade = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        campoEndereco = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        campoEmail = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         campoRg = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
         campoCpf = new javax.swing.JFormattedTextField();
         campoTelefone = new javax.swing.JFormattedTextField();
+        campoEndereco = new javax.swing.JTextField();
+        campoEmail = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
         btnFecharCadastro = new javax.swing.JButton();
@@ -142,9 +142,6 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Data de nascimento:*");
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Endereço:*");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Nome:*");
@@ -207,6 +204,9 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("CPF:*");
 
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Endereço:*");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -221,7 +221,7 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(campoRg, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
@@ -236,9 +236,9 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
                                     .addComponent(campoTelefone, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addComponent(campoNome)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoEndereco)
@@ -268,8 +268,8 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -725,10 +725,10 @@ public class TelaCadastroProprietario extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField campoRg;
     private javax.swing.JFormattedTextField campoTelefone;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

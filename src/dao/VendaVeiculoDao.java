@@ -4,6 +4,7 @@ import entidade.Cidade;
 import entidade.VendaVeiculo;
 import functions.ConexaoBD;
 import functions.Data;
+import functions.Formatacao;
 import functions.IDAO_T;
 import functions.Parcelas;
 import java.sql.ResultSet;
@@ -90,56 +91,56 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
 
         return cidade;
     }
-    
+
     public String gerarParcelas(int parcelas, double valor, int vendaId) {
-        
+
         String v = "";
         String valorTotal = "";
         int resultado = 0;
         boolean status = false;
-        
+
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-            
+
             Data d = new Data();
-            
+
             Parcelas p = new Parcelas();
             ArrayList<Double> x = p.calculaParcelas(valor, parcelas);
-            
+
             d.avancarDias(30);
-            
+
             for (int i = 0; i < x.size(); i++) {
-                
+
                 v = (p.df2.format(x.get(i)));
                 valorTotal = v.replace(',', '.');
-                
+
                 VendaVeiculo vv = new VendaVeiculo();
 
                 resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(" SELECT MAX(vv.id) as id FROM vendas_veiculos AS vv");
-                
+
                 resultadoQ.next();
-                        
+
                 int max = resultadoQ.getInt("id");
-                
+
                 max = max + 1;
-                
+
                 String sql = " INSERT INTO vendas_veiculos VALUES "
                         + "( "
                         + "'" + max + "', "
                         + "'" + now + "', "
                         + "'" + now + "', "
                         + "'" + d.obterDataFormatada() + "',"
-                         + "'" + status + "', "
+                        + "'" + status + "', "
                         + "'" + valorTotal + "', "
                         + "'" + vendaId + "'"
                         + " )";
-                
+
                 d.avancarDias(30);
                 status = false;
-                
+
                 resultado = st.executeUpdate(sql);
             }
-            
+
             if (resultado == 0) {
                 return "Erro ao inserir";
             } else {
@@ -148,32 +149,37 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
         } catch (Exception e) {
             System.out.println("Erro ao inserir parcelas = " + e);
             return e.toString();
-            
+
         }
     }
 
-    public void popularTabela(JTable tabela, String criterio) {
+    public void popularTabela(JTable tabela, int vendaId) {
         // dados da tabela
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[3];
+        Object[] cabecalho = new Object[4];
         cabecalho[0] = "Código";
-        cabecalho[1] = "Nome";
-        cabecalho[2] = "Estado";
+        cabecalho[1] = "Data de vencimento";
+        cabecalho[2] = "Valor da parcela";
+        cabecalho[3] = "Status";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM cidades AS c WHERE c.NOME ILIKE '%" + criterio + "%' AND "
-                    + "id IN (SELECT id FROM cidades WHERE NOME ILIKE '%" + criterio + "%' LIMIT 50)");
+                    + "SELECT count(*)" + " "
+                    + "FROM vendas_veiculos AS vv "
+                    + " INNER JOIN vendas AS v "
+                    + " ON vv.venda_id = " + vendaId
+                    + " WHERE "
+                    + " v.id = " + vendaId);
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][3];
+            dadosTabela = new Object[resultadoQ.getInt(1)][4];
 
         } catch (Exception e) {
-            System.out.println("Erro ao consultar cidade: " + e);
+            System.out.println("Erro ao consultar parcela: " + e);
         }
 
         int lin = 0;
@@ -181,19 +187,25 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
         // efetua consulta na tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT c.id, c.nome, e.nome AS estado FROM cidades AS c "
-                    + "INNER JOIN estados AS e "
-                    + "ON c.estado_id = e.id "
-                    + "WHERE "
-                    + "c.NOME ILIKE '%" + criterio + "%' "
-                    + "ORDER BY c.CRIADO_EM DESC "
-                    + "LIMIT 50");
+                    + "SELECT v.id AS venda_id" + ","
+                    + "vv.data_vencimento AS data_vencimento" + ","
+                    + "vv.id AS id" + ","
+                    + "vv.valor_parcela AS valor_parcela" + ","
+                    + "v.data AS data" + ","
+                    + "CASE WHEN vv.status = true THEN 'Pago' ELSE 'Pendente' END AS status" + " "
+                    + "FROM vendas_veiculos AS vv "
+                    + " INNER JOIN vendas AS v "
+                    + " ON vv.venda_id = " + vendaId
+                    + " WHERE "
+                    + " v.id = " + vendaId
+                    + "ORDER BY vv.DATA_VENCIMENTO ASC");
 
             while (resultadoQ.next()) {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
-                dadosTabela[lin][1] = resultadoQ.getString("nome");
-                dadosTabela[lin][2] = resultadoQ.getString("estado");
+                dadosTabela[lin][1] = Formatacao.ajustaDataDMA(resultadoQ.getString("data_vencimento"));
+                dadosTabela[lin][2] = Formatacao.formatarDecimal(resultadoQ.getDouble("valor_parcela"));
+                dadosTabela[lin][3] = resultadoQ.getString("status");
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {
 //                    dadosTabela[lin][2] = new ImageIcon(getClass().getClassLoader().getResource("Interface/imagens/status_ativo.png"));
@@ -268,5 +280,30 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
 //                return this;
 //            }
 //        });
+    }
+
+    public String alterarStatus(VendaVeiculo venda_veiculo) {
+        try {
+            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
+
+            String sql = ""
+                    + "UPDATE vendas_veiculos "
+                    + "SET status = '" + venda_veiculo.isStatus() + "' "
+                    + "WHERE id = " + venda_veiculo.getId();
+
+            System.out.println("Sql: " + sql);
+
+            int resultado = st.executeUpdate(sql);
+
+            if (resultado == 0) {
+                return "Erro ao atualizar";
+            } else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro atualizar parcela = " + e);
+            return e.toString();
+        }
     }
 }

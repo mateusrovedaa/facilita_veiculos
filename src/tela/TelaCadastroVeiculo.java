@@ -130,9 +130,9 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         if (!peDAO.consultarPermissao("Editar", "veiculolist")) {
             btnEditar.setEnabled(false);
         }
-        if (!peDAO.consultarPermissao("Excluir", "veiculolist")) {
-            btnExcluir.setEnabled(false);
-        }
+//        if (!peDAO.consultarPermissao("Excluir", "veiculolist")) {;
+//            btnExcluir.setEnabled(false);
+//        }
         if (peDAO.consultarPermissao("Listar", "veiculolist")) {
             new VeiculoDao().criaTabela(tblVeiculo, jScrollPane1);
 //            new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
@@ -254,7 +254,6 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
         tblVeiculo = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
         btnEditar = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
         btnFecharLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -313,7 +312,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Versão*"));
 
@@ -531,7 +530,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
-        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
+        jPanel12.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel23.setText("Número de proprietários:");
@@ -702,7 +701,7 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25))
         );
 
-        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Galeria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
+        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Galeria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
         jPanel23.setLayout(jPanel23Layout);
@@ -1088,15 +1087,6 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             }
         });
 
-        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-delete-16.png"))); // NOI18N
-        btnExcluir.setText("Excluir");
-        btnExcluir.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
-            }
-        });
-
         btnFecharLista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-exit-16.png"))); // NOI18N
         btnFecharLista.setText("Fechar");
         btnFecharLista.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1114,8 +1104,6 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnEditar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnExcluir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFecharLista)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1125,7 +1113,6 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar)
-                    .addComponent(btnExcluir)
                     .addComponent(btnFecharLista))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1329,25 +1316,6 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
             Mensagem.erro("Erro ao consultar veículo!", this);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int codigoExcluirVeiculo = (int) tblVeiculo.getValueAt(tblVeiculo.getSelectedRow(), 0);
-
-        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
-        if (mensagem == 0) {
-            boolean retornoExcluirVeiculo = DaoGenerico.getInstance().excluir(Veiculo.class, codigoExcluirVeiculo);
-
-            if (retornoExcluirVeiculo == true) {
-                Mensagem.informacao("Veículo excluído com sucesso!", this);
-                if (peDAO.consultarPermissao("Listar", "veiculolist")) {
-                    new VeiculoDao().criaTabela(tblVeiculo, jScrollPane1);
-//                    new VeiculoDao().popularTabela(tblVeiculo, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
-                }
-            } else {
-                Mensagem.erro(tblVeiculo.getValueAt(tblVeiculo.getSelectedRow(), 3) + " está sendo usado(a) para outros cadastros!", this);
-            }
-        }
-    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnFecharListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharListaActionPerformed
         funcaoFechar();
@@ -1646,7 +1614,6 @@ public class TelaCadastroVeiculo extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscaVersao;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
-    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFecharCadastro;
     private javax.swing.JButton btnFecharLista;
     private javax.swing.JButton btnLimparBusca;

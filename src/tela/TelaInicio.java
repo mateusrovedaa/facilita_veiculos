@@ -119,6 +119,7 @@ public class TelaInicio extends javax.swing.JFrame {
         btnCProprietario = new javax.swing.JMenuItem();
         btnCGeral = new javax.swing.JMenuItem();
         btnCEmpresaVistoria = new javax.swing.JMenuItem();
+        btnCRevisao = new javax.swing.JMenuItem();
         btnCMarca = new javax.swing.JMenuItem();
         btnCModelo = new javax.swing.JMenuItem();
         btnCVersao = new javax.swing.JMenuItem();
@@ -330,6 +331,14 @@ public class TelaInicio extends javax.swing.JFrame {
         });
         jMenu1.add(btnCEmpresaVistoria);
 
+        btnCRevisao.setText("Revisões");
+        btnCRevisao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCRevisaoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(btnCRevisao);
+
         btnCMarca.setText("Marcas");
         btnCMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -475,15 +484,15 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtalhoCCompraActionPerformed
 
     private void btnAtalhoCVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCVendaActionPerformed
-        //gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia());
+        gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia(idUser()));
         TelaCadastroVenda venda = new TelaCadastroVenda(idUser());
-        int lDesk = dktInicial.getWidth();
-        int aDesk = dktInicial.getHeight();
-        int lIFrame = venda.getWidth();
-        int aIFrame = venda.getHeight();
-        venda.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        dktInicial.add(venda);
-        venda.setVisible(true);
+//        int lDesk = dktInicial.getWidth();
+//        int aDesk = dktInicial.getHeight();
+//        int lIFrame = venda.getWidth();
+//        int aIFrame = venda.getHeight();
+//        venda.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
+//        dktInicial.add(venda);
+//        venda.setVisible(true);
     }//GEN-LAST:event_btnAtalhoCVendaActionPerformed
 
     private void btnAtalhoCSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtalhoCSairActionPerformed
@@ -500,20 +509,24 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCCompraActionPerformed
 
     private void btnCVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCVendaActionPerformed
-        //gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia());
+        gerenciarJanelas.abreJanela(TelaCadastroVenda.getInstancia(idUser()));
         TelaCadastroVenda venda = new TelaCadastroVenda(idUser());
-        int lDesk = dktInicial.getWidth();
-        int aDesk = dktInicial.getHeight();
-        int lIFrame = venda.getWidth();
-        int aIFrame = venda.getHeight();
-        venda.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-        dktInicial.add(venda);
-        venda.setVisible(true);
+//        int lDesk = dktInicial.getWidth();
+//        int aDesk = dktInicial.getHeight();
+//        int lIFrame = venda.getWidth();
+//        int aIFrame = venda.getHeight();
+//        venda.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
+//        dktInicial.add(venda);
+//        venda.setVisible(true);
     }//GEN-LAST:event_btnCVendaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         gerenciarJanelas.abreJanela(TelaGrafico.getInstancia());
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void btnCRevisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCRevisaoActionPerformed
+        gerenciarJanelas.abreJanela(TelaCadastroRevisao.getInstancia());
+    }//GEN-LAST:event_btnCRevisaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -572,6 +585,7 @@ public class TelaInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnCMarca;
     private javax.swing.JMenuItem btnCModelo;
     private javax.swing.JMenuItem btnCProprietario;
+    private javax.swing.JMenuItem btnCRevisao;
     private javax.swing.JMenuItem btnCUsuario;
     private javax.swing.JMenuItem btnCVeiculo;
     private javax.swing.JMenuItem btnCVenda;

@@ -8,6 +8,7 @@ public class TelaBuscaVeiculo extends javax.swing.JDialog {
 
     TelaCadastroCompra telaCompra;
     TelaCadastroVenda telaVenda;
+    TelaCadastroRevisao telaRevisao;
 
     public TelaBuscaVeiculo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -29,6 +30,14 @@ public class TelaBuscaVeiculo extends javax.swing.JDialog {
         setIcon();
         this.telaVenda = telaVenda;
         new VeiculoDao().listarVeiculo(tblVeiculo, "", "1");
+    }
+
+    public TelaBuscaVeiculo(java.awt.Frame parent, boolean modal, TelaCadastroRevisao telaRevisao) {
+        super(parent, modal);
+        initComponents();
+        setIcon();
+        this.telaRevisao = telaRevisao;
+        new VeiculoDao().listarVeiculo(tblVeiculo, "", "");
     }
 
     @SuppressWarnings("unchecked")
@@ -171,6 +180,8 @@ public class TelaBuscaVeiculo extends javax.swing.JDialog {
             new VeiculoDao().listarVeiculo(tblVeiculo, "", "2");
         } else if (telaVenda != null) {
             new VeiculoDao().listarVeiculo(tblVeiculo, "", "1");
+        } else if (telaRevisao != null) {
+            new VeiculoDao().listarVeiculo(tblVeiculo, "", "");
         }
     }//GEN-LAST:event_btnLimparActionPerformed
 
@@ -180,12 +191,16 @@ public class TelaBuscaVeiculo extends javax.swing.JDialog {
                 new VeiculoDao().listarVeiculo(tblVeiculo, "", "2");
             } else if (telaVenda != null) {
                 new VeiculoDao().listarVeiculo(tblVeiculo, "", "1");
+            } else if (telaRevisao != null) {
+                new VeiculoDao().listarVeiculo(tblVeiculo, "", "");
             }
         } else {
             if (telaCompra != null) {
                 new VeiculoDao().listarVeiculo(tblVeiculo, campoFiltroPlaca.getText(), "2");
             } else if (telaVenda != null) {
                 new VeiculoDao().listarVeiculo(tblVeiculo, campoFiltroPlaca.getText(), "1");
+            } else if (telaRevisao != null) {
+                new VeiculoDao().listarVeiculo(tblVeiculo, campoFiltroPlaca.getText(), "");
             }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -199,6 +214,8 @@ public class TelaBuscaVeiculo extends javax.swing.JDialog {
                 telaCompra.definirVeiculo(Integer.parseInt(codigoVeiculo), placaVeiculo);
             } else if (telaVenda != null) {
                 telaVenda.definirVeiculo(Integer.parseInt(codigoVeiculo), placaVeiculo);
+            } else if (telaRevisao != null) {
+                telaRevisao.definirVeiculo(Integer.parseInt(codigoVeiculo), placaVeiculo);
             }
             this.dispose();
         } else {

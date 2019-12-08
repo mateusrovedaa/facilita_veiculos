@@ -1,31 +1,34 @@
 package dao;
 
-import entidade.Cidade;
-import entidade.Venda;
+import entidade.Compra;
+import entidade.Revisao;
+import entidade.Versao;
 import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.IDAO_T;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-public class VendaDao implements IDAO_T<Venda> {
+public class RevisaoDao implements IDAO_T<Revisao> {
 
     ResultSet resultadoQ = null;
-    String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
 
     @Override
-    public String salvar(Venda o) {
+    public String salvar(Revisao revisao) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String atualizar(Venda o) {
+    public String atualizar(Revisao revisao) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -35,92 +38,79 @@ public class VendaDao implements IDAO_T<Venda> {
     }
 
     @Override
-    public ArrayList<Venda> consultarTodos() {
+    public ArrayList<Revisao> consultarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public ArrayList<Venda> consultar(String criterio) {
+    public ArrayList<Revisao> consultar(String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Venda consultarId(int id) {
-        return null;
+    public Revisao consultarId(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void popularTabela(JTable tabela, String placa, String versao, String modelo, String marca_id, String situacao_venda_id, String cliente, String data_de, String data_ate) {
+    public void popularTabela(JTable tabela, String placa, String versao, String modelo, String marca_id, String empresa_vistoria_id, String data_de, String data_ate) {
         // dados da tabela
         Object[][] dadosTabela = null;
 
         // cabecalho da tabela
-        Object[] cabecalho = new Object[7];
+        Object[] cabecalho = new Object[4];
         cabecalho[0] = "Código";
         cabecalho[1] = "Data";
-        cabecalho[2] = "Usuário";
-        cabecalho[3] = "Veículo";
-        cabecalho[4] = "Cliente";
-        cabecalho[5] = "Valor";
-        cabecalho[6] = "Situação da venda";
+        cabecalho[2] = "Veículo";
+        cabecalho[3] = "Empresa";
 
         String marca = marca_id != "" ? "ma.ID = " + marca_id + " " : " 1 = 1 ";
-        String situacao = situacao_venda_id != "" ? "sc.ID = " + situacao_venda_id + " " : " 1 = 1 ";
+        String empresa = empresa_vistoria_id != "" ? "ev.ID = " + empresa_vistoria_id + " " : " 1 = 1 ";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM vendas AS v INNER JOIN clientes AS c "
-                    + "ON v.cliente_id = c.id "
-                    + "INNER JOIN situacoes_vendas AS sv "
-                    + "ON v.situacao_venda_id = sv.id "
-                    + "INNER JOIN veiculos AS ve "
-                    + "ON v.veiculo_id = ve.id "
-                    + "INNER JOIN versoes AS vs "
-                    + "ON ve.versao_id = vs.id "
+                    + "SELECT count(*) FROM revisoes AS r INNER JOIN veiculos AS v "
+                    + "ON r.veiculo_id = v.id "
+                    + "INNER JOIN versoes AS ve "
+                    + "ON v.versao_id = ve.id "
                     + "INNER JOIN modelos AS mo "
-                    + "ON vs.modelo_id = mo.id "
+                    + "ON ve.modelo_id = mo.id "
                     + "INNER JOIN marcas AS ma "
                     + "ON mo.marca_id = ma.id "
-                    + "INNER JOIN usuarios AS u "
-                    + "ON v.usuario_id = u.id "
-                    + "WHERE ve.PLACA ILIKE '%" + placa + "%' AND "
-                    + "c.NOME ILIKE '%" + cliente + "%' AND "
-                    + "vs.NOME ILIKE '%" + versao + "%' AND "
+                    + "INNER JOIN empresas_vistorias AS ev "
+                    + "ON r.empresa_vistoria_id = ev.id  "
+                    + "WHERE v.PLACA ILIKE '%" + placa + "%' AND "
+                    + "ve.NOME ILIKE '%" + versao + "%' AND "
                     + "mo.NOME ILIKE '%" + modelo + "%' AND "
-                    + "v.data BETWEEN " + "'" + Formatacao.ajustaDataAMD(data_de) + "' AND "
+                    + "r.data BETWEEN " + "'" + Formatacao.ajustaDataAMD(data_de) + "' AND "
                     + "'" + Formatacao.ajustaDataAMD(data_ate) + " 23:59:00" + "' AND "
                     + marca + " AND "
-                    + situacao + " AND "
-                    + "v.id IN (SELECT v.id FROM vendas AS v INNER JOIN clientes AS c "
-                    + "ON v.cliente_id = c.id "
-                    + "INNER JOIN situacoes_vendas AS sv "
-                    + "ON v.situacao_venda_id = sv.id "
-                    + "INNER JOIN veiculos AS ve "
-                    + "ON v.veiculo_id = ve.id "
-                    + "INNER JOIN versoes AS vs "
-                    + "ON ve.versao_id = vs.id "
+                    + empresa + " AND "
+                    + "r.id IN (SELECT r.id FROM revisoes AS r INNER JOIN veiculos AS v "
+                    + "ON r.veiculo_id = v.id "
+                    + "INNER JOIN versoes AS ve "
+                    + "ON v.versao_id = ve.id "
                     + "INNER JOIN modelos AS mo "
-                    + "ON vs.modelo_id = mo.id "
+                    + "ON ve.modelo_id = mo.id "
                     + "INNER JOIN marcas AS ma "
                     + "ON mo.marca_id = ma.id "
-                    + "INNER JOIN usuarios AS u "
-                    + "ON v.usuario_id = u.id "
-                    + "WHERE ve.PLACA ILIKE '%" + placa + "%' AND "
-                    + "c.NOME ILIKE '%" + cliente + "%' AND "
-                    + "vs.NOME ILIKE '%" + versao + "%' AND "
+                    + "INNER JOIN empresas_vistorias AS ev "
+                    + "ON r.empresa_vistoria_id = ev.id "
+                    + "WHERE v.PLACA ILIKE '%" + placa + "%' AND "
+                    + "ve.NOME ILIKE '%" + versao + "%' AND "
                     + "mo.NOME ILIKE '%" + modelo + "%' AND "
-                    + "v.data BETWEEN " + "'" + Formatacao.ajustaDataAMD(data_de) + "' AND "
+                    + "r.data BETWEEN " + "'" + Formatacao.ajustaDataAMD(data_de) + "' AND "
                     + "'" + Formatacao.ajustaDataAMD(data_ate) + " 23:59:00" + "' AND "
                     + marca + " AND "
-                    + situacao
+                    + empresa
                     + "LIMIT 50)");
 
             resultadoQ.next();
 
-            dadosTabela = new Object[resultadoQ.getInt(1)][7];
+            dadosTabela = new Object[resultadoQ.getInt(1)][4];
 
         } catch (Exception e) {
-            System.out.println("Erro ao consultar venda: " + e);
+            System.out.println("Erro ao consultar revisão: " + e);
         }
 
         int lin = 0;
@@ -128,49 +118,38 @@ public class VendaDao implements IDAO_T<Venda> {
         // efetua consulta na tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT v.id AS id" + ","
-                    + "v.data AS data" + ","
-                    + "CONCAT(vs.nome, ' - ', mo.nome, ' - ', ma.nome, ' - ', ve.placa) AS veiculo " + ","
-                    + "c.nome AS cliente " + ","
-                    + "v.valor_total AS valor " + ","
-                    + "sv.nome AS situacao " + ","
-                    + "u.nome AS usuario "
-                    + "FROM vendas AS v "
-                    + "INNER JOIN clientes AS c "
-                    + "ON v.cliente_id = c.id "
-                    + "INNER JOIN situacoes_vendas AS sv "
-                    + "ON v.situacao_venda_id = sv.id "
-                    + "INNER JOIN veiculos AS ve "
-                    + "ON v.veiculo_id = ve.id "
-                    + "INNER JOIN versoes AS vs "
-                    + "ON ve.versao_id = vs.id "
+                    + "SELECT r.id AS id" + ","
+                    + "r.data AS data" + ","
+                    + "CONCAT(ve.nome, ' - ', mo.nome, ' - ', ma.nome, ' - ', v.placa) AS veiculo " + ","
+                    + "ev.razao_social AS empresa "
+                    + "FROM revisoes AS r "
+                    + "INNER JOIN veiculos AS v "
+                    + "ON r.veiculo_id = v.id "
+                    + "INNER JOIN versoes AS ve "
+                    + "ON v.versao_id = ve.id "
                     + "INNER JOIN modelos AS mo "
-                    + "ON vs.modelo_id = mo.id "
+                    + "ON ve.modelo_id = mo.id "
                     + "INNER JOIN marcas AS ma "
                     + "ON mo.marca_id = ma.id "
-                    + "INNER JOIN usuarios AS u "
-                    + "ON v.usuario_id = u.id "
+                    + "INNER JOIN empresas_vistorias AS ev "
+                    + "ON r.empresa_vistoria_id = ev.id "
                     + "WHERE "
-                    + "ve.PLACA ILIKE '%" + placa + "%' AND "
-                    + "c.NOME ILIKE '%" + cliente + "%' AND "
-                    + "vs.NOME ILIKE '%" + versao + "%' AND "
+                    + "v.PLACA ILIKE '%" + placa + "%' AND "
+                    + "ve.NOME ILIKE '%" + versao + "%' AND "
                     + "mo.NOME ILIKE '%" + modelo + "%' AND "
-                    + "v.data BETWEEN " + "'" + Formatacao.ajustaDataAMD(data_de) + "' AND "
+                    + "r.data BETWEEN " + "'" + Formatacao.ajustaDataAMD(data_de) + "' AND "
                     + "'" + Formatacao.ajustaDataAMD(data_ate) + " 23:59:00" + "' AND "
                     + marca + " AND "
-                    + situacao
-                    + "ORDER BY c.CRIADO_EM DESC "
+                    + empresa
+                    + "ORDER BY r.CRIADO_EM DESC "
                     + "LIMIT 50");
 
             while (resultadoQ.next()) {
 
                 dadosTabela[lin][0] = resultadoQ.getInt("id");
                 dadosTabela[lin][1] = Formatacao.ajustaDataDMA(resultadoQ.getString("data"));
-                dadosTabela[lin][2] = resultadoQ.getString("usuario");
-                dadosTabela[lin][3] = resultadoQ.getString("veiculo");
-                dadosTabela[lin][4] = resultadoQ.getString("cliente");
-                dadosTabela[lin][5] = Formatacao.formatarDecimal(resultadoQ.getDouble("valor"));
-                dadosTabela[lin][6] = resultadoQ.getString("situacao");
+                dadosTabela[lin][2] = resultadoQ.getString("veiculo");
+                dadosTabela[lin][3] = resultadoQ.getString("empresa");
 
                 // caso a coluna precise exibir uma imagem
 //                if (resultadoQ.getBoolean("Situacao")) {

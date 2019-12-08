@@ -55,6 +55,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCEmpresaVistoriaActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="btnCRevisao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Revis&#xf5;es"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCRevisaoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btnCMarca">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Marcas"/>

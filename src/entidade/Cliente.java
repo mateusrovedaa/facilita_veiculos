@@ -28,7 +28,7 @@ public class Cliente implements Serializable {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @JoinColumn(name = "cidade_id")
+    @JoinColumn(name = "cidade_id", nullable = false)
     @ManyToOne
     private Cidade cidade_id;
 

@@ -423,7 +423,7 @@ public class VeiculoDao implements LazyLoading {
         return valorTotal;
     }
 
-    public void listarVeiculo(JTable tabela, String placa, String situacao) {
+    public void listarVeiculo(JTable tabela, String placa, String situacao_id) {
         // dados da tabela
         Object[][] dadosTabela = null;
 
@@ -435,12 +435,14 @@ public class VeiculoDao implements LazyLoading {
         cabecalho[3] = "Versão";
         cabecalho[4] = "Modelo";
         cabecalho[5] = "Marca";
+        
+        String situacao = situacao_id != "" ? "v.SITUACAO_VEICULO_ID = " + situacao_id + " " : " 1 = 1 ";
 
         // cria matriz de acordo com nº de registros da tabela
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM veiculos WHERE PLACA ILIKE '%" + placa + "%' "
-                    + "AND SITUACAO_VEICULO_ID = " + situacao + " ");
+                    + "SELECT count(*) FROM veiculos AS v WHERE PLACA ILIKE '%" + placa + "%' AND "
+                    + situacao + " ");
 
             resultadoQ.next();
 
@@ -469,8 +471,8 @@ public class VeiculoDao implements LazyLoading {
                     + " LEFT JOIN marcas AS ma "
                     + " ON mo.marca_id = ma.id "
                     + "WHERE "
-                    + "v.PLACA ILIKE '%" + placa + "%' "
-                    + "AND v.SITUACAO_VEICULO_ID = " + situacao + " "
+                    + "v.PLACA ILIKE '%" + placa + "%' AND "
+                    + situacao
                     + "ORDER BY v.CRIADO_EM DESC");
 
             while (resultadoQ.next()) {

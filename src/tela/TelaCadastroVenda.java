@@ -22,6 +22,9 @@ import functions.ComboItem;
 import functions.Formatacao;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import functions.Validacao;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import static java.time.LocalDateTime.now;
 import java.time.format.DateTimeFormatter;
@@ -49,27 +52,30 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         campoValorVeiculo.setEditable(false);
         id = usuario_id;
         new ComboDao().popularCombo("situacoes_vendas", 1, 4, comboSituacaoVendaId, "");
-        new ComboDao().popularCombo("situacoes_vendas", 1, 4, comboFiltroSituacaoCompraId, "");
+        new ComboDao().popularCombo("situacoes_vendas", 1, 4, comboFiltroSituacaoVendaId, "");
         new ComboDao().popularCombo("tipos_pagamentos", 1, 4, comboTipoPagamentoId, "");
         new ComboDao().popularCombo("parcelas", 1, 4, comboParcelaId, "");
         new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
         Formatacao.formatarData(campoFiltroDataDe);
         Formatacao.formatarData(campoFiltroDataAte);
         Formatacao.formatarData(campoDataVenda);
-        campoFiltroDataDe.setText(Formatacao.ajustaDataDMA(now.toString()));
+        campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
+        new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
     }
 
-//    public static TelaCadastroVenda getInstancia() {
-//        if (tela == null) {
-//            tela = new TelaCadastroVenda();
-//        }
-//        return tela;
-//    }
-//    private void funcaoFechar() {
-//        GerenciarJanelas.fecharJanela(tela);
-//        tela = null;
-//    }
+    public static TelaCadastroVenda getInstancia(int usuario_id) {
+        if (tela == null) {
+            tela = new TelaCadastroVenda(usuario_id);
+        }
+        return tela;
+    }
+
+    private void funcaoFechar() {
+        GerenciarJanelas.fecharJanela(tela);
+        tela = null;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -131,14 +137,13 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         campoFiltroVersao = new javax.swing.JTextField();
         campoFiltroModelo = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        comboFiltroSituacaoCompraId = new javax.swing.JComboBox<>();
+        comboFiltroSituacaoVendaId = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         campoFiltroCliente = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCompra = new javax.swing.JTable();
+        tblVenda = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
-        btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnFecharLista = new javax.swing.JButton();
         btnVerInfoVenda = new javax.swing.JButton();
@@ -489,7 +494,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Situação da venda:");
 
-        comboFiltroSituacaoCompraId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboFiltroSituacaoVendaId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Cliente:");
@@ -509,7 +514,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(comboFiltroMarcaId, javax.swing.GroupLayout.Alignment.LEADING, 0, 241, Short.MAX_VALUE)
-                    .addComponent(comboFiltroSituacaoCompraId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboFiltroSituacaoVendaId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(campoFiltroPlaca, javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -559,7 +564,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboFiltroSituacaoCompraId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboFiltroSituacaoVendaId, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoFiltroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
@@ -567,7 +572,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tblCompra.setModel(new javax.swing.table.DefaultTableModel(
+        tblVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -578,18 +583,9 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(tblCompra);
+        jScrollPane1.setViewportView(tblVenda);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-edit-16.png"))); // NOI18N
-        btnEditar.setText("Editar");
-        btnEditar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btnEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarActionPerformed(evt);
-            }
-        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-delete-16.png"))); // NOI18N
         btnExcluir.setText("Excluir");
@@ -611,6 +607,11 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
         btnVerInfoVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-info-16.png"))); // NOI18N
         btnVerInfoVenda.setText("Ver informações da venda");
+        btnVerInfoVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerInfoVendaActionPerformed(evt);
+            }
+        });
 
         btnVerParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-view-16.png"))); // NOI18N
         btnVerParcelas.setText("Ver parcelas");
@@ -630,8 +631,6 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVerInfoVenda)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExcluir)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFecharLista)
@@ -642,7 +641,6 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEditar)
                     .addComponent(btnExcluir)
                     .addComponent(btnFecharLista)
                     .addComponent(btnVerInfoVenda)
@@ -714,23 +712,60 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLimparBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparBuscaActionPerformed
-
+        campoFiltroPlaca.setText("");
+        campoFiltroVersao.setText("");
+        campoFiltroModelo.setText("");
+        comboFiltroMarcaId.setSelectedIndex(0);
+        comboFiltroSituacaoVendaId.setSelectedIndex(0);
+        campoFiltroCliente.setText("");
+        campoFiltroDataDe.setText(Formatacao.getDataMes());
+        campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
+        new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        ComboItem filtroMarcaId = (ComboItem) comboFiltroMarcaId.getSelectedItem();
+        String filtroMarca;
+        if (filtroMarcaId.getCodigo() == 0) {
+            filtroMarca = "";
+        } else {
+            filtroMarca = String.valueOf(filtroMarcaId.getCodigo());
+        }
 
+        ComboItem filtroSituacaoVendaId = (ComboItem) comboFiltroSituacaoVendaId.getSelectedItem();
+        String filtroSituacaoVenda;
+        if (filtroSituacaoVendaId.getCodigo() == 0) {
+            filtroSituacaoVenda = "";
+        } else {
+            filtroSituacaoVenda = String.valueOf(filtroSituacaoVendaId.getCodigo());
+        }
+
+        if (Validacao.validarDataFormatada(campoFiltroDataDe.getText()) || Validacao.validarDataFormatada(campoFiltroDataAte.getText())) {
+            new VendaDao().popularTabela(tblVenda, campoFiltroPlaca.getText(), campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtroMarca, filtroSituacaoVenda, campoFiltroCliente.getText(), campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        } else {
+            Mensagem.aviso("Digite uma data válida!", this);
+            campoFiltroDataDe.setText(Formatacao.getDataMes());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-
-    }//GEN-LAST:event_btnEditarActionPerformed
-
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        int codigoExcluirVenda = (int) tblVenda.getValueAt(tblVenda.getSelectedRow(), 0);
 
+        int mensagem = Mensagem.confirmacao("Deseja excluir?", this);
+        if (mensagem == 0) {
+            boolean retornoExcluirVenda = DaoGenerico.getInstance().excluir(Venda.class, codigoExcluirVenda);
+
+            if (retornoExcluirVenda == true) {
+                Mensagem.informacao("Venda excluída com sucesso!", this);
+                new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            } else {
+                Mensagem.erro(tblVenda.getValueAt(tblVenda.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
+            }
+        }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnFecharListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharListaActionPerformed
-//        funcaoFechar();
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharListaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -829,7 +864,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
                     array = Numeroparcela.split(" ");
 
-                        vendaVeiculoDao.gerarParcelas(Integer.parseInt(array[0]), veiculoDao.calcularValorTotal(Double.parseDouble(campoValorVeiculo.getText().replace(",", ".")), Double.parseDouble(campoValorEntrada.getText().replace(",", ".")), Double.parseDouble(campoJuros.getText().replace(",", "."))), retornoSalvarVenda);
+                    vendaVeiculoDao.gerarParcelas(Integer.parseInt(array[0]), veiculoDao.calcularValorTotal(Double.parseDouble(campoValorVeiculo.getText().replace(",", ".")), Double.parseDouble(campoValorEntrada.getText().replace(",", ".")), Double.parseDouble(campoJuros.getText().replace(",", "."))), retornoSalvarVenda);
                 }
             } else {
                 boolean retornoUpdate = DaoGenerico.getInstance().atualizar(venda);
@@ -840,13 +875,15 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
                     retornoSalvarVenda = 0;
                 }
             }
-            JOptionPane.showMessageDialog(null, "Venda salva com sucesso!");
+            Mensagem.informacao("Venda salva com sucesso!", this);
 
         } else {
             campoIdVeiculoBusca.setText("");
             campoPlacaVeiculoBusca.setText("");
             campoIdClienteBusca.setText("");
             campoNomeClienteBusca.setText("");
+            campoDataVenda.setText("");
+            comboSituacaoVendaId.setSelectedIndex(0);
             campoValorVeiculo.setText("");
             comboTipoPagamentoId.setSelectedIndex(0);
             campoValorEntrada.setText("");
@@ -861,23 +898,25 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
             campoPlacaVeiculoBusca.setText("");
             campoIdClienteBusca.setText("");
             campoNomeClienteBusca.setText("");
+            campoDataVenda.setText("");
+            comboSituacaoVendaId.setSelectedIndex(0);
             campoValorVeiculo.setText("");
+            comboTipoPagamentoId.setSelectedIndex(0);
             campoValorEntrada.setText("");
+            comboParcelaId.setSelectedIndex(0);
             campoJuros.setText("");
             campoObservacoes.setText("");
-            campoJuros.setText("");
 
             codigo = 0;
 
-            //new VendaDao().popularTabela(tblVenda, campoFiltroDataInicial.getText(), campoFiltroDataFinal.getText());
+            new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         } else {
-            JOptionPane.showMessageDialog(null, "Campos obrigatórios (*) devem ser preenchidos corretamente!");
-            //JOptionPane.showMessageDialog(null, "Deu erro: \n\nMensagem técnica:" + retorno_salvar_venda);
+            Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnFecharCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCadastroActionPerformed
-        // funcaoFechar();
+        funcaoFechar();
     }//GEN-LAST:event_btnFecharCadastroActionPerformed
 
     private void btnBuscaVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaVeiculoActionPerformed
@@ -893,18 +932,65 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscaClienteActionPerformed
 
     private void btnVerParcelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerParcelasActionPerformed
-//         String codigoEditarVenda = String.valueOf(tblVenda.getValueAt(tblVenda.getSelectedRow(), 0));
-//
-//        Venda venda = new VendaDao().consultarId(Integer.parseInt(codigoEditarVenda));
-//
-//        TelaParcela parcela = new TelaParcela(venda.getId());
-//        int lDesk = this.getWidth();
-//        int aDesk = this.getHeight();
-//        int lIFrame = parcela.getWidth();
-//        int aIFrame = parcela.getHeight();
-//        parcela.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
-//        parcela.setVisible(true);
+        String codigoEditarVenda = String.valueOf(tblVenda.getValueAt(tblVenda.getSelectedRow(), 0));
+
+        Object objectVenda = DaoGenerico.getInstance().obterPorId(Venda.class, Integer.parseInt(codigoEditarVenda));
+        Venda venda = new Venda((Venda) objectVenda);
+
+        TelaParcela parcela = new TelaParcela(venda.getId());
+        int lDesk = this.getWidth();
+        int aDesk = this.getHeight();
+        int lIFrame = parcela.getWidth();
+        int aIFrame = parcela.getHeight();
+        parcela.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
+        parcela.setVisible(true);
     }//GEN-LAST:event_btnVerParcelasActionPerformed
+
+    private void btnVerInfoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerInfoVendaActionPerformed
+        String codigoEditarVenda = String.valueOf(tblVenda.getValueAt(tblVenda.getSelectedRow(), 0));
+
+        Object objectVenda = DaoGenerico.getInstance().obterPorId(Venda.class, Integer.parseInt(codigoEditarVenda));
+        Venda venda = new Venda((Venda) objectVenda);
+
+        Object objectVeiculo = DaoGenerico.getInstance().obterPorId(Veiculo.class, venda.getVeiculo_id().getId());
+        Veiculo veiculo = new Veiculo((Veiculo) objectVeiculo);
+
+        Object objectCliente = DaoGenerico.getInstance().obterPorId(Cliente.class, venda.getCliente_id().getId());
+        Cliente cliente = new Cliente((Cliente) objectCliente);
+
+        ComboItem situacaoVendaId = new ComboItem();
+        situacaoVendaId.setCodigo(venda.getSituacao_venda_id().getId());
+
+        ComboItem tipoPagamentoId = new ComboItem();
+        tipoPagamentoId.setCodigo(venda.getTipo_pagamento_id().getId());
+
+        ComboItem parcelaId = new ComboItem();
+        parcelaId.setCodigo(venda.getParcela_id().getId());
+
+        if (venda != null) {
+            abaVenda.setSelectedIndex(0);
+
+            campoIdVeiculoBusca.setText(Integer.toString(venda.getVeiculo_id().getId()));
+            campoPlacaVeiculoBusca.setText(veiculo.getPlaca());
+            campoIdClienteBusca.setText(Integer.toString(venda.getCliente_id().getId()));
+            campoNomeClienteBusca.setText(cliente.getNome());
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            String dataFormatada = dateFormat.format(venda.getData());
+            campoDataVenda.setText(dataFormatada);
+            new ComboDao().definirItemCombo(comboSituacaoVendaId, situacaoVendaId);
+            campoValorVeiculo.setText(Formatacao.formatarDecimal(veiculo.getValor()));
+            new ComboDao().definirItemCombo(comboTipoPagamentoId, tipoPagamentoId);
+            campoValorEntrada.setText(Formatacao.formatarDecimal(venda.getValor_entrada()));
+            new ComboDao().definirItemCombo(comboParcelaId, parcelaId);
+            campoJuros.setText(Integer.toString(venda.getJuros()));
+            campoObservacoes.setText(String.valueOf(venda.getObservacoes()));
+
+            codigo = venda.getId();
+
+        } else {
+            Mensagem.erro("Erro ao consultar venda!", this);
+        }
+    }//GEN-LAST:event_btnVerInfoVendaActionPerformed
 
     public void definirVeiculo(int id, String placa) {
         campoIdVeiculoBusca.setText(Integer.toString(id));
@@ -937,7 +1023,6 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnBuscaCliente;
     private javax.swing.JButton btnBuscaVeiculo;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFecharCadastro;
     private javax.swing.JButton btnFecharLista;
@@ -961,7 +1046,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     private javax.swing.JTextField campoValorEntrada;
     private javax.swing.JTextField campoValorVeiculo;
     private javax.swing.JComboBox<String> comboFiltroMarcaId;
-    private javax.swing.JComboBox<String> comboFiltroSituacaoCompraId;
+    private javax.swing.JComboBox<String> comboFiltroSituacaoVendaId;
     private javax.swing.JComboBox<String> comboParcelaId;
     private javax.swing.JComboBox<String> comboSituacaoVendaId;
     private javax.swing.JComboBox<String> comboTipoPagamentoId;
@@ -1001,6 +1086,6 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable tblCompra;
+    private javax.swing.JTable tblVenda;
     // End of variables declaration//GEN-END:variables
 }

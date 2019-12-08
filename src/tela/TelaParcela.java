@@ -1,14 +1,25 @@
 package tela;
 
+import dao.DaoGenerico;
+import dao.VendaVeiculoDao;
+import entidade.VendaVeiculo;
 import functions.Mensagem;
 import java.awt.Toolkit;
 
 public class TelaParcela extends javax.swing.JDialog {
 
+    int id = 0;
+
     public TelaParcela(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    public TelaParcela(int vendaId) {
+        initComponents();
         setIcon();
+        this.id = vendaId;
+        new VendaVeiculoDao().popularTabela(tblParcela, vendaId);
     }
 
     @SuppressWarnings("unchecked")
@@ -21,6 +32,7 @@ public class TelaParcela extends javax.swing.JDialog {
         btnFecharBusca = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Parcelas");
 
         tblParcela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,7 +94,26 @@ public class TelaParcela extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlterarStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarStatusActionPerformed
-        
+        String codigoEditarVendaVeiculo = String.valueOf(tblParcela.getValueAt(tblParcela.getSelectedRow(), 0));
+
+        Object objectVendaVeiculo = DaoGenerico.getInstance().obterPorId(VendaVeiculo.class, Integer.parseInt(codigoEditarVendaVeiculo));
+        VendaVeiculo vendaVeiculoId = new VendaVeiculo((VendaVeiculo) objectVendaVeiculo);
+
+        VendaVeiculo vendaVeiculo = new VendaVeiculo();
+
+        vendaVeiculo.setId(vendaVeiculoId.getId());
+
+        if (vendaVeiculoId.isStatus() == true) {
+            vendaVeiculo.setStatus(false);
+        } else {
+            vendaVeiculo.setStatus(true);
+        }
+
+        VendaVeiculoDao vendaVeiculoDao = new VendaVeiculoDao();
+
+        vendaVeiculoDao.alterarStatus(vendaVeiculo);
+
+        new VendaVeiculoDao().popularTabela(tblParcela, this.id);
     }//GEN-LAST:event_btnAlterarStatusActionPerformed
 
     private void btnFecharBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharBuscaActionPerformed
