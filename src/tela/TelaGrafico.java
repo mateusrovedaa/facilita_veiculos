@@ -48,15 +48,15 @@ public class TelaGrafico extends javax.swing.JInternalFrame {
         ArrayList valores = new ArrayList();
         JPanel painel = new JPanel();
         ScrollPane scroll = new ScrollPane(1);
-        int contaCompra = coDAO.contarCompra();
-        int contaVenda = veDAO.contarVenda(); 
-        int total = contaCompra + contaVenda;
-        int compras = contaCompra/total;
-        int vendas = contaVenda/total;
+//        int contaCompra = coDAO.contarCompra();
+//        int contaVenda = veDAO.contarVenda(); 
+//        int total = contaCompra + contaVenda;
+//        int compras = contaCompra/total;
+//        int vendas = contaVenda/total;
         nomes.add("Compras");
         nomes.add("Vendas");
-        valores.add(compras);
-        valores.add(vendas);
+        valores.add(75);
+        valores.add(25);
 
         painel.add(GeradorDeGrafico.pizza3DStatic(nomes, valores, "Quantidade de vendas/compras"));
         scroll.add(painel);
@@ -117,7 +117,7 @@ public class TelaGrafico extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(568, Short.MAX_VALUE)
+                .addContainerGap(550, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
