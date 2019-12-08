@@ -2,15 +2,15 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contrato_venda" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f8850c60-ac24-4d05-bde7-87106947c3cc">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="154"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="idcompra" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT v.chassi, v.placa, v.renavam, c.valor, p.cpf,
-p.data_nascimento, p.endereco, p.nome AS nomepessoa, p.rg, ve.ano_fabricacao, ve.ano_modelo, ve.motor, m.nome AS marcanome, mo.nome AS modelonome, c.observacoes
-FROM proprietarios p, veiculos v, compras c, versoes ve, marcas m, modelos mo
-WHERE c.proprietario_id = p.id AND c.veiculo_id = v.id AND v.versao_id = ve.id AND ve.modelo_id = mo.id AND mo.marca_id = m.id AND c.id = $P{idcompra}]]>
+p.data_nascimento, p.endereco, p.nome AS nomepessoa, p.rg, ve.ano_fabricacao, ve.ano_modelo, ve.motor, m.nome AS marcanome, mo.nome AS modelonome, c.observacoes, cid.nome as cidade
+FROM proprietarios p, veiculos v, compras c, versoes ve, marcas m, modelos mo, cidades cid
+WHERE c.proprietario_id = p.id AND c.veiculo_id = v.id AND v.versao_id = ve.id AND ve.modelo_id = mo.id AND mo.marca_id = m.id AND p.cidade_id = cid.id AND c.id = $P{idcompra}]]>
 	</queryString>
 	<field name="chassi" class="java.lang.String"/>
 	<field name="placa" class="java.lang.String"/>
@@ -27,6 +27,7 @@ WHERE c.proprietario_id = p.id AND c.veiculo_id = v.id AND v.versao_id = ve.id A
 	<field name="marcanome" class="java.lang.String"/>
 	<field name="modelonome" class="java.lang.String"/>
 	<field name="observacoes" class="java.lang.String"/>
+	<field name="cidade" class="java.lang.String"/>
 	<title>
 		<band height="38" splitType="Stretch">
 			<staticText>
@@ -45,7 +46,7 @@ WHERE c.proprietario_id = p.id AND c.veiculo_id = v.id AND v.versao_id = ve.id A
 				<textElement textAlignment="Justified" verticalAlignment="Top" markup="html">
 					<font fontName="SansSerif"/>
 				</textElement>
-				<textFieldExpression><![CDATA["De um lado, "+$F{nomepessoa}+", RG: "+$F{rg}+", CPF: "+$F{cpf}+", residente e domiciliado na "+$F{endereco}+", neste ato denominado VENDEDOR." +"<br>"
+				<textFieldExpression><![CDATA["De um lado, "+$F{nomepessoa}+", RG: "+$F{rg}+", CPF: "+$F{cpf}+", residente e domiciliado na "+$F{endereco}+", na cidade de "+$F{cidade}+", neste ato denominado VENDEDOR." +"<br>"
 
 + "De outro lado, denominado COMPRADOR, Facilita Veículos Ltda, 886/0854987, 96.024.699/0001-07, com sede na Rua Erva-Mate, 962, Linha Bonita, Jaguarão, RS." +"<br>"
 
