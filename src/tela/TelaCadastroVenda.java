@@ -9,6 +9,7 @@ import dao.VendaVeiculoDao;
 import dao.VersaoDao;
 import entidade.Cliente;
 import entidade.Combustivel;
+import entidade.ContratoVenda;
 import entidade.Modelo;
 import entidade.Parcela;
 import entidade.SituacaoVenda;
@@ -65,11 +66,10 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 //        }
 //        return tela;
 //    }
-    private void funcaoFechar() {
-        GerenciarJanelas.fecharJanela(tela);
-        tela = null;
-    }
-
+//    private void funcaoFechar() {
+//        GerenciarJanelas.fecharJanela(tela);
+//        tela = null;
+//    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -114,7 +114,6 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         jPanel9 = new javax.swing.JPanel();
         btnSalvar = new javax.swing.JButton();
         btnFecharCadastro = new javax.swing.JButton();
-        btnAddVenda = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -388,22 +387,12 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAddVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-add-162.png"))); // NOI18N
-        btnAddVenda.setText("Adicionar nova venda");
-        btnAddVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddVendaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAddVenda)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFecharCadastro)
@@ -413,11 +402,9 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnFecharCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAddVenda)))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnFecharCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -743,7 +730,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnFecharListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharListaActionPerformed
-        funcaoFechar();
+//        funcaoFechar();
     }//GEN-LAST:event_btnFecharListaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
@@ -784,6 +771,10 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         Object objectVeiculo = DaoGenerico.getInstance().obterPorId(Veiculo.class, Integer.parseInt(campoIdVeiculoBusca.getText()));
         Veiculo veiculoId = new Veiculo((Veiculo) objectVeiculo);
 
+        ContratoVenda contrato = null;
+        Object objectContratoVenda = DaoGenerico.getInstance().obterPorId(ContratoVenda.class, 1);
+        contrato = new ContratoVenda((ContratoVenda) objectContratoVenda);
+
         venda.setId(codigo);
         venda.setUsuario_id(usuario);
 
@@ -820,6 +811,11 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
             venda.setValor_total(veiculoDao.calcularValorTotal(Double.parseDouble(campoValorVeiculo.getText().replace(",", ".")), Double.parseDouble(campoValorEntrada.getText().replace(",", ".")), Double.parseDouble(campoJuros.getText().replace(",", "."))));
         }
 
+        venda.setSituacao_venda_id(situacao);
+        //venda.setContrato_venda_id(contrato);
+        venda.setCriadoEm(Calendar.getInstance());
+        venda.setAlteradoEm(Calendar.getInstance());
+
         VendaDao vendaDao = new VendaDao();
         int retornoSalvarVenda = 0;
 
@@ -827,7 +823,13 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
             if (codigo == 0) {
                 retornoSalvarVenda = DaoGenerico.getInstance().inserirVenda(venda);
                 if (parcelaId.getCodigo() != 0) {
-                    vendaVeiculoDao.gerarParcelas(parcelaId.getCodigo(), veiculoDao.calcularValorTotal(Double.parseDouble(campoValorVeiculo.getText().replace(",", ".")), Double.parseDouble(campoValorEntrada.getText().replace(",", ".")), Double.parseDouble(campoJuros.getText().replace(",", "."))), retornoSalvarVenda);
+
+                    String Numeroparcela = parcelaId.getDescricao();
+                    String array[] = new String[1];
+
+                    array = Numeroparcela.split(" ");
+
+                        vendaVeiculoDao.gerarParcelas(Integer.parseInt(array[0]), veiculoDao.calcularValorTotal(Double.parseDouble(campoValorVeiculo.getText().replace(",", ".")), Double.parseDouble(campoValorEntrada.getText().replace(",", ".")), Double.parseDouble(campoJuros.getText().replace(",", "."))), retornoSalvarVenda);
                 }
             } else {
                 boolean retornoUpdate = DaoGenerico.getInstance().atualizar(venda);
@@ -875,7 +877,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnFecharCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharCadastroActionPerformed
-        funcaoFechar();
+        // funcaoFechar();
     }//GEN-LAST:event_btnFecharCadastroActionPerformed
 
     private void btnBuscaVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaVeiculoActionPerformed
@@ -903,23 +905,6 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 //        parcela.setLocation(lDesk / 2 - lIFrame / 2, aDesk / 2 - aIFrame / 2);
 //        parcela.setVisible(true);
     }//GEN-LAST:event_btnVerParcelasActionPerformed
-
-    private void btnAddVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVendaActionPerformed
-        btnSalvar.setEnabled(true);
-        codigo = 0;
-        campoIdVeiculoBusca.setText("");
-        campoPlacaVeiculoBusca.setText("");
-        campoIdClienteBusca.setText("");
-        campoNomeClienteBusca.setText("");
-        campoDataVenda.setText("");
-        comboSituacaoVendaId.setSelectedIndex(0);
-        comboTipoPagamentoId.setSelectedIndex(0);
-        campoValorVeiculo.setText("");
-        campoValorEntrada.setText("");
-        comboParcelaId.setSelectedIndex(0);
-        campoJuros.setText("");
-        campoObservacoes.setText("");
-    }//GEN-LAST:event_btnAddVendaActionPerformed
 
     public void definirVeiculo(int id, String placa) {
         campoIdVeiculoBusca.setText(Integer.toString(id));
@@ -949,7 +934,6 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane abaVenda;
-    private javax.swing.JButton btnAddVenda;
     private javax.swing.JButton btnBuscaCliente;
     private javax.swing.JButton btnBuscaVeiculo;
     private javax.swing.JButton btnBuscar;

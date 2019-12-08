@@ -114,15 +114,24 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
                 valorTotal = v.replace(',', '.');
                 
                 VendaVeiculo vv = new VendaVeiculo();
+
+                resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(" SELECT MAX(vv.id) as id FROM vendas_veiculos AS vv");
+                
+                resultadoQ.next();
+                        
+                int max = resultadoQ.getInt("id");
+                
+                max = max + 1;
                 
                 String sql = " INSERT INTO vendas_veiculos VALUES "
-                        + "(DEFAULT, "
-                        + "'" + vendaId + "', "
-                        + "'" + d.obterDataFormatada() + "',"
-                        + "'" + valorTotal + "', "
-                        + "'" + status + "', "
+                        + "( "
+                        + "'" + max + "', "
                         + "'" + now + "', "
-                        + "'" + now + "'"
+                        + "'" + now + "', "
+                        + "'" + d.obterDataFormatada() + "',"
+                         + "'" + status + "', "
+                        + "'" + valorTotal + "', "
+                        + "'" + vendaId + "'"
                         + " )";
                 
                 d.avancarDias(30);
