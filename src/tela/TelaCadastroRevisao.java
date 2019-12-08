@@ -3,6 +3,7 @@ package tela;
 import dao.ClienteDao;
 import dao.ComboDao;
 import dao.DaoGenerico;
+import dao.PermissaoDao;
 import dao.RevisaoDao;
 import entidade.EmpresaVistoria;
 import entidade.Revisao;
@@ -25,6 +26,7 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
 
     private static TelaCadastroRevisao tela;
     LocalDate now = LocalDate.now();
+    PermissaoDao peDAO = new PermissaoDao();
     int codigo = 0;
 
     public TelaCadastroRevisao() {
@@ -41,7 +43,40 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
         new ComboDao().popularCombo("marcas", 1, 4, comboFiltroMarcaId, "");
         new ComboDao().popularCombo("empresas_vistorias", 1, 9, comboFiltroEmpresaVistoriaId, "");
         new ComboDao().popularCombo("empresas_vistorias", 1, 9, comboEmpresaVistoriaId, "");
-        new RevisaoDao().popularTabela(tblRevisao, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        verificaPermissoes();
+    }
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "revisao")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "revisao")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "revisao")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "revisao")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Editar", "revisao")) {
+            btnEditar.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "revisao")) {
+            new RevisaoDao().popularTabela(tblRevisao, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        }
+        if (!peDAO.consultarPermissao("Procurar", "revisao")) {
+            btnBuscaVeiculo.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboEmpresaVistoria", "revisao")) {
+            comboEmpresaVistoriaId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboEmpresaVistoriaList", "revisao")) {
+            comboFiltroEmpresaVistoriaId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboMarca", "revisao")) {
+            comboFiltroMarcaId.setEnabled(false);
+        }
     }
 
     public static TelaCadastroRevisao getInstancia() {
@@ -126,7 +161,7 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Veículo*"));
 
@@ -200,8 +235,8 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                        .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(comboEmpresaVistoriaId, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
@@ -224,7 +259,7 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -435,9 +470,9 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
                             .addComponent(campoFiltroDataDe, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(campoFiltroVersao, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE))
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel32)
+                            .addComponent(jLabel30))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(campoFiltroDataAte, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
@@ -590,7 +625,10 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
 
             if (retornoExcluirRevisao == true) {
                 Mensagem.informacao("Revisao excluída com sucesso!", this);
-                new RevisaoDao().popularTabela(tblRevisao, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                if (peDAO.consultarPermissao("Listar", "revisao")) {
+                    new RevisaoDao().popularTabela(tblRevisao, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                }
+
             } else {
                 Mensagem.erro(tblRevisao.getValueAt(tblRevisao.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -650,8 +688,9 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
                 campoManutencoesRealizadas.setText("");
 
                 codigo = 0;
-
-                new RevisaoDao().popularTabela(tblRevisao, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                if (peDAO.consultarPermissao("Listar", "revisao")) {
+                    new RevisaoDao().popularTabela(tblRevisao, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                }
 
             } else {
                 Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
@@ -679,7 +718,10 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
 
-        new RevisaoDao().popularTabela(tblRevisao, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        if (peDAO.consultarPermissao("Listar", "revisao")) {
+            new RevisaoDao().popularTabela(tblRevisao, "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        }
+
 
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
@@ -701,7 +743,9 @@ public class TelaCadastroRevisao extends javax.swing.JInternalFrame {
         }
 
         if (Validacao.validarDataFormatada(campoFiltroDataDe.getText()) || Validacao.validarDataFormatada(campoFiltroDataAte.getText())) {
-            new RevisaoDao().popularTabela(tblRevisao, campoFiltroPlaca.getText(), campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtroMarca, filtroEmpresaVistoria, campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            if (peDAO.consultarPermissao("Listar", "revisao")) {
+                new RevisaoDao().popularTabela(tblRevisao, campoFiltroPlaca.getText(), campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtroMarca, filtroEmpresaVistoria, campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            }
 
         } else {
             Mensagem.aviso("Digite uma data válida!", this);
