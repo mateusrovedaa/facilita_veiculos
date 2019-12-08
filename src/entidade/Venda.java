@@ -51,9 +51,9 @@ public class Venda implements Serializable {
     @ManyToOne
     private Usuario usuario_id;
 
-    @JoinColumn(name = "contrato_venda_id", nullable = false)
-    @ManyToOne
-    private ContratoVenda contrato_venda_id;
+//    @JoinColumn(name = "contrato_venda_id", nullable = false)
+//    @ManyToOne
+//    private ContratoVenda contrato_venda_id;
 
     @JoinColumn(name = "situacao_venda_id", nullable = false)
     @ManyToOne
@@ -93,7 +93,7 @@ public class Venda implements Serializable {
         this.tipo_pagamento_id = venda.tipo_pagamento_id;
         this.cliente_id = venda.cliente_id;
         this.usuario_id = venda.usuario_id;
-        this.contrato_venda_id = venda.contrato_venda_id;
+        //this.contrato_venda_id = venda.contrato_venda_id;
         this.situacao_venda_id = venda.situacao_venda_id;
         this.data = venda.data;
         this.valor_total = venda.valor_total;
@@ -152,13 +152,13 @@ public class Venda implements Serializable {
         this.usuario_id = usuario_id;
     }
 
-    public ContratoVenda getContrato_venda_id() {
-        return contrato_venda_id;
-    }
-
-    public void setContrato_venda_id(ContratoVenda contrato_venda_id) {
-        this.contrato_venda_id = contrato_venda_id;
-    }
+//    public ContratoVenda getContrato_venda_id() {
+//        return contrato_venda_id;
+//    }
+//
+//    public void setContrato_venda_id(ContratoVenda contrato_venda_id) {
+//        this.contrato_venda_id = contrato_venda_id;
+//    }
 
     public SituacaoVenda getSituacao_venda_id() {
         return situacao_venda_id;
