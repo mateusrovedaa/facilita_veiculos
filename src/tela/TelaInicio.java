@@ -1,7 +1,10 @@
 package tela;
 
+import dao.DaoGenerico;
 import dao.PermissaoDao;
 import dao.UsuarioDao;
+import entidade.Perfil;
+import entidade.Usuario;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
 import java.awt.Toolkit;
@@ -32,12 +35,27 @@ public class TelaInicio extends javax.swing.JFrame {
     public JDesktopPane JDesktopPane() {
         return this.dktInicial;
     }
-    
+
     public int idUser() {
         return this.id;
     }
 
+    public Usuario usuario() {
+        DaoGenerico dao = new DaoGenerico();
+        Object ob = dao.obterPorId(Usuario.class, idUser());
+        Usuario usuario = new Usuario((Usuario) ob);
+        return usuario;
+    }
+
     private void verificarPermissoes() {
+        
+        if (usuario().getPerfil_id().getId() == 1) {
+            jMenu4.setEnabled(true);
+            jMenu4.setVisible(true);
+        } else {
+            jMenu4.setEnabled(false);
+            jMenu4.setVisible(false);
+        }
         if (!peDAO.consultarPermissao("Acessar", "versao")) {
             btnCVersao.setEnabled(false);
         } else {
@@ -96,6 +114,13 @@ public class TelaInicio extends javax.swing.JFrame {
             btnCCompra.setEnabled(true);
             btnAtalhoCCompra.setEnabled(true);
         }
+        if (!peDAO.consultarPermissao("Acessar", "venda")) {
+            btnCVenda.setEnabled(false);
+            btnAtalhoCVenda.setEnabled(false);
+        } else {
+            btnCVenda.setEnabled(true);
+            btnAtalhoCVenda.setEnabled(true);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -129,6 +154,7 @@ public class TelaInicio extends javax.swing.JFrame {
         btnCVenda = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Facilita Veículos");
@@ -397,7 +423,7 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-gráfico-combinado-16.png"))); // NOI18N
         jMenu3.setText("Gráficos");
 
-        jMenuItem1.setText("Gráfico 1");
+        jMenuItem1.setText("Compras/Vendas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -406,6 +432,15 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenu3.add(jMenuItem1);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/config.png"))); // NOI18N
+        jMenu4.setText("Auditoria");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -530,6 +565,10 @@ public class TelaInicio extends javax.swing.JFrame {
         gerenciarJanelas.abreJanela(TelaCadastroRevisao.getInstancia());
     }//GEN-LAST:event_btnCRevisaoActionPerformed
 
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        gerenciarJanelas.abreJanela(TelaAuditoria.getInstancia());
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -597,6 +636,7 @@ public class TelaInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;

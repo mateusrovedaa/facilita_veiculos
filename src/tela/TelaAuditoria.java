@@ -1,19 +1,8 @@
 package tela;
 
-import dao.DaoGenerico;
-import dao.PermissaoDao;
-import dao.ProprietarioDao;
-import entidade.Cidade;
-import entidade.Proprietario;
 import functions.Formatacao;
 import functions.GerenciarJanelas;
-import functions.Mensagem;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.ImageIcon;
 
 public class TelaAuditoria extends javax.swing.JInternalFrame {

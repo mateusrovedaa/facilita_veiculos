@@ -44,7 +44,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" alignment="1" max="32767" attributes="0"/>
                       <Component id="jPanel11" alignment="0" max="32767" attributes="0"/>
-                      <Component id="Painel" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="Abas" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -56,7 +56,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="Painel" min="-2" pref="329" max="-2" attributes="0"/>
+                  <Component id="Abas" min="-2" pref="329" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -152,7 +152,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JTabbedPane" name="Painel">
+        <Container class="javax.swing.JTabbedPane" name="Abas">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -2053,7 +2053,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jTabbedPane5" min="-2" pref="601" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -2572,10 +2572,6 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cbxCompraProcurarV" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cbxCompraExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -2586,7 +2582,7 @@
                                       <Component id="cbxCompraBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbxCompraLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                                  <EmptySpace pref="54" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cbxCompraListar" min="-2" max="-2" attributes="0"/>
                                       <Component id="cbxCompraCmbSitComList" min="-2" max="-2" attributes="0"/>
@@ -2595,6 +2591,10 @@
                                       <Component id="cbxCompraProcurarProp" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="cbxCompraProcurarV" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -2622,7 +2622,7 @@
                                   <Component id="cbxCompraSalvar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="cbxCompraEditar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="4" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="cbxCompraExcluir" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -2706,6 +2706,179 @@
                 <Component class="javax.swing.JCheckBox" name="cbxCompraListar">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Listar registros"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="pnlVenda">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Venda">
+                    <Property name="tabTitle" type="java.lang.String" value="Venda"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxVendaAcessar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaSalvar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaGerarContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaExcluir" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaBuscar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaLimparBusca" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaProcurarV" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaVerParcelas" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="45" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxVendaTipoP" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaProcurarCli" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaCmbSit" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaCmbMarList" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaCmbSitComList" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaListar" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaVerInfos" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaParcelas" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxVendaAcessar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaProcurarCli" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxVendaSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaCmbSit" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxVendaExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaTipoP" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cbxVendaGerarContrato" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaParcelas" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="4" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxVendaBuscar" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaCmbMarList" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbxVendaLimparBusca" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbxVendaCmbSitComList" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="cbxVendaProcurarV" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxVendaVerParcelas" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="cbxVendaListar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="cbxVendaVerInfos" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaLimparBusca">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Limpar Busca"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaCmbSit">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Situa&#xe7;&#xe3;o da venda"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaCmbMarList">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Marca - Listar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaBuscar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Buscar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaAcessar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Acessar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaProcurarV">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Ve&#xed;culo"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaListar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Listar registros"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaGerarContrato">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Gerar Contrato"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaSalvar">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Salvar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaExcluir">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Excluir"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaProcurarCli">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Procurar Cliente"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaCmbSitComList">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Situa&#xe7;&#xe3;o da venda - Listar"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaVerInfos">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Ver Informa&#xe7;&#xf5;es da Venda"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaVerParcelas">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Bot&#xe3;o Ver Parcelas"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaTipoP">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo Tipo de Pagamento"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="cbxVendaParcelas">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Combo N&#xfa;mero de Parcelas"/>
                   </Properties>
                 </Component>
               </SubComponents>
