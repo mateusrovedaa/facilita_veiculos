@@ -99,7 +99,8 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             btnGerarContrato.setEnabled(false);
         }
         if (peDAO.consultarPermissao("Listar", "compra")) {
-            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            new CompraDao().criaTabela(tblCompra, jScrollPane1);
+//            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         }
         if (!peDAO.consultarPermissao("Procurar", "compra")) {
             btnBuscaVeiculo.setEnabled(false);
@@ -728,7 +729,8 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
         if (peDAO.consultarPermissao("Listar", "compra")) {
-            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            new CompraDao().criaTabela(tblCompra, jScrollPane1);
+//            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         }
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
@@ -805,7 +807,8 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             if (retornoExcluirCompra == true) {
                 Mensagem.informacao("Compra excluída com sucesso!", this);
                 if (peDAO.consultarPermissao("Listar", "compra")) {
-                    new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                    new CompraDao().criaTabela(tblCompra, jScrollPane1);
+//                    new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
                 }
             } else {
                 Mensagem.erro(tblCompra.getValueAt(tblCompra.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
@@ -898,7 +901,8 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             codigo = 0;
 
             if (peDAO.consultarPermissao("Listar", "compra")) {
-            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                new CompraDao().criaTabela(tblCompra, jScrollPane1);
+//            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         }
         } else {
             Mensagem.erro("Erro ao cadastrar compra!", this);

@@ -61,7 +61,8 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         Formatacao.formatarData(campoDataVenda);
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
-        new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        new VendaDao().criaTabela(tblVenda, jScrollPane1);
+//        new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
     }
 
     public static TelaCadastroVenda getInstancia(int usuario_id) {
@@ -720,7 +721,8 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         campoFiltroCliente.setText("");
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
-        new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+        new VendaDao().criaTabela(tblVenda, jScrollPane1);
+//        new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -757,7 +759,8 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
             if (retornoExcluirVenda == true) {
                 Mensagem.informacao("Venda excluída com sucesso!", this);
-                new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+                new VendaDao().criaTabela(tblVenda, jScrollPane1);
+//                new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
             } else {
                 Mensagem.erro(tblVenda.getValueAt(tblVenda.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -909,7 +912,8 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
             codigo = 0;
 
-            new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            new VendaDao().criaTabela(tblVenda, jScrollPane1);
+//            new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         } else {
             Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
