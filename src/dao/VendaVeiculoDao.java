@@ -48,11 +48,11 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public int contarVenda() {
+    public int contarVenda(String datainicio, String datafinal) {
         int i = 0;
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM vendas");
+                    + "SELECT count(*) FROM vendas WHERE data BETWEEN '" + datainicio + "' AND '" + datafinal + "'");
             resultadoQ.next();
             i = resultadoQ.getInt(1);
         } catch (SQLException ex) {
@@ -90,56 +90,56 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
 
         return cidade;
     }
-    
+
     public String gerarParcelas(int parcelas, double valor, int vendaId) {
-        
+
         String v = "";
         String valorTotal = "";
         int resultado = 0;
         boolean status = false;
-        
+
         try {
             Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-            
+
             Data d = new Data();
-            
+
             Parcelas p = new Parcelas();
             ArrayList<Double> x = p.calculaParcelas(valor, parcelas);
-            
+
             d.avancarDias(30);
-            
+
             for (int i = 0; i < x.size(); i++) {
-                
+
                 v = (p.df2.format(x.get(i)));
                 valorTotal = v.replace(',', '.');
-                
+
                 VendaVeiculo vv = new VendaVeiculo();
 
                 resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(" SELECT MAX(vv.id) as id FROM vendas_veiculos AS vv");
-                
+
                 resultadoQ.next();
-                        
+
                 int max = resultadoQ.getInt("id");
-                
+
                 max = max + 1;
-                
+
                 String sql = " INSERT INTO vendas_veiculos VALUES "
                         + "( "
                         + "'" + max + "', "
                         + "'" + now + "', "
                         + "'" + now + "', "
                         + "'" + d.obterDataFormatada() + "',"
-                         + "'" + status + "', "
+                        + "'" + status + "', "
                         + "'" + valorTotal + "', "
                         + "'" + vendaId + "'"
                         + " )";
-                
+
                 d.avancarDias(30);
                 status = false;
-                
+
                 resultado = st.executeUpdate(sql);
             }
-            
+
             if (resultado == 0) {
                 return "Erro ao inserir";
             } else {
@@ -148,7 +148,7 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
         } catch (Exception e) {
             System.out.println("Erro ao inserir parcelas = " + e);
             return e.toString();
-            
+
         }
     }
 

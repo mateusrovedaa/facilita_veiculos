@@ -7,61 +7,59 @@ package tela;
 
 import dao.CompraDao;
 import dao.VendaVeiculoDao;
+import functions.Formatacao;
 import functions.GeradorDeGrafico;
-import functions.GerenciarJanelas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
  *
- * @author Mateus Roveda <mateus.roveda - Roveeb>
+ * @author mateus
  */
-public class TelaGrafico extends javax.swing.JInternalFrame {
+public class TelaGrafico extends javax.swing.JDialog {
 
-    private static TelaGrafico tela;
+    /**
+     * Creates new form TelaGraficoF
+     */
     private final CompraDao coDAO = new CompraDao();
     private final VendaVeiculoDao veDAO = new VendaVeiculoDao();
-    
-    /**
-     * Creates new form TelaGrafico
-     */
-    public TelaGrafico() {
+    LocalDate now = LocalDate.now();
+
+    private TelaGrafico(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
-        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("images/car.png"));
-        this.setFrameIcon(icon);
-        criaGrafico();
     }
 
-    public static TelaGrafico getInstancia() {
-        if (tela == null) {
-            tela = new TelaGrafico();
-        }
-        return tela;
+    public TelaGrafico(java.awt.Frame parent, boolean modal, String datainicial, String datafinal) {
+        super(parent, modal);
+        initComponents();
+        criaGrafico(datainicial, datafinal);
     }
 
-    private void criaGrafico() {
+    private void criaGrafico(String datainicial, String datafinal) {
         ArrayList nomes = new ArrayList();
         ArrayList valores = new ArrayList();
         JPanel painel = new JPanel();
         ScrollPane scroll = new ScrollPane(1);
-//        int contaCompra = coDAO.contarCompra();
-//        int contaVenda = veDAO.contarVenda(); 
-//        int total = contaCompra + contaVenda;
-//        int compras = contaCompra/total;
-//        int vendas = contaVenda/total;
+        double contaCompra = coDAO.contarCompra(Formatacao.ajustaDataAMD(datainicial), Formatacao.ajustaDataAMD(datafinal));
+        double contaVenda = veDAO.contarVenda(Formatacao.ajustaDataAMD(datainicial), Formatacao.ajustaDataAMD(datafinal));
+        double total = contaCompra + contaVenda;
+        double compras = (contaCompra / total) * 100;
+        double vendas = (contaVenda / total) * 100;
         nomes.add("Compras");
         nomes.add("Vendas");
-        valores.add(75);
-        valores.add(25);
+        valores.add(compras);
+        valores.add(vendas);
+        lblCompras.setText("Total de compras: " + (int) contaCompra);
+        lblVendas.setText("Total de vendas: " + (int) contaVenda);
 
-        painel.add(GeradorDeGrafico.pizza3DStatic(nomes, valores, "Quantidade de vendas/compras"));
+        painel.add(GeradorDeGrafico.pizza3DStatic(nomes, valores, "Quantidade de compras/vendas"));
         scroll.add(painel);
-        scroll.setSize(new Dimension(879, 539));
-        scroll.setPreferredSize(new Dimension(879, 539));
+        scroll.setSize(new Dimension(842, 472));
+        scroll.setPreferredSize(new Dimension(879, 479));
         this.getContentPane().add(scroll);
     }
 
@@ -74,17 +72,20 @@ public class TelaGrafico extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        piePlot1 = new org.jfree.chart.plot.PiePlot();
         jPanel1 = new javax.swing.JPanel();
-        btnFechar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        lblVendas = new javax.swing.JLabel();
+        lblCompras = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-exit-16.png"))); // NOI18N
-        btnFechar.setText("Fechar");
-        btnFechar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-exit-16.png"))); // NOI18N
+        jButton1.setText("Fechar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFecharActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -92,18 +93,22 @@ public class TelaGrafico extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(388, Short.MAX_VALUE)
-                .addComponent(btnFechar)
-                .addGap(382, 382, 382))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(351, 351, 351)
+                .addComponent(jButton1)
+                .addContainerGap(363, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        lblVendas.setText("jLabel1");
+
+        lblCompras.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -111,13 +116,23 @@ public class TelaGrafico extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblVendas)
+                            .addComponent(lblCompras))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(550, Short.MAX_VALUE)
+                .addContainerGap(521, Short.MAX_VALUE)
+                .addComponent(lblCompras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblVendas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -125,15 +140,57 @@ public class TelaGrafico extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        GerenciarJanelas.fecharJanela(tela);
-        tela = null;
-    }//GEN-LAST:event_btnFecharActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TelaGrafico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TelaGrafico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TelaGrafico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TelaGrafico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                TelaGrafico dialog = new TelaGrafico(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFechar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private org.jfree.chart.plot.PiePlot piePlot1;
+    private javax.swing.JLabel lblCompras;
+    private javax.swing.JLabel lblVendas;
     // End of variables declaration//GEN-END:variables
 }
