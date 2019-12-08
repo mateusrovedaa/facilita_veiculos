@@ -49,11 +49,11 @@ public class VendaVeiculoDao implements IDAO_T<Cidade> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public int contarVenda() {
+    public int contarVenda(String datainicio, String datafinal) {
         int i = 0;
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM vendas");
+                    + "SELECT count(*) FROM vendas WHERE data BETWEEN '" + datainicio + "' AND '" + datafinal + "'");
             resultadoQ.next();
             i = resultadoQ.getInt(1);
         } catch (SQLException ex) {

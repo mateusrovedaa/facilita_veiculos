@@ -32,7 +32,7 @@ public class TelaInicio extends javax.swing.JFrame {
     public JDesktopPane JDesktopPane() {
         return this.dktInicial;
     }
-
+    
     public int idUser() {
         return this.id;
     }
@@ -521,7 +521,9 @@ public class TelaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCVendaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        gerenciarJanelas.abreJanela(TelaGrafico.getInstancia());
+        TelaDataGrafico grafico = new TelaDataGrafico(null, true);
+        grafico.setLocationRelativeTo(this);
+        grafico.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btnCRevisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCRevisaoActionPerformed

@@ -51,11 +51,11 @@ public class CompraDao implements IDAO_T<Compra> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public int contarCompra() {
+    public int contarCompra(String datainicio, String datafinal) {
         int i = 0;
         try {
             resultadoQ = ConexaoBD.getInstance().getConnection().createStatement().executeQuery(""
-                    + "SELECT count(*) FROM compras");
+                    + "SELECT count(*) FROM compras WHERE data BETWEEN '" + datainicio + "' AND '" + datafinal + "'");
             resultadoQ.next();
             i = resultadoQ.getInt(1);
         } catch (SQLException ex) {
