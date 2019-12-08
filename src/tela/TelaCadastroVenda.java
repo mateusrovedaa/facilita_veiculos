@@ -23,6 +23,7 @@ import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import functions.SoNumerosEPonto;
 import functions.Validacao;
 import java.net.URL;
 import java.text.DateFormat;
@@ -61,6 +62,9 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         campoNomeClienteBusca.setEditable(false);
         campoValorVeiculo.setEditable(false);
         id = usuario_id;
+        campoValorVeiculo.setDocument(new SoNumerosEPonto());
+        campoValorEntrada.setDocument(new SoNumerosEPonto());
+        campoJuros.setDocument(new SoNumerosEPonto());
         new ComboDao().popularCombo("situacoes_vendas", 1, 4, comboSituacaoVendaId, "");
         new ComboDao().popularCombo("situacoes_vendas", 1, 4, comboFiltroSituacaoVendaId, "");
         new ComboDao().popularCombo("tipos_pagamentos", 1, 4, comboTipoPagamentoId, "");

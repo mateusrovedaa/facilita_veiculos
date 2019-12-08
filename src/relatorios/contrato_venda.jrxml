@@ -8,7 +8,7 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT cid.nome AS cidade, c.endereco, c.nome AS cliente, c.rg, c.cpf, ve.chassi, ve.placa, ve.renavam,v.data, v.juros, v.valor_entrada, v.valor_total,
-ver.ano_fabricacao, ver.ano_modelo, ver.motor, m.nome AS marcanome, mo.nome AS modelonome, p.nome AS parcela, tp.nome AS tipop
+ver.ano_fabricacao, ver.ano_modelo, ver.motor, m.nome AS marcanome, mo.nome AS modelonome, p.nome AS parcela, tp.nome AS tipop, v.juros
 FROM cidades cid, vendas v, clientes c, parcelas p, veiculos ve, tipos_pagamentos tp, versoes ver, marcas m, modelos mo
 WHERE v.cliente_id = c.id AND v.parcela_id = p.id AND v.veiculo_id = ve.id AND v.tipo_pagamento_id = tp.id
  AND ve.versao_id = ver.id AND ver.modelo_id = mo.id AND mo.marca_id = m.id AND c.cidade_id = cid.id AND v.id = $P{idvenda}]]>
@@ -133,6 +133,8 @@ WHERE v.cliente_id = c.id AND v.parcela_id = p.id AND v.veiculo_id = ve.id AND v
 				</textElement>
 				<textFieldExpression><![CDATA["O COMPRADOR concorda em realizar o pagamento do preço total de "+"<br>"
 + "O COMPRADOR realizará o pagamento utilizando "+$F{tipop}+", e em "+$F{parcela}+", com uma entrada de "+"<br>"
++ "<br>"
++ "O valor do juros cobrado será de "+$F{juros} +"% ao mês"
 + "<br>"+
 "<b><i>Parágrafo primeiro.</b></i> Na determinação do preço supramencionados foram fatores relevantes à sua fixação: o fato de não ser um veículo novo, o uso e desgaste do veículo e a quilometragem do mesmo."+ "<br>"+
 "<b><i>Parágrafo segundo.</b></i> O preço referido acima não inclui os custos inerentes à formalização da transmissão de propriedade."+ "<br>"+

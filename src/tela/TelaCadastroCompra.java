@@ -21,6 +21,7 @@ import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import functions.SoNumerosEPonto;
 import functions.Validacao;
 import java.net.URL;
 import java.text.DateFormat;
@@ -59,6 +60,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         Formatacao.formatarData(campoFiltroDataDe);
         Formatacao.formatarData(campoFiltroDataAte);
         Formatacao.formatarData(campoData);
+        campoValor.setDocument(new SoNumerosEPonto());
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
         new ComboDao().popularCombo("situacoes_compras", 1, 4, comboSituacaoCompraId, "");
@@ -898,8 +900,8 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             codigo = 0;
 
             if (peDAO.consultarPermissao("Listar", "compra")) {
-            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
-        }
+                new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            }
         } else {
             Mensagem.erro("Erro ao cadastrar compra!", this);
         }
