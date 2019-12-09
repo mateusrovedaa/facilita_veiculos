@@ -20,10 +20,13 @@ import entidade.Veiculo;
 import entidade.Venda;
 import entidade.Versao;
 import functions.ComboItem;
+import functions.ConexaoBD;
 import functions.Formatacao;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
+import functions.SoNumerosEPonto;
 import functions.Validacao;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -31,8 +34,16 @@ import static java.time.LocalDateTime.now;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
@@ -52,6 +63,9 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         campoNomeClienteBusca.setEditable(false);
         campoValorVeiculo.setEditable(false);
         id = usuario_id;
+        campoValorVeiculo.setDocument(new SoNumerosEPonto());
+        campoValorEntrada.setDocument(new SoNumerosEPonto());
+        campoJuros.setDocument(new SoNumerosEPonto());
         new ComboDao().popularCombo("situacoes_vendas", 1, 4, comboSituacaoVendaId, "");
         new ComboDao().popularCombo("situacoes_vendas", 1, 4, comboFiltroSituacaoVendaId, "");
         new ComboDao().popularCombo("tipos_pagamentos", 1, 4, comboTipoPagamentoId, "");
@@ -62,7 +76,58 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         Formatacao.formatarData(campoDataVenda);
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
-        new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+
+        new VendaDao().criaTabela(tblVenda, jScrollPane1);
+
+        verificaPermissoes();
+    }
+
+    private void verificaPermissoes() {
+        if (!peDAO.consultarPermissao("Salvar", "venda")) {
+            btnSalvar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Excluir", "venda")) {
+            btnExcluir.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Buscar", "venda")) {
+            btnBuscar.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("LimparBusca", "venda")) {
+            btnLimparBusca.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Infos", "venda")) {
+            btnVerInfoVenda.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Parcelas", "venda")) {
+            btnVerParcelas.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("GerarContrato", "venda")) {
+            btnGerarContrato.setEnabled(false);
+        }
+        if (peDAO.consultarPermissao("Listar", "venda")) {
+            new VendaDao().criaTabela(tblVenda, jScrollPane1);
+        }
+        if (!peDAO.consultarPermissao("Procurar", "venda")) {
+            btnBuscaVeiculo.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("Procurar2", "venda")) {
+            btnBuscaCliente.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboSitCompra1", "venda")) {
+            comboSituacaoVendaId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboSitCompra2", "venda")) {
+            comboFiltroSituacaoVendaId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboMarca", "venda")) {
+            comboFiltroMarcaId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboTipoPagamento", "venda")) {
+            comboTipoPagamentoId.setEnabled(false);
+        }
+        if (!peDAO.consultarPermissao("ComboNumeroParcela", "venda")) {
+            comboParcelaId.setEnabled(false);
+        }
     }
 
     public static TelaCadastroVenda getInstancia(int usuario_id) {
@@ -149,6 +214,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         btnFecharLista = new javax.swing.JButton();
         btnVerInfoVenda = new javax.swing.JButton();
         btnVerParcelas = new javax.swing.JButton();
+        btnGerarContrato = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -166,7 +232,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(153, 153, 153))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Campos obrigatórios (*)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(153, 153, 153))); // NOI18N
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Veículo*"));
 
@@ -614,11 +680,19 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
             }
         });
 
-        btnVerParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-view-16.png"))); // NOI18N
+        btnVerParcelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-money-16.png"))); // NOI18N
         btnVerParcelas.setText("Ver parcelas");
         btnVerParcelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerParcelasActionPerformed(evt);
+            }
+        });
+
+        btnGerarContrato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-view-16.png"))); // NOI18N
+        btnGerarContrato.setText("Gerar contrato");
+        btnGerarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGerarContratoActionPerformed(evt);
             }
         });
 
@@ -628,6 +702,8 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnGerarContrato)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVerParcelas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVerInfoVenda)
@@ -645,7 +721,8 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
                     .addComponent(btnExcluir)
                     .addComponent(btnFecharLista)
                     .addComponent(btnVerInfoVenda)
-                    .addComponent(btnVerParcelas))
+                    .addComponent(btnVerParcelas)
+                    .addComponent(btnGerarContrato))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -721,7 +798,10 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         campoFiltroCliente.setText("");
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
-        new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+
+        if (peDAO.consultarPermissao("Listar", "venda")) {
+            new VendaDao().criaTabela(tblVenda, jScrollPane1);
+        }
     }//GEN-LAST:event_btnLimparBuscaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -742,7 +822,10 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         }
 
         if (Validacao.validarDataFormatada(campoFiltroDataDe.getText()) || Validacao.validarDataFormatada(campoFiltroDataAte.getText())) {
-            new VendaDao().popularTabela(tblVenda, campoFiltroPlaca.getText(), campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtroMarca, filtroSituacaoVenda, campoFiltroCliente.getText(), campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            if (peDAO.consultarPermissao("Listar", "venda")) {
+                new VendaDao().popularTabela(tblVenda, campoFiltroPlaca.getText(), campoFiltroVersao.getText(), campoFiltroModelo.getText(), filtroMarca, filtroSituacaoVenda, campoFiltroCliente.getText(), campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            }
+
         } else {
             Mensagem.aviso("Digite uma data válida!", this);
             campoFiltroDataDe.setText(Formatacao.getDataMes());
@@ -758,7 +841,10 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
 
             if (retornoExcluirVenda == true) {
                 Mensagem.informacao("Venda excluída com sucesso!", this);
-                new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+
+                if (peDAO.consultarPermissao("Listar", "venda")) {
+                    new VendaDao().criaTabela(tblVenda, jScrollPane1);
+                }
             } else {
                 Mensagem.erro(tblVenda.getValueAt(tblVenda.getSelectedRow(), 1) + " está sendo usado(a) para outros cadastros!", this);
             }
@@ -919,8 +1005,11 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
             campoObservacoes.setText("");
 
             codigo = 0;
+            
+            if (peDAO.consultarPermissao("Listar", "venda")) {
+                new VendaDao().criaTabela(tblVenda, jScrollPane1);
+            }
 
-            new VendaDao().popularTabela(tblVenda, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
         } else {
             Mensagem.aviso("Campos obrigatórios (*) devem ser preenchidos corretamente!", this);
         }
@@ -1003,6 +1092,33 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnVerInfoVendaActionPerformed
 
+    private void btnGerarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarContratoActionPerformed
+        int idInt = Integer.parseInt(tblVenda.getValueAt(tblVenda.getSelectedRow(), 0).toString());
+        if (idInt == 0) {
+            Mensagem.aviso("Selecione um registro para imprimir!", this);
+        } else {
+            try {
+                // Compila o relatorio
+                URL web = getClass().getResource("/relatorios/");
+                JasperReport relatorio = JasperCompileManager.compileReport(getClass().getResourceAsStream("/relatorios/contrato_venda.jrxml"));
+
+                // Mapeia campos de parametros para o relatorio, mesmo que nao existam
+                Map parametros = new HashMap();
+
+                // adiciona parametros
+                parametros.put("idvenda", idInt);
+
+                // Executa relatoio
+                JasperPrint impressao = JasperFillManager.fillReport(relatorio, parametros, ConexaoBD.getInstance().getConnection());
+
+                // Exibe resultado em video
+                JasperViewer.viewReport(impressao, false);
+            } catch (JRException e) {
+                Mensagem.erro("Erro ao gerar relatório: " + e, this);
+            }
+        }
+    }//GEN-LAST:event_btnGerarContratoActionPerformed
+
     public void definirVeiculo(int id, String placa) {
         campoIdVeiculoBusca.setText(Integer.toString(id));
         campoPlacaVeiculoBusca.setText(placa);
@@ -1037,6 +1153,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFecharCadastro;
     private javax.swing.JButton btnFecharLista;
+    private javax.swing.JButton btnGerarContrato;
     private javax.swing.JButton btnLimparBusca;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVerInfoVenda;

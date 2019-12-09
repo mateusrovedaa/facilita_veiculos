@@ -34,9 +34,6 @@ public class Cidade implements Serializable {
     @Column(name = "nome", length = 200, nullable = false)
     private String nome;
 
-//    @Column(name = "slug", length = 200, nullable = false)
-//    private String slug;
-
     @Column(name = "criado_em", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar criadoEm;
@@ -52,7 +49,6 @@ public class Cidade implements Serializable {
         this.id = cidade.id;
         this.estado_id = cidade.estado_id;
         this.nome = cidade.nome;
-        //this.slug = cidade.slug;
         this.criadoEm = cidade.criadoEm;
         this.alteradoEm = cidade.alteradoEm;
     }
@@ -84,14 +80,6 @@ public class Cidade implements Serializable {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-//    public String getSlug() {
-//        return slug;
-//    }
-//
-//    public void setSlug(String slug) {
-//        this.slug = slug;
-//    }
 
     public Calendar getCriadoEm() {
         return criadoEm;

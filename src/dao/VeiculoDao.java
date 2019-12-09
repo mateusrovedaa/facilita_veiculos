@@ -31,8 +31,8 @@ import org.hibernate.SessionFactory;
 public class VeiculoDao implements LazyLoading {
 
     ResultSet resultadoQ = null;
-    private final int registros = 100;
     final DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+    private final int registros = 100;
 
     @Override
     public void incrementaTabela(JTable tabela, int linhas) {

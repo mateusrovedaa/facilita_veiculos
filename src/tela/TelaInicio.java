@@ -1,7 +1,10 @@
 package tela;
 
+import dao.DaoGenerico;
 import dao.PermissaoDao;
 import dao.UsuarioDao;
+import entidade.Perfil;
+import entidade.Usuario;
 import functions.GerenciarJanelas;
 import functions.Mensagem;
 import java.awt.Toolkit;
@@ -32,9 +35,16 @@ public class TelaInicio extends javax.swing.JFrame {
     public JDesktopPane JDesktopPane() {
         return this.dktInicial;
     }
-    
+
     public int idUser() {
         return this.id;
+    }
+
+    public Usuario usuario() {
+        DaoGenerico dao = new DaoGenerico();
+        Object ob = dao.obterPorId(Usuario.class, idUser());
+        Usuario usuario = new Usuario((Usuario) ob);
+        return usuario;
     }
 
     private void verificarPermissoes() {
@@ -95,6 +105,18 @@ public class TelaInicio extends javax.swing.JFrame {
         } else {
             btnCCompra.setEnabled(true);
             btnAtalhoCCompra.setEnabled(true);
+        }
+        if (!peDAO.consultarPermissao("Acessar", "venda")) {
+            btnCVenda.setEnabled(false);
+            btnAtalhoCVenda.setEnabled(false);
+        } else {
+            btnCVenda.setEnabled(true);
+            btnAtalhoCVenda.setEnabled(true);
+        }
+        if (!peDAO.consultarPermissao("Acessar", "revisao")) {
+            btnCRevisao.setEnabled(false);
+        } else {
+            btnCRevisao.setEnabled(true);
         }
     }
 
@@ -397,7 +419,7 @@ public class TelaInicio extends javax.swing.JFrame {
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8-gráfico-combinado-16.png"))); // NOI18N
         jMenu3.setText("Gráficos");
 
-        jMenuItem1.setText("Gráfico 1");
+        jMenuItem1.setText("Compras/Vendas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
