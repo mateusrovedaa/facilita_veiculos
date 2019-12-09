@@ -28,9 +28,6 @@ public class Estado implements Serializable {
     @Column(name = "nome", length = 200, nullable = false)
     private String nome;
 
-    @Column(name = "slug", length = 200, nullable = false)
-    private String slug;
-
     @Column(name = "uf", length = 2, nullable = false)
     private String uf;
 
@@ -49,7 +46,6 @@ public class Estado implements Serializable {
         this.id = estado.id;
         this.nome = estado.nome;
         this.uf = estado.uf;
-        this.slug = estado.slug;
         this.criadoEm = estado.criadoEm;
         this.alteradoEm = estado.alteradoEm;
     }
@@ -72,14 +68,6 @@ public class Estado implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
     }
 
     public String getUf() {

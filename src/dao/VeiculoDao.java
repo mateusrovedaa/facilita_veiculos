@@ -5,6 +5,7 @@ import entidade.Estilo;
 import entidade.Extra;
 import entidade.Marca;
 import entidade.Seguranca;
+import entidade.SituacaoVeiculo;
 import entidade.Tecnologia;
 import entidade.Veiculo;
 import functions.ConexaoBD;
@@ -390,28 +391,28 @@ public class VeiculoDao implements LazyLoading {
         return valor;
     }
 
-    public String atualizarSituacao(String situacao, String veiculo) {
-        try {
-            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
-
-            String sql = ""
-                    + "UPDATE veiculos "
-                    + "SET situacao_veiculo_id = '" + situacao + "' "
-                    + "WHERE id = " + veiculo;
-
-            int resultado = st.executeUpdate(sql);
-
-            if (resultado == 0) {
-                return "Erro ao atualizar";
-            } else {
-                return null;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Erro atualizar situação = " + e);
-            return e.toString();
-        }
-    }
+//    public String atualizarSituacao(String situacao, String veiculo) {
+//        try {
+//            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
+//
+//            String sql = ""
+//                    + "UPDATE veiculos "
+//                    + "SET situacao_veiculo_id = '" + situacao + "' "
+//                    + "WHERE id = " + veiculo;
+//
+//            int resultado = st.executeUpdate(sql);
+//
+//            if (resultado == 0) {
+//                return "Erro ao atualizar";
+//            } else {
+//                return null;
+//            }
+//
+//        } catch (Exception e) {
+//            System.out.println("Erro atualizar situação = " + e);
+//            return e.toString();
+//        }
+//    }
 
     public double calcularValorTotal(double valorVeiculo, double valorEntrada, double juros) {
         double taxaJuros = (juros / 100);
@@ -758,5 +759,30 @@ public class VeiculoDao implements LazyLoading {
         }
 
         return extra;
+    }
+    
+    public String alterarSituacao(Veiculo veiculo) {
+        try {
+            Statement st = ConexaoBD.getInstance().getConnection().createStatement();
+
+            String sql = ""
+                    + "UPDATE veiculos "
+                    + "SET situacao_veiculo_id = '" + veiculo.getSituacao_veiculo_id().getId() + "' "
+                    + "WHERE id = " + veiculo.getId();
+
+            System.out.println("Sql: " + sql);
+
+            int resultado = st.executeUpdate(sql);
+
+            if (resultado == 0) {
+                return "Erro ao atualizar";
+            } else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro atualizar situação = " + e);
+            return e.toString();
+        }
     }
 }

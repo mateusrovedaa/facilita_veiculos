@@ -692,63 +692,53 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jLabel23" max="32767" attributes="0"/>
+                                          <Component id="jLabel26" max="32767" attributes="0"/>
+                                          <Component id="jLabel29" max="32767" attributes="0"/>
+                                      </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel29" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jLabel23" max="32767" attributes="0"/>
-                                                  <Component id="jLabel26" max="32767" attributes="0"/>
-                                              </Group>
+                                              <Component id="radioManualVeiculoSim" min="-2" pref="68" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="campoNumeroProprietario" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="radioVistoriadoSim" min="-2" pref="68" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="radioVistoriadoNao" min="-2" pref="65" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Group type="102" attributes="0">
-                                                          <Component id="radioManualVeiculoSim" min="-2" pref="68" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="radioManualVeiculoNao" min="-2" pref="65" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
+                                              <Component id="radioManualVeiculoNao" min="-2" pref="65" max="-2" attributes="0"/>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="radioVistoriadoSim" min="-2" pref="68" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="radioVistoriadoNao" min="-2" pref="65" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="campoNumeroProprietario" min="-2" pref="230" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="jLabel30" min="-2" pref="136" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="campoGarantia" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jLabel24" max="32767" attributes="0"/>
-                                                  <Component id="jLabel27" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="radioBlindadoSim" min="-2" pref="66" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="radioBlindadoNao" min="-2" pref="65" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="campoNumeroOcorrencia" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel30" max="32767" attributes="0"/>
+                                          <Component id="jLabel27" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel35" alignment="0" pref="140" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel25" max="32767" attributes="0"/>
-                                          <Component id="jLabel31" pref="136" max="32767" attributes="0"/>
-                                          <Component id="jLabel28" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="campoNumeroOcorrencia" alignment="1" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="radioBlindadoSim" min="-2" pref="66" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="radioBlindadoNao" min="-2" pref="65" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="104" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="campoGarantia" alignment="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel31" alignment="1" min="-2" pref="136" max="-2" attributes="0"/>
+                                              <Component id="jLabel28" alignment="1" min="-2" pref="136" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabel25" alignment="0" min="-2" pref="136" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="radioChaveReservaSim" min="-2" pref="68" max="-2" attributes="0"/>
@@ -780,9 +770,9 @@
                                           <Component id="campoNumeroProprietario" alignment="1" max="32767" attributes="0"/>
                                           <Component id="jLabel23" alignment="0" max="32767" attributes="0"/>
                                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel24" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="campoNumeroOcorrencia" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="jLabel25" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="jLabel35" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                                               <Component id="radioChaveReservaNao" alignment="3" max="32767" attributes="0"/>
@@ -791,9 +781,11 @@
                                       </Group>
                                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel27" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="radioBlindadoSim" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="radioBlindadoNao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                              <Component id="jLabel27" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="radioBlindadoNao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="radioBlindadoSim" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <Component id="radioManualVeiculoNao" alignment="1" max="32767" attributes="0"/>
                                           <Component id="radioManualVeiculoSim" alignment="0" max="32767" attributes="0"/>
                                           <Component id="radioIpvaPagoNao" alignment="1" max="32767" attributes="0"/>
@@ -803,22 +795,26 @@
                                               <Component id="radioIpvaPagoSim" alignment="3" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel29" max="32767" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                                  <Component id="radioVistoriadoSim" alignment="3" max="32767" attributes="0"/>
-                                                  <Component id="radioVistoriadoNao" alignment="3" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="jLabel29" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                                                      <Component id="radioVistoriadoSim" alignment="3" max="32767" attributes="0"/>
+                                                      <Component id="radioVistoriadoNao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                               <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="jLabel30" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                                   <Component id="campoGarantia" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                                  <Component id="jLabel31" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="radioExibirSiteSim" alignment="1" max="32767" attributes="0"/>
+                                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                                  <Component id="radioExibirSiteSim" alignment="3" max="32767" attributes="0"/>
+                                                  <Component id="jLabel31" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              </Group>
                                               <Component id="radioExibirSiteNao" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -832,12 +828,6 @@
                               <Properties>
                                 <Property name="horizontalAlignment" type="int" value="4"/>
                                 <Property name="text" type="java.lang.String" value="N&#xfa;mero de propriet&#xe1;rios:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel24">
-                              <Properties>
-                                <Property name="horizontalAlignment" type="int" value="4"/>
-                                <Property name="text" type="java.lang.String" value="N&#xfa;mero de ocorr&#xea;ncias:"/>
                               </Properties>
                             </Component>
                             <Component class="javax.swing.JTextField" name="campoNumeroProprietario">
@@ -982,6 +972,12 @@
                                   <ComponentRef name="agrupadorExibirSite"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JLabel" name="jLabel35">
+                              <Properties>
+                                <Property name="horizontalAlignment" type="int" value="4"/>
+                                <Property name="text" type="java.lang.String" value="N&#xfa;mero de ocorrencias:"/>
                               </Properties>
                             </Component>
                           </SubComponents>

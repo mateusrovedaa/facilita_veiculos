@@ -56,8 +56,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="abaCliente" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="abaCliente" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -104,7 +104,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel4" max="32767" attributes="0"/>
+                      <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -137,10 +137,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel7" max="32767" attributes="0"/>
+                          <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -166,6 +166,8 @@
                                   <Component id="jPanel5" max="32767" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jLabel11" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel10" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
@@ -189,17 +191,8 @@
                                               </Group>
                                           </Group>
                                           <Component id="campoNome" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel12" pref="105" max="32767" attributes="0"/>
-                                          <Component id="jLabel4" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="campoEmail" max="32767" attributes="0"/>
-                                          <Component id="campoEndereco" max="32767" attributes="0"/>
+                                          <Component id="campoEndereco" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="campoEmail" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -230,17 +223,17 @@
                                   <Component id="campoCpf" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel4" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="campoEndereco" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel12" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="campoEmail" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -251,12 +244,6 @@
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
                         <Property name="text" type="java.lang.String" value="Data de nascimento:*"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel4">
-                      <Properties>
-                        <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="text" type="java.lang.String" value="Endere&#xe7;o:*"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -346,16 +333,6 @@
                         <Property name="text" type="java.lang.String" value="Telefone:*"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="campoEndereco">
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel12">
-                      <Properties>
-                        <Property name="horizontalAlignment" type="int" value="4"/>
-                        <Property name="text" type="java.lang.String" value="E-mail:*"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="campoEmail">
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>
                         <Property name="horizontalAlignment" type="int" value="4"/>
@@ -375,6 +352,22 @@
                     <Component class="javax.swing.JFormattedTextField" name="campoCpf">
                     </Component>
                     <Component class="javax.swing.JFormattedTextField" name="campoTelefone">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel10">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="text" type="java.lang.String" value="Endere&#xe7;o:*"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="campoEndereco">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel11">
+                      <Properties>
+                        <Property name="horizontalAlignment" type="int" value="4"/>
+                        <Property name="text" type="java.lang.String" value="E-mail:*"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="campoEmail">
                     </Component>
                   </SubComponents>
                 </Container>
@@ -509,7 +502,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="317" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="309" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>

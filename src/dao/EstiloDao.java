@@ -197,7 +197,7 @@ public class EstiloDao implements IDAO_T<Estilo> {
 
         // cabecalho da tabela
         Object[] cabecalho = new Object[3];
-        cabecalho[0] = "";
+        cabecalho[0] = "Selecione";
         cabecalho[1] = "Código";
         cabecalho[2] = "Nome";
 

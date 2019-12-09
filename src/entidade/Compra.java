@@ -43,9 +43,9 @@ public class Compra implements Serializable {
     @ManyToOne
     private SituacaoCompra situacao_compra_id;
     
-    @JoinColumn(name = "contrato_compra_id", nullable = false)
-    @ManyToOne
-    private ContratoCompra contrato_compra_id;
+//    @JoinColumn(name = "contrato_compra_id", nullable = false)
+//    @ManyToOne
+//    private ContratoCompra contrato_compra_id;
 
     @Column(name = "data", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -73,7 +73,7 @@ public class Compra implements Serializable {
         this.veiculo_id = compra.veiculo_id;
         this.proprietario_id = compra.proprietario_id;
         this.situacao_compra_id = compra.situacao_compra_id;
-        this.contrato_compra_id = compra.contrato_compra_id;
+        //this.contrato_compra_id = compra.contrato_compra_id;
         this.data = compra.data;
         this.valor = compra.valor;
         this.observacoes = compra.observacoes;
@@ -113,13 +113,13 @@ public class Compra implements Serializable {
         this.situacao_compra_id = situacao_compra_id;
     }
 
-    public ContratoCompra getContrato_compra_id() {
-        return contrato_compra_id;
-    }
-
-    public void setContrato_compra_id(ContratoCompra contrato_compra_id) {
-        this.contrato_compra_id = contrato_compra_id;
-    }
+//    public ContratoCompra getContrato_compra_id() {
+//        return contrato_compra_id;
+//    }
+//
+//    public void setContrato_compra_id(ContratoCompra contrato_compra_id) {
+//        this.contrato_compra_id = contrato_compra_id;
+//    }
 
     public Date getData() {
         return data;

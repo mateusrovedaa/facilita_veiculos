@@ -4618,7 +4618,7 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
         cidade.setId(codigo);
         cidade.setEstado_id(estado);
         cidade.setNome(campoNomeCidade.getText());
-        cidade.setSlug(Funcoes.textoIdentificador(campoNomeCidade.getText()));
+        //cidade.setSlug(Funcoes.textoIdentificador(campoNomeCidade.getText()));
         cidade.setCriadoEm(Calendar.getInstance());
         cidade.setAlteradoEm(Calendar.getInstance());
 
@@ -4729,7 +4729,6 @@ public class TelaCadastroGeral extends javax.swing.JInternalFrame {
 
         estado.setId(codigo);
         estado.setNome(campoNomeEstado.getText());
-        estado.setSlug(Funcoes.textoIdentificador(campoNomeEstado.getText()));
         estado.setUf(campoUf.getText());
         estado.setCriadoEm(Calendar.getInstance());
         estado.setAlteradoEm(Calendar.getInstance());

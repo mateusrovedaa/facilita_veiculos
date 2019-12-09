@@ -12,6 +12,7 @@ import entidade.Combustivel;
 import entidade.ContratoVenda;
 import entidade.Modelo;
 import entidade.Parcela;
+import entidade.SituacaoVeiculo;
 import entidade.SituacaoVenda;
 import entidade.TipoPagamento;
 import entidade.Usuario;
@@ -857,6 +858,16 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         if (validaCampos() == true) {
             if (codigo == 0) {
                 retornoSalvarVenda = DaoGenerico.getInstance().inserirVenda(venda);
+                
+                SituacaoVeiculo situacaoVeiculo = null;
+                Object objectSituacaoVeiculo = DaoGenerico.getInstance().obterPorId(SituacaoVeiculo.class, 3);
+                situacaoVeiculo = new SituacaoVeiculo((SituacaoVeiculo) objectSituacaoVeiculo);
+
+                veiculo.setId(veiculoId.getId());
+                veiculo.setSituacao_veiculo_id(situacaoVeiculo);
+
+                veiculoDao.alterarSituacao(veiculo);
+                
                 if (parcelaId.getCodigo() != 0) {
 
                     String Numeroparcela = parcelaId.getDescricao();

@@ -841,9 +841,9 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             situacao = new SituacaoCompra((SituacaoCompra) objectSituacaoCompra);
         }
 
-        ContratoCompra contrato = null;
-        Object objectContratoCompra = DaoGenerico.getInstance().obterPorId(ContratoCompra.class, 1);
-        contrato = new ContratoCompra((ContratoCompra) objectContratoCompra);
+//        ContratoCompra contrato = null;
+//        Object objectContratoCompra = DaoGenerico.getInstance().obterPorId(ContratoCompra.class, 1);
+//        contrato = new ContratoCompra((ContratoCompra) objectContratoCompra);
 
         compra.setId(codigo);
         compra.setProprietario_id(proprietarioBusca);
@@ -856,7 +856,7 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             compra.setData(dataFormatada);
         }
         compra.setSituacao_compra_id(situacao);
-        compra.setContrato_compra_id(contrato);
+        //compra.setContrato_compra_id(contrato);
         if (!campoValor.getText().equals("")) {
             compra.setValor(Double.parseDouble(campoValor.getText().replace(",", ".")));
         }
@@ -872,10 +872,27 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
         if (validaCampos() == true) {
             if (codigo == 0) {
                 retornoSalvarCompra = DaoGenerico.getInstance().inserir(compra);
-                veiculoDao.atualizarSituacao(campoIdVeiculoBusca.getText(), "1");
+
+                SituacaoVeiculo situacaoVeiculo = null;
+                Object objectSituacaoVeiculo = DaoGenerico.getInstance().obterPorId(SituacaoVeiculo.class, 1);
+                situacaoVeiculo = new SituacaoVeiculo((SituacaoVeiculo) objectSituacaoVeiculo);
+
+                veiculo.setId(veiculoBusca.getId());
+                veiculo.setSituacao_veiculo_id(situacaoVeiculo);
+
+                veiculoDao.alterarSituacao(veiculo);
+
             } else {
                 retornoSalvarCompra = DaoGenerico.getInstance().atualizar(compra);
-                veiculoDao.atualizarSituacao(campoIdVeiculoBusca.getText(), "1");
+                //veiculoDao.atualizarSituacao(campoIdVeiculoBusca.getText(), "1");
+                SituacaoVeiculo situacaoVeiculo = null;
+                Object objectSituacaoVeiculo = DaoGenerico.getInstance().obterPorId(ContratoCompra.class, 1);
+                situacaoVeiculo = new SituacaoVeiculo((SituacaoVeiculo) objectSituacaoVeiculo);
+
+                veiculo.setId(veiculoBusca.getId());
+                veiculo.setSituacao_veiculo_id(situacaoVeiculo);
+
+                veiculoDao.alterarSituacao(veiculo);
             }
 
             Mensagem.informacao("Compra salva com sucesso!", this);
@@ -898,8 +915,8 @@ public class TelaCadastroCompra extends javax.swing.JInternalFrame {
             codigo = 0;
 
             if (peDAO.consultarPermissao("Listar", "compra")) {
-            new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
-        }
+                new CompraDao().popularTabela(tblCompra, "", "", "", "", "", "", campoFiltroDataDe.getText(), campoFiltroDataAte.getText());
+            }
         } else {
             Mensagem.erro("Erro ao cadastrar compra!", this);
         }
