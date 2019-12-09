@@ -7,6 +7,7 @@ package tela;
 
 import functions.Formatacao;
 import functions.GerenciarJanelas;
+import java.awt.Toolkit;
 import java.time.LocalDate;
 
 /**
@@ -19,11 +20,11 @@ public class TelaDataGrafico extends javax.swing.JDialog {
      * Creates new form TelaDataGrafico
      */
     LocalDate now = LocalDate.now();
-    
 
     public TelaDataGrafico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setIcon();
         Formatacao.formatarData(tffDataDe);
         Formatacao.formatarData(tffDataAte);
         tffDataDe.setText(Formatacao.getDataMes());
@@ -130,6 +131,10 @@ public class TelaDataGrafico extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/Car-32.png")));
+    }
 
     /**
      * @param args the command line arguments

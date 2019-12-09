@@ -11,6 +11,7 @@ import functions.Formatacao;
 import functions.GeradorDeGrafico;
 import java.awt.Dimension;
 import java.awt.ScrollPane;
+import java.awt.Toolkit;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -37,6 +38,7 @@ public class TelaGrafico extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         criaGrafico(datainicial, datafinal);
+        setIcon();
     }
 
     private void criaGrafico(String datainicial, String datafinal) {
@@ -143,6 +145,10 @@ public class TelaGrafico extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../images/Car-32.png")));
+    }
 
     /**
      * @param args the command line arguments
