@@ -77,7 +77,7 @@ public class TelaCadastroVenda extends javax.swing.JInternalFrame {
         campoFiltroDataDe.setText(Formatacao.getDataMes());
         campoFiltroDataAte.setText(Formatacao.ajustaDataDMA(now.toString()));
 
-        new VendaDao().criaTabela(tblVenda, jScrollPane1);
+        //new VendaDao().criaTabela(tblVenda, jScrollPane1);
 
         verificaPermissoes();
     }
