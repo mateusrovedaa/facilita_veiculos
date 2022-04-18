@@ -18,8 +18,8 @@ public class Mensagem {
      * Método privado para geração de mensagens do sistema
      *
      * @param titulo mensagem a ser exibida no topo da tela
-     * @param mensagem mensagem a ser exibida no conteudo da caixa de dialogo
-     * @param tipo padrãoo de mensagens <b>JOptionPane<b>
+     * @param mensagem mensagem a ser exibida no conteudo da caixa de diálogo
+     * @param tipo padrão de mensagens <b>JOptionPane<b>
      */
     private static void mensagem(String titulo, String mensagem, int tipo, Component localizacao) {
         JOptionPane.showMessageDialog(localizacao, mensagem, titulo, tipo);
@@ -38,12 +38,6 @@ public class Mensagem {
         mensagem("Informação", mensagem, JOptionPane.INFORMATION_MESSAGE, localizacao);
     }
 
-    /**
-     * Metodo para exibisão de mensagens de errro
-     *
-     * @param mensagem mensagem a ser exibida na tela
-     * @param localizacao
-     */
     public static void erro(String mensagem, Component localizacao) {
         mensagem("Erro", mensagem, JOptionPane.ERROR_MESSAGE, localizacao);
     }
